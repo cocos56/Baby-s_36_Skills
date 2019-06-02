@@ -1,0 +1,9 @@
+/*
+!.cocos-project.json
+!.gitignore
+!ReadMe.md
+!CMakeLists.txt
+!/Classes/
+!/proj.android/
+!/proj.win32/
+!/Resources/
