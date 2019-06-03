@@ -16,6 +16,9 @@
     <Filter Include="src\QE\support">
       <UniqueIdentifier>{3052e007-2467-433b-bc39-cba26c0fe4a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Network">
+      <UniqueIdentifier>{20b5d59d-325b-4a81-92ce-fd41e3ad05a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -46,6 +49,15 @@
       <Filter>src\QE\support</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\QE\QTMX.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SignInScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Connect.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QE\QCharsetConvert.cpp">
       <Filter>src\QE\support</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,6 +105,15 @@
       <Filter>src\QE\support</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\QE\QType.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SignInScene.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Connect.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QE\QCharsetConvert.h">
       <Filter>src\QE\support</Filter>
     </ClInclude>
   </ItemGroup>

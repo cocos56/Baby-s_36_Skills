@@ -49,11 +49,34 @@ endif()
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
+     Classes/Connect.cpp
      Classes/HelloWorldScene.cpp
+     Classes/SignInScene.cpp
+     Classes/QE/QAnimate.cpp
+     Classes/QE/QJson.cpp
+     Classes/QE/QMenu.cpp
+     Classes/QE/QObject.cpp
+     Classes/QE/QScene.cpp
+     Classes/QE/QSprite.cpp
+     Classes/QE/QTMX.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
+     Classes/Connect.h
      Classes/HelloWorldScene.h
+     Classes/QE.h
+     Classes/SignInScene.h
+     Classes/QE/QAnimate.h
+     Classes/QE/QDesignMode.h
+     Classes/QE/QFileUtils.h
+     Classes/QE/QJson.h
+     Classes/QE/QLayer.h
+     Classes/QE/QMenu.h
+     Classes/QE/QObject.h
+     Classes/QE/QScene.h
+     Classes/QE/QSprite.h
+     Classes/QE/QTMX.h
+     Classes/QE/QType.h
      )
 
 if(ANDROID)

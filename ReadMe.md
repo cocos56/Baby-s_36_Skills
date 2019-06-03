@@ -27,11 +27,9 @@ Cocos2d-x 3.3与3.10、3.17.1、3.17.2打包到安卓教程：
 * 特色
 自主研发了QE（Quick Engine），大大减少了代码的重复率，使代码看起来更简洁，开发起来更高效。
 
-* GitHub代码仓：
-https://github.com/COCO5666/Baby-s_36_Skills
-
+* 代码仓与文档：
 文档更新地址：https://blog.csdn.net/COCO56/article/details/90384628
-代码托管在 ：https://github.com/COCO5666/Baby-s_36_Skills
+代码托管地址 ：https://github.com/COCO5666/Baby-s_36_Skills
 
 <!-- 安装包下载方式
 * 安卓

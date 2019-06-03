@@ -3,6 +3,7 @@
 !.gitignore
 !ReadMe.md
 !CMakeLists.txt
+!LICENSE
 !/Classes/
 !/proj.android/
 !/proj.win32/

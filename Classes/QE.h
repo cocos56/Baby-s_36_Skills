@@ -45,6 +45,7 @@ using namespace cocos2d::network;
 #include "QE/QDesignMode.h"
 
 //QE
+#include "QE/QCharsetConvert.h"
 #include "QE/QType.h"
 #include "QE/QScene.h"
 #include "QE/QLayer.h"
@@ -59,3 +60,5 @@ using namespace cocos2d::network;
 //User
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "Connect.h"
+#include "SignInScene.h"
