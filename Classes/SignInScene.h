@@ -6,11 +6,13 @@ class SignInScene : public Layer
 	, public EditBoxDelegate
 {
 	QE_CreateSceneFromLayer_H(SignInScene);
-private:
+public:
 	//服务器状态相关
-	LabelTTF* label;
+	static void updateLabel();
+	static MenuItemLabel* connectItem;
+	static LabelTTF* label, * logLabel;
+private:
 	void createLabel(string show);
-	void updateLabel();
 	//菜单相关
 	void initMenu();
 	//菜单按钮回调函数相关

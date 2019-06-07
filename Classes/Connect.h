@@ -2,22 +2,25 @@
 
 #include "QE.h"
 
-class Connect : public SocketIO::SIODelegate
+class Connect : public WebSocket::Delegate
 {
 	QE_SINGLETON_H(Connect);
 
 public:
-	static SIOClient* _sioClient;
+	static WebSocket* _ws;
 	static bool isConnect;
 	static string addr;
-
 	static void connect();
 
 private:
 	void initSocket();
-	virtual void onConnect(SIOClient* client);
-	virtual void onMessage(SIOClient* client, const string& data);
-	virtual void onClose(SIOClient* client);
-	virtual void onError(SIOClient* client, const string& data);
-	void callClientEvent(SIOClient* client, const string& data);
+	void updateStatus(bool status);
+
+	virtual void onOpen(cocos2d::network::WebSocket* ws);
+
+	virtual void onMessage(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::Data& data);
+
+	virtual void onClose(cocos2d::network::WebSocket* ws);
+
+	virtual void onError(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::ErrorCode& error);
 };

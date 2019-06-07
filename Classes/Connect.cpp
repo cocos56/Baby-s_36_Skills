@@ -1,6 +1,7 @@
 #include "Connect.h"
+#include "SignInScene.h"
 
-SIOClient* Connect::_sioClient;
+WebSocket* Connect::_ws = nullptr;
 bool Connect::isConnect = false;
 string Connect::addr;
 
@@ -13,50 +14,57 @@ void Connect::connect()
 
 void Connect::initSocket()
 {
-	string ip = "10.6.32.1";
+	string ip;
+	ip	= "10.6.32.1";
 	//ip = "localhost";
-	string port = "56";
-	addr = "http://" + ip + ":" + port + "/";
-	_sioClient = SocketIO::connect(addr, *this);
-	//注册服务器端事件
-	_sioClient->on("callClientEvent", CC_CALLBACK_2(Connect::callClientEvent, this));
-}
-
-//委托协议方法
-void Connect::onConnect(SIOClient* client)
-{
-	isConnect = true;
-	CCLOG("HelloWorld::onConnect called");
-	String* s = String::createWithFormat("%s connected!", client->getTag());
-}
-
-void Connect::onMessage(SIOClient* client, const std::string& data)
-{
-	CCLOG("HelloWorld::onMessage received: %s", data.c_str());
-	String* s = String::createWithFormat("%s  received message.", client->getTag());
-}
-
-void Connect::onClose(SIOClient* client)
-{
-	isConnect = false;
-
-	CCLOG("HelloWorld::onClose called");
-
-	if (client == _sioClient) {
-		_sioClient = nullptr;
+	int port = 56;
+	addr = String::createWithFormat("ws://%s:%d/", ip.c_str(), port)->getCString();
+	//addr = "ws://" + ip + ":" + port + "/";
+	_ws = new WebSocket();
+	if (!_ws->init(*this, addr))
+	{
+		CC_SAFE_DELETE(_ws);
 	}
 }
 
-void Connect::onError(SIOClient* client, const std::string& data)
+//委托协议方法
+void Connect::onOpen(cocos2d::network::WebSocket* ws)
 {
-	isConnect = false;
+	//进行这样的判断是因为WebSocket对象没有setTag方法0
+	if (ws != _ws){return;}
 
-	CCLOG("HelloWorld::onError received: %s", data.c_str());
-	String* s = String::createWithFormat("%s   received error .", client->getTag());
+	updateStatus(true);
+	CCLOG("Connect::onOpen called");
+	_ws->send("Hello, I am cocos2d-x, send()");
 }
 
-void Connect::callClientEvent(SIOClient* client, const std::string& data)
+void Connect::onMessage(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::Data& data)
 {
-	CCLOG("HelloWorld::callClientEvent received: %s", data.c_str());
-	String* s = String::createWithFormat("%s Server CallBack", client->getTag());
+	if (ws != _ws) { return; }
+	updateStatus(true);
+	CCLOG("Connect::onMessage received: %s", data.bytes);
+}
+
+void Connect::onClose(cocos2d::network::WebSocket* ws)
+{
+	if (ws != _ws) { return; }
+	updateStatus(false);
+	CCLOG("Connect::onClose called");
+	_ws = nullptr;
+}
+
+void Connect::onError(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::ErrorCode& error)
+{
+	if (ws != _ws) { return; }
+
+	updateStatus(false);
+	SignInScene::logLabel->setString("onError:" + to_string(int(error)) + "||" + addr);
+	_ws->close();
+	CCLOG("HelloWorld::onError received: %d", error);
+}
+
+void Connect::updateStatus(bool status)
+{
+	isConnect = status;
+	SignInScene::updateLabel();
 }

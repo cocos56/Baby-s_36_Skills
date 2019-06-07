@@ -69,6 +69,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Scene* scene;
 	//scene = HelloWorld::createScene();
 	scene = SignInScene::createScene();
+	//scene = HttpTest::createScene();
+	//scene = WebSocketTestLayer::createScene();
 
     // run
     director->runWithScene(scene);

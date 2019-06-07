@@ -19,6 +19,9 @@
     <Filter Include="src\Network">
       <UniqueIdentifier>{20b5d59d-325b-4a81-92ce-fd41e3ad05a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Network\Test">
+      <UniqueIdentifier>{f82467ff-d899-4440-9f4b-e9d6110b4176}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,11 +57,23 @@
     <ClCompile Include="..\Classes\SignInScene.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\QE\QCharsetConvert.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QCC.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HttpTest.cpp">
+      <Filter>src\Network\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SocketIOTest.cpp">
+      <Filter>src\Network\Test</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Connect.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\QE\QCharsetConvert.cpp">
-      <Filter>src\QE\support</Filter>
+    <ClCompile Include="..\Classes\WebSocketTestLayer.cpp">
+      <Filter>src\Network\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,11 +125,23 @@
     <ClInclude Include="..\Classes\SignInScene.h">
       <Filter>src\Network</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\QE\QCharsetConvert.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QCC.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HttpTest.h">
+      <Filter>src\Network\Test</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Connect.h">
       <Filter>src\Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\QE\QCharsetConvert.h">
-      <Filter>src\QE\support</Filter>
+    <ClInclude Include="..\Classes\SocketIOTest.h">
+      <Filter>src\Network\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WebSocketTestLayer.h">
+      <Filter>src\Network\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,7 @@ QE_CreateSceneFromLayer_CPP(HelloWorld);
 
 	std::string ip = "10.6.32.1";
 	//ip = "localhost";
-	std::string port = "56";
+	std::string port = "80";
 	std::string addr = "http://" + ip + ":" + port + "/";
 	_sioClient = SocketIO::connect(addr, *this);
 	_sioClient->setTag("Cocos2d-x Client1");

@@ -51,8 +51,12 @@ list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/Connect.cpp
      Classes/HelloWorldScene.cpp
+     Classes/LayerStart.cpp
+     Classes/QCC.cpp
      Classes/SignInScene.cpp
+     Classes/WebSocketTestLayer.cpp
      Classes/QE/QAnimate.cpp
+     Classes/QE/QCharsetConvert.cpp
      Classes/QE/QJson.cpp
      Classes/QE/QMenu.cpp
      Classes/QE/QObject.cpp
@@ -64,9 +68,13 @@ list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/Connect.h
      Classes/HelloWorldScene.h
+     Classes/LayerStart.h
+     Classes/QCC.h
      Classes/QE.h
      Classes/SignInScene.h
+     Classes/WebSocketTestLayer.h
      Classes/QE/QAnimate.h
+     Classes/QE/QCharsetConvert.h
      Classes/QE/QDesignMode.h
      Classes/QE/QFileUtils.h
      Classes/QE/QJson.h

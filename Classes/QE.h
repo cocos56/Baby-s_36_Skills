@@ -6,7 +6,7 @@ Quick Engine模块
 QE V2.0 for Baby's_36_Skills
 
 QE（Quick Engine，快速引擎）简介：
-基于Cocos2d-x 3.17.1、C++ 17构建，用来尽可能多地提升代码的复用性。
+基于Cocos2d-x 3.17.2、C++ 17构建，用来尽可能多地提升代码的复用性。
 QE具体表现为：优化默认的参数值及参数列表，使原来需要数行代码才能完成的功能，现在只需要一行代码就能完成。
 
 比如：
@@ -39,12 +39,15 @@ using namespace CocosDenshion;
 #include "ui/CocosGUI.h"
 using namespace cocos2d::ui;
 #include "network/SocketIO.h"
+#include "network/HttpClient.h"
+#include "network/WebSocket.h"
 using namespace cocos2d::network;
 
 //设计模式
 #include "QE/QDesignMode.h"
 
 //QE
+#include "QCC.h"
 #include "QE/QCharsetConvert.h"
 #include "QE/QType.h"
 #include "QE/QScene.h"
@@ -59,6 +62,9 @@ using namespace cocos2d::network;
 
 //User
 #include "AppDelegate.h"
+#include "HttpTest.h"
 #include "HelloWorldScene.h"
+#include "SocketIOTest.h"
 #include "Connect.h"
 #include "SignInScene.h"
+#include "WebSocketTestLayer.h"
