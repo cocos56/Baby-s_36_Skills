@@ -66,14 +66,17 @@
     <ClCompile Include="..\Classes\HttpTest.cpp">
       <Filter>src\Network\Test</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SocketIOTest.cpp">
-      <Filter>src\Network\Test</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Connect.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\WebSocketTestLayer.cpp">
       <Filter>src\Network\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SocketIOTestLayer.cpp">
+      <Filter>src\Network\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ConnectServerScene.cpp">
+      <Filter>src\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,11 +140,14 @@
     <ClInclude Include="..\Classes\Connect.h">
       <Filter>src\Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SocketIOTest.h">
-      <Filter>src\Network\Test</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\WebSocketTestLayer.h">
       <Filter>src\Network\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SocketIOTestLayer.h">
+      <Filter>src\Network\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConnectServerScene.h">
+      <Filter>src\Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

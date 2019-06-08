@@ -2,15 +2,18 @@
 
 #include "QE.h"
 
-class SocketIOTest : public cocos2d::network::SocketIO::SIODelegate
+class SocketIOTestLayer : public Layer, public SocketIO::SIODelegate
 {
-	QE_SINGLETON_H(SocketIOTest);
+	QE_CreateSceneFromLayer_H(SocketIOTestLayer);
+	QE_SINGLETON_H(SocketIOTestLayer);
 
 public:
 	static SIOClient* _sioClient;
 	static bool isConnect;
 	static string addr;
 	static void connect();
+
+	static Label* label, *logLabel;
 
 private:
 	void initSocket();
@@ -20,4 +23,5 @@ private:
 	virtual void onError(SIOClient* client, const string& data);
 	void callClientEvent(SIOClient* client, const string& data);
 	void updateStatus(bool status);
+	void updateLabel();
 };

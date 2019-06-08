@@ -64,7 +64,7 @@ using namespace cocos2d::network;
 #include "AppDelegate.h"
 #include "HttpTest.h"
 #include "HelloWorldScene.h"
-#include "SocketIOTest.h"
+#include "SocketIOTestLayer.h"
 #include "Connect.h"
 #include "SignInScene.h"
 #include "WebSocketTestLayer.h"

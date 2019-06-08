@@ -57,6 +57,14 @@ void SignInScene::initMenu()
 
 void SignInScene::SignIn()
 {
+	//JValue& value = doc["type"];
+	//value.SetInt(123);
+	//value = doc["type"].GetInt();
+	//if (value.IsInt())
+	//{
+	//	CCLOG("type is %d, doc[type] is %d", value.GetInt(), doc["type"].GetInt());
+	//}
+
 
 }
 void SignInScene::SignUp()

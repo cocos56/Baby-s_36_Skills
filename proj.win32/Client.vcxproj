@@ -153,7 +153,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Connect.cpp" />
-    <ClCompile Include="..\Classes\SocketIOTest.cpp" />
+    <ClCompile Include="..\Classes\ConnectServerScene.cpp" />
+    <ClCompile Include="..\Classes\SocketIOTestLayer.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HttpTest.cpp" />
     <ClCompile Include="..\Classes\QCC.cpp" />
@@ -172,7 +173,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Connect.h" />
-    <ClInclude Include="..\Classes\SocketIOTest.h" />
+    <ClInclude Include="..\Classes\ConnectServerScene.h" />
+    <ClInclude Include="..\Classes\SocketIOTestLayer.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HttpTest.h" />
     <ClInclude Include="..\Classes\QCC.h" />

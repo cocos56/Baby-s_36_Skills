@@ -68,6 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 	Scene* scene;
 	//scene = HelloWorld::createScene();
+	//scene = SocketIOTestLayer::createScene();
 	scene = SignInScene::createScene();
 	//scene = HttpTest::createScene();
 	//scene = WebSocketTestLayer::createScene();
