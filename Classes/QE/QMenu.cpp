@@ -17,8 +17,24 @@ MenuItemSprite* QMenu::createMenuItemSprite(const string& normal_picture, const 
 	MenuItemSprite * item = MenuItemSprite::create(normal, pressed, callback);
 	return item;
 }
+
+MenuItemLabel* QMenu::createMenuItemLabel(const string& text, const ccMenuCallback& callback)
+{
+	Label* label = Label::create(text, QE_Font, 25);
+	MenuItemLabel* item = MenuItemLabel::create(label, callback);
+	item->setAnchorPoint(Vec2(0, 0));
+	return item;
+}
+
+Menu* QMenu::createMenuLabel(const string& text, const ccMenuCallback& callback)
+{
+	MenuItemLabel* item = createMenuItemLabel(text, callback);
+	Menu* menu = Menu::create(item, NULL);
+	menu->setAnchorPoint(Vec2(0, 0));
+	return menu;
+}
  
-Menu* QMenu::createMenu(const string& picture, const ccMenuCallback& callback, MenuItem *&item)
+Menu* QMenu::createMenuSprite(const string& picture, const ccMenuCallback& callback, MenuItem *&item)
 {
 	item = createMenuItemSprite(picture, picture, callback);
 	Menu* menu = Menu::create(item, NULL);
@@ -27,10 +43,10 @@ Menu* QMenu::createMenu(const string& picture, const ccMenuCallback& callback, M
 	return menu;
 }
 
-Menu* QMenu::createMenu(const string& picture, const ccMenuCallback& callback)
+Menu* QMenu::createMenuSprite(const string& picture, const ccMenuCallback& callback)
 {
 	MenuItem* item;
-	return createMenu(picture, callback, item);
+	return createMenuSprite(picture, callback, item);
 }
 
 void QMenu::releaseMenuItemVector(vector<MenuItem*>& menuItems)

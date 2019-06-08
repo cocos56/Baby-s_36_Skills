@@ -16,9 +16,12 @@ class QMenu
 public:
 	static MenuItemSprite* createMenuItemSprite(const string& picture, const ccMenuCallback& callback, int x=0, int y = 10);
 	static MenuItemSprite* createMenuItemSprite(const string& normal_picture, const string& pressed_picture, const ccMenuCallback& callback, int x = 0, int y = 10);
+
+	static MenuItemLabel* createMenuItemLabel(const string& text, const ccMenuCallback& callback);
 	
-	static Menu* createMenu(const string& picture, const ccMenuCallback& callback);
-	static Menu* createMenu(const string& picture, const ccMenuCallback& callback, MenuItem *&item);
+	static Menu* createMenuLabel(const string& text, const ccMenuCallback& callback);
+	static Menu* createMenuSprite(const string& picture, const ccMenuCallback& callback);
+	static Menu* createMenuSprite(const string& picture, const ccMenuCallback& callback, MenuItem *&item);
 
 	static void releaseMenuItemVector(vector<MenuItem*>& menuItems);
 };

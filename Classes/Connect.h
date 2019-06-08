@@ -7,14 +7,14 @@ class Connect : public WebSocket::Delegate
 	QE_SINGLETON_H(Connect);
 
 public:
-	static WebSocket* _ws;
-	static bool isConnect;
-	static string addr;
+	
+	static bool _isConnecting;
 	static void connect();
+	static WebSocket* _ws;
+	static string _addr;
 
 private:
 	void initSocket();
-	void updateStatus(bool status);
 
 	virtual void onOpen(cocos2d::network::WebSocket* ws);
 

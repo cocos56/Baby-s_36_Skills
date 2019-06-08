@@ -53,14 +53,3 @@ function connectOnErrorCallbackFunction(code, reason)
 }
 
 console.log("the server of websocket has been created successfully.")
-
-// JSON.parse将字符串转换为对象
-var data = '{"name": "hxy", "age": 10}'
-console.log("data is ", typeof data, ", JSON.parse(data) is",typeof JSON.parse(data))
-console.log("JSON.parse(data)=",JSON.parse(data), '\n')
-
-// JSON.stringify将对象转换为字符串
-var data2 = {name: "hxy", age: 10}
-console.log("data2 is ", typeof data2, "JSON.stringify(data2) is", typeof JSON.stringify(data2))
-console.log('JSON.stringify(data2)=', JSON.stringify(data2))
-
