@@ -57,12 +57,6 @@
     <ClCompile Include="..\Classes\SignInScene.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\QE\QCharsetConvert.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QCC.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\HttpTest.cpp">
       <Filter>src\Network\Test</Filter>
     </ClCompile>
@@ -76,6 +70,9 @@
       <Filter>src\Network\Test</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ConnectServerScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SignUpScene.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,12 +125,6 @@
     <ClInclude Include="..\Classes\SignInScene.h">
       <Filter>src\Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\QE\QCharsetConvert.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QCC.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\HttpTest.h">
       <Filter>src\Network\Test</Filter>
     </ClInclude>
@@ -147,6 +138,9 @@
       <Filter>src\Network\Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ConnectServerScene.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SignUpScene.h">
       <Filter>src\Network</Filter>
     </ClInclude>
   </ItemGroup>

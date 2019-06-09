@@ -27,7 +27,7 @@ QE具体表现为：优化默认的参数值及参数列表，使原来需要数行代码才能完成的功能，现在
 #define QE_CBWT0(Type, Fun, targert, ...) std::bind(&Type::Fun,targert, ##__VA_ARGS__)
 //#define CC_CALLBACK_0(__selector__,__target__, ...) std::bind(&__selector__,__target__, ##__VA_ARGS__)
 #define QE_CALLBACK_1(Type,Fun) CC_CALLBACK_1(Type::Fun, this)
-#define QE_Font "fonts/Marker Felt.ttf"
+#define QE_Font "fonts/HannotateSC-W5.ttf"
 
 //C++
 using namespace std;
@@ -48,8 +48,6 @@ using namespace cocos2d::network;
 #include "QE/QDesignMode.h"
 
 //QE
-#include "QCC.h"
-#include "QE/QCharsetConvert.h"
 #include "QE/QType.h"
 #include "QE/QScene.h"
 #include "QE/QLayer.h"
@@ -69,4 +67,5 @@ using namespace cocos2d::network;
 #include "Connect.h"
 #include "ConnectServerScene.h"
 #include "SignInScene.h"
+#include "SignUpScene.h"
 #include "WebSocketTestLayer.h"

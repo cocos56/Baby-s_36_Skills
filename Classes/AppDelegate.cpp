@@ -31,9 +31,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("HelloWorld", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect("Baby's_36_Skills", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
-        glview = GLViewImpl::create("HelloWorld");
+        glview = GLViewImpl::create("Baby's_36_Skills");
 #endif
         director->setOpenGLView(glview);
     }
@@ -70,7 +70,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//scene = HelloWorld::createScene();
 	//scene = SocketIOTestLayer::createScene();
 	//scene = ConnectServerScene::createScene();
-	scene = SignInScene::createScene();
+	//scene = SignInScene::createScene();
+	scene = SignUpScene::createScene();
 	//scene = HttpTest::createScene();
 	//scene = WebSocketTestLayer::createScene();
 

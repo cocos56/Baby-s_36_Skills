@@ -1,3 +1,5 @@
+ï»¿# pragma execution_character_set("utf-8")
+
 #include "ConnectServerScene.h"
 
 EditBox* ConnectServerScene::_ip1Box, * ConnectServerScene::_port1Box, * ConnectServerScene::_ip2Box, * ConnectServerScene::_port2Box;
@@ -16,10 +18,10 @@ QE_CreateSceneFromLayer_CPP(ConnectServerScene);
 
 void ConnectServerScene::initLabel()
 {
-	createLabel("Server name")->setPosition(150, 450);
-	createLabel("IP")->setPosition(320, 450);
-	createLabel("Port")->setPosition(570, 450);
-	createLabel("Act")->setPosition(680, 450);
+	createLabel("æœåŠ¡å™¨å")->setPosition(140, 450);
+	createLabel("IPåœ°å€")->setPosition(320, 450);
+	createLabel("ç«¯å£")->setPosition(570, 450);
+	createLabel("æ“ä½œ")->setPosition(680, 450);
 
 	_logLabel = createLabel("");
 	_logLabel->setPosition(100, 100);
@@ -35,11 +37,11 @@ Label* ConnectServerScene::createLabel(string text)
 
 void ConnectServerScene::initMenu()
 {
-	Menu* menu = QMenu::createMenuLabel("connect", bind(&ConnectServerScene::connect, this, 1));
+	Menu* menu = QMenu::createMenuLabel("è¿æ¥", bind(&ConnectServerScene::connect, this, 1));
 	menu->setPosition(680, 390);
 	addChild(menu);
 
-	menu = QMenu::createMenuLabel("connect", bind(&ConnectServerScene::connect, this, 2));
+	menu = QMenu::createMenuLabel("è¿æ¥", bind(&ConnectServerScene::connect, this, 2));
 	menu->setPosition(680, 340);
 	addChild(menu);
 }
@@ -48,7 +50,7 @@ void ConnectServerScene::connect(int n)
 {
 	if (Connect::_isConnecting)
 	{
-		_logLabel->setString("Connecting to " + Connect::_addr + "\nwait a moment , and try again later if necessary.");
+		_logLabel->setString("æ­£åœ¨è¿æ¥ï¼š" + Connect::_addr + "\nè¯·ç¨åï¼Œè‹¥é•¿æ—¶é—´æœªæ­£å¸¸è¿æ¥è¯·å†å°è¯•è¿›è¡Œé‡è¿");
 		return;
 	}
 	Connect::_isConnecting = true;
@@ -64,27 +66,27 @@ void ConnectServerScene::connect(int n)
 		port = _port2Box->getText();
 	}
 	Connect::_addr = String::createWithFormat("ws://%s:%s/", ip.c_str(), port.c_str())->getCString();
-	_logLabel->setString("Connecting to " + Connect::_addr);
+	_logLabel->setString("æ­£åœ¨è¿æ¥ï¼š" + Connect::_addr);
 	Connect::connect();
 }
 
 void ConnectServerScene::initEditBox()
 {
 	EditBox* box;
-	createLabel("Server 1")->setPosition(150, 390);
-	//ÊäÈëIPµÄ¿ò
+	createLabel("Coco's Server")->setPosition(140, 390);
+	//è¾“å…¥IPçš„æ¡†
 	_ip1Box = box = createEditBox("green_edit.png", "10.6.32.1", 15);
 	box->setPosition(Vec2(320, 380));
-	//ÊäÈë¶Ë¿ÚµÄ¿ò
+	//è¾“å…¥ç«¯å£çš„æ¡†
 	_port1Box = box = createEditBox("orange_edit.png", "56", 5);
 	box->setSize(Size(80, 38));
 	box->setPosition(Vec2(570, 380));
 
-	createLabel("Server 2")->setPosition(150, 340);
-	//ÊäÈëIPµÄ¿ò
+	createLabel("æœ¬åœ°æœåŠ¡å™¨")->setPosition(140, 340);
+	//è¾“å…¥IPçš„æ¡†
 	_ip2Box = box = createEditBox("green_edit.png", "127.0.0.1", 15);
 	box->setPosition(Vec2(320, 330));
-	//ÊäÈë¶Ë¿ÚµÄ¿ò
+	//è¾“å…¥ç«¯å£çš„æ¡†
 	_port2Box = box = createEditBox("orange_edit.png", "56", 5);
 	box->setSize(Size(80, 38));
 	box->setPosition(Vec2(570, 330));
@@ -99,12 +101,12 @@ EditBox* ConnectServerScene::createEditBox(string normalPngFile, string text, in
 	box->setFontColor(Color3B(0, 0, 255));
 	box->setPlaceholderFontName(QE_Font);
 	box->setPlaceholderFontSize(25);
-	box->setPlaceHolder(text.c_str()); //µ±±à¼­¿òÖĞÃ»ÓĞÈÎºÎ×Ö·û£¨»òÊäÈë×Ö·ûÇ°£©µÄÌáÊ¾ÎÄ±¾,¼´Õ¼Î»·û
+	box->setPlaceHolder(text.c_str()); //å½“ç¼–è¾‘æ¡†ä¸­æ²¡æœ‰ä»»ä½•å­—ç¬¦ï¼ˆæˆ–è¾“å…¥å­—ç¬¦å‰ï¼‰çš„æç¤ºæ–‡æœ¬,å³å ä½ç¬¦
 	box->setPlaceholderFontColor(Color3B(255, 0, 0));
-	box->setMaxLength(maxLength);   //ÉèÖÃÎÄ±¾¿òÖĞÎÄ±¾µÄ×î´ó³¤¶È
-	box->setInputMode(EditBox::InputMode::ANY);//ÊäÈë¼üÅÌÄ£Ê½,ÈÎºÎ·ûºÅ
+	box->setMaxLength(maxLength);   //è®¾ç½®æ–‡æœ¬æ¡†ä¸­æ–‡æœ¬çš„æœ€å¤§é•¿åº¦
+	box->setInputMode(EditBox::InputMode::ANY);//è¾“å…¥é”®ç›˜æ¨¡å¼,ä»»ä½•ç¬¦å·
 	box->setAnchorPoint(Vec2(0, 0));
-	box->setDelegate(this);//¿ªÆôÎ¯ÍĞ£¬ÎÄ±¾¿ò´úÀí£¬ĞèÒªÊµÏÖEditBoxDelegate´úÀíÖĞµÄ·½·¨£¬¾Í¿ÉÒÔ¶ÔEditBox½øĞĞ¿ØÖÆ
+	box->setDelegate(this);//å¼€å¯å§”æ‰˜ï¼Œæ–‡æœ¬æ¡†ä»£ç†ï¼Œéœ€è¦å®ç°EditBoxDelegateä»£ç†ä¸­çš„æ–¹æ³•ï¼Œå°±å¯ä»¥å¯¹EditBoxè¿›è¡Œæ§åˆ¶
 	addChild(box);
 	return box;
 }

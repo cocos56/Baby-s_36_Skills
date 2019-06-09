@@ -7,7 +7,7 @@ class SignInScene : public Layer, public EditBoxDelegate
 	QE_CreateSceneFromLayer_H(SignInScene);
 public:
 	//服务器状态相关
-	static Label* label, * logLabel;
+	static Label* _label, * _logLabel;
 	static EditBox* _idBox, * _passwordBox;
 private:
 	void createLabel(string show);
@@ -20,5 +20,5 @@ private:
 	//输入框相关
 	void initEditBox();
 	EditBox* createEditBox(string normalPngFile);
-	virtual void editBoxReturn(EditBox* editBox);
+	virtual void editBoxReturn(EditBox* editBox) {};
 };

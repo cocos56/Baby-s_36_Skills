@@ -1,10 +1,11 @@
-#pragma once
+ï»¿#pragma once
+# pragma execution_character_set("utf-8")
 
 /*
-Quick EngineËùÊô¿ìËÙJson¶ÁĞ´Ä£¿é
-º¬£º
-1.QJsonÀà
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ¶ÁĞ´JsonÊı¾İ
+Quick Engineæ‰€å±å¿«é€ŸJsonè¯»å†™æ¨¡å—
+å«ï¼š
+1.QJsonç±»
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿè¯»å†™Jsonæ•°æ®
 */
 
 #include "json/document.h"
@@ -15,7 +16,11 @@ Quick EngineËùÊô¿ìËÙJson¶ÁĞ´Ä£¿é
 
 using namespace rapidjson;
 typedef rapidjson::Value JValue;
+typedef JValue::StringRefType JString;
 typedef Document JDoc;
+
+#define QE_ToJStr(text) rapidjson::StringRef(text)
+#define QE_strToJStr(text) QE_ToJStr(text.c_str())
 
 #include "QE.h"
 
@@ -23,6 +28,7 @@ class QJson
 {
 public:
 	static JDoc doc;
+	static JDoc tempDoc;
 
 	static void initDocFromJsonFile(string fileName = "Data.json");
 	static void initDocWithString(string content);
@@ -31,32 +37,32 @@ public:
 	static JValue& getArray(string key, JValue& value);
 	static int getInt(string key, JValue& value);
 	static string getString(string key, JValue& value);
+	static string getString(string key);
 	static string getString();
-	template <typename T>
-	static void addMember(string name, T value) { doc.AddMember(name, value, doc.GetAllocator()); }
+	static void addMember(JString name, JString value) { doc.AddMember(name, value, doc.GetAllocator()); };
 	static void emptyDoc(){ doc.Parse<0>("{}"); }
 };
 
 /*
-rapidjson::Value value£¬Ö»ÊÇÒ»¸ö¶¨Òå£¬»¹Ã»ÓĞ¾ö¶¨ÆäÊı¾İÀàĞÍ£¬Èç¹ûÃ÷È·valueµÄÀàĞÍ£¬ÔÙ×ª³ÉÏàÓ¦µÄ¸ñÊ½
+rapidjson::Value valueï¼Œåªæ˜¯ä¸€ä¸ªå®šä¹‰ï¼Œè¿˜æ²¡æœ‰å†³å®šå…¶æ•°æ®ç±»å‹ï¼Œå¦‚æœæ˜ç¡®valueçš„ç±»å‹ï¼Œå†è½¬æˆç›¸åº”çš„æ ¼å¼
 
-ValueµÄÀàĞÍ°üÀ¨£ºint, double, string, bool, array, object, null
+Valueçš„ç±»å‹åŒ…æ‹¬ï¼šint, double, string, bool, array, object, null
 
-RapidJson³ıÁËÄÜ¹»¶ÁÈ¡ºÍĞŞ¸ÄÊı¾İ£¬»¹ÄÜÌí¼ÓºÍÉ¾³ıÊı¾İ
-Ìí¼ÓÊı¾İÊ±£¬ÏÈ»ñÈ¡Ò»¸ö·ÖÅäÆ÷
+RapidJsoné™¤äº†èƒ½å¤Ÿè¯»å–å’Œä¿®æ”¹æ•°æ®ï¼Œè¿˜èƒ½æ·»åŠ å’Œåˆ é™¤æ•°æ®
+æ·»åŠ æ•°æ®æ—¶ï¼Œå…ˆè·å–ä¸€ä¸ªåˆ†é…å™¨
 rapidjson::Document::AllocatorType &allocator = doc.GetAllocator();
-Ìí¼ÓÒ»¸öÊı£º
+æ·»åŠ ä¸€ä¸ªæ•°ï¼š
 doc.AddMember("age", 15 , allocator);
-Ìí¼ÓÒ»¸önull¶ÔÏó
+æ·»åŠ ä¸€ä¸ªnullå¯¹è±¡
 rapidjson::Value nullObject(rapidjson::kNullType);
 doc.AddMember("null", nullObject, allocator);
-Ìí¼ÓÒ»¸ö¶ÔÏó
+æ·»åŠ ä¸€ä¸ªå¯¹è±¡
 rapidjson::Value obj(rapidjson::kObjectType);
 obj.AddMember("name", "xiaoli", allocator);
 obj.AddMember("age", 20, allocator);
 obj.AddMember("height", 180, allocator);
 doc.AddMember("personInfo", obj, allocator);
-Ìí¼ÓÒ»¸öÊı×é
+æ·»åŠ ä¸€ä¸ªæ•°ç»„
 rapidjson::Value arr(rapidjson::kArrayType);
 arr.PushBack(1, allocator);
 arr.PushBack("string in array", allocator);

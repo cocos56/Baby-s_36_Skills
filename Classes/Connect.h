@@ -1,4 +1,5 @@
-#pragma once
+﻿#pragma once
+# pragma execution_character_set("utf-8")
 
 #include "QE.h"
 
@@ -9,18 +10,21 @@ class Connect : public WebSocket::Delegate
 public:
 	
 	static bool _isConnecting;
-	static void connect();
 	static WebSocket* _ws;
-	static string _addr;
+	static string _addr, _nowEvent;
+
+	static void connect();
+	static void createMsg();
+	static void addMsg(JString key, JString value);
+	static void sendMsg();
+
 
 private:
 	void initSocket();
 
-	virtual void onOpen(cocos2d::network::WebSocket* ws);
-
-	virtual void onMessage(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::Data& data);
-
-	virtual void onClose(cocos2d::network::WebSocket* ws);
-
-	virtual void onError(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::ErrorCode& error);
+	//委托协议方法
+	virtual void onOpen(WebSocket* ws) noexcept override;
+	virtual void onMessage(WebSocket* ws, const WebSocket::Data& data) noexcept override;
+	virtual void onClose(WebSocket* ws) noexcept override;
+	virtual void onError(WebSocket* ws, const WebSocket::ErrorCode& error) noexcept override;
 };

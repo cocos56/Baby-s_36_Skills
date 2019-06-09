@@ -1,17 +1,19 @@
+ï»¿# pragma execution_character_set("utf-8")
+
 #include "SignInScene.h"
 
-Label* SignInScene::label, * SignInScene::logLabel;
+Label* SignInScene::_label, * SignInScene::_logLabel;
 EditBox* SignInScene::_idBox, * SignInScene::_passwordBox;
 
 QE_CreateSceneFromLayer_CPP(SignInScene);
 	paths = { "fonts" };
 	QE_SetResourcesSearchDir;
 
-	Connect::connect();
+	//Connect::connect();
 
-	createLabel("Please sign in if you have signed up, or sign up if you don't have an account yet.");
-	label->setPosition(150, 150);
-	logLabel = label;
+	createLabel("è¯·ç™»å½•ï¼Œå¦‚æžœæ²¡æœ‰è´¦å·è¯·å…ˆæ³¨å†Œã€‚");
+	_label->setPosition(150, 150);
+	_logLabel = _label;
 
 	initMenu();
 	initEditBox();
@@ -20,19 +22,19 @@ QE_CreateSceneFromLayer_CPP(SignInScene);
 
 void SignInScene::createLabel(string show)
 {
-	label = Label::create(show, QE_Font, 24);
-	label->setAnchorPoint(Vec2(0, 0));
-	addChild(label);
+	_label = Label::create(show, QE_Font, 24);
+	_label->setAnchorPoint(Vec2(0, 0));
+	addChild(_label);
 }
 
 void SignInScene::initMenu()
 {
-	label = Label::create("sign in", QE_Font, 25);
-	MenuItemLabel* inItem = MenuItemLabel::create(label, bind(&SignInScene::SignIn, this));
+	_label = Label::create("ç™»å½•", QE_Font, 25);
+	MenuItemLabel* inItem = MenuItemLabel::create(_label, bind(&SignInScene::SignIn, this));
 	inItem->setPosition(410, 270);
 
-	label = Label::create("sign up", QE_Font, 25);
-	MenuItemLabel* upItem = MenuItemLabel::create(label, bind(&SignInScene::SignUp, this));
+	_label = Label::create("æ³¨å†Œ", QE_Font, 25);
+	MenuItemLabel* upItem = MenuItemLabel::create(_label, bind(&SignInScene::SignUp, this));
 	upItem->setPosition(540, 270);
 
 	Menu* mn = Menu::create(inItem, upItem, NULL);
@@ -58,15 +60,15 @@ void SignInScene::SignUp()
 void SignInScene::initEditBox()
 {
 	EditBox* box;
-	//ÊäÈëIDµÄ¿ò
+	//è¾“å…¥IDçš„æ¡†
 	box = createEditBox("green_edit.png");
 	box->setPosition(Vec2(480, 380));
-	box->setPlaceHolder("ID or user name");	//µ±±à¼­¿òÖÐÃ»ÓÐÈÎºÎ×Ö·û£¨»òÊäÈë×Ö·ûÇ°£©µÄÌáÊ¾ÎÄ±¾,¼´Õ¼Î»·û
-	//ÊäÈëÃÜÂëµÄ¿ò
+	box->setPlaceHolder("IDæˆ–ç”¨æˆ·å");	//å½“ç¼–è¾‘æ¡†ä¸­æ²¡æœ‰ä»»ä½•å­—ç¬¦ï¼ˆæˆ–è¾“å…¥å­—ç¬¦å‰ï¼‰çš„æç¤ºæ–‡æœ¬,å³å ä½ç¬¦
+	//è¾“å…¥å¯†ç çš„æ¡†
 	box = createEditBox("orange_edit.png");
 	box->setPosition(Vec2(480, 330));
-	box->setPlaceHolder("password");
-	box->setInputFlag(EditBox::InputFlag::PASSWORD);////ÉèÖÃÎÄ±¾¿òÏÔÊ¾ÎÄ±¾µÄÑùÊ½£¬ÊäÈëÃÜÂë±ê¼Ç
+	box->setPlaceHolder("å¯†ç ");
+	box->setInputFlag(EditBox::InputFlag::PASSWORD);////è®¾ç½®æ–‡æœ¬æ¡†æ˜¾ç¤ºæ–‡æœ¬çš„æ ·å¼ï¼Œè¾“å…¥å¯†ç æ ‡è®°
 }
 
 EditBox* SignInScene::createEditBox(string normalPngFile)
@@ -78,17 +80,10 @@ EditBox* SignInScene::createEditBox(string normalPngFile)
 	box->setPlaceholderFontName(QE_Font);
 	box->setPlaceholderFontSize(25);
 	box->setPlaceholderFontColor(Color3B(255, 0, 0));
-	box->setMaxLength(16);   //ÉèÖÃÎÄ±¾¿òÖÐÎÄ±¾µÄ×î´ó³¤¶È
-	box->setInputMode(EditBox::InputMode::ANY);//ÊäÈë¼üÅÌÄ£Ê½,ÈÎºÎ·ûºÅ
-	box->setDelegate(this);//¿ªÆôÎ¯ÍÐ£¬ÎÄ±¾¿ò´úÀí£¬ÐèÒªÊµÏÖEditBoxDelegate´úÀíÖÐµÄ·½·¨£¬¾Í¿ÉÒÔ¶ÔEditBox½øÐÐ¿ØÖÆ
+	box->setMaxLength(16);   //è®¾ç½®æ–‡æœ¬æ¡†ä¸­æ–‡æœ¬çš„æœ€å¤§é•¿åº¦
+	box->setInputMode(EditBox::InputMode::SINGLE_LINE);//è¾“å…¥é”®ç›˜æ¨¡å¼,ä»»ä½•ç¬¦å·
+	box->setReturnType(EditBox::KeyboardReturnType::DONE);//è®¾ç½®è½¯é”®ç›˜ä¸­å›žè½¦æŒ‰é’®çš„æ ·å­
+	box->setDelegate(this);//å¼€å¯å§”æ‰˜ï¼Œæ–‡æœ¬æ¡†ä»£ç†ï¼Œéœ€è¦å®žçŽ°EditBoxDelegateä»£ç†ä¸­çš„æ–¹æ³•ï¼Œå°±å¯ä»¥å¯¹EditBoxè¿›è¡ŒæŽ§åˆ¶
 	addChild(box);
 	return box;
-}
-
-
-void SignInScene::editBoxReturn(EditBox* editBox)
-{
-	CCLOG("editBoxReturn");
-	std::string str = editBox->getText();
-	CCLOG("%s", str.c_str());
 }

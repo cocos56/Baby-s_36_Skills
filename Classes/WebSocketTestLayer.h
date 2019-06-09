@@ -6,7 +6,7 @@ class WebSocketTestLayer : public Layer, public WebSocket::Delegate
 {
 	QE_CreateSceneFromLayer_H(WebSocketTestLayer);
 
-	static LabelTTF* label;
+	static Label* label;
 	static int _sendTextTimes;
 	WebSocket* _wsiSendText;
 

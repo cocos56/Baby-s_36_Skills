@@ -1,13 +1,13 @@
 #include "WebSocketTestLayer.h"
 
-LabelTTF* WebSocketTestLayer::label;
+Label* WebSocketTestLayer::label;
 int WebSocketTestLayer::_sendTextTimes = 0;
 
 QE_CreateSceneFromLayer_CPP(WebSocketTestLayer);
 	//³õÊ¼»¯²Ëµ¥
 	initMenu();
 
-	label = LabelTTF::create("", "Marker Felt.ttf", 24);
+	label = Label::create("", "Marker Felt.ttf", 24);
 	label->setAnchorPoint(Vec2(0, 0));
 	label->setPosition(10, 300);
 	addChild(label);
@@ -26,7 +26,7 @@ QE_CreateSceneFromLayer_CPP(WebSocketTestLayer);
 
 void WebSocketTestLayer::initMenu()
 {
-	label = LabelTTF::create("Send msg", "Marker Felt.ttf", 25);
+	label = Label::create("Send msg", "Marker Felt.ttf", 25);
 	MenuItemLabel* sendMsgItem = MenuItemLabel::create(label, bind(&WebSocketTestLayer::sendMsg, this));
 	sendMsgItem->setPosition(410, 200);
 

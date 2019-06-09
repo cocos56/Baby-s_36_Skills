@@ -1,55 +1,67 @@
+ï»¿# pragma execution_character_set("utf-8")
+
 #include "QJson.h"
 
-JDoc QJson::doc;
+JDoc QJson::doc, QJson::tempDoc;
 
 void QJson::initDocFromJsonFile(string fileName)
 {
-	//»ñÈ¡JsonÎÄ¼şËùÔÚµÄÂ·¾¶
+	//è·å–Jsonæ–‡ä»¶æ‰€åœ¨çš„è·¯å¾„
 	string  filefullPath = FileUtils::getInstance()->fullPathForFilename(fileName);
-	//CCLOG("fullPath=%s", filefullPath.c_str());//²âÊÔfilefullPathµÄÈ«Â·¾¶£¨ÈçD:/projects/SnailGoHome/Resources/Data.json£©
+	//CCLOG("fullPath=%s", filefullPath.c_str());//æµ‹è¯•filefullPathçš„å…¨è·¯å¾„ï¼ˆå¦‚D:/projects/SnailGoHome/Resources/Data.jsonï¼‰
 	Data data = FileUtils::getInstance()->getDataFromFile(filefullPath);
-	//ÓÃData¹¹½¨content
+	//ç”¨Dataæ„å»ºcontent
 	string content = string((const char*)data.getBytes(), 0, data.getSize());
 
-	//ÓÃcontent¹¹½¨document
+	//ç”¨contentæ„å»ºdocument
 	initDocWithString(content);
 }
 
 void QJson::initDocWithString(string content)
 {
 	doc.Parse<0>(content.c_str());
-	//½âÎö´íÎó
+	//è§£æé”™è¯¯
 	CCASSERT(!doc.HasParseError(), "Parsing to document failed.");
 	//CCLOG("Parsed to document successfully !");
 }
 
 JValue& QJson::getArray(string key, JValue& value)
 {
-	//È·ÈÏÓµÓĞÏàÓ¦µÄÖµ
+	//ç¡®è®¤æ‹¥æœ‰ç›¸åº”çš„å€¼
 	CC_ASSERT(value.HasMember(key.c_str()));
 
-	//È·ÈÏËù²¶»ñµÄÖµÊÇArrayÀàĞÍµÄ
+	//ç¡®è®¤æ‰€æ•è·çš„å€¼æ˜¯Arrayç±»å‹çš„
 	CC_ASSERT(value[key.c_str()].IsArray());
 	return value[key.c_str()];
 }
 
 int QJson::getInt(string key, JValue& value)
 {
-	//È·ÈÏÓµÓĞÏàÓ¦µÄÖµ
+	//ç¡®è®¤æ‹¥æœ‰ç›¸åº”çš„å€¼
 	CC_ASSERT(value.HasMember(key.c_str()));
-	//È·ÈÏËù²¶»ñµÄÖµÊÇIntÀàĞÍµÄ
+	//ç¡®è®¤æ‰€æ•è·çš„å€¼æ˜¯Intç±»å‹çš„
 	CC_ASSERT(value[key.c_str()].IsInt());
 	return value[key.c_str()].GetInt();
 }
 
 string QJson::getString(string key, JValue& value)
 {
-	//È·ÈÏÓµÓĞÏàÓ¦µÄÖµ
+	//ç¡®è®¤æ‹¥æœ‰ç›¸åº”çš„å€¼
 	CC_ASSERT(value.HasMember(key.c_str()));
-	//È·ÈÏËù²¶»ñµÄÖµÊÇStringÀàĞÍµÄ
+	//ç¡®è®¤æ‰€æ•è·çš„å€¼æ˜¯Stringç±»å‹çš„
 	CC_ASSERT(value[key.c_str()].IsString());
-	//·µ»Ø×îÖÕĞèÒªµÄÖµ
+	//è¿”å›æœ€ç»ˆéœ€è¦çš„å€¼
 	return value[key.c_str()].GetString();
+}
+
+string QJson::getString(string key)
+{
+	// ç¡®è®¤æ‹¥æœ‰ç›¸åº”çš„å€¼
+	CC_ASSERT(doc.HasMember(key.c_str()));
+	//ç¡®è®¤æ‰€æ•è·çš„å€¼æ˜¯Stringç±»å‹çš„
+	CC_ASSERT(doc[key.c_str()].IsString());
+	//è¿”å›æœ€ç»ˆéœ€è¦çš„å€¼
+	return doc[key.c_str()].GetString();
 }
 
 string QJson::getString()

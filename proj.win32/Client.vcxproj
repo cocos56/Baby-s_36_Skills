@@ -154,11 +154,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Connect.cpp" />
     <ClCompile Include="..\Classes\ConnectServerScene.cpp" />
+    <ClCompile Include="..\Classes\SignUpScene.cpp" />
     <ClCompile Include="..\Classes\SocketIOTestLayer.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HttpTest.cpp" />
-    <ClCompile Include="..\Classes\QCC.cpp" />
-    <ClCompile Include="..\Classes\QE\QCharsetConvert.cpp" />
     <ClCompile Include="..\Classes\SignInScene.cpp" />
     <ClCompile Include="..\Classes\QE\QAnimate.cpp" />
     <ClCompile Include="..\Classes\QE\QJson.cpp" />
@@ -174,11 +173,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Connect.h" />
     <ClInclude Include="..\Classes\ConnectServerScene.h" />
+    <ClInclude Include="..\Classes\SignUpScene.h" />
     <ClInclude Include="..\Classes\SocketIOTestLayer.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HttpTest.h" />
-    <ClInclude Include="..\Classes\QCC.h" />
-    <ClInclude Include="..\Classes\QE\QCharsetConvert.h" />
     <ClInclude Include="..\Classes\SignInScene.h" />
     <ClInclude Include="..\Classes\QE.h" />
     <ClInclude Include="..\Classes\QE\QAnimate.h" />

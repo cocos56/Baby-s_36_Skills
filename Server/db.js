@@ -1,25 +1,37 @@
 const mysql = require('mysql')
 
+console.log("连接数据库")
+
 var db = mysql.createConnection({host:'localhost', user: 'root', password: '123123', database: 'baby\'s 36 skills'})
+
 //1.connect
-function query(cmd)
+exports.q = function(cmd, callback, errcallback)
 {
-    db.query(cmd, (err, data)=>{
+    data = db.query(cmd, (err, data)=>
+    {
         console.log(cmd)
-        if(err){
-            console.log("err")
-        }else{
-            console.log(data)
+        if(err)
+        {
+            console.log("err", err)
+            errcallback(err)
+            //return false
+        }
+        else
+        {
+            //console.log(data)
+            callback(data)
         }
     })
 }
 
-var id = '1'
-id = '1 OR 1=1'
-var cmd = 'SELECT * FROM account WHERE ID=' + id
-query(cmd)
+// var id = '1'
+// id = '1 OR 1=1'
+// var cmd = 'SELECT * FROM account WHERE ID=' + id
+// 查询(cmd)
+// cmd = 'SELECT * FROM account WHERE ID=' + escape(id)
+// 查询(cmd)
 
-cmd = 'SELECT * FROM account WHERE ID=' + escape(id)
-query(cmd)
+//db.end()
+console.log("关闭数据库")
 
-db.end()
+// module.exports = 查询

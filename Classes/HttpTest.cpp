@@ -1,9 +1,9 @@
 #include "HttpTest.h"
 
-LabelTTF* HttpTest::label;
+Label* HttpTest::label;
 
 QE_CreateSceneFromLayer_CPP(HttpTest);
-	label = LabelTTF::create("", "Marker Felt.ttf", 24);
+	label = Label::create("", "Marker Felt.ttf", 24);
 	label->setAnchorPoint(Vec2(0, 0));
 	label->setPosition(10, 300);
 	addChild(label);

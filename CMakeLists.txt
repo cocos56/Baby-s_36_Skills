@@ -50,14 +50,14 @@ endif()
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/Connect.cpp
+     Classes/ConnectServerScene.cpp
      Classes/HelloWorldScene.cpp
      Classes/HttpTest.cpp
-     Classes/QCC.cpp
      Classes/SignInScene.cpp
+     Classes/SignUpScene.cpp
      Classes/SocketIOTestLayer.cpp
      Classes/WebSocketTestLayer.cpp
      Classes/QE/QAnimate.cpp
-     Classes/QE/QCharsetConvert.cpp
      Classes/QE/QJson.cpp
      Classes/QE/QMenu.cpp
      Classes/QE/QObject.cpp
@@ -68,15 +68,15 @@ list(APPEND GAME_SOURCE
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/Connect.h
+     Classes/ConnectServerScene.h
      Classes/HelloWorldScene.h
      Classes/HttpTest.h
-     Classes/QCC.h
      Classes/QE.h
      Classes/SignInScene.h
+     Classes/SignUpScene.h
      Classes/SocketIOTestLayer.h
      Classes/WebSocketTestLayer.h
      Classes/QE/QAnimate.h
-     Classes/QE/QCharsetConvert.h
      Classes/QE/QDesignMode.h
      Classes/QE/QFileUtils.h
      Classes/QE/QJson.h

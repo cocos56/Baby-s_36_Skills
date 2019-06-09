@@ -1,9 +1,10 @@
+ï»¿# pragma execution_character_set("utf-8")
+
 #include "Connect.h"
-#include "SignInScene.h"
 
 WebSocket* Connect::_ws = nullptr;
 bool Connect::_isConnecting = false;
-string Connect::_addr="ws://10.6.32.1:56/";
+string Connect::_addr="ws://10.6.32.1:56/", Connect::_nowEvent;
 
 QE_SINGLETON_CPP(Connect);
 
@@ -21,35 +22,54 @@ void Connect::initSocket()
 	}
 }
 
-//Î¯ÍÐÐ­Òé·½·¨
-void Connect::onOpen(cocos2d::network::WebSocket* ws)
+void Connect::createMsg()
 {
-	//½øÐÐÕâÑùµÄÅÐ¶ÏÊÇÒòÎªWebSocket¶ÔÏóÃ»ÓÐsetTag·½·¨0
-	if (ws != _ws){return;}
-
-	CCLOG("Connect::onOpen called");
-	_ws->send("Hello, I am cocos2d-x, send()");
-
-	Director::getInstance()->replaceScene(SignInScene::createScene());
+	QJson::emptyDoc();
+	addMsg("æ¶ˆæ¯ç±»åž‹", QE_strToJStr(_nowEvent));
 }
 
-void Connect::onMessage(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::Data& data)
+void Connect::addMsg(JString key, JString value)
+{
+	QJson::addMember(key, value);
+}
+
+void Connect::sendMsg()
+{
+	if (!_ws) { return; }
+	_ws->send(QJson::getString());
+}
+
+void Connect::onOpen(WebSocket* ws)
+{
+	//è¿›è¡Œè¿™æ ·çš„åˆ¤æ–­æ˜¯å› ä¸ºWebSocketå¯¹è±¡æ²¡æœ‰setTagæ–¹æ³•0
+	if (ws != _ws){return;}
+}
+
+void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 {
 	if (ws != _ws) { return; }
-	CCLOG("Connect::onMessage called");
+	CCLOG("onMsg:%s", data.bytes);
+	QJson::initDocWithString(data.bytes);
+	string msgT = QJson::getString("æ¶ˆæ¯ç±»åž‹");
+	if (msgT == "æ³¨å†Œå“åº”")
+	{
+		SignUpScene::dealServerResponse();
+	}
 }
 
-void Connect::onClose(cocos2d::network::WebSocket* ws)
+void Connect::onClose(WebSocket* ws)
 {
 	if (ws != _ws) { return; }
 	_ws = nullptr;
 	_isConnecting = false;
-	CCLOG("Connect::onClose called");
+
+	string errInfo = "å·²ä¸ŽæœåŠ¡å™¨å¤±åŽ»è¿žæŽ¥ï¼Œè¯·è¿”å›žæœåŠ¡å™¨è¿žæŽ¥ç•Œé¢é‡è¿ž";
+
+	if (_nowEvent == "æ³¨å†Œ") { SignUpScene::dealServerResponse(errInfo); }
 }
 
-void Connect::onError(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::ErrorCode& error)
+void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)
 {
 	if (ws != _ws) { return; }
-	CCLOG("Connect::onError called");
 	_ws->close();
 }
