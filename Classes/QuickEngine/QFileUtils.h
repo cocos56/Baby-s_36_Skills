@@ -1,11 +1,12 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
-/*
-Quick EngineËùÊô¿ìËÙÎÄ¼şÊ¹ÓÃÄ£¿é
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙÉèÖÃ×ÊÔ´ËÑË÷Â·¾¶
-*/
+#include "QuickEngine.h"
 
-#include "QE.h"
+/*
+Quick Engineæ‰€å±å¿«é€Ÿæ–‡ä»¶ä½¿ç”¨æ¨¡å—
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿè®¾ç½®èµ„æºæœç´¢è·¯å¾„
+*/
 
 #define QE_SetResourcesSearchDir \
 CCASSERT(paths.size(), "paths.size should not = 0"); \

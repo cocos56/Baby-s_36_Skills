@@ -1,23 +1,24 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
-/*
-Quick EngineËùÊô¿ìËÙ¶¯»­Ä£¿é
-º¬£º
-1.QAnimateÀà
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ´´½¨¶¯»­
-*/
+#include "QuickEngine.h"
 
-#include "QE.h"
+/*
+Quick Engineæ‰€å±å¿«é€ŸåŠ¨ç”»æ¨¡å—
+å«ï¼š
+1.QAnimateç±»
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿåˆ›å»ºåŠ¨ç”»
+*/
 
 class QAnimate
 {
 public:
 	static void createFramsPlayerFromPlistFile(const string& fileName, vector<Sprite*> &sprites, int x, int y, Layer* layer, string dirName = "", float scale = 1.0f);
-	//´ÓËùÓĞ¶¯»­Ö¡ÖĞ²¥·ÅÄ³Ò»Ö¡£¬numÊÇĞèÒª²¥·ÅµÄÖ¡ĞòºÅ£¬Ä¬ÈÏÇé¿öÏÂnumÎª1£¬Èç¹û´«½øÀ´µÄnum<=0£¬Ôò»áÒş²ØËùÓĞÖ¡£¬¼´Í£Ö¹¶¯»­²¥·Å£¬Èç¹û´«½øÀ´µÄnum>=frames.size()£¬Ôò»áÏÔÊ¾×îºóÒ»Ö¡
+	//ä»æ‰€æœ‰åŠ¨ç”»å¸§ä¸­æ’­æ”¾æŸä¸€å¸§ï¼Œnumæ˜¯éœ€è¦æ’­æ”¾çš„å¸§åºå·ï¼Œé»˜è®¤æƒ…å†µä¸‹numä¸º1ï¼Œå¦‚æœä¼ è¿›æ¥çš„num<=0ï¼Œåˆ™ä¼šéšè—æ‰€æœ‰å¸§ï¼Œå³åœæ­¢åŠ¨ç”»æ’­æ”¾ï¼Œå¦‚æœä¼ è¿›æ¥çš„num>=frames.size()ï¼Œåˆ™ä¼šæ˜¾ç¤ºæœ€åä¸€å¸§
 	static void playFramFromFrams(vector<Sprite*> &frames, int num = 1);
 	static void initAnimateFromPlistFile(Animate*& animate, Sprite*& sprite, int x, int y, const string& fileName, string dirName = "", float scale = 1.0f, bool isRestoreOriginalFrame =true);
 private:
-	//Í¨¹ıplistÎÄ¼ş½âÎö³öÀ´µ±Ç°µÄ¶¯»­ÓĞ¶àÉÙ¸ö¶¯»­Ö¡£¬Í¨¹ıplistÎÄ¼şÖ»ÊÇ½âÎö³öÀ´Ò»¸öÊı×Ö£¬Õâ¸öÊı×ÖÊÇµ±Ç°¶¯»­µÄÖ¡Êı£¬°ÑÕâ¸öÖ¡Êı±£´æÔÚ±¾ÀàµÄ¾²Ì¬³ÉÔ±numÖĞ
+	//é€šè¿‡plistæ–‡ä»¶è§£æå‡ºæ¥å½“å‰çš„åŠ¨ç”»æœ‰å¤šå°‘ä¸ªåŠ¨ç”»å¸§ï¼Œé€šè¿‡plistæ–‡ä»¶åªæ˜¯è§£æå‡ºæ¥ä¸€ä¸ªæ•°å­—ï¼Œè¿™ä¸ªæ•°å­—æ˜¯å½“å‰åŠ¨ç”»çš„å¸§æ•°ï¼ŒæŠŠè¿™ä¸ªå¸§æ•°ä¿å­˜åœ¨æœ¬ç±»çš„é™æ€æˆå‘˜numä¸­
 	static void initFramsNumFromPlistFile(const string& fileName);
 	static int num;
 };

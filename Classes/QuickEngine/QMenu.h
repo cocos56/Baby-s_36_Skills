@@ -1,13 +1,14 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
-/*
-Quick EngineËùÊô¿ìËÙ²Ëµ¥Ä£¿é
-º¬£º
-1.QMenuÀà
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ´´½¨²Ëµ¥
-*/
+#include "QuickEngine.h"
 
-#include "QE.h"
+/*
+Quick Engineæ‰€å±å¿«é€Ÿèœå•æ¨¡å—
+å«ï¼š
+1.QMenuç±»
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿåˆ›å»ºèœå•
+*/
 
 class QMenu
 {

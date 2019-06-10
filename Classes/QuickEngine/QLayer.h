@@ -1,8 +1,9 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
 /*
-Quick EngineËùÊô¿ìËÙ²ãÄ£¿é
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ´´½¨LayerµÄ×ÓÀà£¬²¢½øĞĞÏàÓ¦µÄ³õÊ¼»¯¡£
+Quick Engineæ‰€å±å¿«é€Ÿå±‚æ¨¡å—
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿåˆ›å»ºLayerçš„å­ç±»ï¼Œå¹¶è¿›è¡Œç›¸åº”çš„åˆå§‹åŒ–ã€‚
 */
 
 #define QE_CreateLayerFromLayer_H(TYPE) \

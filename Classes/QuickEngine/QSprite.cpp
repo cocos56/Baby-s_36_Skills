@@ -1,3 +1,5 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "QSprite.h"
 
 QE_SINGLETON_CPP(QSprite);
@@ -9,18 +11,18 @@ Sprite* QSprite::createBgSprite()
 
 Sprite* QSprite::createBgSprite(const std::string& filename)
 {
-	//»ñÈ¡´°¿Ú´óÐ¡
+	//èŽ·å–çª—å£å¤§å°
 	Size size = Director::getInstance()->getWinSize();
 
-	//´´½¨±³¾°¾«Áé
+	//åˆ›å»ºèƒŒæ™¯ç²¾çµ
 	Sprite* bg = Sprite::create(filename);
 
-	//×öÊÊÅä
+	//åšé€‚é…
 	float scaleX = size.width / bg->getContentSize().width;
 	float scaleY = size.height / bg->getContentSize().height;
 	bg->setScale(scaleX, scaleY);
 
-	//ÉèÖÃÎ»ÖÃ
+	//è®¾ç½®ä½ç½®
 	bg->setPosition(Vec2(size.width / 2, size.height / 2));
 	return bg;
 }

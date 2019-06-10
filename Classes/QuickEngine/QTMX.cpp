@@ -1,3 +1,5 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "QTMX.h"
 
 void QTMX::initCoordinatesByTMXFile(vector<Coordinate>& coordinates, const string& fileName, const string& objectGroupName)
@@ -21,7 +23,7 @@ void QTMX::initCoordinatesByTMXFile(Coordinate& coordinate, const string& fileNa
 	TMXObjectGroup* objGroup = tiledMap->getObjectGroup(objectGroupName);
 	ValueVector values = objGroup->getObjects();
 
-	//ÅĞ¶Ï½âÎöµÄ¶ÔÏó²ãÊÇ·ñÓĞ¶à¸ö¶ÔÏó£¬Èç¹ûÓĞ£¬Ïòµ÷ÓÃ´Ë½Ó¿ÚµÄ¿ª·¢ÈËÔ±·¢³ö¾¯¸æ
+	//åˆ¤æ–­è§£æçš„å¯¹è±¡å±‚æ˜¯å¦æœ‰å¤šä¸ªå¯¹è±¡ï¼Œå¦‚æœæœ‰ï¼Œå‘è°ƒç”¨æ­¤æ¥å£çš„å¼€å‘äººå‘˜å‘å‡ºè­¦å‘Š
 	CCASSERT(values.size() == 1, "values.size not = 1");
 	ValueMap value = values.at(0).asValueMap();
 	int x = value.at("x").asInt();

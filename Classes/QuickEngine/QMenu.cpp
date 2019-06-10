@@ -1,3 +1,5 @@
+﻿#pragma execution_character_set("utf-8")
+
 #include "QMenu.h"
 
 QE_SINGLETON_CPP(QMenu)

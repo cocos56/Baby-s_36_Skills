@@ -1,13 +1,14 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
-/*
-Quick EngineËùÊô¿ìËÙTMXÄ£¿é
-º¬£º
-1.QTMXÀà
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ¹ÜÀíTMXÎÄ¼ş£¬Ö÷ÒªÓÃÓÚ´ÓTMXÎÄ¼şÖĞ½âÎö×ø±ê
-*/
+#include "QuickEngine.h"
 
-#include "QE.h"
+/*
+Quick Engineæ‰€å±å¿«é€ŸTMXæ¨¡å—
+å«ï¼š
+1.QTMXç±»
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿç®¡ç†TMXæ–‡ä»¶ï¼Œä¸»è¦ç”¨äºä»TMXæ–‡ä»¶ä¸­è§£æåæ ‡
+*/
 
 class QTMX
 {

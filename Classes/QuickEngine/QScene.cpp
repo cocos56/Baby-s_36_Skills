@@ -1,10 +1,12 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "QScene.h"
 
 void QScene::saveNowSceneToFile()
 {
 	QE_get_winSize;
 	TextureCache::getInstance()->removeUnusedTextures();
-	//Ïàµ±ÓÚ½ØÈ¡ÔÝÍ£ÕâÒ»É²ÄÇµÄÓÎÏ·½çÃæÍ¼£¬²¢°ÑËü±£´æ³Épause.png
+	//ç›¸å½“äºŽæˆªå–æš‚åœè¿™ä¸€åˆ¹é‚£çš„æ¸¸æˆç•Œé¢å›¾ï¼Œå¹¶æŠŠå®ƒä¿å­˜æˆpause.png
 	auto texture = RenderTexture::create(winSize.width, winSize.height);
 	texture->begin();
 	Director::getInstance()->getRunningScene()->visit();

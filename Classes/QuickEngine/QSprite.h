@@ -1,14 +1,14 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
+#include "QuickEngine.h"
+
 /*
-Quick EngineËùÊô¿ìËÙ¾«ÁéÄ£¿é
-º¬£º
-1.QSpriteÀà
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ¹ÜÀí¾«Áé
+Quick Engineæ‰€å±å¿«é€Ÿç²¾çµæ¨¡å—
+å«ï¼š
+1.QSpriteç±»
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿç®¡ç†ç²¾çµ
 */
-
-
-#include "QE.h"
 
 class QSprite
 {

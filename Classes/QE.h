@@ -11,6 +11,7 @@
 #include "ConnectServerScene.h"
 #include "SignInScene.h"
 #include "SignUpScene.h"
+#include "SelectRoomsScene.h"
 
 
 //test

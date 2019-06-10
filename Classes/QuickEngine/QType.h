@@ -1,10 +1,11 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
 /*
-Quick EngineËùÊô»ù±¾Êı¾İÀàĞÍÄ£¿é
-º¬£º
-1.CoordinateÀà
-ÓÃÍ¾£ºÓÃÓÚ¹ÜÀí×ø±ê
+Quick Engineæ‰€å±åŸºæœ¬æ•°æ®ç±»å‹æ¨¡å—
+å«ï¼š
+1.Coordinateç±»
+ç”¨é€”ï¼šç”¨äºç®¡ç†åæ ‡
 */
 
 
@@ -18,4 +19,4 @@ public:
 	int num, x, y;
 };
 
-#include "QE.h"
+#include "QuickEngine.h"

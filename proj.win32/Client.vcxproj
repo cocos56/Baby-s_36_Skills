@@ -162,6 +162,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\QuickEngine\QScene.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QSprite.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp" />
+    <ClCompile Include="..\Classes\SelectRoomsScene.cpp" />
     <ClCompile Include="..\Classes\SignInSceneTest.cpp" />
     <ClCompile Include="..\Classes\SignUpScene.cpp" />
     <ClCompile Include="..\Classes\SocketIOTestLayer.cpp" />
@@ -188,6 +189,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\QuickEngine\QSprite.h" />
     <ClInclude Include="..\Classes\QuickEngine\QTMX.h" />
     <ClInclude Include="..\Classes\QuickEngine\QType.h" />
+    <ClInclude Include="..\Classes\SelectRoomsScene.h" />
     <ClInclude Include="..\Classes\SignInSceneTest.h" />
     <ClInclude Include="..\Classes\SignUpScene.h" />
     <ClInclude Include="..\Classes\SocketIOTestLayer.h" />

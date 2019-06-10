@@ -1,6 +1,8 @@
 ﻿#pragma execution_character_set("utf-8")
 #pragma once
 
+#include "QuickEngine.h"
+
 /*
 Quick Engine所属快速Json读写模块
 含：
@@ -21,8 +23,6 @@ typedef Document JDoc;
 
 #define QE_ToJStr(text) rapidjson::StringRef(text)
 #define QE_strToJStr(text) QE_ToJStr(text.c_str())
-
-#include "QE.h"
 
 class QJson
 {

@@ -81,6 +81,9 @@
     <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp">
       <Filter>src\QE\support</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SelectRoomsScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h">
       <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SelectRoomsScene.h">
+      <Filter>src\Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

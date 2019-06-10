@@ -1,3 +1,5 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "QAnimate.h"
 
 int QAnimate::num;
@@ -60,7 +62,7 @@ void QAnimate::playFramFromFrams(vector<Sprite*>& frames, int num)
 	{
 		num = frames.size();
 	}
-	//´ÓÂß¼­ĞòºÅ×ª³ÉÎïÀíĞòºÅ
+	//ä»é€»è¾‘åºå·è½¬æˆç‰©ç†åºå·
 	num--;
 	for (size_t i = 0, length=frames.size(); i < length; i++)
 	{

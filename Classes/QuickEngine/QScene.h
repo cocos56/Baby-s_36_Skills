@@ -1,12 +1,12 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
 /*
-Quick EngineËùÊô¿ìËÙ³¡¾°Ä£¿é
-º¬£º
-1.QSceneÀà
-ÓÃÍ¾£ºÓÃÓÚ¿ìËÙ¹ÜÀí³¡¾°
+Quick Engineæ‰€å±å¿«é€Ÿåœºæ™¯æ¨¡å—
+å«ï¼š
+1.QSceneç±»
+ç”¨é€”ï¼šç”¨äºå¿«é€Ÿç®¡ç†åœºæ™¯
 */
-
 
 #include "cocos2d.h"
 USING_NS_CC;
