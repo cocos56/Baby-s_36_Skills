@@ -9,9 +9,7 @@ QE_CreateSceneFromLayer_CPP(SignUpScene);
 	paths = { "fonts" };
 	QE_SetResourcesSearchDir;
 
-	Connect::connect();
-
-	Connect::_nowEvent = "注册";
+	Connect::connect("注册");
 
 	createLabel("请输入用户名、昵称和密码进行账号注册。");
 	_label->setPosition(150, 150);

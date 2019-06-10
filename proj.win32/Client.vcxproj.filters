@@ -33,27 +33,6 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\QE\QAnimate.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QE\QJson.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QE\QMenu.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QE\QObject.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QE\QScene.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QE\QSprite.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\QE\QTMX.cpp">
-      <Filter>src\QE\support</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SignInScene.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
@@ -75,6 +54,33 @@
     <ClCompile Include="..\Classes\SignUpScene.cpp">
       <Filter>src\Network</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\NetworkScene.cpp">
+      <Filter>src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SignInSceneTest.cpp">
+      <Filter>src\Network\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QJson.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QMenu.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QObject.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QScene.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QSprite.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp">
+      <Filter>src\QE\support</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -88,39 +94,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\QE.h">
       <Filter>src\QE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QAnimate.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QDesignMode.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QFileUtils.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QJson.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QLayer.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QMenu.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QObject.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QScene.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QSprite.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QTMX.h">
-      <Filter>src\QE\support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\QE\QType.h">
-      <Filter>src\QE\support</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SignInScene.h">
       <Filter>src\Network</Filter>
@@ -142,6 +115,48 @@
     </ClInclude>
     <ClInclude Include="..\Classes\SignUpScene.h">
       <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetworkScene.h">
+      <Filter>src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SignInSceneTest.h">
+      <Filter>src\Network\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QAnimate.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QDesignMode.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QFileUtils.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QJson.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QLayer.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QMenu.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QObject.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QScene.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QSprite.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QTMX.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QType.h">
+      <Filter>src\QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h">
+      <Filter>src\QE\support</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

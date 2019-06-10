@@ -71,7 +71,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//scene = SocketIOTestLayer::createScene();
 	//scene = ConnectServerScene::createScene();
 	//scene = SignInScene::createScene();
-	scene = SignUpScene::createScene();
+	scene = SignInSceneTest::createScene();
+	//scene = SignUpScene::createScene();
 	//scene = HttpTest::createScene();
 	//scene = WebSocketTestLayer::createScene();
 

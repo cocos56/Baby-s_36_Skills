@@ -8,8 +8,9 @@ string Connect::_addr="ws://10.6.32.1:56/", Connect::_nowEvent;
 
 QE_SINGLETON_CPP(Connect);
 
-void Connect::connect()
+void Connect::connect(string nowEvent)
 {
+	_nowEvent = nowEvent;
 	if (!_ws) { Connect::getInstance()->initSocket(); };
 }
 
@@ -48,7 +49,7 @@ void Connect::onOpen(WebSocket* ws)
 void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 {
 	if (ws != _ws) { return; }
-	CCLOG("onMsg:%s", data.bytes);
+	CCLOG("收到信息：%s", data.bytes);
 	QJson::initDocWithString(data.bytes);
 	string msgT = QJson::getString("消息类型");
 	if (msgT == "注册响应")
@@ -66,6 +67,7 @@ void Connect::onClose(WebSocket* ws)
 	string errInfo = "已与服务器失去连接，请返回服务器连接界面重连";
 
 	if (_nowEvent == "注册") { SignUpScene::dealServerResponse(errInfo); }
+	else if (_nowEvent == "登录") { SignInScene::dealServerResponse(errInfo); }
 }
 
 void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)

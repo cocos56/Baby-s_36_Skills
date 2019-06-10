@@ -67,7 +67,7 @@ void ConnectServerScene::connect(int n)
 	}
 	Connect::_addr = String::createWithFormat("ws://%s:%s/", ip.c_str(), port.c_str())->getCString();
 	_logLabel->setString("正在连接：" + Connect::_addr);
-	Connect::connect();
+	Connect::connect("连接服务器");
 }
 
 void ConnectServerScene::initEditBox()

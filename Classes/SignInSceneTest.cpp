@@ -1,15 +1,15 @@
 ﻿# pragma execution_character_set("utf-8")
 
-#include "SignInScene.h"
+#include "SignInSceneTest.h"
 
-Label* SignInScene::_label, * SignInScene::_logLabel;
-EditBox* SignInScene::_idBox, * SignInScene::_passwordBox;
+Label* SignInSceneTest::_label, * SignInSceneTest::_logLabel;
+EditBox* SignInSceneTest::_idBox, * SignInSceneTest::_passwordBox;
 
-QE_CreateSceneFromLayer_CPP(SignInScene);
+QE_CreateSceneFromLayer_CPP(SignInSceneTest);
 	paths = { "fonts" };
 	QE_SetResourcesSearchDir;
 
-	Connect::connect("登录");
+	//Connect::connect("登录");
 
 	createLabel("请登录，如果没有账号请先注册。");
 	_label->setPosition(150, 150);
@@ -20,21 +20,21 @@ QE_CreateSceneFromLayer_CPP(SignInScene);
 	return true;
 }
 
-void SignInScene::createLabel(string show)
+void SignInSceneTest::createLabel(string show)
 {
 	_label = Label::create(show, QE_Font, 24);
 	_label->setAnchorPoint(Vec2(0, 0));
 	addChild(_label);
 }
 
-void SignInScene::initMenu()
+void SignInSceneTest::initMenu()
 {
 	_label = Label::create("登录", QE_Font, 25);
-	MenuItemLabel* inItem = MenuItemLabel::create(_label, bind(&SignInScene::SignIn, this));
+	MenuItemLabel* inItem = MenuItemLabel::create(_label, bind(&SignInSceneTest::SignIn, this));
 	inItem->setPosition(410, 270);
 
 	_label = Label::create("注册", QE_Font, 25);
-	MenuItemLabel* upItem = MenuItemLabel::create(_label, bind(&SignInScene::SignUp, this));
+	MenuItemLabel* upItem = MenuItemLabel::create(_label, bind(&SignInSceneTest::SignUp, this));
 	upItem->setPosition(540, 270);
 
 	Menu* mn = Menu::create(inItem, upItem, NULL);
@@ -42,7 +42,7 @@ void SignInScene::initMenu()
 	addChild(mn);
 }
 
-void SignInScene::SignIn()
+void SignInSceneTest::SignIn()
 {
 	//JValue& value = doc["type"];
 	//value.SetInt(123);
@@ -52,12 +52,12 @@ void SignInScene::SignIn()
 	//	CCLOG("type is %d, doc[type] is %d", value.GetInt(), doc["type"].GetInt());
 	//}
 }
-void SignInScene::SignUp()
+void SignInSceneTest::SignUp()
 {
 
 }
 
-void SignInScene::initEditBox()
+void SignInSceneTest::initEditBox()
 {
 	EditBox* box;
 	//输入ID的框
@@ -71,7 +71,7 @@ void SignInScene::initEditBox()
 	box->setInputFlag(EditBox::InputFlag::PASSWORD);////设置文本框显示文本的样式，输入密码标记
 }
 
-EditBox* SignInScene::createEditBox(string normalPngFile)
+EditBox* SignInSceneTest::createEditBox(string normalPngFile)
 {
 	EditBox* box = EditBox::create(Size(220, 38), Scale9Sprite::create(normalPngFile), Scale9Sprite::create("wite_edit.png"));
 	box->setFontName(QE_Font);
@@ -88,12 +88,12 @@ EditBox* SignInScene::createEditBox(string normalPngFile)
 	return box;
 }
 
-void SignInScene::dealServerResponse()
+void SignInSceneTest::dealServerResponse()
 {
 	dealServerResponse(QJson::getString("消息"));
 }
 
-void SignInScene::dealServerResponse(string str)
+void SignInSceneTest::dealServerResponse(string str)
 {
 	_logLabel->setString(str);
 }

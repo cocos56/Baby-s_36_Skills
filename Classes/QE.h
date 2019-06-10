@@ -1,71 +1,22 @@
-#pragma once
+ï»¿#pragma once
+# pragma execution_character_set("utf-8")
 
-/*
-Quick EngineÄ£¿é
-
-QE V2.0 for Baby's_36_Skills
-
-QE£¨Quick Engine£¬¿ìËÙÒıÇæ£©¼ò½é£º
-»ùÓÚCocos2d-x 3.17.2¡¢C++ 17¹¹½¨£¬ÓÃÀ´¾¡¿ÉÄÜ¶àµØÌáÉı´úÂëµÄ¸´ÓÃĞÔ¡£
-QE¾ßÌå±íÏÖÎª£ºÓÅ»¯Ä¬ÈÏµÄ²ÎÊıÖµ¼°²ÎÊıÁĞ±í£¬Ê¹Ô­À´ĞèÒªÊıĞĞ´úÂë²ÅÄÜÍê³ÉµÄ¹¦ÄÜ£¬ÏÖÔÚÖ»ĞèÒªÒ»ĞĞ´úÂë¾ÍÄÜÍê³É¡£
-
-±ÈÈç£º
-1.¿ìËÙÉú³É±³¾°¾«Áé¡¢ÉèÖÃÃªµãºÍÎ»ÖÃ¾ùÎª£¨0, 0£©¡¢²¢Ìí¼Óµ½µ±Ç°½Úµã£¬Ö»ĞèÒªµ÷ÓÃÒ»¸öºê¾ÍĞĞÁË¡£
-	¼ÇµÃ°Ñ×ÊÔ´¸Ä³Ébg.png¡£
-	µ÷ÓÃ¡°QE_addBgSpriteToThis¡±Õâ¸öºê¼´¿É£¬ÎŞĞè¶àÓÚ´úÂë£¬Ò²²»ĞèÒª´«µİÈÎºÎ²ÎÊı
-
-2.¿ìËÙÉú³É²Ëµ¥£¬´«Á½ÕÅÍ¼Æ¬µÄÃûÒÔ¼°Ò»¸ö¿Éµ÷ÓÃ¶ÔÏó¼´¿É¡£
-
-3.ËùÓĞÍ·ÎÄ¼şÖ»ĞèÒªÔÚÕâÀï°üº¬Ò»ÏÂ£¬È»ºóÔÚÏàÓ¦µÄÍ·ÎÄ¼şÖĞÔÙ°üº¬Ò»ÏÂ´ËÍ·ÎÄ¼ş¾Í¿ÉÒÔÁË¡£
-ÕâÖÖÄãÖĞÓĞÎÒ£¬ÎÒÖĞÓĞÄãµÄÉè¼ÆĞ§¹û¿ÉÒÔ´ó´ó¼õÉÙ°üº¬µÄÍ·ÎÄ¼şÊıÁ¿¡£
-*/
-
-//ºê
-//CB = callback
-#define QE_CB0(Type, Fun, ...) std::bind(&Type::Fun,this, ##__VA_ARGS__)
-//CBWT = callback with target
-#define QE_CBWT0(Type, Fun, targert, ...) std::bind(&Type::Fun,targert, ##__VA_ARGS__)
-//#define CC_CALLBACK_0(__selector__,__target__, ...) std::bind(&__selector__,__target__, ##__VA_ARGS__)
-#define QE_CALLBACK_1(Type,Fun) CC_CALLBACK_1(Type::Fun, this)
-#define QE_Font "fonts/HannotateSC-W5.ttf"
-
-//C++
-using namespace std;
-
-//Cocos2d-x
-#include "cocos2d.h"
-USING_NS_CC;
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
-#include "ui/CocosGUI.h"
-using namespace cocos2d::ui;
-#include "network/SocketIO.h"
-#include "network/HttpClient.h"
-#include "network/WebSocket.h"
-using namespace cocos2d::network;
-
-//Éè¼ÆÄ£Ê½
-#include "QE/QDesignMode.h"
-
-//QE
-#include "QE/QType.h"
-#include "QE/QScene.h"
-#include "QE/QLayer.h"
-#include "QE/QMenu.h"
-#include "QE/QSprite.h"
-#include "QE/QFileUtils.h"
-#include "QE/QAnimate.h"
-#include "QE/QObject.h"
-#include "QE/QJson.h"
-#include "QE/QTMX.h"
+#include "QuickEngine/QuickEngine.h"
 
 //User
 #include "AppDelegate.h"
-#include "HttpTest.h"
 #include "HelloWorldScene.h"
-#include "SocketIOTestLayer.h"
 #include "Connect.h"
+#include "NetworkScene.h"
 #include "ConnectServerScene.h"
 #include "SignInScene.h"
 #include "SignUpScene.h"
-#include "WebSocketTestLayer.h"
+
+
+//test
+#if 1
+	#include "SocketIOTestLayer.h"
+	#include "HttpTest.h"
+	#include "WebSocketTestLayer.h"
+	#include "SignInSceneTest.h"
+#endif // 1
