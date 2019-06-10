@@ -1,5 +1,5 @@
-﻿#pragma once
-# pragma execution_character_set("utf-8")
+﻿#pragma execution_character_set("utf-8")
+#pragma once
 
 /*
 Quick Engine所属快速Json读写模块
