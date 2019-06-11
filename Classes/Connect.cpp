@@ -68,6 +68,7 @@ void Connect::onClose(WebSocket* ws)
 
 	if (_nowEvent == "注册") { SignUpScene::dealServerResponse(errInfo); }
 	else if (_nowEvent == "登录") { SignInScene::dealServerResponse(errInfo); }
+	else if (_nowEvent == "登录测试") { SignInSceneTest::dealServerResponse(errInfo); }
 }
 
 void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)

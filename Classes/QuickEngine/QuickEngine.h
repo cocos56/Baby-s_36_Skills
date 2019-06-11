@@ -59,3 +59,5 @@ using namespace cocos2d::network;
 #include "QObject.h"
 #include "QJson.h"
 #include "QTMX.h"
+#include "QEditBox.h"
+#include "QString.h"

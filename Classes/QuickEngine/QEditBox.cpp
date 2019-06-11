@@ -1,19 +1,8 @@
 ﻿#pragma execution_character_set("utf-8")
 
-#include "QE.h"
+#include "QEditBox.h"
 
-Label* NetworkScene::_label, * NetworkScene::_logLabel;
-
-void NetworkScene::dealServerResponse() { dealServerResponse(QJson::getString("消息")); };
-void NetworkScene::dealServerResponse(string str) { _logLabel->setString(str); };
-
-void NetworkScene::createLabel(string show)
-{
-	_label = Label::create(show, QE_Font, 24);
-	_label->setAnchorPoint(Vec2(0, 0));
-}
-
-EditBox* NetworkScene::createEditBox(string normalPngFile, EditBoxDelegate* delegate)
+EditBox* QEditBox::createEditBox(string normalPngFile, EditBoxDelegate* delegate)
 {
 	EditBox* box = EditBox::create(Size(220, 38), Scale9Sprite::create(normalPngFile), Scale9Sprite::create("wite_edit.png"));
 	box->setFontName(QE_Font);

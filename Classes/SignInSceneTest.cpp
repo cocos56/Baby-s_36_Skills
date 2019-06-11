@@ -2,29 +2,29 @@
 
 #include "SignInSceneTest.h"
 
-Label* SignInSceneTest::_label, * SignInSceneTest::_logLabel;
 EditBox* SignInSceneTest::_idBox, * SignInSceneTest::_passwordBox;
 
 QE_CreateSceneFromLayer_CPP(SignInSceneTest);
 	paths = { "fonts" };
 	QE_SetResourcesSearchDir;
 
-	//Connect::connect("登录");
+	//Connect::connect("登录测试");
 
 	createLabel("请登录，如果没有账号请先注册。");
 	_label->setPosition(150, 150);
 	_logLabel = _label;
 
+	vector<string> vstr;
+	vstr = QString::strToVector("abc");
+	for (vector<string>::iterator it = vstr.begin(); it != vstr.end(); it++)
+	{
+		CCLOG("%s", (*it).c_str());
+	}
+
+
 	initMenu();
 	initEditBox();
 	return true;
-}
-
-void SignInSceneTest::createLabel(string show)
-{
-	_label = Label::create(show, QE_Font, 24);
-	_label->setAnchorPoint(Vec2(0, 0));
-	addChild(_label);
 }
 
 void SignInSceneTest::initMenu()
@@ -44,13 +44,7 @@ void SignInSceneTest::initMenu()
 
 void SignInSceneTest::SignIn()
 {
-	//JValue& value = doc["type"];
-	//value.SetInt(123);
-	//value = doc["type"].GetInt();
-	//if (value.IsInt())
-	//{
-	//	CCLOG("type is %d, doc[type] is %d", value.GetInt(), doc["type"].GetInt());
-	//}
+
 }
 void SignInSceneTest::SignUp()
 {
@@ -71,29 +65,19 @@ void SignInSceneTest::initEditBox()
 	box->setInputFlag(EditBox::InputFlag::PASSWORD);////设置文本框显示文本的样式，输入密码标记
 }
 
-EditBox* SignInSceneTest::createEditBox(string normalPngFile)
-{
-	EditBox* box = EditBox::create(Size(220, 38), Scale9Sprite::create(normalPngFile), Scale9Sprite::create("wite_edit.png"));
-	box->setFontName(QE_Font);
-	box->setFontSize(25);
-	box->setFontColor(Color3B(0, 0, 255));
-	box->setPlaceholderFontName(QE_Font);
-	box->setPlaceholderFontSize(25);
-	box->setPlaceholderFontColor(Color3B(255, 0, 0));
-	box->setMaxLength(16);   //设置文本框中文本的最大长度
-	box->setInputMode(EditBox::InputMode::SINGLE_LINE);//输入键盘模式,任何符号
-	box->setReturnType(EditBox::KeyboardReturnType::DONE);//设置软键盘中回车按钮的样子
-	box->setDelegate(this);//开启委托，文本框代理，需要实现EditBoxDelegate代理中的方法，就可以对EditBox进行控制
-	addChild(box);
-	return box;
-}
-
-void SignInSceneTest::dealServerResponse()
-{
-	dealServerResponse(QJson::getString("消息"));
-}
-
-void SignInSceneTest::dealServerResponse(string str)
-{
-	_logLabel->setString(str);
-}
+//EditBox* SignInSceneTest::createEditBox(string normalPngFile)
+//{
+//	EditBox* box = EditBox::create(Size(220, 38), Scale9Sprite::create(normalPngFile), Scale9Sprite::create("wite_edit.png"));
+//	box->setFontName(QE_Font);
+//	box->setFontSize(25);
+//	box->setFontColor(Color3B(0, 0, 255));
+//	box->setPlaceholderFontName(QE_Font);
+//	box->setPlaceholderFontSize(25);
+//	box->setPlaceholderFontColor(Color3B(255, 0, 0));
+//	box->setMaxLength(16);   //设置文本框中文本的最大长度
+//	box->setInputMode(EditBox::InputMode::SINGLE_LINE);//输入键盘模式,任何符号
+//	box->setReturnType(EditBox::KeyboardReturnType::DONE);//设置软键盘中回车按钮的样子
+//	box->setDelegate(this);//开启委托，文本框代理，需要实现EditBoxDelegate代理中的方法，就可以对EditBox进行控制
+//	addChild(box);
+//	return box;
+//}
