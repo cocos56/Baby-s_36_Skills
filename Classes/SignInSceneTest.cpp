@@ -8,19 +8,11 @@ QE_CreateSceneFromLayer_CPP(SignInSceneTest);
 	paths = { "fonts" };
 	QE_SetResourcesSearchDir;
 
-	//Connect::connect("登录测试");
+	Connect::connect("登录测试");
 
 	createLabel("请登录，如果没有账号请先注册。");
 	_label->setPosition(150, 150);
 	_logLabel = _label;
-
-	vector<string> vstr;
-	vstr = QString::strToVector("abc");
-	for (vector<string>::iterator it = vstr.begin(); it != vstr.end(); it++)
-	{
-		CCLOG("%s", (*it).c_str());
-	}
-
 
 	initMenu();
 	initEditBox();
