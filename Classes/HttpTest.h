@@ -1,3 +1,4 @@
+ï»¿#pragma execution_character_set("utf-8")
 #pragma once
 
 #include "QE.h"
@@ -6,9 +7,9 @@ class HttpTest : public cocos2d::Layer
 {
 	QE_CreateSceneFromLayer_H(HttpTest);
 	static Label* label;
-	// ÇëÇó·½·¨
+	// è¯·æ±‚æ–¹æ³•
 	void postHttpRequest();
-	// ÇëÇóÍê³ÉµÄ»Øµ÷·½·¨
+	// è¯·æ±‚å®Œæˆçš„å›è°ƒæ–¹æ³•
 	void onHttpRequestCompleted(HttpClient* sender, HttpResponse* response);
 
 };

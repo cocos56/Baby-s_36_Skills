@@ -16,28 +16,28 @@ function serverCallbackFunction(conn)
 
     //when a new message has been received.
     conn.on("text", function(str)
-        {收到信息回调(str, conn)}
+        {onMesage(str, conn)}
     )
 
     //when a connection has been closed.
-    conn.on("close", 关闭连接回调)
+    conn.on("close", onClose)
 
     //when a connection meet error.
-    conn.on("error", 遇到错误回调)
+    conn.on("error", onError)
 }
 
-function 收到信息回调(msg, conn)
+function onMesage(msg, conn)
 {
     msg = JSON.parse(msg)
     console.log("收到信息：")
     console.log(msg)
-    if("注册" == msg["消息类型"])
+    if(3 == msg["消息类型"])
     {
-        注册事件处理(msg, conn)
+        signUpCallback(msg, conn)
     }
 }
 
-function 注册事件处理(msg, conn)
+function signUpCallback(msg, conn)
 {
     let key = conn["key"]
     let msgBack = {"消息类型": "注册响应"}
@@ -68,13 +68,13 @@ function signUp(un, nn, pw, key, msgBack)
     )
 }
 
-function 关闭连接回调(code, reason)
+function onClose(code, reason)
 {
     console.log("a connection close", code, reason)
     console.log("Sever connections = ", server.connections.length)
 }
 
-function 遇到错误回调(code, reason)
+function onError(code, reason)
 {
     console.log("a connection on error:", code , reason)
     console.log("Sever connections = ", server.connections.length)

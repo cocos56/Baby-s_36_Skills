@@ -40,6 +40,7 @@ public:
 	static string getString(string key);
 	static string getString();
 	static void addMember(JString name, JString value) { doc.AddMember(name, value, doc.GetAllocator()); };
+	static void addMember(JString name, int value) { doc.AddMember(name, value, doc.GetAllocator()); };
 	static void emptyDoc(){ doc.Parse<0>("{}"); }
 };
 

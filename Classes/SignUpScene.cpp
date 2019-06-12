@@ -10,23 +10,28 @@ QE_CreateSceneFromLayer_CPP(SignUpScene);
 
 	Connect::connect(Connect::Event::SignUp);
 
-	createLabel("请输入用户名、昵称和密码进行账号注册。");
-	_label->setPosition(150, 150);
-	_logLabel = _label;
-
+	initLabel();
 	initMenu();
 	initEditBox();
 	return true;
 }
 
-void SignUpScene::initMenu()
+void SignUpScene::initLabel()
 {
-	Menu* menu = QMenu::createMenuLabel("注册", bind(&SignUpScene::SignUp, this));
-	menu->setPosition(450, 220);
-	addChild(menu);
+	string str;
+	if (Connect::_ws) { str = ConnectStatus(SignUpCase1Successful); }
+	else { str = ConnectStatus(SignUpCase1Failed); }
+	_logLabel = createLabel(str);
+	_logLabel->setPosition(150, 150);
 }
 
-void SignUpScene::SignUp()
+void SignUpScene::initMenu()
+{
+	QE_CreateLabelMenu(450, 220, "注册", SignUpScene, signUp);
+	QE_CreateLabelMenuAgain(10, 500, "返回", SignUpScene, back);
+}
+
+void SignUpScene::signUp()
 {
 	Connect::createMsg();
 	Connect::addMsg("用户名", QE_ToJStr(_unBox->getText()));
@@ -34,6 +39,8 @@ void SignUpScene::SignUp()
 	Connect::addMsg("密码", QE_ToJStr(_passwordBox->getText()));
 	Connect::sendMsg();
 }
+
+void SignUpScene::back() { QE_ReplaceScene(SignInScene); };
 
 void SignUpScene::initEditBox()
 {

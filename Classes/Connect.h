@@ -47,7 +47,7 @@ class Connect : public WebSocket::Delegate
 	};
 
 public:
-	static string getNowEvent();
+	static int getNowEvent();
 	static string getStatus(Status status);
 	static bool _isConnecting;
 	static WebSocket* _ws;
@@ -56,7 +56,8 @@ public:
 
 	static void connect(Event nowEvent);
 	static void createMsg();
-	static void addMsg(JString key, JString value);
+	static void addMsg(JString key, JString value) { QJson::addMember(key, value); };
+	static void addMsg(JString key, int value) { QJson::addMember(key, value); };
 	static void sendMsg();
 
 private:

@@ -36,15 +36,10 @@ void SignInScene::signIn()
 {
 
 }
-void SignInScene::signUp()
-{
-	QE_ReplaceScene(SignUpScene);
-}
 
-void SignInScene::back()
-{
-	QE_ReplaceScene(ConnectServerScene);
-}
+void SignInScene::signUp() { QE_ReplaceScene(SignUpScene); };
+
+void SignInScene::back() { QE_ReplaceScene(ConnectServerScene); };
 
 void SignInScene::initEditBox()
 {

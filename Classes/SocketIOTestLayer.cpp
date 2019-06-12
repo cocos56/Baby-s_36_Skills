@@ -1,5 +1,6 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "SocketIOTestLayer.h"
-#include "SignInScene.h"
 
 SIOClient* SocketIOTestLayer::_sioClient;
 bool SocketIOTestLayer::isConnect = false;
@@ -45,11 +46,11 @@ void SocketIOTestLayer::initSocket()
 	string port = "80";
 	addr = "ws://" + ip + ":" + port + "/";
 	_sioClient = SocketIO::connect(addr, *this);
-	//×¢²á·şÎñÆ÷¶ËÊÂ¼ş
+	//æ³¨å†ŒæœåŠ¡å™¨ç«¯äº‹ä»¶
 	_sioClient->on("callClientEvent", CC_CALLBACK_2(SocketIOTestLayer::callClientEvent, this));
 }
 
-//Î¯ÍĞĞ­Òé·½·¨
+//å§”æ‰˜åè®®æ–¹æ³•
 void SocketIOTestLayer::onConnect(SIOClient* client)
 {
 	updateStatus(true);

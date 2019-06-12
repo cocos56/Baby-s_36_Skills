@@ -1,10 +1,12 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "WebSocketTestLayer.h"
 
 Label* WebSocketTestLayer::label;
 int WebSocketTestLayer::_sendTextTimes = 0;
 
 QE_CreateSceneFromLayer_CPP(WebSocketTestLayer);
-	//³õÊ¼»¯²Ëµ¥
+	//åˆå§‹åŒ–èœå•
 	initMenu();
 
 	label = Label::create("", "Marker Felt.ttf", 24);

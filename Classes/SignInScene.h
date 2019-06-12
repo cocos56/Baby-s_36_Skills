@@ -8,9 +8,8 @@ class SignInScene : public Layer, public EditBoxDelegate, public NetworkBaseScen
 	QE_CreateSceneFromLayer_H(SignInScene);
 	NW_BaseScene;
 public:
-	//服务器状态相关
-	static EditBox* _idBox, * _passwordBox;
 private:
+	//标签相关
 	void initLabel();
 
 	//菜单相关
@@ -21,5 +20,6 @@ private:
 	void back();
 
 	//输入框相关
+	static EditBox* _idBox, * _passwordBox;
 	void initEditBox();
 };

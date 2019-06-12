@@ -7,7 +7,6 @@
 
 //User
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
 #include "Connect.h"
 #include "NetworkBaseScene.h"
 #include "ConnectServerScene.h"
@@ -19,6 +18,7 @@
 
 //test
 #if 0
+	#include "HelloWorldScene.h"
 	#include "SocketIOTestLayer.h"
 	#include "HttpTest.h"
 	#include "WebSocketTestLayer.h"

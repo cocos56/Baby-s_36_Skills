@@ -9,14 +9,16 @@ class SignUpScene : public Layer, public EditBoxDelegate, public NetworkBaseScen
 	NW_BaseScene;
 public:
 private:
-	static EditBox* _unBox, * _nickNameBox, * _passwordBox;
-	
+	//标签相关
+	void initLabel();
+
 	//菜单相关
 	void initMenu();
-
 	//菜单按钮回调函数相关
-	void SignUp();
+	void signUp();
+	void back();
 
 	//输入框相关
+	static EditBox* _unBox, * _nickNameBox, * _passwordBox;
 	void initEditBox();
 };

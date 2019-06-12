@@ -25,21 +25,15 @@ void Connect::initSocket()
 	}
 }
 
-void Connect::createMsg()
+int Connect::getNowEvent()
 {
-	QJson::emptyDoc();
-	addMsg("消息类型", QE_strToJStr(getNowEvent()));
-}
-
-string Connect::getNowEvent()
-{
-	if (_nowEvent == ConnectServer) { return "ConnectServer"; }
-	else if (_nowEvent == SignUp) { return "SignUp"; }
-	else if (_nowEvent == SignIn) { return "SignIn"; }
-	else if (_nowEvent == GetRooms) { return "GetRooms"; }
-	else if (_nowEvent == CreateRoom) { return "CreateRoom"; }
-	else if (_nowEvent == EnterRoom) { return "EnterRoom"; }
-	else if (_nowEvent == Dialog) { return "Dialog"; }
+	if (_nowEvent == ConnectServer) { return ConnectServer; }
+	else if (_nowEvent == SignUp) { return SignUp; }
+	else if (_nowEvent == SignIn) { return SignIn; }
+	else if (_nowEvent == GetRooms) { return GetRooms; }
+	else if (_nowEvent == CreateRoom) { return CreateRoom; }
+	else if (_nowEvent == EnterRoom) { return EnterRoom; }
+	else if (_nowEvent == Dialog) { return Dialog; }
 }
 
 string Connect::getStatus(Status status)
@@ -47,10 +41,12 @@ string Connect::getStatus(Status status)
 	//ConnectServer = 0, //连接服务器事件
 	if (status == ConnectServerCase1Failed) { return ""; }
 	else if (status == ConnectServerCase1Successful) { return "已与服务器成功建立连接，正在转入登录界面。。。"; }
-	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连"; }
+	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连。"; }
 	//SignUp = 1, //注册事件
-	else if (status == SignInCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连"; }
+	else if (status == SignInCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
 	else if (status == SignInCase1Successful) { return "连接服务器成功，请登录，如果没有账号请先注册。"; }
+	else if (status == SignUpCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
+	else if (status == SignUpCase1Successful) { return "连接服务器成功，请填写相应的信息进行注册账号。"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
@@ -60,19 +56,6 @@ string Connect::getStatus(Status status)
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-}
-
-void Connect::addMsg(JString key, JString value)
-{
-	QJson::addMember(key, value);
-}
-
-void Connect::sendMsg()
-{
-	if (!_ws) { return; }
-	_ws->send(QJson::getString());
 }
 
 void Connect::onOpen(WebSocket* ws)
@@ -82,20 +65,8 @@ void Connect::onOpen(WebSocket* ws)
 	_isConnecting = false;
 	string info = "连接服务器成功";
 	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse(ConnectStatus(ConnectServerCase1Successful)); }
-	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(""); }
-	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse("连接服务器成功，请登录，如果没有账号请先注册。"); }
-}
-
-void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
-{
-	if (ws != _ws) { return; }
-	CCLOG("收到信息：%s", data.bytes);
-	QJson::initDocWithString(data.bytes);
-	string msgT = QJson::getString("消息类型");
-	if (msgT == "注册响应")
-	{
-		SignUpScene::dealServerResponse();
-	}
+	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(ConnectStatus(SignInCase1Successful)); }
+	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(ConnectStatus(SignUpCase1Successful)); }
 }
 
 void Connect::onClose(WebSocket* ws)
@@ -115,4 +86,29 @@ void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)
 {
 	if (ws != _ws) { return; }
 	_ws->close();
+}
+
+void Connect::createMsg()
+{
+	QJson::emptyDoc();
+	QJson::addMember("消息类型", getNowEvent());
+	addMsg("消息类型", getNowEvent());
+}
+
+void Connect::sendMsg()
+{
+	if (!_ws) { return; }
+	_ws->send(QJson::getString());
+}
+
+void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
+{
+	if (ws != _ws) { return; }
+	CCLOG("收到信息：%s", data.bytes);
+	QJson::initDocWithString(data.bytes);
+	string msgT = QJson::getString("消息类型");
+	if (msgT == "注册响应")
+	{
+		SignUpScene::dealServerResponse();
+	}
 }
