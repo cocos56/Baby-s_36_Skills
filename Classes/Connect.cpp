@@ -46,11 +46,11 @@ string Connect::getStatus(Status status)
 {
 	//ConnectServer = 0, //连接服务器事件
 	if (status == ConnectServerCase1Failed) { return ""; }
-	else if (status == ConnectServerCase1Successful) { return "已连接服务器成功，正在转入登录界面。。。"; }
+	else if (status == ConnectServerCase1Successful) { return "已与服务器成功建立连接，正在转入登录界面。。。"; }
 	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连"; }
 	//SignUp = 1, //注册事件
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
+	else if (status == SignInCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连"; }
+	else if (status == SignInCase1Successful) { return "连接服务器成功，请登录，如果没有账号请先注册。"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }

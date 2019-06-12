@@ -69,11 +69,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 	Scene* scene;
-	scene = ConnectServerScene::createScene();
+	//scene = ConnectServerScene::createScene();
 	//scene = SignInScene::createScene();
-	//scene = SignInSceneTest::createScene();
-	//scene = SignUpScene::createScene();
+	scene = SignUpScene::createScene();
 	//scene = HelloWorld::createScene();
+	//scene = SignInSceneTest::createScene();
 	//scene = SocketIOTestLayer::createScene();
 	//scene = HttpTest::createScene();
 	//scene = WebSocketTestLayer::createScene();

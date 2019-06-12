@@ -12,6 +12,8 @@ Quick Engine所属快速场景模块
 USING_NS_CC;
 #include "QDesignMode.h"
 
+#define QE_ReplaceScene(__TYPE__) Director::getInstance()->replaceScene(__TYPE__::createScene());
+
 #define QE_winSize Size(960, 540);
 #define QE_get_winSize Size winSize = QE_winSize;
 

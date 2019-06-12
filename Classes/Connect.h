@@ -3,7 +3,7 @@
 
 #include "QE.h"
 
-#define ConnectStatus(__case__) Connect::getStatus(Connect::Status::__case__)
+#define ConnectStatus(__CASE__) Connect::getStatus(Connect::Status::__CASE__)
 
 class Connect : public WebSocket::Delegate
 {
@@ -12,8 +12,8 @@ class Connect : public WebSocket::Delegate
 	enum Event {
 		//编码规范：用一个数字编码可能出现的所有事件
 		ConnectServer = 1, //连接服务器事件
-		SignUp = 2, //注册事件
-		SignIn = 3, //登录事件
+		SignIn = 2, //登录事件
+		SignUp = 3, //注册事件
 		GetRooms = 4, //获取房间列表事件
 		CreateRoom = 5, //创建房间事件
 		EnterRoom = 6, //进入房间事件
@@ -26,12 +26,12 @@ class Connect : public WebSocket::Delegate
 		ConnectServerCase1Failed = 110, //连接服务器错误，错误原因：关闭WebSocket
 		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
 		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
-		//SignUp = 2, //注册事件
-		SignUpCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
-		SignUpCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
-		//SignIn = 3, //登录事件
-		SignInCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
-		SignInCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
+		//SignIn = 2, //登录事件
+		SignInCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
+		SignInCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
+		//SignUp = 3, //注册事件
+		SignUpCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
+		SignUpCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
 		//GetRooms = 4, //获取房间列表事件
 		GetRoomsCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
 		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
