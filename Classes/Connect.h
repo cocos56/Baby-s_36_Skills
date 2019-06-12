@@ -3,21 +3,61 @@
 
 #include "QE.h"
 
+#define ConnectStatus(__case__) Connect::getStatus(Connect::Status::__case__)
+
 class Connect : public WebSocket::Delegate
 {
 	QE_SINGLETON_H(Connect);
 
+	enum Event {
+		//编码规范：用一个数字编码可能出现的所有事件
+		ConnectServer = 0, //连接服务器事件
+		SignUp = 1, //注册事件
+		SignIn = 2, //登录事件
+		GetRooms = 3, //获取房间列表事件
+		CreateRoom = 4, //创建房间事件
+		EnterRoom = 5, //进入房间事件
+		Dialog = 6, //对话事件
+	};
+
+	enum Status {
+		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
+		//ConnectServer = 0, //连接服务器事件
+		ConnectServerCase1Failed = 010, //连接服务器错误，错误原因：关闭WebSocket
+		ConnectServerCase1Successful = 011, //连接服务器成功，成功原因：成功建立WebSocket
+		ConnectServerCase2Failed = 020, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
+		//SignUp = 1, //注册事件
+		SignUpCase1Failed = 110, //连接服务器错误，错误原因：关闭WebSocket
+		SignUpCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
+		//SignIn = 2, //登录事件
+		SignInCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
+		SignInCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
+		//GetRooms = 3, //获取房间列表事件
+		GetRoomsCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
+		GetRoomsCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
+		//CreateRoom = 4, //创建房间事件
+		CreateRoomCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
+		CreateRoomCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
+		//EnterRoom = 5, //进入房间事件
+		EnterRoomCase1Failed = 510, //连接服务器错误，错误原因：关闭WebSocket
+		EnterRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
+		//Dialog = 6, //对话事件
+		DialogCase1Failed = 610, //连接服务器错误，错误原因：关闭WebSocket
+		DialogCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
+	};
+
 public:
-	
+	static string getNowEvent();
+	static string getStatus(Status status);
 	static bool _isConnecting;
 	static WebSocket* _ws;
-	static string _addr, _nowEvent;
+	static string _addr;
+	static Event _nowEvent;
 
-	static void connect(string nowEvent);
+	static void connect(Event nowEvent);
 	static void createMsg();
 	static void addMsg(JString key, JString value);
 	static void sendMsg();
-
 
 private:
 	void initSocket();

@@ -53,17 +53,23 @@ list(APPEND GAME_SOURCE
      Classes/ConnectServerScene.cpp
      Classes/HelloWorldScene.cpp
      Classes/HttpTest.cpp
+     Classes/NetworkBaseScene.cpp
+     Classes/NetworkGameScene.cpp
+     Classes/SelectRoomsScene.cpp
      Classes/SignInScene.cpp
+     Classes/SignInSceneTest.cpp
      Classes/SignUpScene.cpp
      Classes/SocketIOTestLayer.cpp
      Classes/WebSocketTestLayer.cpp
-     Classes/QE/QAnimate.cpp
-     Classes/QE/QJson.cpp
-     Classes/QE/QMenu.cpp
-     Classes/QE/QObject.cpp
-     Classes/QE/QScene.cpp
-     Classes/QE/QSprite.cpp
-     Classes/QE/QTMX.cpp
+     Classes/QuickEngine/QAnimate.cpp
+     Classes/QuickEngine/QEditBox.cpp
+     Classes/QuickEngine/QJson.cpp
+     Classes/QuickEngine/QMenu.cpp
+     Classes/QuickEngine/QObject.cpp
+     Classes/QuickEngine/QScene.cpp
+     Classes/QuickEngine/QSprite.cpp
+     Classes/QuickEngine/QString.cpp
+     Classes/QuickEngine/QTMX.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -71,22 +77,29 @@ list(APPEND GAME_HEADER
      Classes/ConnectServerScene.h
      Classes/HelloWorldScene.h
      Classes/HttpTest.h
+     Classes/NetworkBaseScene.h
+     Classes/NetworkGameScene.h
      Classes/QE.h
+     Classes/SelectRoomsScene.h
      Classes/SignInScene.h
+     Classes/SignInSceneTest.h
      Classes/SignUpScene.h
      Classes/SocketIOTestLayer.h
      Classes/WebSocketTestLayer.h
-     Classes/QE/QAnimate.h
-     Classes/QE/QDesignMode.h
-     Classes/QE/QFileUtils.h
-     Classes/QE/QJson.h
-     Classes/QE/QLayer.h
-     Classes/QE/QMenu.h
-     Classes/QE/QObject.h
-     Classes/QE/QScene.h
-     Classes/QE/QSprite.h
-     Classes/QE/QTMX.h
-     Classes/QE/QType.h
+     Classes/QuickEngine/QAnimate.h
+     Classes/QuickEngine/QDesignMode.h
+     Classes/QuickEngine/QEditBox.h
+     Classes/QuickEngine/QFileUtils.h
+     Classes/QuickEngine/QJson.h
+     Classes/QuickEngine/QLayer.h
+     Classes/QuickEngine/QMenu.h
+     Classes/QuickEngine/QObject.h
+     Classes/QuickEngine/QScene.h
+     Classes/QuickEngine/QSprite.h
+     Classes/QuickEngine/QString.h
+     Classes/QuickEngine/QTMX.h
+     Classes/QuickEngine/QType.h
+     Classes/QuickEngine/QuickEngine.h
      )
 
 if(ANDROID)

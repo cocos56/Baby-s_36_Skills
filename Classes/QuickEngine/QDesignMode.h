@@ -10,11 +10,12 @@ Quick Engine所属的快速设计模式模块
 //*QE_SINGLETON_H与QE_SINGLETON_CPP应配合使用，缺一不可
 #define QE_SINGLETON_H(__TYPE__) \
 private: \
-static __TYPE__* instance; \
+static __TYPE__* _instance; \
 __TYPE__() {}; \
 ~__TYPE__() {}; \
  \
 public: \
-	static __TYPE__* getInstance() { return instance; };
+	static __TYPE__* getInstance() { return _instance; };
 
-#define QE_SINGLETON_CPP(__TYPE__) __TYPE__* __TYPE__::instance = new __TYPE__;
+#define QE_SINGLETON_CPP(__TYPE__) __TYPE__* __TYPE__::_instance = new __TYPE__;
+#define QE_SINGLETON2_CPP(__TYPE__) __TYPE__* __TYPE__::_instance = nullptr;

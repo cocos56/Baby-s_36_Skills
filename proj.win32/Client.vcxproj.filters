@@ -19,7 +19,7 @@
     <Filter Include="Network">
       <UniqueIdentifier>{20b5d59d-325b-4a81-92ce-fd41e3ad05a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Network\Test">
+    <Filter Include="Test">
       <UniqueIdentifier>{f82467ff-d899-4440-9f4b-e9d6110b4176}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -30,23 +30,20 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SignInScene.cpp">
       <Filter>Network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HttpTest.cpp">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Connect.cpp">
       <Filter>Network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\WebSocketTestLayer.cpp">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\SocketIOTestLayer.cpp">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ConnectServerScene.cpp">
       <Filter>Network</Filter>
@@ -55,7 +52,7 @@
       <Filter>Network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\SignInSceneTest.cpp">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\SelectRoomsScene.cpp">
       <Filter>Network</Filter>
@@ -93,15 +90,15 @@
     <ClCompile Include="..\Classes\QuickEngine\QString.cpp">
       <Filter>QE\support</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\QE.h">
@@ -111,16 +108,16 @@
       <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HttpTest.h">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Connect.h">
       <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\WebSocketTestLayer.h">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SocketIOTestLayer.h">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ConnectServerScene.h">
       <Filter>Network</Filter>
@@ -129,7 +126,7 @@
       <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SignInSceneTest.h">
-      <Filter>Network\Test</Filter>
+      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SelectRoomsScene.h">
       <Filter>Network</Filter>
@@ -181,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\QuickEngine\QString.h">
       <Filter>QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

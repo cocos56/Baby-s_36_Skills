@@ -3,3 +3,4 @@
 #include "QE.h"
 
 Label* NetworkBaseScene::_label, * NetworkBaseScene::_logLabel;
+EditBox* NetworkBaseScene::_box;

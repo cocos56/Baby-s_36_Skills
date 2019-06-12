@@ -18,7 +18,7 @@
 
 
 //test
-#if 1
+#if 0
 	#include "SocketIOTestLayer.h"
 	#include "HttpTest.h"
 	#include "WebSocketTestLayer.h"
