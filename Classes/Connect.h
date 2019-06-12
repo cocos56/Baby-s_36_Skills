@@ -11,39 +11,39 @@ class Connect : public WebSocket::Delegate
 
 	enum Event {
 		//编码规范：用一个数字编码可能出现的所有事件
-		ConnectServer = 0, //连接服务器事件
-		SignUp = 1, //注册事件
-		SignIn = 2, //登录事件
-		GetRooms = 3, //获取房间列表事件
-		CreateRoom = 4, //创建房间事件
-		EnterRoom = 5, //进入房间事件
-		Dialog = 6, //对话事件
+		ConnectServer = 1, //连接服务器事件
+		SignUp = 2, //注册事件
+		SignIn = 3, //登录事件
+		GetRooms = 4, //获取房间列表事件
+		CreateRoom = 5, //创建房间事件
+		EnterRoom = 6, //进入房间事件
+		Dialog = 7, //对话事件
 	};
 
 	enum Status {
 		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
-		//ConnectServer = 0, //连接服务器事件
-		ConnectServerCase1Failed = 010, //连接服务器错误，错误原因：关闭WebSocket
-		ConnectServerCase1Successful = 011, //连接服务器成功，成功原因：成功建立WebSocket
-		ConnectServerCase2Failed = 020, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
-		//SignUp = 1, //注册事件
-		SignUpCase1Failed = 110, //连接服务器错误，错误原因：关闭WebSocket
-		SignUpCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
-		//SignIn = 2, //登录事件
-		SignInCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
-		SignInCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
-		//GetRooms = 3, //获取房间列表事件
-		GetRoomsCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
-		GetRoomsCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
-		//CreateRoom = 4, //创建房间事件
-		CreateRoomCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
-		CreateRoomCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
-		//EnterRoom = 5, //进入房间事件
-		EnterRoomCase1Failed = 510, //连接服务器错误，错误原因：关闭WebSocket
-		EnterRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
-		//Dialog = 6, //对话事件
-		DialogCase1Failed = 610, //连接服务器错误，错误原因：关闭WebSocket
-		DialogCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
+		//ConnectServer = 1, //连接服务器事件
+		ConnectServerCase1Failed = 110, //连接服务器错误，错误原因：关闭WebSocket
+		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
+		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
+		//SignUp = 2, //注册事件
+		SignUpCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
+		SignUpCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
+		//SignIn = 3, //登录事件
+		SignInCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
+		SignInCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
+		//GetRooms = 4, //获取房间列表事件
+		GetRoomsCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
+		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
+		//CreateRoom = 5, //创建房间事件
+		CreateRoomCase1Failed = 510, //连接服务器错误，错误原因：关闭WebSocket
+		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
+		//EnterRoom = 6, //进入房间事件
+		EnterRoomCase1Failed = 610, //连接服务器错误，错误原因：关闭WebSocket
+		EnterRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
+		//Dialog = 7, //对话事件
+		DialogCase1Failed = 710, //连接服务器错误，错误原因：关闭WebSocket
+		DialogCase1Successful = 711, //连接服务器成功，成功原因：成功建立WebSocket
 	};
 
 public:

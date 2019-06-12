@@ -27,6 +27,13 @@ public:
 	static void releaseMenuItemVector(vector<MenuItem*>& menuItems);
 };
 
+#define QE_CreateLabelMenuAgain(__X__ , __Y__ ,__STR__, __TYPE__, __Fun__, ...) menu = QMenu::createMenuLabel(__STR__, bind(&__TYPE__::__Fun__, this, ##__VA_ARGS__)); \
+menu->setPosition(__X__, __Y__); \
+addChild(menu); \
+
+#define QE_CreateLabelMenu(__X__ , __Y__ ,__STR__, __TYPE__, __Fun__, ...) Menu* menu; \
+QE_CreateLabelMenuAgain(__X__ , __Y__ ,__STR__, __TYPE__, __Fun__, ##__VA_ARGS__)
+
 #define QE_addMenuTo(target) Menu* \
 menu = Menu::createWithArray(items); \
 menu->setAnchorPoint(Vec2(0, 0)); \

@@ -16,6 +16,8 @@ private:
 
 	void initMenu();
 
+	void back();
+
 	void initEditBox();
 
 	void enterSignInScene(float f);

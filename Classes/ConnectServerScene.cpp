@@ -32,13 +32,14 @@ void ConnectServerScene::initLabel()
 
 void ConnectServerScene::initMenu()
 {
-	Menu* menu = QMenu::createMenuLabel("连接", bind(&ConnectServerScene::connect, this, 1));
-	menu->setPosition(680, 390);
-	addChild(menu);
+	QE_CreateLabelMenu(680, 390, "连接", ConnectServerScene, connect, 1);
+	QE_CreateLabelMenuAgain(680, 340, "连接", ConnectServerScene, connect, 2);
+	QE_CreateLabelMenuAgain(10, 500, "返回", ConnectServerScene, back);
+}
 
-	menu = QMenu::createMenuLabel("连接", bind(&ConnectServerScene::connect, this, 2));
-	menu->setPosition(680, 340);
-	addChild(menu);
+void ConnectServerScene::back()
+{
+
 }
 
 void ConnectServerScene::connect(int n)
@@ -90,17 +91,21 @@ void ConnectServerScene::initEditBox()
 	//输入IP的框
 	_ip1Box = _box = createEditBox("green_edit.png", "10.6.32.1", 15);
 	_box->setPosition(Vec2(320, 380));
+	_box->setInputMode(EditBox::InputMode::URL);
 	//输入端口的框
 	_port1Box = _box = createEditBox("orange_edit.png", "56", 5);
 	_box->setSize(Size(80, 38));
 	_box->setPosition(Vec2(570, 380));
+	_box->setInputMode(EditBox::InputMode::NUMERIC);
 
 	createLabel("本地服务器")->setPosition(140, 340);
 	//输入IP的框
 	_ip2Box = _box = createEditBox("green_edit.png", "127.0.0.1", 15);
 	_box->setPosition(Vec2(320, 330));
+	_box->setInputMode(EditBox::InputMode::URL);
 	//输入端口的框
 	_port2Box = _box = createEditBox("orange_edit.png", "56", 5);
 	_box->setSize(Size(80, 38));
 	_box->setPosition(Vec2(570, 330));
+	_box->setInputMode(EditBox::InputMode::NUMERIC);
 }
