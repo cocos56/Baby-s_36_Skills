@@ -46,12 +46,12 @@ void ConnectServerScene::connect(int n)
 {
 	if (Connect::_isConnecting)
 	{
-		_logLabel->setString(ConnectStatus(ConnectServerCase2Failed));
+		_logLabel->setString(GetConnectStatus(ConnectServerCase2Failed));
 		return;
 	}
 	if (Connect::_ws)
 	{
-		_logLabel->setString(ConnectStatus(ConnectServerCase1Successful));
+		_logLabel->setString(GetConnectStatus(ConnectServerCase1Successful));
 		getInstance()->scheduleOnce(schedule_selector(ConnectServerScene::enterSignInScene), 1.0f);
 		return;
 	}
@@ -74,7 +74,7 @@ void ConnectServerScene::connect(int n)
 void ConnectServerScene::dealServerResponse(string str)
 { 
 	_logLabel->setString(str);
-	if (str == ConnectStatus(ConnectServerCase1Successful))
+	if (str == GetConnectStatus(ConnectServerCase1Successful))
 	{
 		getInstance()->scheduleOnce(schedule_selector(ConnectServerScene::enterSignInScene), 1.0f);
 	}

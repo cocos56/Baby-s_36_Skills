@@ -7,7 +7,7 @@ var db = mysql.createConnection({host:'localhost', user: 'root', password: '1231
 //1.connect
 exports.q = function(cmd, callback, errcallback)
 {
-    data = db.query(cmd, (err, data)=>
+    data = db.query(cmd, function(err, data)
     {
         console.log(cmd)
         if(err)
@@ -33,5 +33,3 @@ exports.q = function(cmd, callback, errcallback)
 
 //db.end()
 console.log("关闭数据库")
-
-// module.exports = 查询

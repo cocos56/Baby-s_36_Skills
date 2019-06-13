@@ -19,8 +19,8 @@ QE_CreateSceneFromLayer_CPP(SignUpScene);
 void SignUpScene::initLabel()
 {
 	string str;
-	if (Connect::_ws) { str = ConnectStatus(SignUpCase1Successful); }
-	else { str = ConnectStatus(SignUpCase1Failed); }
+	if (Connect::_ws) { str = GetConnectStatus(SignUpCase1Successful); }
+	else { str = GetConnectStatus(SignUpCase1Failed); }
 	_logLabel = createLabel(str);
 	_logLabel->setPosition(150, 150);
 }
@@ -34,9 +34,9 @@ void SignUpScene::initMenu()
 void SignUpScene::signUp()
 {
 	Connect::createMsg();
-	Connect::addMsg("用户名", QE_ToJStr(_unBox->getText()));
-	Connect::addMsg("昵称", QE_ToJStr(_nickNameBox->getText()));
-	Connect::addMsg("密码", QE_ToJStr(_passwordBox->getText()));
+	Connect::addMsg("un", QE_ToJStr(_unBox->getText()));
+	Connect::addMsg("nn", QE_ToJStr(_nickNameBox->getText()));
+	Connect::addMsg("pw", QE_ToJStr(_passwordBox->getText()));
 	Connect::sendMsg();
 }
 

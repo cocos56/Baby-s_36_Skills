@@ -44,6 +44,16 @@ int QJson::getInt(string key, JValue& value)
 	return value[key.c_str()].GetInt();
 }
 
+int QJson::getInt(string key)
+{
+	// 确认拥有相应的值
+	CC_ASSERT(doc.HasMember(key.c_str()));
+	//确认所捕获的值是String类型的
+	CC_ASSERT(doc[key.c_str()].IsInt());
+	//返回最终需要的值
+	return doc[key.c_str()].GetInt();
+}
+
 string QJson::getString(string key, JValue& value)
 {
 	//确认拥有相应的值

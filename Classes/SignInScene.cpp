@@ -19,8 +19,8 @@ QE_CreateSceneFromLayer_CPP(SignInScene);
 void SignInScene::initLabel()
 {
 	string str;
-	if (Connect::_ws) { str = ConnectStatus(SignInCase1Successful); }
-	else { str = ConnectStatus(SignInCase1Failed); }
+	if (Connect::_ws) { str = GetConnectStatus(SignInCase1Successful); }
+	else { str = GetConnectStatus(SignInCase1Failed); }
 	_logLabel = createLabel(str);
 	_logLabel->setPosition(150, 150);
 }

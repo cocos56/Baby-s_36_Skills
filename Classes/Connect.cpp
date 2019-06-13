@@ -38,22 +38,24 @@ int Connect::getNowEvent()
 
 string Connect::getStatus(Status status)
 {
-	//ConnectServer = 0, //连接服务器事件
+	//ConnectServer = 1, //连接服务器事件
 	if (status == ConnectServerCase1Failed) { return ""; }
 	else if (status == ConnectServerCase1Successful) { return "已与服务器成功建立连接，正在转入登录界面。。。"; }
 	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连。"; }
-	//SignUp = 1, //注册事件
+	//SignIn = 2, //登录事件
 	else if (status == SignInCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
 	else if (status == SignInCase1Successful) { return "连接服务器成功，请登录，如果没有账号请先注册。"; }
+	//SignUp = 3, //注册事件
 	else if (status == SignUpCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
-	else if (status == SignUpCase1Successful) { return "连接服务器成功，请填写相应的信息进行注册账号。"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
-	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
+	else if (status == SignUpCase1Successful) { return "连接服务器成功，请输入用户名、昵称和密码进行账号注册。"; }
+	else if (status == SignUpCase2Failed) { return "创建账号失败。\n用户名不能为空，请重填。"; }
+	else if (status == SignUpCase3Failed) { return "创建账号失败。\n用户名不能全是数字，请重填。"; }
+	else if (status == SignUpCase4Failed) { return "创建账号失败。\n昵称不能为空，请重填。"; }
+	else if (status == SignUpCase5Failed) { return "创建账号失败。\n密码不能为空，请重填。"; }
+	else if (status == SignUpCase6Failed) { return "创建账号失败。\n请重填用户名或昵称，因为您的用户名或昵称已被其他人占用。"; }
+	else if (status == SignUpCase7Failed) { return "创建账号失败。\n您输入的信息包含非法字符。\n这是本不应该出现的SQL指令错误，请联系开发维护人员。"; }
+	else if (status == SignUpCase8Failed) { return "创建账号失败。\n在正式插入您的账号信息到数据库时遇到未知错误。\n应该是服务器硬盘没空间了，请联系开发维护人员。"; }
+	else if (status == SignUpCase8Successful) { return "恭喜您注册成功，请返回登录。"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 	else if (status == ConnectServerCase1Successful) { return "SignUp"; }
 }
@@ -64,9 +66,9 @@ void Connect::onOpen(WebSocket* ws)
 	if (ws != _ws){return;}
 	_isConnecting = false;
 	string info = "连接服务器成功";
-	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse(ConnectStatus(ConnectServerCase1Successful)); }
-	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(ConnectStatus(SignInCase1Successful)); }
-	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(ConnectStatus(SignUpCase1Successful)); }
+	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse(GetConnectStatus(ConnectServerCase1Successful)); }
+	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(GetConnectStatus(SignInCase1Successful)); }
+	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(GetConnectStatus(SignUpCase1Successful)); }
 }
 
 void Connect::onClose(WebSocket* ws)
@@ -91,8 +93,8 @@ void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)
 void Connect::createMsg()
 {
 	QJson::emptyDoc();
-	QJson::addMember("消息类型", getNowEvent());
-	addMsg("消息类型", getNowEvent());
+	QJson::addMember("msgT", getNowEvent());
+	addMsg("msgT", getNowEvent());
 }
 
 void Connect::sendMsg()
@@ -106,8 +108,8 @@ void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 	if (ws != _ws) { return; }
 	CCLOG("收到信息：%s", data.bytes);
 	QJson::initDocWithString(data.bytes);
-	string msgT = QJson::getString("消息类型");
-	if (msgT == "注册响应")
+	int msgT = QJson::getInt("msgT");
+	if (msgT == 3)
 	{
 		SignUpScene::dealServerResponse();
 	}

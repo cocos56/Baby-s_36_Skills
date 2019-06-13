@@ -3,12 +3,13 @@
 
 #include "QE.h"
 
-#define ConnectStatus(__CASE__) Connect::getStatus(Connect::Status::__CASE__)
+#define GetConnectStatus(__STATUS__) Connect::getStatus(Connect::Status::__STATUS__)
+#define GetConnectStatusByCode(__CODE__) Connect::getStatus(Connect::Status(__CODE__))
 
 class Connect : public WebSocket::Delegate
 {
 	QE_SINGLETON_H(Connect);
-
+public:
 	enum Event {
 		//编码规范：用一个数字编码可能出现的所有事件
 		ConnectServer = 1, //连接服务器事件
@@ -32,6 +33,14 @@ class Connect : public WebSocket::Delegate
 		//SignUp = 3, //注册事件
 		SignUpCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
 		SignUpCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
+		SignUpCase2Failed = 320, //创建账号失败，用户名不能为空，请重填。
+		SignUpCase3Failed = 330, //创建账号失败，用户名不能全是数字，请重填。
+		SignUpCase4Failed = 340, //创建账号失败，昵称不能为空，请重填。
+		SignUpCase5Failed = 350, //创建账号失败，密码不能为空，请重填。
+		SignUpCase6Failed = 360, //创建账号失败，请重填用户名或昵称，因为您的用户名或昵称已被其他人占用。
+		SignUpCase7Failed = 370, //创建账号失败，您输入的信息包含非法字符，这是本不应该出现的SQL指令错误，请联系开发维护人员。
+		SignUpCase8Failed = 380, //创建账号失败，在正式插入您的账号信息到数据库时遇到未知错误，这种错误理论上很难碰到，请联系开发维护人员。
+		SignUpCase8Successful = 381, //创建账号成功，恭喜您注册成功，请返回登录。
 		//GetRooms = 4, //获取房间列表事件
 		GetRoomsCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
 		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket

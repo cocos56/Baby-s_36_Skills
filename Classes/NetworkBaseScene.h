@@ -8,8 +8,9 @@ class NetworkBaseScene
 public:
 	//服务器返回信息相关
 	static Label * _logLabel;
-	static void dealServerResponse() { dealServerResponse(QJson::getString("消息")); };
-	static void dealServerResponse(string str) { _logLabel->setString(str); }
+	static void dealServerResponse() { dealServerResponse(QJson::getInt("msg")); };
+	static void dealServerResponse(int statusCode);
+	static void dealServerResponse(string str) {_logLabel->setString(str);};
 
 	//标签相关
 	void initLabel() {};
@@ -61,3 +62,5 @@ EditBox* createEditBox(string normalPngFile, string text, int maxLength) \
 	_box->setMaxLength(maxLength);   /*设置文本框中文本的最大长度*/ \
 	return _box; \
 }
+
+#include "QE.h"

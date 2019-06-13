@@ -36,6 +36,7 @@ public:
 	//get the array of key from value
 	static JValue& getArray(string key, JValue& value);
 	static int getInt(string key, JValue& value);
+	static int getInt(string key);
 	static string getString(string key, JValue& value);
 	static string getString(string key);
 	static string getString();
