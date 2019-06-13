@@ -20,16 +20,16 @@ socket.io 2.2.0
 许可概要：他人修改后源码后也必须开源并且新增代码要同样采用GUN GPL3.0许可证
 
 # 说明
-* 打包支持
+## 打包支持
 Cocos2d-x 3.3与3.10、3.17.1、3.17.2打包到安卓教程：
 [点击进入](https://blog.csdn.net/COCO56/article/details/89392349)
 
-* 特色
+## 特色
 自主研发了QE（Quick Engine），大大减少了代码的重复率，使代码看起来更简洁，开发起来更高效。
 
-* 代码仓与文档：
-文档更新地址：https://blog.csdn.net/COCO56/article/details/90384628
-代码托管地址 ：https://github.com/COCO5666/Baby-s_36_Skills
+## 代码仓与文档：
+* 文档地址：https://blog.csdn.net/COCO56/article/details/90384628
+* 开源地址 ：https://github.com/COCO5666/Baby-s_36_Skills
 
 <!-- 安装包下载方式
 * 安卓
