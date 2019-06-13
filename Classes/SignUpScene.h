@@ -5,10 +5,14 @@
 
 class SignUpScene : public Layer, public EditBoxDelegate, public NetworkBaseScene
 {
+	QE_SINGLETON_H(SignUpScene);
 	QE_CreateSceneFromLayer_H(SignUpScene);
 	NW_BaseScene;
 public:
+	static void dealServerResponse(int statusCode);
+	static void dealServerResponse(string str) { NetworkBaseScene::dealServerResponse(str); };
 private:
+	void enterSignInScene(float f);
 	//标签相关
 	void initLabel();
 

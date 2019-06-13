@@ -71,19 +71,16 @@ void ConnectServerScene::connect(int n)
 	Connect::connect(Connect::Event::ConnectServer);
 }
 
-void ConnectServerScene::dealServerResponse(string str)
+void ConnectServerScene::dealServerResponse(int statusCode)
 { 
-	_logLabel->setString(str);
-	if (str == GetConnectStatus(ConnectServerCase1Successful))
+	NetworkBaseScene::dealServerResponse(statusCode);
+	if (statusCode == 111)
 	{
 		getInstance()->scheduleOnce(schedule_selector(ConnectServerScene::enterSignInScene), 1.0f);
 	}
 }
 
-void ConnectServerScene::enterSignInScene(float f) 
-{ 
-	Director::getInstance()->replaceScene(SignInScene::createScene());
-}
+void ConnectServerScene::enterSignInScene(float f) { QE_ReplaceScene(SignInScene); }
 
 void ConnectServerScene::initEditBox()
 {

@@ -8,7 +8,8 @@ class ConnectServerScene : public Layer, public EditBoxDelegate, public NetworkB
 	QE_CreateSceneFromLayer_H(ConnectServerScene);
 	NW_BaseScene;
 public:
-	static void dealServerResponse(string str);
+	static void dealServerResponse(int statusCode);
+	static void dealServerResponse(string str) { NetworkBaseScene::dealServerResponse(str); };
 private:
 	static EditBox* _ip1Box, * _ip2Box, * _port1Box, * _port2Box;
 

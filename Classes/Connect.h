@@ -30,6 +30,14 @@ public:
 		//SignIn = 2, //登录事件
 		SignInCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
 		SignInCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
+		SignInCase2Failed = 220, //ID或用户名为空
+		SignInCase3Failed = 230, //密码为空
+		SignInCase4Failed = 240, //用户名或ID不存在
+		SignInCase5Failed = 250, //用户名或ID对应多个账户
+		SignInCase6Failed = 260, //执行查询ID或用户名的SQL语句时出现未知异常
+		SignInCase7Failed = 270, //密码错误
+		SignInCase7Successful = 271, //登录成功
+
 		//SignUp = 3, //注册事件
 		SignUpCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
 		SignUpCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket

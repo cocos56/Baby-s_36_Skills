@@ -4,9 +4,13 @@
 
 EditBox* SignUpScene::_unBox, * SignUpScene::_nickNameBox, * SignUpScene::_passwordBox;
 
+QE_SINGLETON2_CPP(SignUpScene);
+
 QE_CreateSceneFromLayer_CPP(SignUpScene);
 	paths = { "fonts" };
 	QE_SetResourcesSearchDir;
+
+	_instance = this;
 
 	Connect::connect(Connect::Event::SignUp);
 
@@ -15,6 +19,17 @@ QE_CreateSceneFromLayer_CPP(SignUpScene);
 	initEditBox();
 	return true;
 }
+
+void SignUpScene::dealServerResponse(int statusCode)
+{
+	NetworkBaseScene::dealServerResponse(statusCode);
+	if (statusCode == 381)
+	{
+		getInstance()->scheduleOnce(schedule_selector(SignUpScene::enterSignInScene), 3.0f);
+	}
+}
+
+void SignUpScene::enterSignInScene(float f){ QE_ReplaceScene(SignInScene); }
 
 void SignUpScene::initLabel()
 {

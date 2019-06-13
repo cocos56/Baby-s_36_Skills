@@ -8,7 +8,6 @@ class NetworkBaseScene
 public:
 	//服务器返回信息相关
 	static Label * _logLabel;
-	static void dealServerResponse() { dealServerResponse(QJson::getInt("msg")); };
 	static void dealServerResponse(int statusCode);
 	static void dealServerResponse(string str) {_logLabel->setString(str);};
 

@@ -1,6 +1,7 @@
 var ws = require("nodejs-websocket")
 
 var signUp = require("./signUp")
+var signIn = require("./signIn")
 
 
 console.log("creating server ...")
@@ -16,35 +17,30 @@ function serverCallbackFunction(conn)
     console.log("Sever connections = ", server.connections.length)
 
     //when a new message has been received.
-    conn.on("text", function(str)
-        {onMesage(str, conn)}
-    )
+    conn.on("text", function(str){ onMesage(str, conn) })
 
     //when a connection has been closed.
-    conn.on("close", onClose)
+    conn.on("close", function(code, reason){ onClose(code, reason) })
 
     //when a connection meet error.
-    conn.on("error", onError)
+    conn.on("error", function(code, reason){ onError(code, reason, conn) })
 }
 
 function onMesage(msg, conn)
 {
     msg = JSON.parse(msg)
-    console.log("收到信息：")
-    console.log(msg)
-    if(3 == msg["msgT"])
-    {
-        signUp.callback(msg, conn)
-    }
+    console.log("收到信息：", msg)
+    if(2 == msg["event"]){signIn.callback(msg, conn)}
+    else if(3 == msg["event"]){signUp.callback(msg, conn)}
 }
 
-function onClose(code, reason)
+function onClose(code, reason, conn)
 {
     console.log("a connection close", code, reason)
     console.log("Sever connections = ", server.connections.length)
 }
 
-function onError(code, reason)
+function onError(code, reason, conn)
 {
     console.log("a connection on error:", code , reason)
     console.log("Sever connections = ", server.connections.length)

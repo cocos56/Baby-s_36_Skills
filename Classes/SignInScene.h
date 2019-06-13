@@ -5,6 +5,7 @@
 
 class SignInScene : public Layer, public EditBoxDelegate, public NetworkBaseScene
 {
+	QE_SINGLETON_H(SignInScene);
 	QE_CreateSceneFromLayer_H(SignInScene);
 	NW_BaseScene;
 public:
