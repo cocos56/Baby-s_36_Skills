@@ -22,6 +22,24 @@
     <Filter Include="Test">
       <UniqueIdentifier>{f82467ff-d899-4440-9f4b-e9d6110b4176}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network\ConnectServer">
+      <UniqueIdentifier>{27806e10-c913-4070-93fe-517ad1a7169e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\NetworkBase">
+      <UniqueIdentifier>{f4f7a6e6-54cb-4ad1-9649-cfec8e6a209a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\SignIn">
+      <UniqueIdentifier>{fad8affd-2605-41c4-8e1a-0dee1d664a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\SignUp">
+      <UniqueIdentifier>{b8be3ebb-bc6c-4a9b-8fff-c2bfd7510ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\NetworkGame">
+      <UniqueIdentifier>{dec26222-e7c6-4e94-8edf-31df79fa0aa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\SelectRooms">
+      <UniqueIdentifier>{f0a08260-c664-443d-8233-0f6ea9d8c989}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,14 +48,8 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SignInScene.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\HttpTest.cpp">
       <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Connect.cpp">
-      <Filter>Network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\WebSocketTestLayer.cpp">
       <Filter>Test</Filter>
@@ -45,17 +57,8 @@
     <ClCompile Include="..\Classes\SocketIOTestLayer.cpp">
       <Filter>Test</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ConnectServerScene.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SignUpScene.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SignInSceneTest.cpp">
       <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SelectRoomsScene.cpp">
-      <Filter>Network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp">
       <Filter>QE\support</Filter>
@@ -81,16 +84,43 @@
     <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp">
       <Filter>QE\support</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\NetworkGameScene.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\NetworkBaseScene.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\QuickEngine\QString.cpp">
       <Filter>QE\support</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ConnectServerScene.cpp">
+      <Filter>Network\ConnectServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Connect.cpp">
+      <Filter>Network\NetworkBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetworkBaseScene.cpp">
+      <Filter>Network\NetworkBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SignInScene.cpp">
+      <Filter>Network\SignIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SignUpScene.cpp">
+      <Filter>Network\SignUp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetworkGameScene.cpp">
+      <Filter>Network\NetworkGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GetRoomsScene.cpp">
+      <Filter>Network\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CreateRoomScene.cpp">
+      <Filter>Network\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoomInfo.cpp">
+      <Filter>Network\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JoinRoomScene.cpp">
+      <Filter>Network\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PopAlertDialog.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,14 +134,8 @@
     <ClInclude Include="..\Classes\QE.h">
       <Filter>QE</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SignInScene.h">
-      <Filter>Network</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\HttpTest.h">
       <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Connect.h">
-      <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\WebSocketTestLayer.h">
       <Filter>Test</Filter>
@@ -119,17 +143,8 @@
     <ClInclude Include="..\Classes\SocketIOTestLayer.h">
       <Filter>Test</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ConnectServerScene.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SignUpScene.h">
-      <Filter>Network</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\SignInSceneTest.h">
       <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SelectRoomsScene.h">
-      <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\QuickEngine\QAnimate.h">
       <Filter>QE\support</Filter>
@@ -170,16 +185,43 @@
     <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h">
       <Filter>QE\support</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\NetworkGameScene.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NetworkBaseScene.h">
-      <Filter>Network</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\QuickEngine\QString.h">
       <Filter>QE\support</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConnectServerScene.h">
+      <Filter>Network\ConnectServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetworkBaseScene.h">
+      <Filter>Network\NetworkBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Connect.h">
+      <Filter>Network\NetworkBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SignInScene.h">
+      <Filter>Network\SignIn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SignUpScene.h">
+      <Filter>Network\SignUp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetworkGameScene.h">
+      <Filter>Network\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GetRoomsScene.h">
+      <Filter>Network\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CreateRoomScene.h">
+      <Filter>Network\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoomInfo.h">
+      <Filter>Network\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JoinRoomScene.h">
+      <Filter>Network\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PopAlertDialog.h">
       <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>

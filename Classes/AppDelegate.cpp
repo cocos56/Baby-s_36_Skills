@@ -71,8 +71,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Scene* scene;
 	//scene = ConnectServerScene::createScene();
 	//scene = SignInScene::createScene();
-	scene = SelectRoomsScene::createScene();
 	//scene = SignUpScene::createScene();
+	//scene = GetRoomsScene::createScene();
+	scene = CreateRoomScene::createScene();
 
 	//scene = HelloWorld::createScene();
 	//scene = SignInSceneTest::createScene();

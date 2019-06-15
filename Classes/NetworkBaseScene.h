@@ -8,8 +8,7 @@ class NetworkBaseScene
 public:
 	//服务器返回信息相关
 	static Label * _logLabel;
-	static void dealServerResponse(int statusCode);
-	static void dealServerResponse(string str) {_logLabel->setString(str);};
+	virtual void dealServerResponse(int statusCode) {};
 
 	//标签相关
 	void initLabel() {};
@@ -23,6 +22,7 @@ protected:
 };
 
 #define NW_BaseScene public: \
+static void dealServerResponse(string str) {_logLabel->setString(str);}; \
  \
 private: \
 Label* createLabel(string show) \

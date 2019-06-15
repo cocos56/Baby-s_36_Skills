@@ -153,8 +153,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Connect.cpp" />
     <ClCompile Include="..\Classes\ConnectServerScene.cpp" />
+    <ClCompile Include="..\Classes\CreateRoomScene.cpp" />
+    <ClCompile Include="..\Classes\JoinRoomScene.cpp" />
     <ClCompile Include="..\Classes\NetworkGameScene.cpp" />
     <ClCompile Include="..\Classes\NetworkBaseScene.cpp" />
+    <ClCompile Include="..\Classes\PopAlertDialog.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QEditBox.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QJson.cpp" />
@@ -164,7 +167,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\QuickEngine\QSprite.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QString.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp" />
-    <ClCompile Include="..\Classes\SelectRoomsScene.cpp" />
+    <ClCompile Include="..\Classes\GetRoomsScene.cpp" />
+    <ClCompile Include="..\Classes\RoomInfo.cpp" />
     <ClCompile Include="..\Classes\SignInSceneTest.cpp" />
     <ClCompile Include="..\Classes\SignUpScene.cpp" />
     <ClCompile Include="..\Classes\SocketIOTestLayer.cpp" />
@@ -178,8 +182,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Connect.h" />
     <ClInclude Include="..\Classes\ConnectServerScene.h" />
+    <ClInclude Include="..\Classes\CreateRoomScene.h" />
+    <ClInclude Include="..\Classes\JoinRoomScene.h" />
     <ClInclude Include="..\Classes\NetworkGameScene.h" />
     <ClInclude Include="..\Classes\NetworkBaseScene.h" />
+    <ClInclude Include="..\Classes\PopAlertDialog.h" />
     <ClInclude Include="..\Classes\QuickEngine\QAnimate.h" />
     <ClInclude Include="..\Classes\QuickEngine\QDesignMode.h" />
     <ClInclude Include="..\Classes\QuickEngine\QEditBox.h" />
@@ -194,7 +201,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\QuickEngine\QTMX.h" />
     <ClInclude Include="..\Classes\QuickEngine\QType.h" />
     <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h" />
-    <ClInclude Include="..\Classes\SelectRoomsScene.h" />
+    <ClInclude Include="..\Classes\GetRoomsScene.h" />
+    <ClInclude Include="..\Classes\RoomInfo.h" />
     <ClInclude Include="..\Classes\SignInSceneTest.h" />
     <ClInclude Include="..\Classes\SignUpScene.h" />
     <ClInclude Include="..\Classes\SocketIOTestLayer.h" />

@@ -17,7 +17,7 @@ public:
 		SignUp = 3, //注册事件
 		GetRooms = 4, //获取房间列表事件
 		CreateRoom = 5, //创建房间事件
-		EnterRoom = 6, //进入房间事件
+		JoinRoom = 6, //加入房间事件
 		Dialog = 7, //对话事件
 	};
 
@@ -27,6 +27,7 @@ public:
 		ConnectServerCase1Failed = 110, //连接服务器错误，错误原因：关闭WebSocket
 		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
 		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
+		ConnectServerCase3Failed = 130, //连接服务器错误，错误原因：在其他界面初始化时正在连接服务器的过程中
 		//SignIn = 2, //登录事件
 		SignInCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
 		SignInCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
@@ -49,15 +50,16 @@ public:
 		SignUpCase7Failed = 370, //创建账号失败，您输入的信息包含非法字符，这是本不应该出现的SQL指令错误，请联系开发维护人员。
 		SignUpCase8Failed = 380, //创建账号失败，在正式插入您的账号信息到数据库时遇到未知错误，这种错误理论上很难碰到，请联系开发维护人员。
 		SignUpCase8Successful = 381, //创建账号成功，恭喜您注册成功，请返回登录。
+
 		//GetRooms = 4, //获取房间列表事件
 		GetRoomsCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
 		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
 		//CreateRoom = 5, //创建房间事件
 		CreateRoomCase1Failed = 510, //连接服务器错误，错误原因：关闭WebSocket
 		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
-		//EnterRoom = 6, //进入房间事件
-		EnterRoomCase1Failed = 610, //连接服务器错误，错误原因：关闭WebSocket
-		EnterRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
+		//JoinRoom = 6, //进入房间事件
+		JoinRoomCase1Failed = 610, //连接服务器错误，错误原因：关闭WebSocket
+		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
 		//Dialog = 7, //对话事件
 		DialogCase1Failed = 710, //连接服务器错误，错误原因：关闭WebSocket
 		DialogCase1Successful = 711, //连接服务器成功，成功原因：成功建立WebSocket

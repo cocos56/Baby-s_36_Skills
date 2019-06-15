@@ -73,7 +73,7 @@ void ConnectServerScene::connect(int n)
 
 void ConnectServerScene::dealServerResponse(int statusCode)
 { 
-	NetworkBaseScene::dealServerResponse(statusCode);
+	dealServerResponse(statusCode);
 	if (statusCode == 111)
 	{
 		getInstance()->scheduleOnce(schedule_selector(ConnectServerScene::enterSignInScene), 1.0f);

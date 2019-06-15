@@ -12,12 +12,14 @@
 #include "ConnectServerScene.h"
 #include "SignInScene.h"
 #include "SignUpScene.h"
-#include "SelectRoomsScene.h"
+#include "RoomInfo.h"
+#include "GetRoomsScene.h"
+#include "CreateRoomScene.h"
 #include "NetworkGameScene.h"
 
 
 //test
-#if 0
+#if 1
 	#include "HelloWorldScene.h"
 	#include "SocketIOTestLayer.h"
 	#include "HttpTest.h"

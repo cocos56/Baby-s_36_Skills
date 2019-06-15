@@ -28,13 +28,7 @@ void Connect::initSocket()
 
 int Connect::getNowEvent()
 {
-	if (_nowEvent == ConnectServer) { return ConnectServer; }
-	else if (_nowEvent == SignUp) { return SignUp; }
-	else if (_nowEvent == SignIn) { return SignIn; }
-	else if (_nowEvent == GetRooms) { return GetRooms; }
-	else if (_nowEvent == CreateRoom) { return CreateRoom; }
-	else if (_nowEvent == EnterRoom) { return EnterRoom; }
-	else if (_nowEvent == Dialog) { return Dialog; }
+	return _nowEvent;
 }
 
 string Connect::getStatus(Status status)
@@ -43,6 +37,7 @@ string Connect::getStatus(Status status)
 	if (status == ConnectServerCase1Failed) { return " "; }
 	else if (status == ConnectServerCase1Successful) { return "已与服务器成功建立连接，正在转入登录界面。。。"; }
 	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连。"; }
+	else if (status == ConnectServerCase3Failed) { return "正在连接：" + _addr + "\n请稍后，若地址不对，请返回服务器连接界面重新设置。"; }
 	//SignIn = 2, //登录事件
 	else if (status == SignInCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
 	else if (status == SignInCase1Successful) { return "连接服务器成功，请登录您的账号，如果没有账号请先注册。"; }
@@ -65,14 +60,14 @@ string Connect::getStatus(Status status)
 	else if (status == SignUpCase8Failed) { return "创建账号失败。\n在正式插入您的账号信息到数据库时遇到未知错误。\n应该是服务器硬盘没空间了，请联系开发维护人员。"; }
 	else if (status == SignUpCase8Successful) { return "恭喜您注册成功，请返回登录界面进行登录。\n若您无操作，系统将在3秒钟后帮您自动转入登录界面。"; }
 	//GetRooms = 4, //获取房间列表事件
-	else if (status == GetRoomsCase1Failed) { return "未定义的状态码"; }
-	else if (status == GetRoomsCase1Successful) { return "未定义的状态码"; }
+	else if (status == GetRoomsCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
+	else if (status == GetRoomsCase1Successful) { return "连接服务器成功，请加入或创建房间。"; }
 	//CreateRoom = 5, //创建房间事件
 	else if (status == CreateRoomCase1Failed) { return "未定义的状态码"; }
 	else if (status == CreateRoomCase1Successful) { return "未定义的状态码"; }
-	//EnterRoom = 6, //进入房间事件
-	else if (status == EnterRoomCase1Failed) { return "未定义的状态码"; }
-	else if (status == EnterRoomCase1Successful) { return "未定义的状态码"; }
+	//JoinRoom = 6, //进入房间事件
+	else if (status == JoinRoomCase1Failed) { return "未定义的状态码"; }
+	else if (status == JoinRoomCase1Successful) { return "未定义的状态码"; }
 	//Dialog = 7, //对话事件
 	else if (status == DialogCase1Failed) { return "未定义的状态码"; }
 	else if (status == DialogCase1Successful) { return "未定义的状态码"; }
@@ -86,7 +81,7 @@ void Connect::onOpen(WebSocket* ws)
 	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse(ConnectServerCase1Successful); }
 	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(GetConnectStatus(SignInCase1Successful)); }
 	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(GetConnectStatus(SignUpCase1Successful)); }
-	else if (_nowEvent == GetRooms) { createMsg(); sendMsg(); }
+	else if (_nowEvent == GetRooms) { GetRoomsScene::dealServerResponse(GetConnectStatus(GetRoomsCase1Successful)); }
 }
 
 void Connect::onClose(WebSocket* ws)
@@ -100,6 +95,7 @@ void Connect::onClose(WebSocket* ws)
 	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse("连接服务器失败，请重试"); }
 	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(errInfo); }
 	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(errInfo); }
+	else if (_nowEvent == GetRooms) { GetRoomsScene::dealServerResponse(errInfo); }
 }
 
 void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)

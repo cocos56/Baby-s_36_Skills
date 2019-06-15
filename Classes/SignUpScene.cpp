@@ -22,7 +22,7 @@ QE_CreateSceneFromLayer_CPP(SignUpScene);
 
 void SignUpScene::dealServerResponse(int statusCode)
 {
-	NetworkBaseScene::dealServerResponse(statusCode);
+	dealServerResponse(statusCode);
 	if (statusCode == 381)
 	{
 		getInstance()->scheduleOnce(schedule_selector(SignUpScene::enterSignInScene), 3.0f);
