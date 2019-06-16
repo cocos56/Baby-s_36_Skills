@@ -30,8 +30,6 @@ void SelectRoleScene::dealServerResponse(int statusCode)
 	//}
 }
 
-void SelectRoleScene::enterSignInScene(float f) { QE_ReplaceScene(SignInScene); }
-
 void SelectRoleScene::initLabel()
 {
 	createLabel("选择身份");
@@ -51,6 +49,31 @@ void SelectRoleScene::initLabel()
 	_logLabel->setPosition(150, 100);
 	if (Connect::_ws) { dealServerResponse(311); }
 	else { dealServerResponse(310); }
+}
+
+void SelectRoleScene::initRichText()
+{
+	//创建RichText对象
+	RichText* richText = RichText::create();
+	//设置是否忽略用户定义的内容大小
+	richText->ignoreContentAdaptWithSize(false);
+	//设置内容大小
+	richText->setContentSize(Size(500, 50));
+	richText->setPosition(Vec2(5, 0));
+	richText->setAnchorPoint(Vec2(0, 0));
+
+	//创建文本类型的RichElement对象
+	RichElementText* re1 = RichElementText::create(1, Color3B::BLUE, 255, "宝宝：", QE_Font, 20);
+	RichElementText* re2 = RichElementText::create(2, Color3B::RED, 255, "  你是坏人，不搭理你。", QE_Font, 20);
+	//创建图片类型的RichElement对象
+	RichElementImage* re3 = RichElementImage::create(3, Color3B::WHITE, 255, "child.png");
+	//创建换行RichElement对象
+	RichElementNewLine* newLine = RichElementNewLine::create(77, Color3B::WHITE, 255);
+
+	richText->pushBackElement(re1);
+	//richText->pushBackElement(newLine);
+	richText->pushBackElement(re3);
+	richText->pushBackElement(re2);
 }
 
 void SelectRoleScene::initMenu()

@@ -20,7 +20,7 @@ public:
 	};
 
 	enum Status {
-		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
+		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形/情况种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
 		//ConnectServer = 1, //连接服务器事件
 		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
 		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
@@ -50,6 +50,9 @@ public:
 		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
 		//CreateRoom = 5, //创建房间事件
 		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
+		CreateRoomCase2Failed = 520, //创建房间失败，房间名不能为空，请重填。
+		CreateRoomCase3Failed = 530, //创建房间失败。\n在正式插入您的账号信息到数据库时遇到未知错误。\n应该是服务器硬盘没空间了，请联系开发维护人员。
+		CreateRoomCase3Successful = 531, //恭喜您创建房间成功。\n马上为您转入选择角色界面。
 		//JoinRoom = 6, //进入房间事件
 		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
 		//SelectRole = 7, //选择角色事件

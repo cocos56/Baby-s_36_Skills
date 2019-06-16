@@ -11,9 +11,11 @@ class SelectRoleScene : public Layer, public EditBoxDelegate, public NetworkBase
 public:
 	static void dealServerResponse(int statusCode);
 private:
-	void enterSignInScene(float f);
 	//标签相关
 	void initLabel();
+
+	//富文本相关
+	void initRichText();
 
 	//菜单相关
 	void initMenu();
@@ -21,10 +23,6 @@ private:
 	void createRoom();
 	void joinRoom();
 	void back();
-
-	//输入框相关
-	static EditBox* _nameBox, * _passwordBox;
-	void initEditBox();
 
 	//选项
 	static RadioButtonGroup* _radioButtonGroup;

@@ -74,12 +74,13 @@ void ConnectServerScene::dealServerResponse(int statusCode)
 
 void ConnectServerScene::disConnect()
 {
+	//if (COCOS2D_DEBUG) { return; }
 	
 	if (Connect::_nowEvent != Connect::Event::ConnectServer) { 
 		QMessageBox("已与服务器：" + Connect::_addr + " 失去连接，请重新连接服务器。");
 		QE_ReplaceScene(ConnectServerScene);
 	}
-	else { QMessageBox("无法连接到：" + Connect::_addr + " ，请重新选择服务器。"); }
+	else { QMessageBox("无法连接到服务器：" + Connect::_addr + " ，请重新选择服务器。"); }
 }
 	
 
