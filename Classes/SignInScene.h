@@ -9,6 +9,7 @@ class SignInScene : public Layer, public EditBoxDelegate, public NetworkBaseScen
 	QE_CreateSceneFromLayer_H(SignInScene);
 	NW_BaseScene;
 public:
+	static void dealServerResponse(int statusCode);
 private:
 	//标签相关
 	void initLabel();

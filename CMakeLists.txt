@@ -51,41 +51,48 @@ list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/Connect.cpp
      Classes/ConnectServerScene.cpp
-     Classes/HelloWorldScene.cpp
-     Classes/HttpTest.cpp
+     Classes/CreateRoomScene.cpp
+     Classes/GetRoomsScene.cpp
+     Classes/JoinRoomScene.cpp
      Classes/NetworkBaseScene.cpp
+     Classes/NetworkGameOverScene.cpp
      Classes/NetworkGameScene.cpp
-     Classes/SelectRoomsScene.cpp
+     Classes/RoomInfo.cpp
+     Classes/SelectRoleScene.cpp
      Classes/SignInScene.cpp
-     Classes/SignInSceneTest.cpp
      Classes/SignUpScene.cpp
-     Classes/SocketIOTestLayer.cpp
-     Classes/WebSocketTestLayer.cpp
      Classes/QuickEngine/QAnimate.cpp
      Classes/QuickEngine/QEditBox.cpp
      Classes/QuickEngine/QJson.cpp
      Classes/QuickEngine/QMenu.cpp
+     Classes/QuickEngine/QMessageBox.cpp
      Classes/QuickEngine/QObject.cpp
      Classes/QuickEngine/QScene.cpp
      Classes/QuickEngine/QSprite.cpp
      Classes/QuickEngine/QString.cpp
      Classes/QuickEngine/QTMX.cpp
+     Classes/Test/HelloWorldScene.cpp
+     Classes/Test/HttpTest.cpp
+     Classes/Test/PopAlertDialog.cpp
+     Classes/Test/SignInSceneTest.cpp
+     Classes/Test/SocketIOTestLayer.cpp
+     Classes/Test/WebSocketTestLayer.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/Connect.h
      Classes/ConnectServerScene.h
-     Classes/HelloWorldScene.h
-     Classes/HttpTest.h
+     Classes/CreateRoomScene.h
+     Classes/GetRoomsScene.h
+     Classes/JoinRoomScene.h
      Classes/NetworkBaseScene.h
+     Classes/NetworkGameOverScene.h
      Classes/NetworkGameScene.h
      Classes/QE.h
-     Classes/SelectRoomsScene.h
+     Classes/RoomInfo.h
+     Classes/SelectRoleScene.h
      Classes/SignInScene.h
-     Classes/SignInSceneTest.h
      Classes/SignUpScene.h
-     Classes/SocketIOTestLayer.h
-     Classes/WebSocketTestLayer.h
      Classes/QuickEngine/QAnimate.h
      Classes/QuickEngine/QDesignMode.h
      Classes/QuickEngine/QEditBox.h
@@ -93,6 +100,7 @@ list(APPEND GAME_HEADER
      Classes/QuickEngine/QJson.h
      Classes/QuickEngine/QLayer.h
      Classes/QuickEngine/QMenu.h
+     Classes/QuickEngine/QMessageBox.h
      Classes/QuickEngine/QObject.h
      Classes/QuickEngine/QScene.h
      Classes/QuickEngine/QSprite.h
@@ -100,6 +108,12 @@ list(APPEND GAME_HEADER
      Classes/QuickEngine/QTMX.h
      Classes/QuickEngine/QType.h
      Classes/QuickEngine/QuickEngine.h
+     Classes/Test/HelloWorldScene.h
+     Classes/Test/HttpTest.h
+     Classes/Test/PopAlertDialog.h
+     Classes/Test/SignInSceneTest.h
+     Classes/Test/SocketIOTestLayer.h
+     Classes/Test/WebSocketTestLayer.h
      )
 
 if(ANDROID)

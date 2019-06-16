@@ -31,16 +31,19 @@ int Connect::getNowEvent()
 	return _nowEvent;
 }
 
+string Connect::getStatus(int statusCode)
+{
+	return getStatus(Connect::Status(statusCode));
+}
+
 string Connect::getStatus(Status status)
 {
 	//ConnectServer = 1, //连接服务器事件
-	if (status == ConnectServerCase1Failed) { return " "; }
-	else if (status == ConnectServerCase1Successful) { return "已与服务器成功建立连接，正在转入登录界面。。。"; }
+	if (status == ConnectServerCase1Successful) { return "已与服务器：" + _addr + " 成功建立连接，马上为您转入登录界面。。。"; }
 	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连。"; }
-	else if (status == ConnectServerCase3Failed) { return "正在连接：" + _addr + "\n请稍后，若地址不对，请返回服务器连接界面重新设置。"; }
+
 	//SignIn = 2, //登录事件
-	else if (status == SignInCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
-	else if (status == SignInCase1Successful) { return "连接服务器成功，请登录您的账号，如果没有账号请先注册。"; }
+	else if (status == SignInCase1Successful) { return "请登录您的账号，如果没有账号请先注册。"; }
 	else if (status == SignInCase2Failed) { return "登录失败，您所输入的ID或用户名为空，请检查您的输入。"; }
 	else if (status == SignInCase3Failed) { return "登录失败，您所输入的密码为空，请检查您的输入。"; }
 	else if (status == SignInCase4Failed) { return "登录失败，您所输入的用户名或ID不存在。"; }
@@ -49,8 +52,7 @@ string Connect::getStatus(Status status)
 	else if (status == SignInCase7Failed) { return "登录失败，您所输入的密码错误。"; }
 	else if (status == SignInCase7Successful) { return "登录成功，1秒后自动跳转到选择房间界面。"; }
 	//SignUp = 3, //注册事件
-	else if (status == SignUpCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
-	else if (status == SignUpCase1Successful) { return "连接服务器成功，请输入用户名、昵称和密码进行账号注册。"; }
+	else if (status == SignUpCase1Successful) { return "请输入用户名、昵称和密码进行账号注册。"; }
 	else if (status == SignUpCase2Failed) { return "创建账号失败。\n用户名不能为空，请重填。"; }
 	else if (status == SignUpCase3Failed) { return "创建账号失败。\n用户名不能全是数字，请重填。"; }
 	else if (status == SignUpCase4Failed) { return "创建账号失败。\n昵称不能为空，请重填。"; }
@@ -60,16 +62,14 @@ string Connect::getStatus(Status status)
 	else if (status == SignUpCase8Failed) { return "创建账号失败。\n在正式插入您的账号信息到数据库时遇到未知错误。\n应该是服务器硬盘没空间了，请联系开发维护人员。"; }
 	else if (status == SignUpCase8Successful) { return "恭喜您注册成功，请返回登录界面进行登录。\n若您无操作，系统将在3秒钟后帮您自动转入登录界面。"; }
 	//GetRooms = 4, //获取房间列表事件
-	else if (status == GetRoomsCase1Failed) { return "已与服务器失去连接，请返回服务器连接界面重连。"; }
 	else if (status == GetRoomsCase1Successful) { return "连接服务器成功，请加入或创建房间。"; }
 	//CreateRoom = 5, //创建房间事件
-	else if (status == CreateRoomCase1Failed) { return "未定义的状态码"; }
-	else if (status == CreateRoomCase1Successful) { return "未定义的状态码"; }
+	else if (status == CreateRoomCase1Successful) { return "请输入您所要创建房间的名称和密码"; }
 	//JoinRoom = 6, //进入房间事件
-	else if (status == JoinRoomCase1Failed) { return "未定义的状态码"; }
 	else if (status == JoinRoomCase1Successful) { return "未定义的状态码"; }
-	//Dialog = 7, //对话事件
-	else if (status == DialogCase1Failed) { return "未定义的状态码"; }
+	//SelectRole = 7, //选择角色事件
+	else if (status == SelectRoleCase1Successful) { return "未定义的状态码"; }
+	//Dialog = 8, //对话事件
 	else if (status == DialogCase1Successful) { return "未定义的状态码"; }
 }
 
@@ -78,10 +78,6 @@ void Connect::onOpen(WebSocket* ws)
 	//进行这样的判断是因为WebSocket对象没有setTag方法0
 	if (ws != _ws){return;}
 	_isConnecting = false;
-	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse(ConnectServerCase1Successful); }
-	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(GetConnectStatus(SignInCase1Successful)); }
-	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(GetConnectStatus(SignUpCase1Successful)); }
-	else if (_nowEvent == GetRooms) { GetRoomsScene::dealServerResponse(GetConnectStatus(GetRoomsCase1Successful)); }
 }
 
 void Connect::onClose(WebSocket* ws)
@@ -90,12 +86,7 @@ void Connect::onClose(WebSocket* ws)
 	_ws = nullptr;
 	_isConnecting = false;
 
-	string errInfo = "已与服务器失去连接，请返回服务器连接界面重连";
-
-	if (_nowEvent == ConnectServer) { ConnectServerScene::dealServerResponse("连接服务器失败，请重试"); }
-	else if (_nowEvent == SignUp) { SignUpScene::dealServerResponse(errInfo); }
-	else if (_nowEvent == SignIn) { SignInScene::dealServerResponse(errInfo); }
-	else if (_nowEvent == GetRooms) { GetRoomsScene::dealServerResponse(errInfo); }
+	ConnectServerScene::disConnect();
 }
 
 void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)

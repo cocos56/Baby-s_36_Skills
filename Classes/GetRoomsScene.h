@@ -11,7 +11,6 @@ class GetRoomsScene : public Layer, public EditBoxDelegate, public NetworkBaseSc
 public:
 	static void dealServerResponse(int statusCode);
 private:
-	void enterSignInScene(float f);
 	//标签相关
 	static Label* _roomID, * _roomName, * _roomCreater;
 	void initLabel();

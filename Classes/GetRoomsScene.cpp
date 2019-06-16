@@ -21,14 +21,10 @@ QE_SetResourcesSearchDir;
 
 void GetRoomsScene::dealServerResponse(int statusCode)
 {
-	dealServerResponse(statusCode);
-	//if (statusCode == 381)
-	//{
-	//	getInstance()->scheduleOnce(schedule_selector(GetRoomsScene::enterSignInScene), 3.0f);
-	//}
+	string status = Connect::getStatus(statusCode);
+	dealServerResponse(status);
+	QMessageBox(status);
 }
-
-void GetRoomsScene::enterSignInScene(float f) { QE_ReplaceScene(SignInScene); }
 
 void GetRoomsScene::initLabel()
 {
@@ -52,11 +48,7 @@ void GetRoomsScene::initLabel()
 	_roomCreater = createLabel("无");
 	_roomCreater->setPosition(450, 330);
 
-	string str;
-	if (Connect::_ws) { str = GetConnectStatus(GetRoomsCase1Successful); }
-	else { str = GetConnectStatus(GetRoomsCase1Failed); }
-	_logLabel = createLabel(str);
-	_logLabel->setPosition(150, 100);
+	NW_InitLogLabel(150, 100);
 }
 
 void GetRoomsScene::initMenu()

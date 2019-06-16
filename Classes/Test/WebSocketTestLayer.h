@@ -1,7 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 #pragma once
 
-#include "QE.h"
+#include "../QE.h"
 
 class WebSocketTestLayer : public Layer, public WebSocket::Delegate
 {

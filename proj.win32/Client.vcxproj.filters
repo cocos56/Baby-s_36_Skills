@@ -48,18 +48,6 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HttpTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\WebSocketTestLayer.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SocketIOTestLayer.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SignInSceneTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp">
       <Filter>QE\support</Filter>
     </ClCompile>
@@ -86,9 +74,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\QuickEngine\QString.cpp">
       <Filter>QE\support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ConnectServerScene.cpp">
       <Filter>Network\ConnectServer</Filter>
@@ -120,7 +105,31 @@
     <ClCompile Include="..\Classes\JoinRoomScene.cpp">
       <Filter>Network\SelectRooms</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\PopAlertDialog.cpp">
+    <ClCompile Include="..\Classes\SelectRoleScene.cpp">
+      <Filter>Network\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetworkGameOverScene.cpp">
+      <Filter>Network\NetworkGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QMessageBox.cpp">
+      <Filter>QE\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\HelloWorldScene.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\HttpTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\PopAlertDialog.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\SignInSceneTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\SocketIOTestLayer.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -133,18 +142,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\QE.h">
       <Filter>QE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HttpTest.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\WebSocketTestLayer.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SocketIOTestLayer.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SignInSceneTest.h">
-      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\QuickEngine\QAnimate.h">
       <Filter>QE\support</Filter>
@@ -188,9 +185,6 @@
     <ClInclude Include="..\Classes\QuickEngine\QString.h">
       <Filter>QE\support</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>Test</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\ConnectServerScene.h">
       <Filter>Network\ConnectServer</Filter>
     </ClInclude>
@@ -221,7 +215,31 @@
     <ClInclude Include="..\Classes\JoinRoomScene.h">
       <Filter>Network\SelectRooms</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\PopAlertDialog.h">
+    <ClInclude Include="..\Classes\SelectRoleScene.h">
+      <Filter>Network\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetworkGameOverScene.h">
+      <Filter>Network\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QMessageBox.h">
+      <Filter>QE\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\HelloWorldScene.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\HttpTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\PopAlertDialog.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\SignInSceneTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\SocketIOTestLayer.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h">
       <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>

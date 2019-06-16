@@ -15,14 +15,16 @@
 #include "RoomInfo.h"
 #include "GetRoomsScene.h"
 #include "CreateRoomScene.h"
+#include "JoinRoomScene.h"
+#include"SelectRoleScene.h"
 #include "NetworkGameScene.h"
 
 
 //test
 #if 1
-	#include "HelloWorldScene.h"
-	#include "SocketIOTestLayer.h"
-	#include "HttpTest.h"
-	#include "WebSocketTestLayer.h"
-	#include "SignInSceneTest.h"
+	#include "Test\HelloWorldScene.h"
+	#include "Test\SocketIOTestLayer.h"
+	#include "Test\HttpTest.h"
+	#include "Test\WebSocketTestLayer.h"
+	#include "Test\SignInSceneTest.h"
 #endif // 1

@@ -22,23 +22,13 @@ QE_CreateSceneFromLayer_CPP(SignUpScene);
 
 void SignUpScene::dealServerResponse(int statusCode)
 {
-	dealServerResponse(statusCode);
-	if (statusCode == 381)
-	{
-		getInstance()->scheduleOnce(schedule_selector(SignUpScene::enterSignInScene), 3.0f);
-	}
+	string status = Connect::getStatus(statusCode);
+	dealServerResponse(status);
+	QMessageBox(status);
+	if (statusCode == 381) { QE_ReplaceScene(SignInScene); }
 }
 
-void SignUpScene::enterSignInScene(float f){ QE_ReplaceScene(SignInScene); }
-
-void SignUpScene::initLabel()
-{
-	string str;
-	if (Connect::_ws) { str = GetConnectStatus(SignUpCase1Successful); }
-	else { str = GetConnectStatus(SignUpCase1Failed); }
-	_logLabel = createLabel(str);
-	_logLabel->setPosition(150, 150);
-}
+void SignUpScene::initLabel(){ NW_InitLogLabel(150, 150); }
 
 void SignUpScene::initMenu()
 {

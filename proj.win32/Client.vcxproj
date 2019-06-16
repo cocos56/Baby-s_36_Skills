@@ -154,14 +154,15 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Connect.cpp" />
     <ClCompile Include="..\Classes\ConnectServerScene.cpp" />
     <ClCompile Include="..\Classes\CreateRoomScene.cpp" />
+    <ClCompile Include="..\Classes\NetworkGameOverScene.cpp" />
     <ClCompile Include="..\Classes\JoinRoomScene.cpp" />
     <ClCompile Include="..\Classes\NetworkGameScene.cpp" />
     <ClCompile Include="..\Classes\NetworkBaseScene.cpp" />
-    <ClCompile Include="..\Classes\PopAlertDialog.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QEditBox.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QJson.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QMenu.cpp" />
+    <ClCompile Include="..\Classes\QuickEngine\QMessageBox.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QObject.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QScene.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QSprite.cpp" />
@@ -169,13 +170,15 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp" />
     <ClCompile Include="..\Classes\GetRoomsScene.cpp" />
     <ClCompile Include="..\Classes\RoomInfo.cpp" />
-    <ClCompile Include="..\Classes\SignInSceneTest.cpp" />
+    <ClCompile Include="..\Classes\SelectRoleScene.cpp" />
     <ClCompile Include="..\Classes\SignUpScene.cpp" />
-    <ClCompile Include="..\Classes\SocketIOTestLayer.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="..\Classes\HttpTest.cpp" />
     <ClCompile Include="..\Classes\SignInScene.cpp" />
-    <ClCompile Include="..\Classes\WebSocketTestLayer.cpp" />
+    <ClCompile Include="..\Classes\Test\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Test\HttpTest.cpp" />
+    <ClCompile Include="..\Classes\Test\PopAlertDialog.cpp" />
+    <ClCompile Include="..\Classes\Test\SignInSceneTest.cpp" />
+    <ClCompile Include="..\Classes\Test\SocketIOTestLayer.cpp" />
+    <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,10 +186,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Connect.h" />
     <ClInclude Include="..\Classes\ConnectServerScene.h" />
     <ClInclude Include="..\Classes\CreateRoomScene.h" />
+    <ClInclude Include="..\Classes\NetworkGameOverScene.h" />
     <ClInclude Include="..\Classes\JoinRoomScene.h" />
     <ClInclude Include="..\Classes\NetworkGameScene.h" />
     <ClInclude Include="..\Classes\NetworkBaseScene.h" />
-    <ClInclude Include="..\Classes\PopAlertDialog.h" />
     <ClInclude Include="..\Classes\QuickEngine\QAnimate.h" />
     <ClInclude Include="..\Classes\QuickEngine\QDesignMode.h" />
     <ClInclude Include="..\Classes\QuickEngine\QEditBox.h" />
@@ -194,6 +197,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\QuickEngine\QJson.h" />
     <ClInclude Include="..\Classes\QuickEngine\QLayer.h" />
     <ClInclude Include="..\Classes\QuickEngine\QMenu.h" />
+    <ClInclude Include="..\Classes\QuickEngine\QMessageBox.h" />
     <ClInclude Include="..\Classes\QuickEngine\QObject.h" />
     <ClInclude Include="..\Classes\QuickEngine\QScene.h" />
     <ClInclude Include="..\Classes\QuickEngine\QSprite.h" />
@@ -203,14 +207,16 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h" />
     <ClInclude Include="..\Classes\GetRoomsScene.h" />
     <ClInclude Include="..\Classes\RoomInfo.h" />
-    <ClInclude Include="..\Classes\SignInSceneTest.h" />
+    <ClInclude Include="..\Classes\SelectRoleScene.h" />
     <ClInclude Include="..\Classes\SignUpScene.h" />
-    <ClInclude Include="..\Classes\SocketIOTestLayer.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
-    <ClInclude Include="..\Classes\HttpTest.h" />
     <ClInclude Include="..\Classes\SignInScene.h" />
     <ClInclude Include="..\Classes\QE.h" />
-    <ClInclude Include="..\Classes\WebSocketTestLayer.h" />
+    <ClInclude Include="..\Classes\Test\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\Test\HttpTest.h" />
+    <ClInclude Include="..\Classes\Test\PopAlertDialog.h" />
+    <ClInclude Include="..\Classes\Test\SignInSceneTest.h" />
+    <ClInclude Include="..\Classes\Test\SocketIOTestLayer.h" />
+    <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

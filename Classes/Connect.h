@@ -3,9 +3,6 @@
 
 #include "QE.h"
 
-#define GetConnectStatus(__STATUS__) Connect::getStatus(Connect::Status::__STATUS__)
-#define GetConnectStatusByCode(__CODE__) Connect::getStatus(Connect::Status(__CODE__))
-
 class Connect : public WebSocket::Delegate
 {
 	QE_SINGLETON_H(Connect);
@@ -18,18 +15,17 @@ public:
 		GetRooms = 4, //获取房间列表事件
 		CreateRoom = 5, //创建房间事件
 		JoinRoom = 6, //加入房间事件
-		Dialog = 7, //对话事件
+		SelectRole = 7, //选择角色事件
+		Dialog = 8, //对话事件
 	};
 
 	enum Status {
 		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
 		//ConnectServer = 1, //连接服务器事件
-		ConnectServerCase1Failed = 110, //连接服务器错误，错误原因：关闭WebSocket
 		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
 		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
-		ConnectServerCase3Failed = 130, //连接服务器错误，错误原因：在其他界面初始化时正在连接服务器的过程中
+		ConnectServerCase3Failed = 130, //连接服务器错误，错误原因：在其他界面与服务器断开连接
 		//SignIn = 2, //登录事件
-		SignInCase1Failed = 210, //连接服务器错误，错误原因：关闭WebSocket
 		SignInCase1Successful = 211, //连接服务器成功，成功原因：成功建立WebSocket
 		SignInCase2Failed = 220, //ID或用户名为空
 		SignInCase3Failed = 230, //密码为空
@@ -40,7 +36,6 @@ public:
 		SignInCase7Successful = 271, //登录成功
 
 		//SignUp = 3, //注册事件
-		SignUpCase1Failed = 310, //连接服务器错误，错误原因：关闭WebSocket
 		SignUpCase1Successful = 311, //连接服务器成功，成功原因：成功建立WebSocket
 		SignUpCase2Failed = 320, //创建账号失败，用户名不能为空，请重填。
 		SignUpCase3Failed = 330, //创建账号失败，用户名不能全是数字，请重填。
@@ -52,22 +47,21 @@ public:
 		SignUpCase8Successful = 381, //创建账号成功，恭喜您注册成功，请返回登录。
 
 		//GetRooms = 4, //获取房间列表事件
-		GetRoomsCase1Failed = 410, //连接服务器错误，错误原因：关闭WebSocket
 		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
 		//CreateRoom = 5, //创建房间事件
-		CreateRoomCase1Failed = 510, //连接服务器错误，错误原因：关闭WebSocket
 		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
 		//JoinRoom = 6, //进入房间事件
-		JoinRoomCase1Failed = 610, //连接服务器错误，错误原因：关闭WebSocket
 		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
-		//Dialog = 7, //对话事件
-		DialogCase1Failed = 710, //连接服务器错误，错误原因：关闭WebSocket
-		DialogCase1Successful = 711, //连接服务器成功，成功原因：成功建立WebSocket
+		//SelectRole = 7, //选择角色事件
+		SelectRoleCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
+		//Dialog = 8, //对话事件
+		DialogCase1Successful = 811, //连接服务器成功，成功原因：成功建立WebSocket
 	};
 
 public:
 	static int getNowEvent();
 	static string getStatus(Status status);
+	static string getStatus(int statusCode);
 	static bool _isConnecting;
 	static WebSocket* _ws;
 	static string _addr;

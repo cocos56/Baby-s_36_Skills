@@ -44,25 +44,15 @@ void ConnectServerScene::back()
 
 void ConnectServerScene::connect(int n)
 {
-	if (Connect::_isConnecting)
-	{
-		_logLabel->setString(GetConnectStatus(ConnectServerCase2Failed));
-		return;
-	}
-	if (Connect::_ws)
-	{
-		_logLabel->setString(GetConnectStatus(ConnectServerCase1Successful));
-		getInstance()->scheduleOnce(schedule_selector(ConnectServerScene::enterSignInScene), 1.0f);
-		return;
-	}
+	if (Connect::_isConnecting){ dealServerResponse(120); return; }
+	else if (Connect::_ws){ dealServerResponse(111); return; }
+	
 	string ip, port;
-	if (n == 1)
-	{
+	if (n == 1){
 		ip = _ip1Box->getText();
 		port = _port1Box->getText();
 	}
-	else if (n == 2)
-	{
+	else if (n == 2){
 		ip = _ip2Box->getText();
 		port = _port2Box->getText();
 	}
@@ -73,14 +63,25 @@ void ConnectServerScene::connect(int n)
 
 void ConnectServerScene::dealServerResponse(int statusCode)
 { 
-	dealServerResponse(statusCode);
+	string status = Connect::getStatus(statusCode);
+	dealServerResponse(status);
+	QMessageBox(status);
 	if (statusCode == 111)
 	{
-		getInstance()->scheduleOnce(schedule_selector(ConnectServerScene::enterSignInScene), 1.0f);
+		QE_ReplaceScene(SignInScene);
 	}
 }
 
-void ConnectServerScene::enterSignInScene(float f) { QE_ReplaceScene(SignInScene); }
+void ConnectServerScene::disConnect()
+{
+	
+	if (Connect::_nowEvent != Connect::Event::ConnectServer) { 
+		QMessageBox("已与服务器：" + Connect::_addr + " 失去连接，请重新连接服务器。");
+		QE_ReplaceScene(ConnectServerScene);
+	}
+	else { QMessageBox("无法连接到：" + Connect::_addr + " ，请重新选择服务器。"); }
+}
+	
 
 void ConnectServerScene::initEditBox()
 {

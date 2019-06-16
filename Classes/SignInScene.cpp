@@ -20,14 +20,14 @@ QE_CreateSceneFromLayer_CPP(SignInScene);
 	return true;
 }
 
-void SignInScene::initLabel()
+void SignInScene::dealServerResponse(int statusCode)
 {
-	string str;
-	if (Connect::_ws) { str = GetConnectStatus(SignInCase1Successful); }
-	else { str = GetConnectStatus(SignInCase1Failed); }
-	_logLabel = createLabel(str);
-	_logLabel->setPosition(150, 150);
+	string status = Connect::getStatus(statusCode);
+	dealServerResponse(status);
+	QMessageBox(status);
 }
+
+void SignInScene::initLabel(){ NW_InitLogLabel(150, 150); }
 
 void SignInScene::initMenu()
 {

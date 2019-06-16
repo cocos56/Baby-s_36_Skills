@@ -9,6 +9,7 @@ class ConnectServerScene : public Layer, public EditBoxDelegate, public NetworkB
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
+	static void disConnect();
 private:
 	static EditBox* _ip1Box, * _ip2Box, * _port1Box, * _port2Box;
 
@@ -19,8 +20,6 @@ private:
 	void back();
 
 	void initEditBox();
-
-	void enterSignInScene(float f);
 
 	void connect(int n);
 };

@@ -61,3 +61,4 @@ using namespace cocos2d::network;
 #include "QTMX.h"
 #include "QEditBox.h"
 #include "QString.h"
+#include "QMessageBox.h"

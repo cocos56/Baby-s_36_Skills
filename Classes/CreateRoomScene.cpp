@@ -13,7 +13,7 @@ QE_SetResourcesSearchDir;
 
 _instance = this;
 
-Connect::connect(Connect::Event::GetRooms);
+Connect::connect(Connect::Event::CreateRoom);
 
 initLabel();
 initMenu();
@@ -24,14 +24,9 @@ return true;
 
 void CreateRoomScene::dealServerResponse(int statusCode)
 {
-	dealServerResponse(statusCode);
-	//if (statusCode == 381)
-	//{
-	//	getInstance()->scheduleOnce(schedule_selector(CreateRoomScene::enterSignInScene), 3.0f);
-	//}
+	string status = Connect::getStatus(statusCode);
+	dealServerResponse(status);
 }
-
-void CreateRoomScene::enterSignInScene(float f) { QE_ReplaceScene(SignInScene); }
 
 void CreateRoomScene::initLabel()
 {
@@ -44,11 +39,7 @@ void CreateRoomScene::initLabel()
 	createLabel("裁判");
 	_label->setPosition(540, 300);
 
-	string str;
-	if (Connect::_ws) { str = GetConnectStatus(GetRoomsCase1Successful); }
-	else { str = GetConnectStatus(GetRoomsCase1Failed); }
-	_logLabel = createLabel(str);
-	_logLabel->setPosition(150, 100);
+	NW_InitLogLabel(150, 100);
 }
 
 void CreateRoomScene::initMenu()

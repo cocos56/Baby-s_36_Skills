@@ -3,14 +3,15 @@
 
 #include "QE.h"
 
-class CreateRoomScene : public Layer, public EditBoxDelegate, public NetworkBaseScene
+class SelectRoleScene : public Layer, public EditBoxDelegate, public NetworkBaseScene
 {
-	QE_SINGLETON_H(CreateRoomScene);
-	QE_CreateSceneFromLayer_H(CreateRoomScene);
+	QE_SINGLETON_H(SelectRoleScene);
+	QE_CreateSceneFromLayer_H(SelectRoleScene);
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
 private:
+	void enterSignInScene(float f);
 	//标签相关
 	void initLabel();
 
