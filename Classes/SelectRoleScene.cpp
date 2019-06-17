@@ -3,6 +3,9 @@
 #include "SelectRoleScene.h"
 
 RadioButtonGroup* SelectRoleScene::_radioButtonGroup;
+vector<RichText*> SelectRoleScene::_texts;
+RichText* SelectRoleScene::_richText;
+int SelectRoleScene::_index;
 
 QE_SINGLETON2_CPP(SelectRoleScene);
 
@@ -12,9 +15,10 @@ QE_CreateSceneFromLayer_CPP(SelectRoleScene);
 
 	_instance = this;
 
-	Connect::connect(Connect::Event::GetRooms);
+	Connect::connect(Connect::Event::SelectRole);
 
 	initLabel();
+	initRichText();
 	initMenu();
 	initRadioButton();
 	return true;
@@ -24,10 +28,6 @@ void SelectRoleScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
-	//if (statusCode == 381)
-	//{
-	//	getInstance()->scheduleOnce(schedule_selector(SelectRoleScene::enterSignInScene), 3.0f);
-	//}
 }
 
 void SelectRoleScene::initLabel()
@@ -38,58 +38,63 @@ void SelectRoleScene::initLabel()
 	_label->setPosition(350, 400);
 	createLabel("房间名：");
 	_label->setPosition(350, 350);
-	createLabel("宝宝");
-	_label->setPosition(380, 300);
-	createLabel("坏人");
-	_label->setPosition(460, 300);
-	createLabel("裁判");
-	_label->setPosition(540, 300);
 
-	_logLabel = createLabel("");
-	_logLabel->setPosition(150, 100);
-	if (Connect::_ws) { dealServerResponse(311); }
-	else { dealServerResponse(310); }
+	NW_InitLogLabel(150, 100);
 }
 
 void SelectRoleScene::initRichText()
 {
+	createRichText(320, 300, "宝宝 ", "child.png");
+	createRichText(440, 300, "坏人 ", "scoundrel.png");
+	createRichText(560, 300, "裁判 ", "referee.png");
+}
+
+RichText* SelectRoleScene::createRichText(int x, int y, string roleName, string fileName)
+{
 	//创建RichText对象
-	RichText* richText = RichText::create();
+	_richText = RichText::create();
 	//设置是否忽略用户定义的内容大小
-	richText->ignoreContentAdaptWithSize(false);
+	_richText->ignoreContentAdaptWithSize(false);
 	//设置内容大小
-	richText->setContentSize(Size(500, 50));
-	richText->setPosition(Vec2(5, 0));
-	richText->setAnchorPoint(Vec2(0, 0));
+	_richText->setContentSize(Size(500, 50));
+	_richText->setPosition(Vec2(x, y));
+	_richText->setAnchorPoint(Vec2(0, 0));
 
 	//创建文本类型的RichElement对象
-	RichElementText* re1 = RichElementText::create(1, Color3B::BLUE, 255, "宝宝：", QE_Font, 20);
-	RichElementText* re2 = RichElementText::create(2, Color3B::RED, 255, "  你是坏人，不搭理你。", QE_Font, 20);
+	RichElementText* re1 = RichElementText::create(0, Color3B::WHITE, 255, roleName, QE_Font, 24);
 	//创建图片类型的RichElement对象
-	RichElementImage* re3 = RichElementImage::create(3, Color3B::WHITE, 255, "child.png");
+	RichElementImage* re2 = RichElementImage::create(6, Color3B::WHITE, 255, fileName);
 	//创建换行RichElement对象
 	RichElementNewLine* newLine = RichElementNewLine::create(77, Color3B::WHITE, 255);
 
-	richText->pushBackElement(re1);
+	_richText->pushBackElement(re1);
 	//richText->pushBackElement(newLine);
-	richText->pushBackElement(re3);
-	richText->pushBackElement(re2);
+	_richText->pushBackElement(re2);
+
+	_texts.push_back(_richText);
+	addChild(_richText);
+	return _richText;
+}
+
+void SelectRoleScene::setTextsColor(int n)
+{
+	for (size_t i = 0; i < _texts.size(); i++)
+	{
+		_texts[i]->setColor(Color3B::WHITE);
+	}
+	_texts[n]->setColor(Color3B(153, 204, 0));
 }
 
 void SelectRoleScene::initMenu()
 {
-	QE_CreateLabelMenu(420, 200, "确认进入", SelectRoleScene, createRoom);
+	QE_CreateLabelMenu(420, 200, "开始比拼", SelectRoleScene, createRoom);
 	QE_CreateLabelMenuAgain(10, 500, "返回", SelectRoleScene, back);
 }
 
 void SelectRoleScene::createRoom()
 {
-
-}
-
-void SelectRoleScene::joinRoom()
-{
-
+	Connect::createMsg();
+	Connect::addMsg("type", _index);
 }
 
 void SelectRoleScene::back() { QE_ReplaceScene(SignInScene); };
@@ -99,19 +104,20 @@ void SelectRoleScene::initRadioButton()
 	_radioButtonGroup = RadioButtonGroup::create();
 	addChild(_radioButtonGroup);
 
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 4; ++i)
 	{
 		RadioButton* radioButton = RadioButton::create("icon/btn_radio_off_holo.png", "icon/btn_radio_on_holo.png");
-		float posX = 400 + 80 * i;
+		float posX = 240 + 120 * i;
 		radioButton->setPosition(Vec2(posX, 270));
 		_radioButtonGroup->addRadioButton(radioButton);
 		_radioButtonGroup->addEventListener(CC_CALLBACK_3(SelectRoleScene::onChangedRadioButtonGroup, this));
-
+		if (i == 0) { radioButton->setVisible(false); }
 		addChild(radioButton);
 	}
 }
 
 void SelectRoleScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
 {
-	CCLOG("RadioButton Index : %d", index);
+	_index = index;
+	setTextsColor(index-1);
 }

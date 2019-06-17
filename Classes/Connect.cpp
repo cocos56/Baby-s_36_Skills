@@ -71,9 +71,9 @@ string Connect::getStatus(Status status)
 	//JoinRoom = 6, //进入房间事件
 	else if (status == JoinRoomCase1Successful) { return "未定义的状态码"; }
 	//SelectRole = 7, //选择角色事件
-	else if (status == SelectRoleCase1Successful) { return "未定义的状态码"; }
+	else if (status == SelectRoleCase1Successful) { return "请选择您要扮演的角色。"; }
 	//Dialog = 8, //对话事件
-	else if (status == DialogCase1Successful) { return "未定义的状态码"; }
+	else if (status == DialogCase1Successful) { return "请发言"; }
 }
 
 void Connect::onOpen(WebSocket* ws)

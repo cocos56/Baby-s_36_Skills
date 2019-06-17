@@ -75,8 +75,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//scene = GetRoomsScene::createScene();
 	//scene = CreateRoomScene::createScene();
 	//scene = JoinRoomScene::createScene();
-	scene = SelectRoleScene::createScene();
+	//scene = SelectRoleScene::createScene();
 	//scene = NetworkGameScene::createScene();
+	scene = NetworkGameOverScene::createScene();
 
 	//scene = HelloWorld::createScene();
 	//scene = SignInSceneTest::createScene();

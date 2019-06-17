@@ -11,7 +11,6 @@ class NetworkGameScene : public Layer, public EditBoxDelegate, public NetworkBas
 public:
 	static void dealServerResponse(int statusCode);
 private:
-	void enterSignInScene(float f);
 	//标签相关
 	void initLabel();
 
@@ -31,7 +30,7 @@ private:
 	void initListView();
 
 	//选项
-	static RadioButtonGroup* _radioButtonGroup;
-	void initRadioButton();
-	void onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type);
+	static vector< Sprite*> _onSprites;
+	void setOnSprites(int index);
+	void initSprites();
 };

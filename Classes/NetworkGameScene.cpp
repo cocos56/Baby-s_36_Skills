@@ -2,21 +2,22 @@
 
 #include "NetworkGameScene.h"
 
-RadioButtonGroup* NetworkGameScene::_radioButtonGroup;
+vector< Sprite*> NetworkGameScene::_onSprites;
 
 QE_SINGLETON2_CPP(NetworkGameScene);
 
 QE_CreateSceneFromLayer_CPP(NetworkGameScene);
-paths = { "fonts" };
+paths = { "fonts", "icon" };
 QE_SetResourcesSearchDir;
 
 _instance = this;
 
-Connect::connect(Connect::Event::GetRooms);
+Connect::connect(Connect::Event::Dialog);
 
 	initLabel();
 	initMenu();
-	initRadioButton();
+	initSprites();
+	setOnSprites(0);
 	initListView();
 	initEditBox();
 return true;
@@ -26,27 +27,18 @@ void NetworkGameScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
-	//if (statusCode == 381)
-	//{
-	//	getInstance()->scheduleOnce(schedule_selector(NetworkGameScene::enterSignInScene), 3.0f);
-	//}
 }
-
-void NetworkGameScene::enterSignInScene(float f) { QE_ReplaceScene(SignInScene); }
 
 void NetworkGameScene::initLabel()
 {
-	createLabel("宝宝：");
-	_label->setPosition(60, 390);
 	createLabel("坏人：");
+	_label->setPosition(60, 390);
+	createLabel("宝宝：");
 	_label->setPosition(60, 325);
 	createLabel("裁判：");
 	_label->setPosition(60, 265);
 
-	_logLabel = createLabel("");
-	_logLabel->setPosition(150, 20);
-	if (Connect::_ws) { dealServerResponse(311); }
-	else { dealServerResponse(310); }
+	NW_InitLogLabel(150, 20);
 }
 
 void NetworkGameScene::initMenu()
@@ -76,26 +68,33 @@ void NetworkGameScene::initEditBox()
 	_box->setPlaceHolder("请输入聊天信息");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
 }
 
-void NetworkGameScene::initRadioButton()
+void NetworkGameScene::initSprites()
 {
-	_radioButtonGroup = RadioButtonGroup::create();
-	addChild(_radioButtonGroup);
-
 	for (int i = 0; i < 3; ++i)
 	{
-		RadioButton* radioButton = RadioButton::create("icon/btn_radio_off_holo.png", "icon/btn_radio_on_holo.png");
-		float posY = 250 + 60 * i;
-		radioButton->setPosition(Vec2(0, posY));
-		radioButton->setAnchorPoint(Vec2(0, 0));
-		_radioButtonGroup->addRadioButton(radioButton);
-		_radioButtonGroup->addEventListener(CC_CALLBACK_3(NetworkGameScene::onChangedRadioButtonGroup, this));
-		addChild(radioButton);
+		float posY = 370 - 60 * i;
+
+		Sprite* spr = Sprite::create("btn_radio_off_holo.png");
+		spr->setPosition(Vec2(0, posY));
+		spr->setAnchorPoint(Vec2(0, 0));
+		addChild(spr);
+
+		spr = Sprite::create("btn_radio_on_holo.png");
+		spr->setPosition(Vec2(0, posY));
+		spr->setAnchorPoint(Vec2(0, 0));
+		addChild(spr);
+		_onSprites.push_back(spr);
+		
 	}
 }
 
-void NetworkGameScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
+void NetworkGameScene::setOnSprites(int index)
 {
-	CCLOG("RadioButton Index : %d", index);
+	for (size_t i = 0; i < _onSprites.size(); i++)
+	{
+		_onSprites[i]->setVisible(false);
+	}
+	_onSprites[index]->setVisible(true);
 }
 
 void NetworkGameScene::initListView()

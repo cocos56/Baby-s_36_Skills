@@ -18,6 +18,7 @@
 #include "JoinRoomScene.h"
 #include"SelectRoleScene.h"
 #include "NetworkGameScene.h"
+#include "NetworkGameOverScene.h"
 
 
 //test
