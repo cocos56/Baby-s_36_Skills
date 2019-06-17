@@ -2,7 +2,8 @@
 
 #include "GetRoomsScene.h"
 
-Label* GetRoomsScene:: _roomID, * GetRoomsScene::_roomName, * GetRoomsScene::_roomCreater;
+Label* GetRoomsScene::_roomName, * GetRoomsScene::_roomCreator;
+string GetRoomsScene::_name = "1" , GetRoomsScene::_creator = "null";
 
 QE_SINGLETON2_CPP(GetRoomsScene);
 
@@ -24,8 +25,10 @@ void GetRoomsScene::dealServerResponse(int statusCode)
 {
 	if (statusCode == 411)
 	{
-		_roomName->setString(QJson::getString("nm"));
-		_roomCreater->setString(QJson::getString("creator"));
+		_name = QJson::getString("nm");
+		_roomName->setString(_name);
+		_creator = QJson::getString("creator");
+		_roomCreator->setString(_creator);
 	}
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
@@ -47,8 +50,8 @@ void GetRoomsScene::initLabel()
 	_roomName->setPosition(450, 400);
 	createLabel("创建者：");
 	_label->setPosition(350, 340);
-	_roomCreater = createLabel("");
-	_roomCreater->setPosition(450, 340);
+	_roomCreator = createLabel("");
+	_roomCreator->setPosition(450, 340);
 
 	NW_InitLogLabel(150, 100);
 }

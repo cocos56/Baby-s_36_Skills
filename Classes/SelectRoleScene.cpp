@@ -38,9 +38,9 @@ void SelectRoleScene::initLabel()
 
 void SelectRoleScene::initRichText()
 {
-	createRichText(320, 300, "宝宝 ", "child.png");
-	createRichText(440, 300, "坏人 ", "scoundrel.png");
-	createRichText(560, 300, "裁判 ", "referee.png");
+	//createRichText(320, 300, "宝宝 ", "child.png");
+	//createRichText(440, 300, "坏人 ", "scoundrel.png");
+	//createRichText(560, 300, "裁判 ", "referee.png");
 }
 
 RichText* SelectRoleScene::createRichText(int x, int y, string roleName, string fileName)
@@ -81,8 +81,8 @@ void SelectRoleScene::setTextsColor(int n)
 
 void SelectRoleScene::initMenu()
 {
-	QE_CreateLabelMenu(420, 200, "开始比拼", SelectRoleScene, createRoom);
-	QE_CreateLabelMenuAgain(10, 500, "返回", SelectRoleScene, back);
+	//QE_CreateLabelMenu(420, 200, "开始比拼", SelectRoleScene, createRoom);
+	//QE_CreateLabelMenuAgain(10, 500, "返回", SelectRoleScene, back);
 }
 
 void SelectRoleScene::createRoom()
@@ -101,8 +101,9 @@ void SelectRoleScene::initRadioButton()
 	for (int i = 0; i < 4; ++i)
 	{
 		RadioButton* radioButton = RadioButton::create("icon/btn_radio_off_holo.png", "icon/btn_radio_on_holo.png");
-		float posX = 240 + 120 * i;
-		radioButton->setPosition(Vec2(posX, 270));
+		float posX = 270 + 120 * i;
+		float posY = 500 - 140 * i;
+		radioButton->setPosition(Vec2(posX, posY));
 		_radioButtonGroup->addRadioButton(radioButton);
 		_radioButtonGroup->addEventListener(CC_CALLBACK_3(SelectRoleScene::onChangedRadioButtonGroup, this));
 		if (i == 0) { radioButton->setVisible(false); }
@@ -113,5 +114,5 @@ void SelectRoleScene::initRadioButton()
 void SelectRoleScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
 {
 	_index = index;
-	setTextsColor(index-1);
+	//setTextsColor(index-1);
 }

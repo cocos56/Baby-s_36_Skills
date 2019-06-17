@@ -17,44 +17,45 @@ vector< Sprite*> NetworkGameScene::_onSprites;
 QE_SINGLETON2_CPP(NetworkGameScene);
 
 QE_CreateSceneFromLayer_CPP(NetworkGameScene);
-paths = { "fonts", "icon" };
-QE_SetResourcesSearchDir;
+	paths = { "fonts", "NetworkGameScene", "icon" };
+	QE_SetResourcesSearchDir;
+	QE_addBgSpriteToThis;
 
-_instance = this;
+	_instance = this;
 
-Connect::connect(Connect::Event::Dialog);
+	Connect::connect(Connect::Event::Dialog);
 
 	initLabel();
 	initMenu();
-	initSprites();
-	setOnSprites(0);
-	initListView();
-	initEditBox();
+	//initSprites();
+	//setOnSprites(0);
+	//initListView();
+	//initEditBox();
 return true;
 }
 
 void NetworkGameScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
-	dealServerResponse(status);
+	//dealServerResponse(status);
 }
 
 void NetworkGameScene::initLabel()
 {
-	createLabel("坏人：");
-	_label->setPosition(60, 390);
-	createLabel("宝宝：");
-	_label->setPosition(60, 325);
-	createLabel("裁判：");
-	_label->setPosition(60, 265);
+	//createLabel("坏人：");
+	//_label->setPosition(60, 390);
+	//createLabel("宝宝：");
+	//_label->setPosition(60, 325);
+	//createLabel("裁判：");
+	//_label->setPosition(60, 265);
 
-	NW_InitLogLabel(150, 20);
+	//NW_InitLogLabel(150, 20);
 }
 
 void NetworkGameScene::initMenu()
 {
-	QE_CreateLabelMenu(840, 100, "发送", NetworkGameScene, createRoom);
-	QE_CreateLabelMenuAgain(10, 500, "返回", NetworkGameScene, back);
+	//QE_CreateLabelMenu(840, 100, "发送", NetworkGameScene, createRoom);
+	//QE_CreateLabelMenuAgain(10, 500, "返回", NetworkGameScene, back);
 }
 
 void NetworkGameScene::createRoom()

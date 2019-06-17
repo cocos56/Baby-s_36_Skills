@@ -2,9 +2,9 @@
 
 #include "QSprite.h"
 
-Sprite* QSprite::createBgSprite(){return createBgSprite("bg.png");}
+Sprite* QSprite::createBg(){return createBg("bg.png");}
 
-Sprite* QSprite::createBgSprite(const std::string& filename)
+Sprite* QSprite::createBg(const std::string& filename)
 {
 	//获取窗口大小
 	Size size = Director::getInstance()->getWinSize();

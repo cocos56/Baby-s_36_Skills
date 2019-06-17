@@ -26,6 +26,7 @@ void JoinRoomScene::dealServerResponse(int statusCode)
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 	QMessageBox(status);
+	if (statusCode == 631) { QE_ReplaceScene(SelectRoleScene); }
 }
 
 void JoinRoomScene::initLabel()

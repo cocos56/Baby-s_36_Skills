@@ -7,8 +7,6 @@ exports.callback = function joinRoomCallback(msg, conn, room)
     else if(pw != room['pw']){msgBack['status'] = 630}
     if('status' in msgBack){conn.send(JSON.stringify(msgBack))}
     else{ joinRoom(conn, nm, pw, msgBack, room) }
-    
-    
 }
 
 function joinRoom(conn, nm, pw, msgBack, room)

@@ -24,8 +24,9 @@ QE_CreateSceneFromLayer_CPP(CreateRoomScene);
 void CreateRoomScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
-	dealServerResponse(status); 
+	dealServerResponse(status);
 	QMessageBox(status);
+	if (statusCode == 531) { QE_ReplaceScene(SelectRoleScene); }
 }
 
 void CreateRoomScene::initLabel()

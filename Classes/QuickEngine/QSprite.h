@@ -13,10 +13,10 @@ Quick Engine所属快速精灵模块
 class QSprite
 {
 public:
-	static Sprite* createBgSprite();
-	static Sprite* createBgSprite(const std::string& filename);
+	static Sprite* createBg();
+	static Sprite* createBg(const std::string& filename);
 	static Sprite* create(string fileName, int x, int y);
 };
 
-#define QE_addBgSpriteToThis addChild(QSprite::createBgSprite());
+#define QE_addBgSpriteToThis addChild(QSprite::createBg());
 #define QE_CreateSprite(fileName, x, y) addChild(QSprite::create(fileName, x, y));

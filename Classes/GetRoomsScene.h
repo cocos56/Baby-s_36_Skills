@@ -10,9 +10,10 @@ class GetRoomsScene : public Layer, public EditBoxDelegate, public NetworkBaseSc
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
+	static string _name, _creator;
 private:
 	//标签相关
-	static Label* _roomID, * _roomName, * _roomCreater;
+	static Label * _roomName, * _roomCreator;
 	void initLabel();
 
 	//菜单相关
