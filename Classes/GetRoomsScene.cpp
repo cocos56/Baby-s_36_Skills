@@ -7,8 +7,9 @@ Label* GetRoomsScene:: _roomID, * GetRoomsScene::_roomName, * GetRoomsScene::_ro
 QE_SINGLETON2_CPP(GetRoomsScene);
 
 QE_CreateSceneFromLayer_CPP(GetRoomsScene);
-paths = { "fonts" };
+paths = { "fonts" , "GetRoomsScene" };
 QE_SetResourcesSearchDir;
+QE_addBgSpriteToThis;
 
 	_instance = this;
 

@@ -10,6 +10,8 @@ class SignInScene : public Layer, public EditBoxDelegate, public NetworkBaseScen
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
+	static EditBox* _idBox, * _passwordBox;
+	static string _nickName;
 private:
 	//标签相关
 	void initLabel();
@@ -22,6 +24,5 @@ private:
 	void back();
 
 	//输入框相关
-	static EditBox* _idBox, * _passwordBox;
 	void initEditBox();
 };

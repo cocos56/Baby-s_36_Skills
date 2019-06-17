@@ -4,6 +4,13 @@
 
 vector< Sprite*> NetworkGameScene::_onSprites;
 
+/*
+宝宝和坏人发言完毕之后可以选择是否继续发言
+
+裁判发言完毕之后可以选择继续比拼和宣布宝宝玩家胜或者坏人玩家胜
+
+*/
+
 QE_SINGLETON2_CPP(NetworkGameScene);
 
 QE_CreateSceneFromLayer_CPP(NetworkGameScene);

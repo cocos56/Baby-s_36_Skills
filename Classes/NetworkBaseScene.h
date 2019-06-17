@@ -39,9 +39,9 @@ private: \
 	 \
 	virtual void editBoxReturn(EditBox* editBox) {}; \
 	 \
-	EditBox* createEditBox(string normalPngFile) \
+	EditBox* createEditBox(string normalPngFile, string pressedPngFile) \
 	{ \
-		_box = EditBox::create(Size(220, 38), Scale9Sprite::create(normalPngFile), Scale9Sprite::create("wite_edit.png")); \
+		_box = EditBox::create(Size(220, 38),  Scale9Sprite::create(normalPngFile), Scale9Sprite::create(pressedPngFile)); \
 		_box->setFontName(QE_Font); \
 		_box->setFontSize(25); \
 		_box->setFontColor(Color3B(0, 0, 255)); \
@@ -56,10 +56,12 @@ private: \
 		addChild(_box); \
 		return _box; \
 	} \
+ \
+	EditBox* createEditBox(string file) { return createEditBox(file, file); } \
 	 \
-	EditBox* createEditBox(string normalPngFile, string text, int maxLength) \
+	EditBox* createEditBox(string file, string text, int maxLength) \
 	{ \
-		_box = createEditBox(normalPngFile); \
+		_box = createEditBox(file); \
 		_box->setText(text.c_str()); \
 		_box->setPlaceHolder(text.c_str()); /*当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符*/ \
 		_box->setMaxLength(maxLength);   /*设置文本框中文本的最大长度*/ \

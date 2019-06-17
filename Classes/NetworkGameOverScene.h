@@ -10,6 +10,7 @@ class NetworkGameOverScene : public Layer, public EditBoxDelegate, public Networ
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
+	static int _winFlag;
 private:
 	//标签相关
 	void initLabel();
@@ -17,7 +18,5 @@ private:
 	//菜单相关
 	void initMenu();
 	//菜单按钮回调函数相关
-	void createRoom();
-	void joinRoom();
 	void back();
 };

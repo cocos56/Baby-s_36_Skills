@@ -2,6 +2,7 @@
 
 #include "NetworkGameOverScene.h"
 
+int NetworkGameOverScene::_winFlag = 1;
 
 QE_SINGLETON2_CPP(NetworkGameOverScene);
 
@@ -26,30 +27,19 @@ void NetworkGameOverScene::dealServerResponse(int statusCode)
 
 void NetworkGameOverScene::initLabel()
 {
-	createLabel("坏人：");
-	_label->setPosition(60, 390);
-	createLabel("宝宝：");
-	_label->setPosition(60, 325);
-	createLabel("裁判：");
-	_label->setPosition(60, 265);
-
-	NW_InitLogLabel(150, 20);
+	createLabel("本局结果");
+	_label->setPosition(430, 390);
+	string str;
+	if (_winFlag == 1) { str = "宝宝玩家：胜"; }
+	else if(_winFlag == 2) { str = "坏人玩家：胜"; }
+	else if (_winFlag == 3) { str = "裁判断线：平局"; }
+	createLabel(str);
+	_label->setPosition(400, 325);
 }
 
 void NetworkGameOverScene::initMenu()
 {
-	QE_CreateLabelMenu(840, 100, "发送", NetworkGameOverScene, createRoom);
-	QE_CreateLabelMenuAgain(10, 500, "返回", NetworkGameOverScene, back);
-}
-
-void NetworkGameOverScene::createRoom()
-{
-
-}
-
-void NetworkGameOverScene::joinRoom()
-{
-
+	QE_CreateLabelMenu(10, 500, "返回", NetworkGameOverScene, back);
 }
 
 void NetworkGameOverScene::back() { QE_ReplaceScene(SignInScene); };

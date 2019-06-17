@@ -46,6 +46,7 @@ void CreateRoomScene::confirm()
 	Connect::createMsg();
 	Connect::addMsg("nm", QE_ToJStr(_nameBox->getText()));
 	Connect::addMsg("pw", QE_ToJStr(_passwordBox->getText()));
+	//Connect::addMsg("creater", QE_ToJStr(SignInScene::_nickName.c_str()));
 	Connect::sendMsg();
 }
 

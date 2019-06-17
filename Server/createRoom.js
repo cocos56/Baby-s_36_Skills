@@ -1,21 +1,25 @@
 var db = require("./db")
 
-exports.callback = function createRoomCallback(msg, conn)
+exports.callback = function createRoomCallback(msg, conn, room)
 {
     let msgBack = {"event": 5}
     let nm = msg["nm"]
     let pw = msg["pw"]
     if(nm == ''){ msgBack['status'] = 520 }
-    else{ createRoom(conn, nm, pw, msgBack) }
+    else{ createRoom(conn, nm, pw, msgBack, room) }
     if('status' in msgBack){conn.send(JSON.stringify(msgBack))}
     
 }
 
-function createRoom(conn, nm, pw, msgBack)
+function createRoom(conn, nm, pw, msgBack, room)
 {
-    let key = conn["key"]
+    room['id'] = 1
+    room["nm"] = nm
+    room["creater"] = "2"
+    room["pw"] = pw
+    console.log(room)
     
-    insertCreateRoomData(conn, nm, pw, msgBack)
+    //insertCreateRoomData(conn, nm, pw, msgBack)
 }
 
 function insertCreateRoomData(conn, nm, pw, msgBack)

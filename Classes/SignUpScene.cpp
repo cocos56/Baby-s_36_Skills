@@ -7,8 +7,9 @@ EditBox* SignUpScene::_unBox, * SignUpScene::_nickNameBox, * SignUpScene::_passw
 QE_SINGLETON2_CPP(SignUpScene);
 
 QE_CreateSceneFromLayer_CPP(SignUpScene);
-	paths = { "fonts" };
+	paths = { "fonts", "SignInScene" };
 	QE_SetResourcesSearchDir;
+	QE_addBgSpriteToThis;
 
 	_instance = this;
 

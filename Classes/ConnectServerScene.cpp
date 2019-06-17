@@ -7,8 +7,9 @@ EditBox* ConnectServerScene::_ip1Box, * ConnectServerScene::_port1Box, * Connect
 QE_SINGLETON2_CPP(ConnectServerScene);
 
 QE_CreateSceneFromLayer_CPP(ConnectServerScene);
-	paths = { "fonts" };
+	paths = { "fonts", "ConnectServerScene" };
 	QE_SetResourcesSearchDir;
+	QE_addBgSpriteToThis;
 	
 	_instance = this;
 
@@ -88,22 +89,22 @@ void ConnectServerScene::initEditBox()
 {
 	createLabel("Coco's Server")->setPosition(140, 390);
 	//输入IP的框
-	_ip1Box = _box = createEditBox("green_edit.png", "10.6.32.1", 15);
+	_ip1Box = _box = createEditBox("editBox.png", "10.6.32.1", 15);
 	_box->setPosition(Vec2(320, 380));
 	_box->setInputMode(EditBox::InputMode::URL);
 	//输入端口的框
-	_port1Box = _box = createEditBox("orange_edit.png", "56", 5);
+	_port1Box = _box = createEditBox("editBox.png", "56", 5);
 	_box->setSize(Size(80, 38));
 	_box->setPosition(Vec2(570, 380));
 	_box->setInputMode(EditBox::InputMode::NUMERIC);
 
 	createLabel("本地服务器")->setPosition(140, 340);
 	//输入IP的框
-	_ip2Box = _box = createEditBox("green_edit.png", "127.0.0.1", 15);
+	_ip2Box = _box = createEditBox("editBox.png", "127.0.0.1", 15);
 	_box->setPosition(Vec2(320, 330));
 	_box->setInputMode(EditBox::InputMode::URL);
 	//输入端口的框
-	_port2Box = _box = createEditBox("orange_edit.png", "56", 5);
+	_port2Box = _box = createEditBox("editBox.png", "56", 5);
 	_box->setSize(Size(80, 38));
 	_box->setPosition(Vec2(570, 330));
 	_box->setInputMode(EditBox::InputMode::NUMERIC);
