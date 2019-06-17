@@ -3,6 +3,7 @@ var ws = require("nodejs-websocket")
 var signUp = require("./signUp")
 var signIn = require("./signIn")
 var createRoom = require("./createRoom")
+var getRooms = require("./getRooms")
 
 var room = {}
 
@@ -35,7 +36,8 @@ function onMesage(msg, conn)
     console.log("收到信息：", msg)
     if(2 == msg["event"]){signIn.callback(msg, conn)}
     else if(3 == msg["event"]){signUp.callback(msg, conn)}
-    else if(5 == msg["event"]){createRoom.callback(msg, conn, room)}
+    else if(4 == msg["event"]){getRooms.callback(conn, room)}
+    else if(5 == msg["event"]){createRoom.callback(conn, room)}
 }
 
 function onClose(code, reason)

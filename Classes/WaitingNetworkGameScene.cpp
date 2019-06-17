@@ -1,16 +1,16 @@
 ﻿#pragma execution_character_set("utf-8")
 
-#include "SelectRoleScene.h"
+#include "WaitingNetworkGameScene.h"
 
-RadioButtonGroup* SelectRoleScene::_radioButtonGroup;
-vector<RichText*> SelectRoleScene::_texts;
-RichText* SelectRoleScene::_richText;
-int SelectRoleScene::_index;
+RadioButtonGroup* WaitingNetworkGameScene::_radioButtonGroup;
+vector<RichText*> WaitingNetworkGameScene::_texts;
+RichText* WaitingNetworkGameScene::_richText;
+int WaitingNetworkGameScene::_index;
 
-QE_SINGLETON2_CPP(SelectRoleScene);
+QE_SINGLETON2_CPP(WaitingNetworkGameScene);
 
-QE_CreateSceneFromLayer_CPP(SelectRoleScene);
-	paths = { "fonts", "SelectRoleScene" };
+QE_CreateSceneFromLayer_CPP(WaitingNetworkGameScene);
+	paths = { "fonts", "WaitingNetworkGameScene" };
 	QE_SetResourcesSearchDir;
 	QE_addBgSpriteToThis;
 
@@ -25,25 +25,26 @@ QE_CreateSceneFromLayer_CPP(SelectRoleScene);
 	return true;
 }
 
-void SelectRoleScene::dealServerResponse(int statusCode)
+void WaitingNetworkGameScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 }
 
-void SelectRoleScene::initLabel()
+void WaitingNetworkGameScene::initLabel()
 {
-	NW_InitLogLabel(150, 100);
+	createLabel("请等待其他玩家就绪")->setPosition(430, 350);
+	//NW_InitLogLabel(150, 100);
 }
 
-void SelectRoleScene::initRichText()
+void WaitingNetworkGameScene::initRichText()
 {
 	createRichText(320, 300, "宝宝 ", "child.png");
 	createRichText(440, 300, "坏人 ", "scoundrel.png");
 	createRichText(560, 300, "裁判 ", "referee.png");
 }
 
-RichText* SelectRoleScene::createRichText(int x, int y, string roleName, string fileName)
+RichText* WaitingNetworkGameScene::createRichText(int x, int y, string roleName, string fileName)
 {
 	//创建RichText对象
 	_richText = RichText::create();
@@ -70,7 +71,7 @@ RichText* SelectRoleScene::createRichText(int x, int y, string roleName, string 
 	return _richText;
 }
 
-void SelectRoleScene::setTextsColor(int n)
+void WaitingNetworkGameScene::setTextsColor(int n)
 {
 	for (size_t i = 0; i < _texts.size(); i++)
 	{
@@ -79,21 +80,20 @@ void SelectRoleScene::setTextsColor(int n)
 	_texts[n]->setColor(Color3B(153, 204, 0));
 }
 
-void SelectRoleScene::initMenu()
+void WaitingNetworkGameScene::initMenu()
 {
-	QE_CreateLabelMenu(420, 200, "开始比拼", SelectRoleScene, createRoom);
-	QE_CreateLabelMenuAgain(10, 500, "返回", SelectRoleScene, back);
+	QE_CreateLabelMenu(10, 500, "返回", WaitingNetworkGameScene, back);
 }
 
-void SelectRoleScene::createRoom()
+void WaitingNetworkGameScene::createRoom()
 {
 	Connect::createMsg();
 	Connect::addMsg("type", _index);
 }
 
-void SelectRoleScene::back() { QE_ReplaceScene(SignInScene); };
+void WaitingNetworkGameScene::back() { QE_ReplaceScene(SignInScene); };
 
-void SelectRoleScene::initRadioButton()
+void WaitingNetworkGameScene::initRadioButton()
 {
 	_radioButtonGroup = RadioButtonGroup::create();
 	addChild(_radioButtonGroup);
@@ -104,14 +104,14 @@ void SelectRoleScene::initRadioButton()
 		float posX = 240 + 120 * i;
 		radioButton->setPosition(Vec2(posX, 270));
 		_radioButtonGroup->addRadioButton(radioButton);
-		_radioButtonGroup->addEventListener(CC_CALLBACK_3(SelectRoleScene::onChangedRadioButtonGroup, this));
+		_radioButtonGroup->addEventListener(CC_CALLBACK_3(WaitingNetworkGameScene::onChangedRadioButtonGroup, this));
 		if (i == 0) { radioButton->setVisible(false); }
 		addChild(radioButton);
 	}
 }
 
-void SelectRoleScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
+void WaitingNetworkGameScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
 {
 	_index = index;
-	setTextsColor(index-1);
+	setTextsColor(index - 1);
 }

@@ -10,12 +10,12 @@ QE_SINGLETON2_CPP(SignInScene);
 QE_CreateSceneFromLayer_CPP(SignInScene);
 	paths = { "fonts", "SignInScene" };
 	QE_SetResourcesSearchDir;
-	QE_addBgSpriteToThis;
 
 	_instance = this;
 
 	Connect::connect(Connect::Event::SignIn);
 
+	initSprite();
 	initLabel();
 	initMenu();
 	initEditBox();
@@ -29,13 +29,22 @@ void SignInScene::dealServerResponse(int statusCode)
 	QMessageBox(status);
 }
 
-void SignInScene::initLabel(){ NW_InitLogLabel(150, 150); }
+void SignInScene::initSprite()
+{
+	QE_addBgSpriteToThis;
+}
+
+void SignInScene::initLabel(){ NW_InitLogLabel(150, 110); }
 
 void SignInScene::initMenu()
 {
-	QE_CreateLabelMenu(380, 270, "登录", SignInScene, signIn);
-	QE_CreateLabelMenuAgain(530, 270, "注册", SignInScene, signUp);
-	QE_CreateLabelMenuAgain(10, 500, "返回", SignInScene, back);
+	int x, y;
+	x = 380, y = 270;
+	QE_CreateLabelMenu(x, y, "登录", SignInScene, signIn);
+	x = 530, y = 270;
+	QE_CreateLabelMenuAgain(x, y, "注册", SignInScene, signUp);
+	x = 10, y = 500;
+	QE_CreateLabelMenuAgain(x, y, "返回", SignInScene, back);
 }
 
 void SignInScene::signIn()
@@ -55,7 +64,7 @@ void SignInScene::initEditBox()
 	//输入ID的框
 	_idBox = _box = createEditBox("editBox3.png");
 	_box->setPosition(Vec2(370, 380));
-	_box->setPlaceHolder("ID或用户名");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
+	_box->setPlaceHolder("用户名");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
 	//输入密码的框
 	_passwordBox = _box = createEditBox("editBox4.png");
 	_box->setPosition(Vec2(370, 330));

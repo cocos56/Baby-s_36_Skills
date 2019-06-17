@@ -31,6 +31,7 @@ MenuItemLabel* QMenu::createMenuItemLabel(const string& text, const ccMenuCallba
 Menu* QMenu::createMenuLabel(const string& text, const ccMenuCallback& callback)
 {
 	MenuItemLabel* item = createMenuItemLabel(text, callback);
+	item->setColor(Color3B::BLACK);
 	Menu* menu = Menu::create(item, NULL);
 	menu->setAnchorPoint(Vec2(0, 0));
 	return menu;

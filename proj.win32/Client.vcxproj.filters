@@ -132,6 +132,9 @@
     <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\WaitingNetworkGameScene.cpp">
+      <Filter>Network\NetworkGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -241,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h">
       <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WaitingNetworkGameScene.h">
+      <Filter>Network\NetworkGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

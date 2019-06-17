@@ -7,8 +7,9 @@ EditBox* CreateRoomScene::_nameBox, * CreateRoomScene::_passwordBox;
 QE_SINGLETON2_CPP(CreateRoomScene);
 
 QE_CreateSceneFromLayer_CPP(CreateRoomScene);
-	paths = { "fonts" };
+	paths = { "fonts", "CreateRoomScene" };
 	QE_SetResourcesSearchDir;
+	QE_addBgSpriteToThis;
 
 	_instance = this;
 
@@ -29,8 +30,8 @@ void CreateRoomScene::dealServerResponse(int statusCode)
 
 void CreateRoomScene::initLabel()
 {
-	createLabel("创建房间");
-	_label->setPosition(420, 420);
+	//createLabel("创建房间");
+	//_label->setPosition(420, 420);
 
 	NW_InitLogLabel(150, 100);
 }
@@ -46,22 +47,25 @@ void CreateRoomScene::confirm()
 	Connect::createMsg();
 	Connect::addMsg("nm", QE_ToJStr(_nameBox->getText()));
 	Connect::addMsg("pw", QE_ToJStr(_passwordBox->getText()));
-	//Connect::addMsg("creater", QE_ToJStr(SignInScene::_nickName.c_str()));
+	Connect::addMsg("creator", QE_ToJStr(SignInScene::_nickName.c_str()));
 	Connect::sendMsg();
 }
 
-void CreateRoomScene::back() { QE_ReplaceScene(SignInScene); };
+void CreateRoomScene::back() { QE_ReplaceScene(GetRoomsScene); };
 
 void CreateRoomScene::initEditBox()
 {
 	//输入用户名的框
-	_nameBox = _box = createEditBox("orange_edit.png");
+	Sprite* spr = Sprite::create("editBox.png");
+	_nameBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
+	_box->setSize(spr->getContentSize());
 	_box->setPosition(Vec2(370, 360));
 	_box->setPlaceHolder("房间名");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
 
 	//输入密码的框
-	_passwordBox = _box = createEditBox("green_edit.png");
-	_box->setPosition(Vec2(370, 310));
+	_passwordBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
+	_box->setSize(spr->getContentSize());
+	_box->setPosition(Vec2(370, 290));
 	_box->setPlaceHolder("房间密码");
 	_box->setInputFlag(EditBox::InputFlag::PASSWORD);////设置文本框显示文本的样式，输入密码标记
 }

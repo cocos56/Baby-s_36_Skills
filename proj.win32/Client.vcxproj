@@ -179,6 +179,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Test\SignInSceneTest.cpp" />
     <ClCompile Include="..\Classes\Test\SocketIOTestLayer.cpp" />
     <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp" />
+    <ClCompile Include="..\Classes\WaitingNetworkGameScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +218,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Test\SignInSceneTest.h" />
     <ClInclude Include="..\Classes\Test\SocketIOTestLayer.h" />
     <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h" />
+    <ClInclude Include="..\Classes\WaitingNetworkGameScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

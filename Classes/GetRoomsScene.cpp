@@ -17,6 +17,7 @@ QE_addBgSpriteToThis;
 
 	initLabel();
 	initMenu();
+	getRoomInfo();
 	return true;
 }
 
@@ -25,6 +26,11 @@ void GetRoomsScene::dealServerResponse(int statusCode)
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 	QMessageBox(status);
+}
+void GetRoomsScene::getRoomInfo()
+{
+	Connect::createMsg();
+	Connect::sendMsg();
 }
 
 void GetRoomsScene::initLabel()
@@ -36,17 +42,13 @@ void GetRoomsScene::initLabel()
 
 	createLabel("房间信息");
 	_label->setPosition(400, 480);
-	createLabel("房间号：");
-	_label->setPosition(350, 430);
-	_roomID = createLabel("无");
-	_roomID->setPosition(450, 430);
 	createLabel("房间名：");
 	_label->setPosition(350, 380);
-	_roomName = createLabel("无");
+	_roomName = createLabel("");
 	_roomName->setPosition(450, 380);
 	createLabel("创建者：");
 	_label->setPosition(350, 330);
-	_roomCreater = createLabel("无");
+	_roomCreater = createLabel("");
 	_roomCreater->setPosition(450, 330);
 
 	NW_InitLogLabel(150, 100);
@@ -59,14 +61,8 @@ void GetRoomsScene::initMenu()
 	QE_CreateLabelMenuAgain(10, 500, "返回", GetRoomsScene, back);
 }
 
-void GetRoomsScene::createRoom()
-{
-	QE_ReplaceScene(SignInScene);
-}
+void GetRoomsScene::createRoom(){ QE_ReplaceScene(CreateRoomScene); }
 
-void GetRoomsScene::joinRoom()
-{
-
-}
+void GetRoomsScene::joinRoom(){ QE_ReplaceScene(JoinRoomScene); }
 
 void GetRoomsScene::back() { QE_ReplaceScene(SignInScene); };

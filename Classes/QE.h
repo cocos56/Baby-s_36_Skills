@@ -17,6 +17,7 @@
 #include "CreateRoomScene.h"
 #include "JoinRoomScene.h"
 #include"SelectRoleScene.h"
+#include "WaitingNetworkGameScene.h"
 #include "NetworkGameScene.h"
 #include "NetworkGameOverScene.h"
 

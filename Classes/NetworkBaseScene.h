@@ -33,6 +33,7 @@ private: \
 	{ \
 		_label = Label::create(show, QE_Font, 24); \
 		_label->setAnchorPoint(Vec2(0, 0)); \
+		_label->setColor(Color3B::BLACK); \
 		addChild(_label); \
 		return _label; \
 	}; \

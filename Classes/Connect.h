@@ -16,7 +16,8 @@ public:
 		CreateRoom = 5, //创建房间事件
 		JoinRoom = 6, //加入房间事件
 		SelectRole = 7, //选择角色事件
-		Dialog = 8, //对话事件
+		Waiting = 8, //等待所有玩家就绪事件
+		Dialog = 9, //对话事件
 	};
 
 	enum Status {
@@ -48,6 +49,7 @@ public:
 
 		//GetRooms = 4, //获取房间列表事件
 		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
+		GetRoomsCase2Failed = 420, //当前无可用的房间，请创建房间
 		//CreateRoom = 5, //创建房间事件
 		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
 		CreateRoomCase2Failed = 520, //创建房间失败，房间名不能为空，请重填。
@@ -57,8 +59,11 @@ public:
 		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
 		//SelectRole = 7, //选择角色事件
 		SelectRoleCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
-		//Dialog = 8, //对话事件
-		DialogCase1Successful = 811, //连接服务器成功，成功原因：成功建立WebSocket
+		//Waiting = 8, //等待所有玩家就绪事件
+		WaitingCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
+		WaitingCase2Successful = 721, //此状态代表所有玩家已就绪，应立即转入开始比拼界面
+		//Dialog = 9, //对话事件
+		DialogCase1Successful = 911, //连接服务器成功，成功原因：成功建立WebSocket					 
 	};
 
 public:

@@ -13,6 +13,8 @@ public:
 	static EditBox* _idBox, * _passwordBox;
 	static string _nickName;
 private:
+	//背景相关
+	void initSprite();
 	//标签相关
 	void initLabel();
 

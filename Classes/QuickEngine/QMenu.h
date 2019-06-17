@@ -29,7 +29,8 @@ public:
 
 #define QE_CreateLabelMenuAgain(__X__ , __Y__ ,__STR__, __TYPE__, __Fun__, ...) menu = QMenu::createMenuLabel(__STR__, bind(&__TYPE__::__Fun__, this, ##__VA_ARGS__)); \
 menu->setPosition(__X__, __Y__); \
-addChild(menu); \
+addChild(menu);
+
 
 #define QE_CreateLabelMenu(__X__ , __Y__ ,__STR__, __TYPE__, __Fun__, ...) Menu* menu; \
 QE_CreateLabelMenuAgain(__X__ , __Y__ ,__STR__, __TYPE__, __Fun__, ##__VA_ARGS__)

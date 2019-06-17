@@ -12,11 +12,11 @@ Quick Engine所属快速精灵模块
 
 class QSprite
 {
-	QE_SINGLETON_H(QSprite);
-
 public:
 	static Sprite* createBgSprite();
 	static Sprite* createBgSprite(const std::string& filename);
+	static Sprite* create(string fileName, int x, int y);
 };
 
 #define QE_addBgSpriteToThis addChild(QSprite::createBgSprite());
+#define QE_CreateSprite(fileName, x, y) addChild(QSprite::create(fileName, x, y));
