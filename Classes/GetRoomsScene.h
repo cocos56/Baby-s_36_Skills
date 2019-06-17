@@ -14,7 +14,6 @@ private:
 	//标签相关
 	static Label* _roomID, * _roomName, * _roomCreater;
 	void initLabel();
-	void getRoomInfo();
 
 	//菜单相关
 	void initMenu();

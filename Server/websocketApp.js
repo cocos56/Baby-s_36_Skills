@@ -4,8 +4,7 @@ var signUp = require("./signUp")
 var signIn = require("./signIn")
 var createRoom = require("./createRoom")
 var getRooms = require("./getRooms")
-
-var room = {}
+var joinRoom = require("./joinRoom")
 
 console.log("creating server ...")
 {
@@ -30,6 +29,8 @@ function serverCallbackFunction(conn)
     conn.on("error", function(code, reason){ onError(code, reason) })
 }
 
+var room = {}
+
 function onMesage(msg, conn)
 {
     msg = JSON.parse(msg)
@@ -37,7 +38,8 @@ function onMesage(msg, conn)
     if(2 == msg["event"]){signIn.callback(msg, conn)}
     else if(3 == msg["event"]){signUp.callback(msg, conn)}
     else if(4 == msg["event"]){getRooms.callback(conn, room)}
-    else if(5 == msg["event"]){createRoom.callback(conn, room)}
+    else if(5 == msg["event"]){createRoom.callback(msg, conn, room)}
+    else if(6 == msg["event"]){joinRoom.callback(msg, conn, room)}
 }
 
 function onClose(code, reason)

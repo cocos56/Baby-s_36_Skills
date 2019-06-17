@@ -57,6 +57,9 @@ public:
 		CreateRoomCase3Successful = 531, //恭喜您创建房间成功。\n马上为您转入选择角色界面。
 		//JoinRoom = 6, //进入房间事件
 		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
+		JoinRoomCase2Failed = 620, //进入房间失败，房间名为空
+		JoinRoomCase3Failed = 630, //进入房间失败，房间密码错误
+		JoinRoomCase3Successful = 631, //进入房间成功
 		//SelectRole = 7, //选择角色事件
 		SelectRoleCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
 		//Waiting = 8, //等待所有玩家就绪事件

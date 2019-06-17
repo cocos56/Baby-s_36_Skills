@@ -14,9 +14,8 @@ exports.callback = function signUpCallback(msg, conn)
     else if(!isNaN(un)){ msgBack['status'] = 330}
     else if(nn == ''){ msgBack['status'] = 340}
     else if(pw == ''){ msgBack['status'] = 350}
-    else{ signUp(conn, un, nn, pw, msgBack) }
     if('status' in msgBack){conn.send(JSON.stringify(msgBack))}
-    
+    else{ signUp(conn, un, nn, pw, msgBack) }
 }
 
 function signUp(conn, un, nn, pw, msgBack)

@@ -7,8 +7,8 @@ exports.callback = function signUpCallback(msg, conn)
     let pw = msg["pw"]
     if(un == ''){ msgBack['status'] = 220 }
     else if(pw == ''){ msgBack['status'] = 230}
-    else{ signIn(conn, un, pw, msgBack) }
     if('status' in msgBack){conn.send(JSON.stringify(msgBack))}
+    else{ signIn(conn, un, pw, msgBack) }
 }
 
 function signIn(conn, un, pw, msgBack)

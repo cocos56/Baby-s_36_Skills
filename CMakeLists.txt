@@ -61,6 +61,7 @@ list(APPEND GAME_SOURCE
      Classes/SelectRoleScene.cpp
      Classes/SignInScene.cpp
      Classes/SignUpScene.cpp
+     Classes/WaitingNetworkGameScene.cpp
      Classes/QuickEngine/QAnimate.cpp
      Classes/QuickEngine/QEditBox.cpp
      Classes/QuickEngine/QJson.cpp
@@ -93,6 +94,7 @@ list(APPEND GAME_HEADER
      Classes/SelectRoleScene.h
      Classes/SignInScene.h
      Classes/SignUpScene.h
+     Classes/WaitingNetworkGameScene.h
      Classes/QuickEngine/QAnimate.h
      Classes/QuickEngine/QDesignMode.h
      Classes/QuickEngine/QEditBox.h

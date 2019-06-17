@@ -17,39 +17,38 @@ QE_addBgSpriteToThis;
 
 	initLabel();
 	initMenu();
-	getRoomInfo();
 	return true;
 }
 
 void GetRoomsScene::dealServerResponse(int statusCode)
 {
+	if (statusCode == 411)
+	{
+		_roomName->setString(QJson::getString("nm"));
+		_roomCreater->setString(QJson::getString("creator"));
+	}
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 	QMessageBox(status);
 }
-void GetRoomsScene::getRoomInfo()
-{
-	Connect::createMsg();
-	Connect::sendMsg();
-}
 
 void GetRoomsScene::initLabel()
 {
-	auto s = Scale9Sprite::create("green_edit.png");  //设置ScrollView背景，便于查看容器大小
+	auto s = Scale9Sprite::create("card.png");  //设置ScrollView背景，便于查看容器大小
 	s->setContentSize(Size(230, 215));
 	s->setPosition(Vec2(450, 410));
 	addChild(s);
 
 	createLabel("房间信息");
-	_label->setPosition(400, 480);
+	_label->setPosition(400, 460);
 	createLabel("房间名：");
-	_label->setPosition(350, 380);
+	_label->setPosition(350, 400);
 	_roomName = createLabel("");
-	_roomName->setPosition(450, 380);
+	_roomName->setPosition(450, 400);
 	createLabel("创建者：");
-	_label->setPosition(350, 330);
+	_label->setPosition(350, 340);
 	_roomCreater = createLabel("");
-	_roomCreater->setPosition(450, 330);
+	_roomCreater->setPosition(450, 340);
 
 	NW_InitLogLabel(150, 100);
 }

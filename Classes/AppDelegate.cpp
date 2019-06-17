@@ -72,11 +72,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//scene = ConnectServerScene::createScene();
 	//scene = SignInScene::createScene();
 	//scene = SignUpScene::createScene();
-	//scene = GetRoomsScene::createScene();
+	scene = GetRoomsScene::createScene();
 	//scene = CreateRoomScene::createScene();
 	//scene = JoinRoomScene::createScene();
 	//scene = SelectRoleScene::createScene();
-	scene = WaitingNetworkGameScene::createScene();
+	//scene = WaitingNetworkGameScene::createScene();
 	//scene = NetworkGameScene::createScene();
 	//scene = NetworkGameOverScene::createScene();
 
