@@ -17,14 +17,13 @@ private:
 	//富文本相关
 	static RichText* _richText;
 	static vector<RichText*> _texts;
-	void initRichText();
 	RichText* createRichText(int x, int y, string roleName, string fileName);
 	void setTextsColor(int n);
 
 	//菜单相关
 	void initMenu();
 	//菜单按钮回调函数相关
-	void createRoom();
+	void confirm();
 	void back();
 
 	//选项

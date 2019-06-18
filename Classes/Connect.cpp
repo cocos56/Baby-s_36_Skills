@@ -50,7 +50,7 @@ string Connect::getStatus(Status status)
 	else if (status == SignInCase5Failed) { return "登录失败，您所输入的用户名或ID对应多个账户。\n请联系开发维护人员。"; }
 	else if (status == SignInCase6Failed) { return "登录失败，服务器在执行查询ID或用户名的SQL语句时出现未知异常。\n请联系开发维护人员。"; }
 	else if (status == SignInCase7Failed) { return "登录失败，您所输入的密码错误。"; }
-	else if (status == SignInCase7Successful) { return "登录成功，1秒后自动跳转到选择房间界面。"; }
+	else if (status == SignInCase7Successful) { return "登录成功，马上为您转到选择房间界面。"; }
 	//SignUp = 3, //注册事件
 	else if (status == SignUpCase1Successful) { return "请输入用户名、昵称和密码进行账号注册。"; }
 	else if (status == SignUpCase2Failed) { return "创建账号失败。\n用户名不能为空，请重填。"; }
@@ -82,7 +82,7 @@ string Connect::getStatus(Status status)
 
 void Connect::onOpen(WebSocket* ws)
 {
-	//进行这样的判断是因为WebSocket对象没有setTag方法0
+	//进行这样的判断是因为WebSocket对象没有setTag方法
 	if (ws != _ws){return;}
 	_isConnecting = false;
 	if (Connect::_nowEvent != Connect::Event::ConnectServer) { return; };
@@ -122,7 +122,8 @@ void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 	CCLOG("收到信息：%s", data.bytes);
 	QJson::initDocWithString(data.bytes);
 	int event = QJson::getInt("event");
-	if (event == 3){ SignUpScene::dealServerResponse(QJson::getInt("status")); }
+	if (event == 2) { SignInScene::dealServerResponse(QJson::getInt("status")); }
+	else if (event == 3){ SignUpScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 4) { GetRoomsScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 5){ CreateRoomScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 6) { JoinRoomScene::dealServerResponse(QJson::getInt("status")); }

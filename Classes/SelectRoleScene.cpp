@@ -19,7 +19,6 @@ QE_CreateSceneFromLayer_CPP(SelectRoleScene);
 	Connect::connect(Connect::Event::SelectRole);
 
 	initLabel();
-	initRichText();
 	initMenu();
 	initRadioButton();
 	return true;
@@ -34,13 +33,6 @@ void SelectRoleScene::dealServerResponse(int statusCode)
 void SelectRoleScene::initLabel()
 {
 	NW_InitLogLabel(150, 100);
-}
-
-void SelectRoleScene::initRichText()
-{
-	//createRichText(320, 300, "宝宝 ", "child.png");
-	//createRichText(440, 300, "坏人 ", "scoundrel.png");
-	//createRichText(560, 300, "裁判 ", "referee.png");
 }
 
 RichText* SelectRoleScene::createRichText(int x, int y, string roleName, string fileName)
@@ -81,14 +73,16 @@ void SelectRoleScene::setTextsColor(int n)
 
 void SelectRoleScene::initMenu()
 {
-	//QE_CreateLabelMenu(420, 200, "开始比拼", SelectRoleScene, createRoom);
-	//QE_CreateLabelMenuAgain(10, 500, "返回", SelectRoleScene, back);
+	QE_CreateLabelMenu(420, 200, "开始比拼", SelectRoleScene, confirm);
+	QE_CreateLabelMenuAgain(10, 500, "返回", SelectRoleScene, back);
 }
 
-void SelectRoleScene::createRoom()
+void SelectRoleScene::confirm()
 {
 	Connect::createMsg();
 	Connect::addMsg("type", _index);
+	Connect::addMsg("un", QE_strToJStr(SignInScene::_un));
+	Connect::sendMsg();
 }
 
 void SelectRoleScene::back() { QE_ReplaceScene(SignInScene); };
@@ -114,5 +108,4 @@ void SelectRoleScene::initRadioButton()
 void SelectRoleScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
 {
 	_index = index;
-	//setTextsColor(index-1);
 }

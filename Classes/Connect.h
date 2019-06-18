@@ -62,9 +62,10 @@ public:
 		JoinRoomCase3Successful = 631, //进入房间成功
 		//SelectRole = 7, //选择角色事件
 		SelectRoleCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
+		SelectRoleCase2Failed = 720, //该玩家所选的角色已被其他玩家选择
 		//Waiting = 8, //等待所有玩家就绪事件
-		WaitingCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
-		WaitingCase2Successful = 721, //此状态代表所有玩家已就绪，应立即转入开始比拼界面
+		WaitingCase1Successful = 811, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
+		WaitingCase2Successful = 821, //此状态代表所有玩家已就绪，应立即转入开始比拼界面
 		//Dialog = 9, //对话事件
 		DialogCase1Successful = 911, //连接服务器成功，成功原因：成功建立WebSocket					 
 	};

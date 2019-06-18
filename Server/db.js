@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 
-console.log("连接数据库")
+console.log("\n正在初始化连接数据库")
 
 var db = mysql.createConnection({host:'localhost', user: 'root', password: '123123', database: 'baby\'s 36 skills'})
 
@@ -8,7 +8,7 @@ function q(cmd, callback, errcallback)
 {
     data = db.query(cmd, function(err, data)
     {
-        console.log("cmd:",cmd)
+        //console.log("cmd:",cmd)
         if(err)
         {
             console.log("err:", err)
@@ -16,14 +16,12 @@ function q(cmd, callback, errcallback)
         }
         else
         {
-            console.log("data", data)
+            //console.log("data", data)
             callback(data)
         }
     })
 }
 
-//1.connect
-exports.q = q
 
 exports.t = function truncateTable(tableName)
 {
@@ -37,4 +35,4 @@ exports.t = function truncateTable(tableName)
 // var cmd = 'SELECT * FROM account WHERE ID=' + id
 // cmd = 'SELECT * FROM account WHERE ID=' + escape(id)
 //db.end()
-console.log("关闭数据库")
+console.log("初始化连接数据库完毕\n")

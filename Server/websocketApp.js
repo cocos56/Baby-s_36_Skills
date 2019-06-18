@@ -1,12 +1,14 @@
-var ws = require("nodejs-websocket")
+console.log("正在创建服务器")
 
+var ws = require("nodejs-websocket")
 var signUp = require("./signUp")
 var signIn = require("./signIn")
 var createRoom = require("./createRoom")
 var getRooms = require("./getRooms")
 var joinRoom = require("./joinRoom")
+var selectRole = require("./selectRole")
 
-console.log("creating server ...")
+
 {
     let port = 56
     var server = ws.createServer(function(conn){
@@ -16,9 +18,8 @@ console.log("creating server ...")
 
 function serverCallbackFunction(conn)
 {
-    
-    console.log("a new connection come, it's key is", conn["key"], conn.key)
-    console.log("Sever connections = ", server.connections.length, server.connections.keys)
+    console.log("A connection come")
+    console.log("Sever connections = ", server.connections.length)
     //when a new message has been received.
     conn.on("text", function(str){ onMesage(str, conn) })
 
@@ -40,6 +41,7 @@ function onMesage(msg, conn)
     else if(4 == msg["event"]){getRooms.callback(conn, room)}
     else if(5 == msg["event"]){createRoom.callback(msg, conn, room)}
     else if(6 == msg["event"]){joinRoom.callback(msg, conn, room)}
+    else if(7 == msg["event"]){selectRole.callback(msg, conn, room)}
 }
 
 function onClose(code, reason)
@@ -54,4 +56,4 @@ function onError(code, reason)
     console.log("Sever connections = ", server.connections.length)
 }
 
-console.log("the server of websocket has been created successfully.")
+console.log("创建服务器完毕")

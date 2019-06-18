@@ -10,8 +10,8 @@ class SignInScene : public Layer, public EditBoxDelegate, public NetworkBaseScen
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
-	static EditBox* _idBox, * _passwordBox;
-	static string _nickName;
+	static EditBox* _unBox, * _passwordBox;
+	static string _un;
 private:
 	//背景相关
 	void initSprite();

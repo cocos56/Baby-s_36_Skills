@@ -22,6 +22,6 @@ private:
 	void back();
 
 	//输入框相关
-	static EditBox* _unBox, * _nickNameBox, * _passwordBox;
+	static EditBox* _unBox, * _passwordBox;
 	void initEditBox();
 };
