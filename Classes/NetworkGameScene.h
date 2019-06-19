@@ -11,6 +11,13 @@ class NetworkGameScene : public Layer, public EditBoxDelegate, public NetworkBas
 public:
 	static void dealServerResponse(int statusCode);
 private:
+	//背景精灵
+	static vector< Sprite*> _onSprites;
+	static Sprite* _spr;
+	void initSprits();
+	void createSprite(int x, int y, string identity);
+	void setOnSprites(int index);
+
 	//标签相关
 	void initLabel();
 
@@ -28,9 +35,4 @@ private:
 	ListView* _listView;
 	void initListView();
 	void addListViewElement(const string msg, const string pic);
-
-	//选项
-	static vector< Sprite*> _onSprites;
-	void setOnSprites(int index);
-	void initSprits();
 };

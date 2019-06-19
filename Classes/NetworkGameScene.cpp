@@ -3,6 +3,7 @@
 #include "NetworkGameScene.h"
 
 vector< Sprite*> NetworkGameScene::_onSprites;
+Sprite* NetworkGameScene::_spr;
 
 /*
 
@@ -55,7 +56,7 @@ void NetworkGameScene::initLabel()
 void NetworkGameScene::initMenu()
 {
 	QE_CreateSpriteMenu(40, 520, "back.png", NetworkGameScene, back);
-	QE_CreateSpriteMenu2(860, 20, "send.png", "sendPressed.png", NetworkGameScene, send);
+	QE_CreateSpriteMenu2(865, 55, "send.png", "sendPressed.png", NetworkGameScene, send);
 }
 
 void NetworkGameScene::send()
@@ -67,53 +68,59 @@ void NetworkGameScene::back() { QE_ReplaceScene(NetworkGameOverScene); };
 
 void NetworkGameScene::initEditBox()
 {
-	Sprite* spr = Sprite::create("editBox.png");
+	_spr = Sprite::create("editBox.png");
 	//输入ID的框
 	_box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setPosition(Vec2(53, 20));
-	_box->setSize(spr->getContentSize());
+	_box->setSize(_spr->getContentSize());
 }
 
 void NetworkGameScene::initSprits()
 {
 	QE_addBgSprite;
-	for (int i = 0; i < 3; ++i)
-	{
-		float posY = 370 - 60 * i;
+	createSprite(165, 430, "child");
+	createSprite(165, 295, "referee");
+	createSprite(165, 160, "scoundrel");
+}
 
-		Sprite* spr = Sprite::create("btn_radio_off_holo.png");
-		spr->setPosition(Vec2(0, posY));
-		spr->setAnchorPoint(Vec2(0, 0));
-		//addChild(spr);
+void NetworkGameScene::createSprite(int x, int y, string identity)
+{
+	_spr = Sprite::create(identity + ".png");
+	_spr->setPosition(x, y);
+	addChild(_spr);
 
-		spr = Sprite::create("btn_radio_on_holo.png");
-		spr->setPosition(Vec2(0, posY));
-		spr->setAnchorPoint(Vec2(0, 0));
-		//addChild(spr);
-		_onSprites.push_back(spr);
-	}
+	_spr = Sprite::create(identity + "'sTurn.png");
+	_spr->setPosition(x, y);
+	addChild(_spr);
+	_spr->setVisible(false);
+	_onSprites.push_back(_spr);
 }
 
 void NetworkGameScene::setOnSprites(int index)
 {
-	//for (size_t i = 0; i < _onSprites.size(); i++)
-	//{
-	//	_onSprites[i]->setVisible(false);
-	//}
-	//_onSprites[index]->setVisible(true);
+	for (size_t i = 0; i < _onSprites.size(); i++)
+	{
+		_onSprites[i]->setVisible(false);
+	}
+	_onSprites[index]->setVisible(true);
 }
 
 void NetworkGameScene::initListView()
 {
-	Sprite* spr = Sprite::create("chatBg.png");
+	_spr = Sprite::create("chatBg.png");
+	addChild(_spr);
+	_spr->setPosition(600, 310);
+	_spr->setAnchorPoint(Vec2(0.5, 0.5));
+
+	_spr = Sprite::create("chat.png");
 	_listView = ListView::create();
 	_listView->setDirection(ScrollView::Direction::BOTH);
 	_listView->setBounceEnabled(true);//回弹效果
-	_listView->setBackGroundImage("chatBg.png");
+	_listView->setBackGroundImage("chat.png");
 	_listView->setBackGroundImageScale9Enabled(true);
-	_listView->setContentSize(spr->getContentSize());
-	_listView->setAnchorPoint(Vec2(0, 0));
-	_listView->setPosition(Vec2(350, 110));
+	_listView->setContentSize(_spr->getContentSize());
+	_listView->setAnchorPoint(Vec2(0.5, 0.5));
+	_listView->setPosition(Vec2(600, 310));
 	addChild(_listView);
 	addListViewElement("小朋友，给你一根棒棒糖可以跟我走嘛？", "scoundrelPP.png");
 	addListViewElement("你是坏人，不可以跟你走。", "childPP.png");
