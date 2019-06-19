@@ -10,7 +10,7 @@ QE_SINGLETON2_CPP(GetRoomsScene);
 QE_CreateSceneFromLayer_CPP(GetRoomsScene);
 paths = { "fonts" , "GetRoomsScene" };
 QE_SetResourcesSearchDir;
-QE_addBgSpriteToThis;
+QE_addBgSprite;
 
 	_instance = this;
 
@@ -59,8 +59,8 @@ void GetRoomsScene::initLabel()
 void GetRoomsScene::initMenu()
 {
 	QE_CreateLabelMenu(460, 220, "创建房间", GetRoomsScene, createRoom);
-	QE_CreateLabelMenuAgain(330, 220, "加入房间", GetRoomsScene, joinRoom);
-	QE_CreateLabelMenuAgain(10, 500, "返回", GetRoomsScene, back);
+	QE_CreateLabelMenu(330, 220, "加入房间", GetRoomsScene, joinRoom);
+	QE_CreateLabelMenu(10, 500, "返回", GetRoomsScene, back);
 }
 
 void GetRoomsScene::createRoom(){ QE_ReplaceScene(CreateRoomScene); }

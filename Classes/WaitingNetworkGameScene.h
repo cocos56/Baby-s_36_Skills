@@ -11,25 +11,12 @@ class WaitingNetworkGameScene : public Layer, public EditBoxDelegate, public Net
 public:
 	static void dealServerResponse(int statusCode);
 private:
-	//标签相关
-	void initLabel();
-
-	//富文本相关
-	static RichText* _richText;
-	static vector<RichText*> _texts;
-	void initRichText();
-	RichText* createRichText(int x, int y, string roleName, string fileName);
-	void setTextsColor(int n);
+	//背景精灵相关
+	static Sprite* _sprite;
+	void initSprits();
 
 	//菜单相关
 	void initMenu();
 	//菜单按钮回调函数相关
-	void createRoom();
 	void back();
-
-	//选项
-	static int _index;
-	static RadioButtonGroup* _radioButtonGroup;
-	void initRadioButton();
-	void onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type);
 };

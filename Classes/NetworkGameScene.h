@@ -17,8 +17,7 @@ private:
 	//菜单相关
 	void initMenu();
 	//菜单按钮回调函数相关
-	void createRoom();
-	void joinRoom();
+	void send();
 	void back();
 
 	//输入框相关
@@ -28,9 +27,10 @@ private:
 	//聊天信息相关
 	ListView* _listView;
 	void initListView();
+	void addListViewElement(const string msg, const string pic);
 
 	//选项
 	static vector< Sprite*> _onSprites;
 	void setOnSprites(int index);
-	void initSprites();
+	void initSprits();
 };

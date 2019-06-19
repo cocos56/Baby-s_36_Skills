@@ -4,7 +4,7 @@ console.log("\n正在初始化连接数据库")
 
 var db = mysql.createConnection({host:'localhost', user: 'root', password: '123123', database: 'baby\'s 36 skills'})
 
-function q(cmd, callback, errcallback)
+exports.q = function q(cmd, callback, errcallback)
 {
     data = db.query(cmd, function(err, data)
     {

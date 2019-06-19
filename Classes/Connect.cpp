@@ -57,7 +57,7 @@ string Connect::getStatus(Status status){
 	else if (status == CreateRoomCase3Failed) { return "创建房间失败。\n服务器可承载的房间数量已达上限，请选择加入房间。"; }
 	else if (status == CreateRoomCase3Successful) { return "恭喜您创建房间成功。\n马上为您转入选择角色界面。"; }
 	//JoinRoom = 6, //进入房间事件
-	else if (status == JoinRoomCase1Successful) { return "请输入您所要加入房间的名称和密码"; }
+	else if (status == JoinRoomCase1Successful) { return"";/*"请输入您所要加入房间的名称和密码"; */}
 	else if (status == JoinRoomCase2Failed) { return "进入房间失败，房间名为空"; }
 	else if (status == JoinRoomCase3Failed) { return "进入房间失败，房间密码错误"; }
 	else if (status == JoinRoomCase3Successful) { return "进入房间成功"; }

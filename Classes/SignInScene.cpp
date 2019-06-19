@@ -32,7 +32,7 @@ void SignInScene::dealServerResponse(int statusCode)
 
 void SignInScene::initSprite()
 {
-	QE_addBgSpriteToThis;
+	QE_addBgSprite;
 }
 
 void SignInScene::initLabel(){ NW_InitLogLabel(150, 110); }
@@ -40,8 +40,8 @@ void SignInScene::initLabel(){ NW_InitLogLabel(150, 110); }
 void SignInScene::initMenu()
 {
 	QE_CreateLabelMenu(380, 270, "登录", SignInScene, signIn);
-	QE_CreateLabelMenuAgain(530, 270, "注册", SignInScene, signUp);
-	QE_CreateLabelMenuAgain(10, 500, "返回", SignInScene, back);
+	QE_CreateLabelMenu(530, 270, "注册", SignInScene, signUp);
+	QE_CreateLabelMenu(10, 500, "返回", SignInScene, back);
 }
 
 void SignInScene::signIn()
@@ -60,11 +60,11 @@ void SignInScene::back() { QE_ReplaceScene(ConnectServerScene); };
 void SignInScene::initEditBox()
 {
 	//输入ID的框
-	_unBox = _box = createEditBox("editBox.png");
+	_unBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setPosition(Vec2(370, 380));
 	_box->setPlaceHolder("用户名");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
 	//输入密码的框
-	_passwordBox = _box = createEditBox("editBox.png");
+	_passwordBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setPosition(Vec2(370, 330));
 	_box->setPlaceHolder("密码");
 	_box->setInputFlag(EditBox::InputFlag::PASSWORD);////设置文本框显示文本的样式，输入密码标记

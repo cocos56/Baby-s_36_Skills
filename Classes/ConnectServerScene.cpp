@@ -9,7 +9,7 @@ QE_SINGLETON2_CPP(ConnectServerScene);
 QE_CreateSceneFromLayer_CPP(ConnectServerScene);
 	paths = { "fonts", "ConnectServerScene" };
 	QE_SetResourcesSearchDir;
-	QE_addBgSpriteToThis;
+	QE_addBgSprite;
 	
 	_instance = this;
 
@@ -34,8 +34,8 @@ void ConnectServerScene::initLabel()
 void ConnectServerScene::initMenu()
 {
 	QE_CreateLabelMenu(680, 390, "连接", ConnectServerScene, connect, 1);
-	QE_CreateLabelMenuAgain(680, 340, "连接", ConnectServerScene, connect, 2);
-	QE_CreateLabelMenuAgain(10, 500, "返回", ConnectServerScene, back);
+	QE_CreateLabelMenu(680, 340, "连接", ConnectServerScene, connect, 2);
+	QE_CreateLabelMenu(10, 500, "返回", ConnectServerScene, back);
 }
 
 void ConnectServerScene::back()

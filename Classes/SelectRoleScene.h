@@ -11,14 +11,11 @@ class SelectRoleScene : public Layer, public EditBoxDelegate, public NetworkBase
 public:
 	static void dealServerResponse(int statusCode);
 private:
+	//背景精灵相关
+	void initSprits();
+
 	//标签相关
 	void initLabel();
-
-	//富文本相关
-	static RichText* _richText;
-	static vector<RichText*> _texts;
-	RichText* createRichText(int x, int y, string roleName, string fileName);
-	void setTextsColor(int n);
 
 	//菜单相关
 	void initMenu();

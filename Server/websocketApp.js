@@ -6,6 +6,7 @@ var signIn = require("./signIn")
 var createRoom = require("./createRoom")
 var getRooms = require("./getRooms")
 var joinRoom = require("./joinRoom")
+var selectRole = require("./selectRole")
 var waiting = require("./waiting")
 
 
@@ -42,7 +43,7 @@ function onMesage(msg, conn)
     else if(5 == msg["event"]){createRoom.callback(msg, conn, room)}
     else if(6 == msg["event"]){joinRoom.callback(msg, conn, room)}
     else if(7 == msg["event"]){selectRole.callback(msg, conn, room)}
-    else if(7 == msg["event"]){waiting.callback(msg, conn, room)}
+    else if(8 == msg["event"]){waiting.callback(msg, conn, room)}
 }
 
 function onClose(code, reason)

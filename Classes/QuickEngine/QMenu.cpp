@@ -2,6 +2,9 @@
 
 #include "QMenu.h"
 
+MenuItem* QMenu::_item;
+Menu* QMenu::_menu;
+
 QE_SINGLETON_CPP(QMenu)
 
 MenuItemSprite* QMenu::createMenuItemSprite(const string& picture, const ccMenuCallback& callback, int x, int y)
@@ -37,20 +40,20 @@ Menu* QMenu::createMenuLabel(const string& text, const ccMenuCallback& callback)
 	return menu;
 }
  
-Menu* QMenu::createMenuSprite(const string& picture, const ccMenuCallback& callback, MenuItem *&item)
+Menu* QMenu::createMenuSprite(const string& picture, const ccMenuCallback& callback, MenuItem *&item){ return createMenuSprite(picture, picture, callback, item); }
+
+Menu* QMenu::createMenuSprite(const string& picture, const string& pressedPicture, const ccMenuCallback& callback, MenuItem*& item)
 {
-	item = createMenuItemSprite(picture, picture, callback);
+	item = createMenuItemSprite(picture, pressedPicture, callback);
 	Menu* menu = Menu::create(item, NULL);
 	menu->setAnchorPoint(Vec2(0, 0));
 	menu->setPosition(0, 0);
 	return menu;
 }
 
-Menu* QMenu::createMenuSprite(const string& picture, const ccMenuCallback& callback)
-{
-	MenuItem* item;
-	return createMenuSprite(picture, callback, item);
-}
+Menu* QMenu::createMenuSprite(const string& picture, const string& pressedPicture, const ccMenuCallback& callback){ return createMenuSprite(picture, pressedPicture, callback, _item); }
+
+Menu* QMenu::createMenuSprite(const string& picture, const ccMenuCallback& callback){ return createMenuSprite(picture, picture, callback); }
 
 void QMenu::releaseMenuItemVector(vector<MenuItem*>& menuItems)
 {

@@ -18,5 +18,6 @@ public:
 	static Sprite* create(string fileName, int x, int y);
 };
 
-#define QE_addBgSpriteToThis addChild(QSprite::createBg());
-#define QE_CreateSprite(fileName, x, y) addChild(QSprite::create(fileName, x, y));
+#define QE_addBgSprite addChild(QSprite::createBg());
+#define QE_addBgSpriteWithName(__NAME__) addChild(QSprite::createBg(__NAME__));
+#define QE_addSprite(fileName, x, y) addChild(QSprite::create(fileName, x, y));

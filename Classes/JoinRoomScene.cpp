@@ -9,7 +9,7 @@ QE_SINGLETON2_CPP(JoinRoomScene);
 QE_CreateSceneFromLayer_CPP(JoinRoomScene);
 	paths = { "fonts", "JoinRoomScene" };
 	QE_SetResourcesSearchDir;
-	QE_addBgSpriteToThis;
+	QE_addBgSprite;
 
 	_instance = this;
 
@@ -31,16 +31,13 @@ void JoinRoomScene::dealServerResponse(int statusCode)
 
 void JoinRoomScene::initLabel()
 {
-	//createLabel("创建房间");
-	//_label->setPosition(420, 420);
-
-	NW_InitLogLabel(150, 100);
+	NW_InitLogLabel(20, 20);
 }
 
 void JoinRoomScene::initMenu()
 {
-	QE_CreateLabelMenu(420, 260, "确认加入", JoinRoomScene, confirm);
-	QE_CreateLabelMenuAgain(10, 500, "返回", JoinRoomScene, back);
+	QE_CreateSpriteMenu(470, 90, "confirm.png", JoinRoomScene, confirm);
+	QE_CreateLabelMenu(10, 500, "返回", JoinRoomScene, back);
 }
 
 void JoinRoomScene::confirm()
@@ -59,13 +56,13 @@ void JoinRoomScene::initEditBox()
 	Sprite* spr = Sprite::create("editBox.png");
 	_nameBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setSize(spr->getContentSize());
-	_box->setPosition(Vec2(370, 360));
+	_box->setPosition(Vec2(310, 285));
 	_box->setPlaceHolder("房间名");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
 
 	//输入密码的框
 	_passwordBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setSize(spr->getContentSize());
-	_box->setPosition(Vec2(370, 290));
+	_box->setPosition(Vec2(310, 180));
 	_box->setPlaceHolder("房间密码");
 	_box->setInputFlag(EditBox::InputFlag::PASSWORD);////设置文本框显示文本的样式，输入密码标记
 }
