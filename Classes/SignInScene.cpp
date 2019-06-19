@@ -60,11 +60,11 @@ void SignInScene::back() { QE_ReplaceScene(ConnectServerScene); };
 void SignInScene::initEditBox()
 {
 	//输入ID的框
-	_unBox = _box = createEditBox("editBox3.png");
+	_unBox = _box = createEditBox("editBox.png");
 	_box->setPosition(Vec2(370, 380));
 	_box->setPlaceHolder("用户名");	//当编辑框中没有任何字符（或输入字符前）的提示文本,即占位符
 	//输入密码的框
-	_passwordBox = _box = createEditBox("editBox4.png");
+	_passwordBox = _box = createEditBox("editBox.png");
 	_box->setPosition(Vec2(370, 330));
 	_box->setPlaceHolder("密码");
 	_box->setInputFlag(EditBox::InputFlag::PASSWORD);////设置文本框显示文本的样式，输入密码标记

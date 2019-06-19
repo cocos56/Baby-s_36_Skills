@@ -27,8 +27,8 @@ typedef Document JDoc;
 class QJson
 {
 public:
-	static JDoc doc;
-	static JDoc tempDoc;
+	static JDoc _doc, _tempDoc;
+	static string _tempStr;
 
 	static void initDocFromJsonFile(string fileName = "Data.json");
 	static void initDocWithString(string content);
@@ -40,9 +40,10 @@ public:
 	static string getString(string key, JValue& value);
 	static string getString(string key);
 	static string getString();
-	static void addMember(JString name, JString value) { doc.AddMember(name, value, doc.GetAllocator()); };
-	static void addMember(JString name, int value) { doc.AddMember(name, value, doc.GetAllocator()); };
-	static void emptyDoc(){ doc.Parse<0>("{}"); }
+	static void addMember(JString name, JString value) { _doc.AddMember(name, value, _doc.GetAllocator()); };
+	static void addMember(JString name, string value) { _tempStr = value; _doc.AddMember(name, QE_strToJStr(_tempStr), _doc.GetAllocator()); };
+	static void addMember(JString name, int value) { _doc.AddMember(name, value, _doc.GetAllocator()); };
+	static void emptyDoc(){ _doc.Parse<0>("{}"); }
 };
 
 /*

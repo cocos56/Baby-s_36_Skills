@@ -62,16 +62,25 @@ public:
 		JoinRoomCase3Successful = 631, //进入房间成功
 		//SelectRole = 7, //选择角色事件
 		SelectRoleCase1Successful = 711, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
-		SelectRoleCase2Failed = 720, //该玩家所选的角色已被其他玩家选择
+		SelectRoleCase2Failed = 720, //该玩家未选择角色
+		SelectRoleCase3Failed = 730, //该玩家所选的角色已被其他玩家选择
+		SelectRoleCase3Successful = 731, //该玩家成功选择角色
 		//Waiting = 8, //等待所有玩家就绪事件
 		WaitingCase1Successful = 811, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
-		WaitingCase2Successful = 821, //此状态代表所有玩家已就绪，应立即转入开始比拼界面
+		WaitingCase2Failed = 820, //玩家退出等待
+		WaitingCase2Successful = 821, //有新玩家加入。
+		WaitingCase3Successful = 831, //此状态代表所有玩家已就绪，应立即转入开始比拼界面
 		//Dialog = 9, //对话事件
-		DialogCase1Successful = 911, //连接服务器成功，成功原因：成功建立WebSocket					 
+		DialogCase1Successful = 911, //连接服务器成功，成功原因：成功建立WebSocket	
+		DialogCase2Failed = 920, //您发言已结束，系统将把发言权移交给下一位玩家
+		DialogCase2Successful = 921, //轮到您发言
+		DialogCase3Failed = 930, //您已掉线
+		DialogCase3Successful = 931, //其他玩家掉线
+		DialogCase4Successful = 941, //裁判已判决游戏，本轮游戏结束
 	};
 
 public:
-	static int getNowEvent();
+	static int getNowEvent() { return _nowEvent; };
 	static string getStatus(Status status);
 	static string getStatus(int statusCode);
 	static bool _isConnecting;
@@ -82,6 +91,7 @@ public:
 	static void connect(Event nowEvent);
 	static void createMsg();
 	static void addMsg(JString key, JString value) { QJson::addMember(key, value); };
+	static void addMsg(JString key, string value) { QJson::addMember(key, value); };
 	static void addMsg(JString key, int value) { QJson::addMember(key, value); };
 	static void sendMsg();
 

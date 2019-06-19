@@ -18,23 +18,3 @@ exports.callback = function selectRoleCallback(msg, conn, room)
         selectRole(conn, type, name, msgBack, room)
     }
 }
-
-function selectRole(conn, type, name, msgBack, room)
-{
-    if(type == 1){
-        room['child'] = name
-        room['childWS'] = conn
-        msgBack['status'] = 731
-    }
-    else if(type == 2){
-        room['scoundrel'] = name
-        room['scoundrelWS'] = conn
-        msgBack['status'] = 731
-    }
-    else if(type == 3){
-        room['referee'] = name
-        room['refereeWS'] = conn
-        msgBack['status'] = 731
-    }
-    conn.send(JSON.stringify(msgBack))
-}

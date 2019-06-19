@@ -28,6 +28,8 @@ void SelectRoleScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
+	QMessageBox(status);
+	if (statusCode == 731) { QE_ReplaceScene(WaitingNetworkGameScene); }
 }
 
 void SelectRoleScene::initLabel()
@@ -81,7 +83,8 @@ void SelectRoleScene::confirm()
 {
 	Connect::createMsg();
 	Connect::addMsg("type", _index);
-	Connect::addMsg("un", QE_strToJStr(SignInScene::_un));
+	//Connect::addMsg("un", QE_strToJStr(SignInScene::_un));
+	Connect::addMsg("un", SignInScene::_un);
 	Connect::sendMsg();
 }
 

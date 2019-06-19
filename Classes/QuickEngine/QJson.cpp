@@ -2,7 +2,8 @@
 
 #include "QJson.h"
 
-JDoc QJson::doc, QJson::tempDoc;
+JDoc QJson::_doc, QJson::_tempDoc;
+string QJson::_tempStr;
 
 void QJson::initDocFromJsonFile(string fileName)
 {
@@ -19,10 +20,9 @@ void QJson::initDocFromJsonFile(string fileName)
 
 void QJson::initDocWithString(string content)
 {
-	doc.Parse<0>(content.c_str());
+	_doc.Parse<0>(content.c_str());
 	//解析错误
-	CCASSERT(!doc.HasParseError(), "Parsing to document failed.");
-	//CCLOG("Parsed to document successfully !");
+	CCASSERT(!_doc.HasParseError(), "Parsing to document failed.");
 }
 
 JValue& QJson::getArray(string key, JValue& value)
@@ -47,11 +47,11 @@ int QJson::getInt(string key, JValue& value)
 int QJson::getInt(string key)
 {
 	// 确认拥有相应的值
-	CC_ASSERT(doc.HasMember(key.c_str()));
+	CC_ASSERT(_doc.HasMember(key.c_str()));
 	//确认所捕获的值是String类型的
-	CC_ASSERT(doc[key.c_str()].IsInt());
+	CC_ASSERT(_doc[key.c_str()].IsInt());
 	//返回最终需要的值
-	return doc[key.c_str()].GetInt();
+	return _doc[key.c_str()].GetInt();
 }
 
 string QJson::getString(string key, JValue& value)
@@ -67,17 +67,17 @@ string QJson::getString(string key, JValue& value)
 string QJson::getString(string key)
 {
 	// 确认拥有相应的值
-	CC_ASSERT(doc.HasMember(key.c_str()));
+	CC_ASSERT(_doc.HasMember(key.c_str()));
 	//确认所捕获的值是String类型的
-	CC_ASSERT(doc[key.c_str()].IsString());
+	CC_ASSERT(_doc[key.c_str()].IsString());
 	//返回最终需要的值
-	return doc[key.c_str()].GetString();
+	return _doc[key.c_str()].GetString();
 }
 
 string QJson::getString()
 {
 	StringBuffer buffer;
 	Writer<StringBuffer>writer(buffer);
-	doc.Accept(writer);
+	_doc.Accept(writer);
 	return buffer.GetString();
 }

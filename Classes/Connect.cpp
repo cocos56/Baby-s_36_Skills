@@ -9,39 +9,26 @@ Connect::Event Connect::_nowEvent;
 
 QE_SINGLETON_CPP(Connect);
 
-void Connect::connect(Event nowEvent)
-{
+void Connect::connect(Event nowEvent){
 	_nowEvent = nowEvent;
 	if (!_ws) { Connect::getInstance()->initSocket(); return; };
 	if (_nowEvent == GetRooms) { createMsg(); sendMsg(); }
 }
 
-void Connect::initSocket()
-{
+void Connect::initSocket(){
 	_isConnecting = true;
 	_ws = new WebSocket();
-	if (!_ws->init(*this, _addr))
-	{
-		CC_SAFE_DELETE(_ws);
-	}
+	if (!_ws->init(*this, _addr)){ CC_SAFE_DELETE(_ws); }
 }
 
-int Connect::getNowEvent()
-{
-	return _nowEvent;
-}
+//int Connect::getNowEvent(){ return _nowEvent; }
 
-string Connect::getStatus(int statusCode)
-{
-	return getStatus(Connect::Status(statusCode));
-}
+string Connect::getStatus(int statusCode){ return getStatus(Connect::Status(statusCode)); }
 
-string Connect::getStatus(Status status)
-{
+string Connect::getStatus(Status status){
 	//ConnectServer = 1, //连接服务器事件
 	if (status == ConnectServerCase1Successful) { return "已与服务器：" + _addr + " 成功建立连接，马上为您转入登录界面。"; }
 	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连。"; }
-
 	//SignIn = 2, //登录事件
 	else if (status == SignInCase1Successful) { return "请登录您的账号，如果没有账号请先注册。"; }
 	else if (status == SignInCase2Failed) { return "登录失败，您所输入的ID或用户名为空，请检查您的输入。"; }
@@ -76,7 +63,15 @@ string Connect::getStatus(Status status)
 	else if (status == JoinRoomCase3Successful) { return "进入房间成功"; }
 	//SelectRole = 7, //选择角色事件
 	else if (status == SelectRoleCase1Successful) { return "请选择您要扮演的角色。"; }
-	//Dialog = 8, //对话事件
+	else if (status == SelectRoleCase2Failed) { return "您未选择角色，请选择您要扮演的角色。"; }
+	else if (status == SelectRoleCase3Failed) { return "所选的角色已被其他玩家选择，请重新选择您要扮演的角色。"; }
+	else if (status == SelectRoleCase3Successful) { return "恭喜您成功选择此角色"; }
+	//Waiting = 8, //等待所有玩家就绪事件
+	else if (status == WaitingCase1Successful) { return "请等待其他玩家就绪。"; }
+	else if (status == WaitingCase2Failed) { return "您已退出等待。"; }
+	else if (status == WaitingCase2Successful) { return "有新玩家加入。"; }
+	else if (status == WaitingCase3Successful) { return "所有玩家全部准备就绪，马上转入比拼界面。"; }
+	//Dialog = 9, //对话事件
 	else if (status == DialogCase1Successful) { return "请发言"; }
 }
 
@@ -127,4 +122,5 @@ void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 	else if (event == 4) { GetRoomsScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 5){ CreateRoomScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 6) { JoinRoomScene::dealServerResponse(QJson::getInt("status")); }
+	else if (event == 7) { SelectRoleScene::dealServerResponse(QJson::getInt("status")); }
 }
