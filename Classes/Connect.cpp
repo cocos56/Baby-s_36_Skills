@@ -111,6 +111,7 @@ void Connect::createMsg()
 void Connect::sendMsg()
 {
 	if (!_ws) { return; }
+	CCLOG("send：%s", QJson::getString().c_str());
 	_ws->send(QJson::getString());
 }
 

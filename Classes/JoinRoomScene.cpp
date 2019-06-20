@@ -43,8 +43,8 @@ void JoinRoomScene::initMenu()
 void JoinRoomScene::confirm()
 {
 	Connect::createMsg();
-	Connect::addMsg("nm", _nameBox->getText());
-	Connect::addMsg("pw", _passwordBox->getText());
+	Connect::addMsg("nm", QE_ToJStr(_nameBox->getText()));
+	Connect::addMsg("pw", QE_ToJStr(_passwordBox->getText()));
 	Connect::sendMsg();
 }
 

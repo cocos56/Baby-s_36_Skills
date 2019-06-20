@@ -3,7 +3,6 @@
 #include "QJson.h"
 
 JDoc QJson::_doc, QJson::_tempDoc;
-string QJson::_tempStr;
 
 void QJson::initDocFromJsonFile(string fileName)
 {

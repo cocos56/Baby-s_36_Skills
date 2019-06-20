@@ -28,7 +28,6 @@ class QJson
 {
 public:
 	static JDoc _doc, _tempDoc;
-	static string _tempStr;
 
 	static void initDocFromJsonFile(string fileName = "Data.json");
 	static void initDocWithString(string content);
@@ -41,7 +40,6 @@ public:
 	static string getString(string key);
 	static string getString();
 	static void addMember(JString name, JString value) { _doc.AddMember(name, value, _doc.GetAllocator()); };
-	static void addMember(JString name, string value) { _tempStr = value; _doc.AddMember(name, QE_strToJStr(_tempStr), _doc.GetAllocator()); };
 	static void addMember(JString name, int value) { _doc.AddMember(name, value, _doc.GetAllocator()); };
 	static void emptyDoc(){ _doc.Parse<0>("{}"); }
 };

@@ -54,7 +54,7 @@ void SelectRoleScene::confirm()
 {
 	Connect::createMsg();
 	Connect::addMsg("type", _index);
-	Connect::addMsg("un", SignInScene::_un);
+	Connect::addMsg("un", QE_strToJStr(SignInScene::_un));
 	Connect::sendMsg();
 }
 

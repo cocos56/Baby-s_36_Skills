@@ -40,8 +40,8 @@ void SignUpScene::initMenu()
 void SignUpScene::signUp()
 {
 	Connect::createMsg();
-	Connect::addMsg("un", _unBox->getText());
-	Connect::addMsg("pw", _passwordBox->getText());
+	Connect::addMsg("un", QE_ToJStr(_unBox->getText()));
+	Connect::addMsg("pw", QE_ToJStr(_passwordBox->getText()));
 	Connect::sendMsg();
 }
 

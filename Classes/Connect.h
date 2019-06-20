@@ -90,7 +90,7 @@ public:
 
 	static void connect(Event nowEvent);
 	static void createMsg();
-	static void addMsg(JString key, string value) { QJson::addMember(key, value); };
+	static void addMsg(JString key, JString value) { QJson::addMember(key, value); };
 	static void addMsg(JString key, int value) { QJson::addMember(key, value); };
 	static void sendMsg();
 
