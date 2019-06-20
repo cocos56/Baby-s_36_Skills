@@ -35,4 +35,6 @@ private:
 	ListView* _listView;
 	void initListView();
 	void addListViewElement(const string msg, const string pic);
+	void initLayer();
+	void confirm();
 };

@@ -27,6 +27,7 @@ QE_CreateSceneFromLayer_CPP(NetworkGameScene);
 	initMenu();
 	initListView();
 	initEditBox();
+	initLayer();
 return true;
 }
 
@@ -136,4 +137,24 @@ void NetworkGameScene::addListViewElement(const string msg, const string pic)
 
 	widget->addChild(richText);
 	_listView->pushBackCustomItem(widget);
+}
+
+void NetworkGameScene::initLayer()
+{
+	Sprite* spr = Sprite::create("confirm.png");
+	addChild(spr);
+	spr->setPosition(540, 270);
+	Menu* menu = QMenu::createMenuSprite("yes.png", bind(&NetworkGameScene::confirm, this));
+	menu->setAnchorPoint(Vec2(0, 0));
+	menu->setPosition(400, 50);
+	spr->addChild(menu);
+	menu = QMenu::createMenuSprite("no.png", bind(&NetworkGameScene::confirm, this));
+	menu->setAnchorPoint(Vec2(0, 0));
+	menu->setPosition(100, 50);
+	spr->addChild(menu);
+}
+
+void NetworkGameScene::confirm()
+{
+
 }
