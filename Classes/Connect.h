@@ -74,9 +74,10 @@ public:
 		WaitingCase4Successful = 841, //裁判玩家已加入
 		//Dialog = 9, //对话事件
 		DialogCase1Successful = 911, //连接服务器成功，成功原因：成功建立WebSocket	
-		DialogCase2Failed = 920, //您发言已结束，系统将把发言权移交给下一位玩家
-		DialogCase2Successful = 921, //轮到您发言
-		DialogCase4Successful = 931, //裁判已判决游戏，本轮游戏结束
+		DialogCase2Successful = 921, //轮到坏人玩家发言
+		DialogCase3Successful = 931, //轮到宝宝玩家发言
+		DialogCase4Successful = 941, //轮到裁判玩家发言
+		DialogCase5Successful = 951, //裁判玩家已判决本轮游戏，本轮游戏结束
 	};
 
 public:

@@ -3,7 +3,9 @@
 #include "NetworkGameScene.h"
 
 vector< Sprite*> NetworkGameScene::_onSprites;
-Sprite* NetworkGameScene::_spr;
+Sprite* NetworkGameScene::_spr, * NetworkGameScene::_confirmSpr, * NetworkGameScene::_refereeConfirmSpr;
+Menu* NetworkGameScene::_menu, * NetworkGameScene::_sendMenu;
+EditBox* NetworkGameScene::_msgBox;
 
 /*
 进入房间之后还要等待所有玩家全部就绪后才能开始游戏
@@ -14,9 +16,8 @@ Sprite* NetworkGameScene::_spr;
 QE_SINGLETON2_CPP(NetworkGameScene);
 
 QE_CreateSceneFromLayer_CPP(NetworkGameScene);
-	paths = { "fonts", "NetworkGameScene", "icon" };
+	paths = { "fonts", "NetworkGameScene", "icon" }; 
 	QE_SetResourcesSearchDir;
-	//QE_addBgSprite;
 
 	_instance = this;
 
@@ -27,8 +28,8 @@ QE_CreateSceneFromLayer_CPP(NetworkGameScene);
 	initMenu();
 	initListView();
 	initEditBox();
-	initLayer();
-return true;
+	initConfrimSprite();
+	return true;
 }
 
 void NetworkGameScene::dealServerResponse(int statusCode)
@@ -38,19 +39,21 @@ void NetworkGameScene::dealServerResponse(int statusCode)
 	//dealServerResponse(status);
 }
 
-void NetworkGameScene::initLabel()
-{
-}
-
 void NetworkGameScene::initMenu()
 {
 	QE_CreateSpriteMenu(40, 520, "back.png", NetworkGameScene, back);
 	QE_CreateSpriteMenu2(865, 55, "send.png", "sendPressed.png", NetworkGameScene, send);
+	_sendMenu = QMenu::_menu;
 }
 
 void NetworkGameScene::send()
 {
-
+	string msg = _msgBox->getText();
+	if (msg != "")
+	{
+		addListViewElement(msg, "childPP.png");
+		_msgBox->setText("");
+	}
 }
 
 void NetworkGameScene::back() { QE_ReplaceScene(NetworkGameOverScene); };
@@ -58,22 +61,20 @@ void NetworkGameScene::back() { QE_ReplaceScene(NetworkGameOverScene); };
 void NetworkGameScene::initEditBox()
 {
 	_spr = Sprite::create("editBox.png");
-	//输入ID的框
-	_box = createEditBox("editBox.png", "editBoxPressed.png");
+	_msgBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setPosition(Vec2(53, 20));
+	_box->setPlaceHolder("    请输入聊天信息");
 	_box->setSize(_spr->getContentSize());
 }
 
-void NetworkGameScene::initSprits()
-{
+void NetworkGameScene::initSprits(){
 	QE_addBgSprite;
 	createSprite(165, 430, "child");
 	createSprite(165, 295, "referee");
 	createSprite(165, 160, "scoundrel");
 }
 
-void NetworkGameScene::createSprite(int x, int y, string identity)
-{
+void NetworkGameScene::createSprite(int x, int y, string identity){
 	_spr = Sprite::create(identity + ".png");
 	_spr->setPosition(x, y);
 	addChild(_spr);
@@ -139,22 +140,64 @@ void NetworkGameScene::addListViewElement(const string msg, const string pic)
 	_listView->pushBackCustomItem(widget);
 }
 
-void NetworkGameScene::initLayer()
+void NetworkGameScene::initConfrimSprite()
 {
-	Sprite* spr = Sprite::create("confirm.png");
-	addChild(spr);
-	spr->setPosition(540, 270);
-	Menu* menu = QMenu::createMenuSprite("yes.png", bind(&NetworkGameScene::confirm, this));
-	menu->setAnchorPoint(Vec2(0, 0));
-	menu->setPosition(400, 50);
-	spr->addChild(menu);
-	menu = QMenu::createMenuSprite("no.png", bind(&NetworkGameScene::confirm, this));
-	menu->setAnchorPoint(Vec2(0, 0));
-	menu->setPosition(100, 50);
-	spr->addChild(menu);
+	_confirmSpr = createSprite("confirm.png");
+	createSprite(400, "yes.png", bind(&NetworkGameScene::yes, this));
+	createSprite(100, "no.png", bind(&NetworkGameScene::no, this));
+
+	_refereeConfirmSpr = createSprite("refereeConfirm.png");
+	createSprite(250, "babyWin.png", bind(&NetworkGameScene::babyWin, this));
+	createSprite(100, "scoundrelWin.png", bind(&NetworkGameScene::scoundrelWin, this));
+	createSprite(400, "goOn.png", bind(&NetworkGameScene::goOn, this));
 }
 
+Sprite* NetworkGameScene::createSprite(const string& picture)
+{
+	_spr = Sprite::create(picture);
+	addChild(_spr);
+	_spr->setPosition(540, 270);
+	return _spr;
+}
+
+void NetworkGameScene::createSprite(int x, const string& picture, const ccMenuCallback& callback)
+{
+	_menu = QMenu::createMenuSprite(picture, callback);
+	_menu->setPosition(x, 50);
+	_spr->addChild(_menu);
+}
+
+void NetworkGameScene::myTurn(bool isMyTurn)
+{
+	_sendMenu->setEnabled(isMyTurn);
+	_msgBox->setEnabled(isMyTurn);
+}
 void NetworkGameScene::confirm()
 {
 
+}
+void NetworkGameScene::refereeConfirm()
+{
+
+}
+
+void NetworkGameScene::yes()
+{
+	_confirmSpr->setVisible(false);
+}
+void NetworkGameScene::no()
+{
+	_confirmSpr->setVisible(false);
+}
+void NetworkGameScene::babyWin()
+{
+	_refereeConfirmSpr->setVisible(false);
+}
+void NetworkGameScene::scoundrelWin()
+{
+	_refereeConfirmSpr->setVisible(false);
+}
+void NetworkGameScene::goOn()
+{
+	_refereeConfirmSpr->setVisible(false);
 }

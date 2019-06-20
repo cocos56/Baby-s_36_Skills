@@ -76,6 +76,10 @@ string Connect::getStatus(Status status){
 	else if (status == WaitingCase4Successful) { return "裁判玩家已加入。"; }
 	//Dialog = 9, //对话事件
 	else if (status == DialogCase1Successful) { return "";/*"请发言"; */}
+	else if (status == DialogCase2Successful) { return "轮到坏人玩家发言"; }
+	else if (status == DialogCase3Successful) { return "轮到宝宝玩家发言"; }
+	else if (status == DialogCase4Successful) { return "轮到裁判玩家发言"; }
+	else if (status == DialogCase5Successful) { return "裁判玩家已判决本轮游戏，本轮游戏结束"; }
 }
 
 void Connect::onOpen(WebSocket* ws)
@@ -128,7 +132,7 @@ void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 	else if (event == 6) { JoinRoomScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 7) { SelectRoleScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 8 || event == 9) {
-		NetworkGameScene::dealServerResponse(QJson::getInt("status"));
 		WaitingNetworkGameScene::dealServerResponse(QJson::getInt("status"));
+		NetworkGameScene::dealServerResponse(QJson::getInt("status"));
 	}
 }

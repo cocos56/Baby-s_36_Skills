@@ -8,6 +8,7 @@ var getRooms = require("./getRooms")
 var joinRoom = require("./joinRoom")
 var selectRole = require("./selectRole")
 var waiting = require("./waiting")
+var dialog = require("./dialog")
 
 
 {
@@ -44,6 +45,7 @@ function onMesage(msg, conn)
     else if(6 == msg["event"]){joinRoom.callback(msg, conn, room)}
     else if(7 == msg["event"]){selectRole.callback(msg, conn, room)}
     else if(8 == msg["event"]){waiting.callback(msg, conn, room)}
+    else if(9 == msg["event"]){dialog.callback(msg, conn, room)}
     console.log("room：", room)
 }
 
