@@ -58,7 +58,7 @@ void SelectRoleScene::confirm()
 	Connect::sendMsg();
 }
 
-void SelectRoleScene::back() { QE_ReplaceScene(SignInScene); };
+void SelectRoleScene::back() { QE_ReplaceScene(GetRoomsScene); };
 
 void SelectRoleScene::initRadioButton()
 {

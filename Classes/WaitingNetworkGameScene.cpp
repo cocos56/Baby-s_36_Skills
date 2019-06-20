@@ -23,15 +23,18 @@ QE_CreateSceneFromLayer_CPP(WaitingNetworkGameScene);
 void WaitingNetworkGameScene::dealServerResponse(int statusCode)
 {
 	if (Connect::_nowEvent == 9) { return; }
-	if (statusCode == 820) { _instance->setSpriteStatus(0, false); }
-	else if (statusCode == 821) { _instance->setSpriteStatus(0, true); }
-	else if (statusCode == 840) { _instance->setSpriteStatus(1, false); }
-	else if (statusCode == 841) { _instance->setSpriteStatus(1, true); }
-	else if (statusCode == 830) { _instance->setSpriteStatus(2, false); }
-	else if (statusCode == 831) { _instance->setSpriteStatus(2, true); }
+	if (statusCode == 820) { setSpriteStatus(0, false); }
+	else if (statusCode == 821) { setSpriteStatus(0, true); }
+	else if (statusCode == 830) { setSpriteStatus(1, false); }
+	else if (statusCode == 831) { setSpriteStatus(1, true); }
+	else if (statusCode == 840) { setSpriteStatus(2, false); }
+	else if (statusCode == 841) { setSpriteStatus(2, true); }
 }
 
-void WaitingNetworkGameScene::setSpriteStatus(int index, bool visible) { _onSprites[index]->setVisible(visible); }
+void WaitingNetworkGameScene::setSpriteStatus(int index, bool visible) {
+	_onSprites[index]->setVisible(visible);
+	if (_onSprites[0]->isVisible() && _onSprites[1]->isVisible() && _onSprites[2]->isVisible()){ QE_ReplaceScene(NetworkGameScene); }
+}
 
 void WaitingNetworkGameScene::createSprite(int x)
 {
@@ -51,11 +54,12 @@ void WaitingNetworkGameScene::sendMsg()
 
 void WaitingNetworkGameScene::initSprits()
 {
+	sendMsg();
+	if (_onSprites.size() > 0) { _onSprites.clear(); }
 	QE_addBgSprite;
 	createSprite(90);
-	createSprite(385);
 	createSprite(680);
-	sendMsg();
+	createSprite(385);
 }
 
 void WaitingNetworkGameScene::initMenu()

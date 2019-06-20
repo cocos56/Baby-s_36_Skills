@@ -15,7 +15,7 @@ private:
 	static vector< Sprite*> _onSprites;
 	static Sprite* _sprite;
 	void initSprits();
-	void setSpriteStatus(int index, bool visible = true);
+	static void setSpriteStatus(int index, bool visible = true);
 	void createSprite(int x);
 
 	//发送信息

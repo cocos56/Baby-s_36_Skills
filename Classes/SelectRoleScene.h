@@ -10,6 +10,7 @@ class SelectRoleScene : public Layer, public EditBoxDelegate, public NetworkBase
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
+	static int _index;
 private:
 	//背景精灵相关
 	void initSprits();
@@ -24,7 +25,6 @@ private:
 	void back();
 
 	//选项
-	static int _index;
 	static RadioButtonGroup* _radioButtonGroup;
 	void initRadioButton();
 	void onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type);
