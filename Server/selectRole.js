@@ -14,7 +14,7 @@ exports.callback = function selectRoleCallback(msg, conn, room)
 
     if('status' in msgBack){conn.send(JSON.stringify(msgBack))}
     else{
-        let name = msg["nm"]
+        let name = msg["un"]
         selectRole(conn, type, name, msgBack, room)
     }
 }

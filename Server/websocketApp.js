@@ -25,7 +25,7 @@ function serverCallbackFunction(conn)
     conn.on("text", function(str){ onMesage(str, conn) })
 
     //when a connection has been closed.
-    conn.on("close", function(code, reason){ onClose(code, reason) })
+    conn.on("close", function(code, reason){ onClose(conn, code, reason) })
 
     //when a connection meet error.
     conn.on("error", function(code, reason){ onError(code, reason) })
@@ -44,10 +44,12 @@ function onMesage(msg, conn)
     else if(6 == msg["event"]){joinRoom.callback(msg, conn, room)}
     else if(7 == msg["event"]){selectRole.callback(msg, conn, room)}
     else if(8 == msg["event"]){waiting.callback(msg, conn, room)}
+    console.log("room：", room)
 }
 
-function onClose(code, reason)
+function onClose(conn, code, reason)
 {
+    waiting.closeCB(conn, room)
     console.log("a connection close", code, reason)
     console.log("Sever connections = ", server.connections.length)
 }

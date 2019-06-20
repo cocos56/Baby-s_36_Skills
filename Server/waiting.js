@@ -1,20 +1,42 @@
 exports.callback = function selectRoleCallback(msg, conn, room)
 {
-    let msgBack = {"event": 7}
-    let type = msg["type"]
+    if('quit' in msg){
+        waitingCloseCallback(conn, room)
+        return
+    }
+    let msgBack = {"event": 8}
+    if('child' in room){
+        msgBack['status'] = 821
+        sendMsg(room, msgBack)
+    }
+    if('scoundrel' in room){
+        msgBack['status'] = 831
+        sendMsg(room, msgBack)
+    }
+    if('referee' in room){
+        msgBack['status'] = 841
+        sendMsg(conn, room, msgBack)
+    }
+}
 
-    if(type == 0){ msgBack['status'] = 720 }
-    else if(type == 1){ if('child' in room){msgBack['status'] = 730} }
-    else if(type == 2){ if('scoundrel' in room){msgBack['status'] = 730} }
-    else if(type == 3){ if('referee' in room){msgBack['status'] = 730} }
+function sendMsg(conn, room, msgBack){
+    if('childWS' in room && room['childWS'] != conn){ room['childWS'].send(JSON.stringify(msgBack)) }
+    if('scoundrelWS' in room && room['scoundrelWS'] != conn){ room['scoundrelWS'].send(JSON.stringify(msgBack)) }
+    if('refereeWS' in room && room['refereeWS'] != conn){ room['refereeWS'].send(JSON.stringify(msgBack)) }
+}
 
-    if(type == 1){ if('childWS' in room && room['childWS'] == conn){ msgBack['status'] = 731} }
-    else if(type == 2){ if('scoundrelWS' in room && room['scoundrelWS'] == conn){ msgBack['status'] = 731} }
-    else if(type == 3){ if('refereeWS' in room && room['refereeWS'] == conn){ msgBack['status'] = 731} }
-
-    if('status' in msgBack){conn.send(JSON.stringify(msgBack))}
-    else{
-        let name = msg["nm"]
-        selectRole(conn, type, name, msgBack, room)
+exports.closeCB = function waitingCloseCallback(conn, room)
+{
+    if('childWS' in room && room['childWS'] == conn){
+        msgBack['status'] = 820
+        delete room['childWS']
+    }
+    if('scoundrelWS' in room && room['scoundrelWS'] == conn){
+        delete room['scoundrelWS']
+        msgBack['status'] = 830
+    }
+    if('refereeWS' in room && room['refereeWS'] == conn){
+        delete room['refereeWS']
+        msgBack['status'] = 840
     }
 }

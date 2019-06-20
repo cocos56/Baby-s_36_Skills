@@ -6,13 +6,9 @@ vector< Sprite*> NetworkGameScene::_onSprites;
 Sprite* NetworkGameScene::_spr;
 
 /*
-
 进入房间之后还要等待所有玩家全部就绪后才能开始游戏
-
 宝宝和坏人发言完毕之后可以选择是否继续发言
-
 裁判发言完毕之后可以选择继续比拼和宣布宝宝玩家胜或者坏人玩家胜
-
 */
 
 QE_SINGLETON2_CPP(NetworkGameScene);
@@ -29,7 +25,6 @@ QE_CreateSceneFromLayer_CPP(NetworkGameScene);
 	initSprits();
 	initLabel();
 	initMenu();
-	setOnSprites(0);
 	initListView();
 	initEditBox();
 return true;
@@ -37,20 +32,13 @@ return true;
 
 void NetworkGameScene::dealServerResponse(int statusCode)
 {
+	if (Connect::_nowEvent == 8) {return;}
 	//string status = Connect::getStatus(statusCode);
 	//dealServerResponse(status);
 }
 
 void NetworkGameScene::initLabel()
 {
-	//createLabel("坏人：");
-	//_label->setPosition(60, 390);
-	//createLabel("宝宝：");
-	//_label->setPosition(60, 325);
-	//createLabel("裁判：");
-	//_label->setPosition(60, 265);
-
-	//NW_InitLogLabel(150, 20);
 }
 
 void NetworkGameScene::initMenu()
@@ -91,8 +79,8 @@ void NetworkGameScene::createSprite(int x, int y, string identity)
 
 	_spr = Sprite::create(identity + "'sTurn.png");
 	_spr->setPosition(x, y);
-	addChild(_spr);
 	_spr->setVisible(false);
+	addChild(_spr);
 	_onSprites.push_back(_spr);
 }
 

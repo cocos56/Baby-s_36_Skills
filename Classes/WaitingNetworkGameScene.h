@@ -12,8 +12,14 @@ public:
 	static void dealServerResponse(int statusCode);
 private:
 	//背景精灵相关
+	static vector< Sprite*> _onSprites;
 	static Sprite* _sprite;
 	void initSprits();
+	void setSpriteStatus(int index, bool visible = true);
+	void createSprite(int x);
+
+	//发送信息
+	void sendMsg();
 
 	//菜单相关
 	void initMenu();

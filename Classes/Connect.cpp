@@ -67,12 +67,15 @@ string Connect::getStatus(Status status){
 	else if (status == SelectRoleCase3Failed) { return "所选的角色已被其他玩家选择，请重新选择您要扮演的角色。"; }
 	else if (status == SelectRoleCase3Successful) { return "恭喜您成功选择此角色"; }
 	//Waiting = 8, //等待所有玩家就绪事件
-	else if (status == WaitingCase1Successful) { return "请等待其他玩家就绪。"; }
-	else if (status == WaitingCase2Failed) { return "您已退出等待。"; }
-	else if (status == WaitingCase2Successful) { return "有新玩家加入。"; }
-	else if (status == WaitingCase3Successful) { return "所有玩家全部准备就绪，马上转入比拼界面。"; }
+	else if (status == WaitingCase1Successful) { return "";/* "请等待其他玩家就绪。"; */}
+	else if (status == WaitingCase2Failed) { return "宝宝玩家已离开。"; }
+	else if (status == WaitingCase2Successful) { return "宝宝玩家已加入。"; }
+	else if (status == WaitingCase3Failed) { return "坏人玩家已离开。"; }
+	else if (status == WaitingCase3Successful) { return "坏人玩家已加入。"; }
+	else if (status == WaitingCase4Failed) { return "裁判玩家已离开。"; }
+	else if (status == WaitingCase4Successful) { return "裁判玩家已加入。"; }
 	//Dialog = 9, //对话事件
-	else if (status == DialogCase1Successful) { return "请发言"; }
+	else if (status == DialogCase1Successful) { return "";/*"请发言"; */}
 }
 
 void Connect::onOpen(WebSocket* ws)
@@ -123,4 +126,8 @@ void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
 	else if (event == 5){ CreateRoomScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 6) { JoinRoomScene::dealServerResponse(QJson::getInt("status")); }
 	else if (event == 7) { SelectRoleScene::dealServerResponse(QJson::getInt("status")); }
+	else if (event == 8 || event == 9) {
+		NetworkGameScene::dealServerResponse(QJson::getInt("status"));
+		WaitingNetworkGameScene::dealServerResponse(QJson::getInt("status"));
+	}
 }

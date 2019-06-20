@@ -22,7 +22,6 @@ public:
 
 	enum Status {
 		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形/情况种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
-		//ConnectServer = 1, //连接服务器事件
 		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
 		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果
 		ConnectServerCase3Failed = 130, //连接服务器错误，错误原因：在其他界面与服务器断开连接
@@ -48,15 +47,15 @@ public:
 		SignUpCase8Successful = 381, //创建账号成功，恭喜您注册成功，请返回登录。
 
 		//GetRooms = 4, //获取房间列表事件
-		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket
-		GetRoomsCase2Failed = 420, //当前无可用的房间，请创建房间
+		GetRoomsCase1Successful = 411, //连接服务器成功，成功原因：成功建立WebSocket，请加入房间。
+		GetRoomsCase2Failed = 420, //请创建房间。
 		//CreateRoom = 5, //创建房间事件
-		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket
+		CreateRoomCase1Successful = 511, //连接服务器成功，成功原因：成功建立WebSocket，请输入您所要创建房间的名称和密码
 		CreateRoomCase2Failed = 520, //创建房间失败，房间名不能为空，请重填。
 		CreateRoomCase3Failed = 530, //创建房间失败。\n在正式插入您的账号信息到数据库时遇到未知错误。\n应该是服务器硬盘没空间了，请联系开发维护人员。
 		CreateRoomCase3Successful = 531, //恭喜您创建房间成功。\n马上为您转入选择角色界面。
 		//JoinRoom = 6, //进入房间事件
-		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket
+		JoinRoomCase1Successful = 611, //连接服务器成功，成功原因：成功建立WebSocket，请输入您所要加入房间的名称和密码
 		JoinRoomCase2Failed = 620, //进入房间失败，房间名为空
 		JoinRoomCase3Failed = 630, //进入房间失败，房间密码错误
 		JoinRoomCase3Successful = 631, //进入房间成功
@@ -67,16 +66,17 @@ public:
 		SelectRoleCase3Successful = 731, //该玩家成功选择角色
 		//Waiting = 8, //等待所有玩家就绪事件
 		WaitingCase1Successful = 811, //此状态为默认在连接服务器成功的情况下，即使正在建立WebSocket
-		WaitingCase2Failed = 820, //玩家退出等待
-		WaitingCase2Successful = 821, //有新玩家加入。
-		WaitingCase3Successful = 831, //此状态代表所有玩家已就绪，应立即转入开始比拼界面
+		WaitingCase2Failed = 820, //宝宝玩家已离开
+		WaitingCase2Successful = 821, //宝宝玩家已加入
+		WaitingCase3Failed = 830, //坏人玩家已离开
+		WaitingCase3Successful = 831, //坏人玩家已加入
+		WaitingCase4Failed = 840, //裁判玩家已离开
+		WaitingCase4Successful = 841, //裁判玩家已加入
 		//Dialog = 9, //对话事件
 		DialogCase1Successful = 911, //连接服务器成功，成功原因：成功建立WebSocket	
 		DialogCase2Failed = 920, //您发言已结束，系统将把发言权移交给下一位玩家
 		DialogCase2Successful = 921, //轮到您发言
-		DialogCase3Failed = 930, //您已掉线
-		DialogCase3Successful = 931, //其他玩家掉线
-		DialogCase4Successful = 941, //裁判已判决游戏，本轮游戏结束
+		DialogCase4Successful = 931, //裁判已判决游戏，本轮游戏结束
 	};
 
 public:
@@ -90,7 +90,6 @@ public:
 
 	static void connect(Event nowEvent);
 	static void createMsg();
-	static void addMsg(JString key, JString value) { QJson::addMember(key, value); };
 	static void addMsg(JString key, string value) { QJson::addMember(key, value); };
 	static void addMsg(JString key, int value) { QJson::addMember(key, value); };
 	static void sendMsg();
