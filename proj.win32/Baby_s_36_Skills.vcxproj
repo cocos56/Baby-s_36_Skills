@@ -152,7 +152,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\GameInterface\begin.cpp" />
-    <ClCompile Include="..\Classes\GameInterface\InterNet.cpp" />
     <ClCompile Include="..\Classes\GameInterface\MapFive.cpp" />
     <ClCompile Include="..\Classes\GameInterface\MapFour.cpp" />
     <ClCompile Include="..\Classes\GameInterface\MapOne.cpp" />
@@ -198,7 +197,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\GameInterface\begin.h" />
-    <ClInclude Include="..\Classes\GameInterface\InterNet.h" />
     <ClInclude Include="..\Classes\GameInterface\MapFive.h" />
     <ClInclude Include="..\Classes\GameInterface\MapFour.h" />
     <ClInclude Include="..\Classes\GameInterface\MapOne.h" />

@@ -40,7 +40,7 @@ void ConnectServerScene::initMenu()
 
 void ConnectServerScene::back()
 {
-
+	QE_ReplaceScene(begin);
 }
 
 void ConnectServerScene::connect(int n)

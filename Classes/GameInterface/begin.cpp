@@ -196,7 +196,7 @@ void begin::enterMap()
 }
 void begin::enterNet()
 {
-	Scene * scene = InterNet::createScene();
+	Scene * scene = ConnectServerScene::createScene();
 	//翻页动画
 	TransitionPageTurn * turn = TransitionPageTurn::create(1,scene,false);
 	//替换场景

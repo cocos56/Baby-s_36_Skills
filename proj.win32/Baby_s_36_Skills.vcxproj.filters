@@ -54,9 +54,6 @@
     <ClCompile Include="..\Classes\GameInterface\begin.cpp">
       <Filter>GameInterface</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\InterNet.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameInterface\MapFive.cpp">
       <Filter>GameInterface</Filter>
     </ClCompile>
@@ -189,9 +186,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameInterface\begin.h">
-      <Filter>GameInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\InterNet.h">
       <Filter>GameInterface</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameInterface\MapFive.h">
