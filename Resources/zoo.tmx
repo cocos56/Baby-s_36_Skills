@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="64" tileheight="60">
+ <tileset firstgid="1" name="back" tilewidth="64" tileheight="60">
+  <image source="ZOO.png" width="960" height="540"/>
+ </tileset>
+ <tileset firstgid="136" name="Cillidable" tilewidth="64" tileheight="60">
+  <image source="Cillidable.png" width="128" height="60"/>
+  <tile id="1">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="first" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJzFy0VCAgEAAMC1xUIUExUMDGwM7ALsxg7E1v9/wPmFhzlOWRAE5VRQSRXV1FBLiDrqaaCRJsI0E6GFVqK00U4HnXTRTYweeukjToJ+BhhkiCTDjDDKGCnGmWCSKaaZYZY0c8yzwCIZllhmhVXWWGeDTbbYZocsOfLsssc+BxxyxDEnnHLGORdcUuCKa2645Y57HnjkiWeKvFDilTfe+eCTL7754fcf7x8QxyE6
+  </data>
+ </layer>
+ <objectgroup name="people1">
+  <object name="hero" x="84" y="373" width="38.4" height="36">
+   <ellipse/>
+  </object>
+  <object name="herobad" x="651" y="336" width="44" height="43">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <layer name="second" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztyLkNgDAABEHXy5vwYxwZaJsJiBAFELDSSKcL4e/rFZRU1DS0L7ujZ2BkYmZhJbKR7v38MzsHJxdCnQ32
+  </data>
+ </layer>
+ <layer name="peng1" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh6oHOA8FAElPgXAPSdGBY=
+  </data>
+ </layer>
+</map>

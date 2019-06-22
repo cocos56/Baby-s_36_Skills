@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="64" tileheight="60">
+ <tileset firstgid="1" name="rode" tilewidth="64" tileheight="60">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="first" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJzVzqkRADAMA0E7n/P1X28OmgoG7IzEzs2soKLBhd8xEJjiX9g4uOLPDerODerODer+sfkBKQEDPQ==
+  </data>
+ </layer>
+ <objectgroup name="people">
+  <object name="hero" x="60" y="450" width="14" height="20"/>
+ </objectgroup>
+</map>

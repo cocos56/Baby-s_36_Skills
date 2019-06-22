@@ -99,9 +99,6 @@
     <ClCompile Include="..\Classes\CreateRoomScene.cpp">
       <Filter>Network\SelectRooms</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\RoomInfo.cpp">
-      <Filter>Network\SelectRooms</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\JoinRoomScene.cpp">
       <Filter>Network\SelectRooms</Filter>
     </ClCompile>
@@ -134,6 +131,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\WaitingNetworkGameScene.cpp">
       <Filter>Network\NetworkGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoomsInfo.cpp">
+      <Filter>Network\SelectRooms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +212,6 @@
     <ClInclude Include="..\Classes\CreateRoomScene.h">
       <Filter>Network\SelectRooms</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\RoomInfo.h">
-      <Filter>Network\SelectRooms</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\JoinRoomScene.h">
       <Filter>Network\SelectRooms</Filter>
     </ClInclude>
@@ -247,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\WaitingNetworkGameScene.h">
       <Filter>Network\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoomsInfo.h">
+      <Filter>Network\SelectRooms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

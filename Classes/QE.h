@@ -12,7 +12,7 @@
 #include "ConnectServerScene.h"
 #include "SignInScene.h"
 #include "SignUpScene.h"
-#include "RoomInfo.h"
+#include "RoomsInfo.h"
 #include "GetRoomsScene.h"
 #include "CreateRoomScene.h"
 #include "JoinRoomScene.h"

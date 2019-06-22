@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="64" tileheight="60">
+ <tileset firstgid="1" name="back" tilewidth="64" tileheight="60">
+  <image source="HOSP.png" width="960" height="540"/>
+ </tileset>
+ <tileset firstgid="136" name="Cillidable" tilewidth="64" tileheight="60">
+  <image source="Cillidable.png" width="128" height="60"/>
+  <tile id="1">
+   <properties>
+    <property name="Collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="first" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxdzMVOHQAARNGHu7u7FXd3p0VaoGiLW4IlaIJtkN/msHthcTZ3kgkJBAKhhBFOBJFEEU0MscQRTwKJJJFMCqmkkU4GmWSRTQ655JFPAYUUUUwJpZRRTgWVVFFNDT+opY56GmikiWZaaKWNdjropItueuilj34GGGSIYUYYZYxxJphkimlm+MkvZpljngV+84dFlljmLyusssY6G2zyj/9ssc0Ou+yxzwGHHHHMCadBzjjngsugfsU1N9xyx33Q/sAjTzzz8u33yytvvPPBJ4inI2Q=
+  </data>
+ </layer>
+ <layer name="second" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFuEDnIMGUuJ0SAADKnxNF
+  </data>
+ </layer>
+</map>

@@ -15,6 +15,7 @@
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <ProjectName>宝贝三十六计</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -169,7 +170,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\QuickEngine\QString.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp" />
     <ClCompile Include="..\Classes\GetRoomsScene.cpp" />
-    <ClCompile Include="..\Classes\RoomInfo.cpp" />
+    <ClCompile Include="..\Classes\RoomsInfo.cpp" />
     <ClCompile Include="..\Classes\SelectRoleScene.cpp" />
     <ClCompile Include="..\Classes\SignUpScene.cpp" />
     <ClCompile Include="..\Classes\SignInScene.cpp" />
@@ -207,7 +208,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\QuickEngine\QType.h" />
     <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h" />
     <ClInclude Include="..\Classes\GetRoomsScene.h" />
-    <ClInclude Include="..\Classes\RoomInfo.h" />
+    <ClInclude Include="..\Classes\RoomsInfo.h" />
     <ClInclude Include="..\Classes\SelectRoleScene.h" />
     <ClInclude Include="..\Classes\SignUpScene.h" />
     <ClInclude Include="..\Classes\SignInScene.h" />

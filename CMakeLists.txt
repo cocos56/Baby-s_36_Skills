@@ -57,7 +57,7 @@ list(APPEND GAME_SOURCE
      Classes/NetworkBaseScene.cpp
      Classes/NetworkGameOverScene.cpp
      Classes/NetworkGameScene.cpp
-     Classes/RoomInfo.cpp
+     Classes/RoomsInfo.cpp
      Classes/SelectRoleScene.cpp
      Classes/SignInScene.cpp
      Classes/SignUpScene.cpp
@@ -90,7 +90,7 @@ list(APPEND GAME_HEADER
      Classes/NetworkGameOverScene.h
      Classes/NetworkGameScene.h
      Classes/QE.h
-     Classes/RoomInfo.h
+     Classes/RoomsInfo.h
      Classes/SelectRoleScene.h
      Classes/SignInScene.h
      Classes/SignUpScene.h
