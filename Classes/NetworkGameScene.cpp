@@ -50,6 +50,10 @@ void NetworkGameScene::dealServerResponse(int statusCode){
 		if (SelectRoleScene::_index == 2) { _instance->myTurn(true); }
 		else { _instance->myTurn(); }
 	}
+	else if (statusCode == 951) {
+		NetworkGameOverScene::_Loser = QJson::getString("result");
+		QE_ReplaceScene(NetworkGameOverScene);
+	}
 	else if (statusCode == 961){
 		_instance->addListViewElement(QJson::getString("msg"), "scoundrelPP.png");
 	}

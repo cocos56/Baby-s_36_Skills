@@ -70,14 +70,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 	Scene* scene;
 	//scene = ConnectServerScene::createScene();
-	scene = SignInScene::createScene();
+	//scene = SignInScene::createScene();
 	//scene = SignUpScene::createScene();
 	//scene = GetRoomsScene::createScene();
 	//scene = CreateRoomScene::createScene();
 	//scene = JoinRoomScene::createScene();
 	//scene = SelectRoleScene::createScene();
 	//scene = WaitingNetworkGameScene::createScene();
-	//scene = NetworkGameScene::createScene();
+	scene = NetworkGameScene::createScene();
 	//scene = NetworkGameOverScene::createScene();
 
 	//scene = HelloWorld::createScene();

@@ -22,8 +22,7 @@ QE_CreateSceneFromLayer_CPP(SelectRoleScene);
 	return true;
 }
 
-void SelectRoleScene::initSprits()
-{
+void SelectRoleScene::initSprits(){
 	QE_addBgSprite;
 	QE_addBgSpriteWithName("baby.png");
 	QE_addBgSpriteWithName("referee.png");
@@ -31,27 +30,21 @@ void SelectRoleScene::initSprits()
 	QE_addBgSpriteWithName("bar.png");
 }
 
-void SelectRoleScene::dealServerResponse(int statusCode)
-{
+void SelectRoleScene::dealServerResponse(int statusCode){
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 	QMessageBox(status);
 	if (statusCode == 731) { QE_ReplaceScene(WaitingNetworkGameScene); }
 }
 
-void SelectRoleScene::initLabel()
-{
-	NW_InitLogLabel(10, 80);
-}
+void SelectRoleScene::initLabel(){ NW_InitLogLabel(10, 80); }
 
-void SelectRoleScene::initMenu()
-{
+void SelectRoleScene::initMenu(){
 	QE_CreateSpriteMenu2(470, 40, "confirm.png", "confirmPressed.png", SelectRoleScene, confirm);
 	QE_CreateSpriteMenu(40, 520, "back.png", SelectRoleScene, back);
 }
 
-void SelectRoleScene::confirm()
-{
+void SelectRoleScene::confirm(){
 	Connect::createMsg();
 	Connect::addMsg("type", _index);
 	Connect::addMsg("un", QE_strToJStr(SignInScene::_un));
@@ -60,14 +53,12 @@ void SelectRoleScene::confirm()
 
 void SelectRoleScene::back() { QE_ReplaceScene(GetRoomsScene); };
 
-void SelectRoleScene::initRadioButton()
-{
+void SelectRoleScene::initRadioButton(){
 	_radioButtonGroup = RadioButtonGroup::create();
 	addChild(_radioButtonGroup);
 
-	for (int i = 0; i < 4; ++i)
-	{
-		RadioButton* radioButton = RadioButton::create("icon/btn_radio_off_holo.png", "icon/btn_radio_on_holo.png");
+	for (int i = 0; i < 4; ++i){
+		RadioButton* radioButton = RadioButton::create("radioOff.png", "radioOn.png");
 		float posX = 270 + 120 * i;
 		float posY = 500 - 140 * i;
 		radioButton->setPosition(Vec2(posX, posY));
@@ -78,7 +69,4 @@ void SelectRoleScene::initRadioButton()
 	}
 }
 
-void SelectRoleScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type)
-{
-	_index = index;
-}
+void SelectRoleScene::onChangedRadioButtonGroup(RadioButton* radioButton, int index, RadioButtonGroup::EventType type){ _index = index; }

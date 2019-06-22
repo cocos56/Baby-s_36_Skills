@@ -10,7 +10,7 @@ class NetworkGameOverScene : public Layer, public EditBoxDelegate, public Networ
 	NW_BaseScene;
 public:
 	static void dealServerResponse(int statusCode);
-	static char _Loser;
+	static string _Loser;
 private:
 	//精灵相关
 	void initSprite();
