@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="xyz.coco56.client"
+    package="xyz.coco56.Baby's_36_Skills"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET"/>

@@ -1,9 +1,5 @@
 ﻿#pragma execution_character_set("utf-8")
 #include "MapOne.h"
-#include "MapTwo.h"
-#include"MapThere.h"
-#include"MapFour.h"
-#include"MapFive.h"
 
 
 TMXTiledMap *_tileMap;
@@ -310,7 +306,7 @@ void  MapOne::movePlayer(Point p)
         
         int tilegid=_collidable->getTileGIDAt(currentPoint);
        
-        Value value=_tileMap->getPropertiesForGID(tilegid);
+        cocos2d::Value value=_tileMap->getPropertiesForGID(tilegid);
        
         auto valueStr=value.getDescription();
         

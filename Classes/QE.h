@@ -7,19 +7,38 @@
 
 //User
 #include "AppDelegate.h"
-#include "Connect.h"
-#include "NetworkBaseScene.h"
-#include "ConnectServerScene.h"
-#include "SignInScene.h"
-#include "SignUpScene.h"
-#include "RoomsInfo.h"
-#include "GetRoomsScene.h"
-#include "CreateRoomScene.h"
-#include "JoinRoomScene.h"
-#include"SelectRoleScene.h"
-#include "WaitingNetworkGameScene.h"
-#include "NetworkGameScene.h"
-#include "NetworkGameOverScene.h"
+
+//GameInterface
+#include "GameInterface/ResourceLoadScene.h"
+#include "GameInterface/star.h"
+#include "GameInterface/begin.h"
+
+//SingleGame
+#include "SingleGame/animation.h"
+#include "SingleGame/HRocker.h"
+#include "SingleGame/DataParse.h"
+#include "SingleGame/Battle.h"
+#include "GameInterface/MapOne.h"
+#include "GameInterface/MapTwo.h"
+#include "GameInterface/MapThere.h"
+#include "GameInterface/MapFour.h"
+#include "GameInterface/MapFive.h"
+
+//NetWorkGame
+#include "GameInterface/InterNet.h"
+#include "NetWorkGame/NetworkBase/Connect.h"
+#include "NetWorkGame/NetworkBase/NetworkBaseScene.h"
+#include "NetWorkGame/ConnectServer/ConnectServerScene.h"
+#include "NetWorkGame/SignIn/SignInScene.h"
+#include "NetWorkGame/SignUp/SignUpScene.h"
+#include "NetWorkGame/SelectRooms/RoomsInfo.h"
+#include "NetWorkGame/SelectRooms/GetRoomsScene.h"
+#include "NetWorkGame/SelectRooms/CreateRoomScene.h"
+#include "NetWorkGame/SelectRooms/JoinRoomScene.h"
+#include "NetWorkGame/SelectRooms/SelectRoleScene.h"
+#include "NetWorkGame/NetworkGame/WaitingNetworkGameScene.h"
+#include "NetWorkGame/NetworkGame/NetworkGameScene.h"
+#include "NetWorkGame/NetworkGame/NetworkGameOverScene.h"
 
 
 //test

@@ -1,6 +1,8 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include "HRocker.h"
 const double PI = 3.1415;
+
 HRocker::HRocker(void)
 {
 	rocketRun = false;

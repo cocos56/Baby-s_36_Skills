@@ -1,8 +1,6 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include "animation.h"
-
-
-
 
 void animation::StopAnimation( Sprite * hero1)
 {

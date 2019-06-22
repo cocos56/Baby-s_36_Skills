@@ -1,6 +1,8 @@
 ﻿#pragma execution_character_set("utf-8")
-#include "cocos2d.h"
-using namespace cocos2d;
+#pragma once
+
+#include "QE.h"
+
 class ResourceLoadScene : public Layer
 {
 public:

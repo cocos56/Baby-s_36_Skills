@@ -1,7 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 
 #include "star.h"
-#include "begin.h"
+
 Scene * star::createScene()
 {
 	Scene * scene = Scene::create();

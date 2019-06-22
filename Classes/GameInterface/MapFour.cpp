@@ -1,9 +1,6 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include "MapFour.h"
-#include "MapOne.h"
-#include "HRocker.h"
-
-
 
 TMXTiledMap *tileMap2;
 HRocker* rocker4;

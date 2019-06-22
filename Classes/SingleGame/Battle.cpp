@@ -1,18 +1,15 @@
 ﻿#pragma execution_character_set("utf-8")
-#include "Battre.h"
-#include "MapTwo.h"
-#include<string.h>
 
-#include "DataParse.h"
+#include "Battle.h"
 
-Scene * Battre::createScene()
+Scene * Battle::createScene()
 {
 	Scene* scene = Scene::create();
-	Layer * layer =Battre::create();
+	Layer * layer =Battle::create();
 	scene->addChild(layer);
 	return scene;
 }
-bool Battre::init()
+bool Battle::init()
 {
 	if (!Layer::init())
 	{
@@ -25,13 +22,13 @@ bool Battre::init()
 
 	button=Button::create("CloseNormal.png","CloseNormal.png");
 	button->setPosition(Vec2(150,50));
-	button->addClickEventListener(CC_CALLBACK_1(Battre::falseTextTurn,this));
+	button->addClickEventListener(CC_CALLBACK_1(Battle::falseTextTurn,this));
 	this->addChild(button);
 
 
 	 button1=Button::create("CloseNormal.png","CloseNormal.png");
 	button1->setPosition(Vec2(size.width-150,50));
-	button1->addClickEventListener(CC_CALLBACK_1(Battre::tureTextTurn,this));
+	button1->addClickEventListener(CC_CALLBACK_1(Battle::tureTextTurn,this));
 	this->addChild(button1);
 
 	dic=DataParse::getChapter(1);
@@ -47,12 +44,12 @@ bool Battre::init()
 	return true;
 }
 
-void Battre::backScese()
+void Battle::backScese()
 {
 	Director::getInstance()->popScene();
 }
 
-void Battre::Lable_Set(Label *label1 ,String* str,int i)
+void Battle::Lable_Set(Label *label1 ,String* str,int i)
 {
 	content = *str;
 	
@@ -69,7 +66,7 @@ void Battre::Lable_Set(Label *label1 ,String* str,int i)
 	label->setAnchorPoint(Vec2(0, 1));//设置锚点，从左向右打印
 	label->setDimensions(600, 200);
 
-	this->schedule(schedule_selector(Battre::showFont),0.2);
+	this->schedule(schedule_selector(Battle::showFont),0.2);
 }
 
 
@@ -77,7 +74,7 @@ void Battre::Lable_Set(Label *label1 ,String* str,int i)
 
 
 
-void Battre::showFont(float dt) {
+void Battle::showFont(float dt) {
 
 	std::string c=content.getCString();
 
@@ -92,7 +89,7 @@ void Battre::showFont(float dt) {
 	button1->setEnabled(false);
 	
 	if (n > content.length()) {
-		this->unschedule(schedule_selector(Battre::showFont));
+		this->unschedule(schedule_selector(Battle::showFont));
 		button->setEnabled(true);
 		button1->setEnabled(true);
 		n=0;
@@ -100,7 +97,7 @@ void Battre::showFont(float dt) {
 	}
 }
 
-void Battre::falseTextTurn(Ref *sender)
+void Battle::falseTextTurn(Ref *sender)
 {
 	
 	 dic=Dictionary::createWithContentsOfFile("text.xml");
@@ -110,7 +107,7 @@ void Battre::falseTextTurn(Ref *sender)
 }
 
 
- void Battre::tureTextTurn(Ref *sender)
+ void Battle::tureTextTurn(Ref *sender)
  {
 	 
 	 dic=Dictionary::createWithContentsOfFile("text.xml");

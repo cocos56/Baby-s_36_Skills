@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -14,8 +14,6 @@
     <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
-    <ProjectName>宝贝三十六计</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -28,7 +26,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141_xp</PlatformToolset>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -84,7 +82,8 @@
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -122,7 +121,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -151,75 +150,101 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\Connect.cpp" />
-    <ClCompile Include="..\Classes\ConnectServerScene.cpp" />
-    <ClCompile Include="..\Classes\CreateRoomScene.cpp" />
-    <ClCompile Include="..\Classes\NetworkGameOverScene.cpp" />
-    <ClCompile Include="..\Classes\JoinRoomScene.cpp" />
-    <ClCompile Include="..\Classes\NetworkGameScene.cpp" />
-    <ClCompile Include="..\Classes\NetworkBaseScene.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QEditBox.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QJson.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QMenu.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QMessageBox.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QObject.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QScene.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QSprite.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QString.cpp" />
-    <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp" />
-    <ClCompile Include="..\Classes\GetRoomsScene.cpp" />
-    <ClCompile Include="..\Classes\RoomsInfo.cpp" />
-    <ClCompile Include="..\Classes\SelectRoleScene.cpp" />
-    <ClCompile Include="..\Classes\SignUpScene.cpp" />
-    <ClCompile Include="..\Classes\SignInScene.cpp" />
-    <ClCompile Include="..\Classes\Test\HelloWorldScene.cpp" />
-    <ClCompile Include="..\Classes\Test\HttpTest.cpp" />
-    <ClCompile Include="..\Classes\Test\PopAlertDialog.cpp" />
-    <ClCompile Include="..\Classes\Test\SignInSceneTest.cpp" />
-    <ClCompile Include="..\Classes\Test\SocketIOTestLayer.cpp" />
-    <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp" />
-    <ClCompile Include="..\Classes\WaitingNetworkGameScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\begin.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\InterNet.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapFive.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapFour.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapOne.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapThere.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapTwo.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\ResourceLoadScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\star.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\ConnectServer\ConnectServerScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkBase\Connect.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkBase\NetworkBaseScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkGame\NetworkGameOverScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkGame\NetworkGameScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkGame\WaitingNetworkGameScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\CreateRoomScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\GetRoomsScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\JoinRoomScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\RoomsInfo.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\SelectRoleScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SignIn\SignInScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SignUp\SignUpScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QAnimate.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QEditBox.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QJson.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QMenu.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QMessageBox.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QObject.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QSprite.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QString.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QTMX.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\SingleGame\animation.cpp" />
+    <ClCompile Include="..\Classes\SingleGame\Battle.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\SingleGame\DataParse.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\SingleGame\HRocker.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\Test\HelloWorldScene.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\Test\HttpTest.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\Test\PopAlertDialog.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\Test\SignInSceneTest.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\Test\SocketIOTestLayer.cpp" />
+    <ClCompile Include="..\..\Baby%27s_36_Skills\Classes\Test\WebSocketTestLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\Connect.h" />
-    <ClInclude Include="..\Classes\ConnectServerScene.h" />
-    <ClInclude Include="..\Classes\CreateRoomScene.h" />
-    <ClInclude Include="..\Classes\NetworkGameOverScene.h" />
-    <ClInclude Include="..\Classes\JoinRoomScene.h" />
-    <ClInclude Include="..\Classes\NetworkGameScene.h" />
-    <ClInclude Include="..\Classes\NetworkBaseScene.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QAnimate.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QDesignMode.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QEditBox.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QFileUtils.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QJson.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QLayer.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QMenu.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QMessageBox.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QObject.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QScene.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QSprite.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QString.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QTMX.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QType.h" />
-    <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h" />
-    <ClInclude Include="..\Classes\GetRoomsScene.h" />
-    <ClInclude Include="..\Classes\RoomsInfo.h" />
-    <ClInclude Include="..\Classes\SelectRoleScene.h" />
-    <ClInclude Include="..\Classes\SignUpScene.h" />
-    <ClInclude Include="..\Classes\SignInScene.h" />
-    <ClInclude Include="..\Classes\QE.h" />
-    <ClInclude Include="..\Classes\Test\HelloWorldScene.h" />
-    <ClInclude Include="..\Classes\Test\HttpTest.h" />
-    <ClInclude Include="..\Classes\Test\PopAlertDialog.h" />
-    <ClInclude Include="..\Classes\Test\SignInSceneTest.h" />
-    <ClInclude Include="..\Classes\Test\SocketIOTestLayer.h" />
-    <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h" />
-    <ClInclude Include="..\Classes\WaitingNetworkGameScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\AppDelegate.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\begin.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\InterNet.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapFive.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapFour.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapOne.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapThere.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\MapTwo.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\ResourceLoadScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\GameInterface\star.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\ConnectServer\ConnectServerScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkBase\Connect.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkBase\NetworkBaseScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkGame\NetworkGameOverScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkGame\NetworkGameScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\NetworkGame\WaitingNetworkGameScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\CreateRoomScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\GetRoomsScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\JoinRoomScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\RoomsInfo.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SelectRooms\SelectRoleScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SignIn\SignInScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\NetWorkGame\SignUp\SignUpScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QE.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QAnimate.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QDesignMode.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QEditBox.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QFileUtils.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QJson.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QLayer.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QMenu.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QMessageBox.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QObject.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QSprite.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QString.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QTMX.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QType.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\QuickEngine\QuickEngine.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\SingleGame\animation.h" />
+    <ClInclude Include="..\Classes\SingleGame\Battle.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\SingleGame\DataParse.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\SingleGame\HRocker.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\Test\HelloWorldScene.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\Test\HttpTest.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\Test\PopAlertDialog.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\Test\SignInSceneTest.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\Test\SocketIOTestLayer.h" />
+    <ClInclude Include="..\..\Baby%27s_36_Skills\Classes\Test\WebSocketTestLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

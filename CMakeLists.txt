@@ -25,7 +25,7 @@
 
 cmake_minimum_required(VERSION 3.6)
 
-set(APP_NAME Client)
+set(APP_NAME Baby's_36_Skills)
 
 project(${APP_NAME})
 
@@ -49,19 +49,28 @@ endif()
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
-     Classes/Connect.cpp
-     Classes/ConnectServerScene.cpp
-     Classes/CreateRoomScene.cpp
-     Classes/GetRoomsScene.cpp
-     Classes/JoinRoomScene.cpp
-     Classes/NetworkBaseScene.cpp
-     Classes/NetworkGameOverScene.cpp
-     Classes/NetworkGameScene.cpp
-     Classes/RoomsInfo.cpp
-     Classes/SelectRoleScene.cpp
-     Classes/SignInScene.cpp
-     Classes/SignUpScene.cpp
-     Classes/WaitingNetworkGameScene.cpp
+     Classes/GameInterface/begin.cpp
+     Classes/GameInterface/InterNet.cpp
+     Classes/GameInterface/MapFive.cpp
+     Classes/GameInterface/MapFour.cpp
+     Classes/GameInterface/MapOne.cpp
+     Classes/GameInterface/MapThere.cpp
+     Classes/GameInterface/MapTwo.cpp
+     Classes/GameInterface/ResourceLoadScene.cpp
+     Classes/GameInterface/star.cpp
+     Classes/NetWorkGame/ConnectServer/ConnectServerScene.cpp
+     Classes/NetWorkGame/NetworkBase/Connect.cpp
+     Classes/NetWorkGame/NetworkBase/NetworkBaseScene.cpp
+     Classes/NetWorkGame/NetworkGame/NetworkGameOverScene.cpp
+     Classes/NetWorkGame/NetworkGame/NetworkGameScene.cpp
+     Classes/NetWorkGame/NetworkGame/WaitingNetworkGameScene.cpp
+     Classes/NetWorkGame/SelectRooms/CreateRoomScene.cpp
+     Classes/NetWorkGame/SelectRooms/GetRoomsScene.cpp
+     Classes/NetWorkGame/SelectRooms/JoinRoomScene.cpp
+     Classes/NetWorkGame/SelectRooms/RoomsInfo.cpp
+     Classes/NetWorkGame/SelectRooms/SelectRoleScene.cpp
+     Classes/NetWorkGame/SignIn/SignInScene.cpp
+     Classes/NetWorkGame/SignUp/SignUpScene.cpp
      Classes/QuickEngine/QAnimate.cpp
      Classes/QuickEngine/QEditBox.cpp
      Classes/QuickEngine/QJson.cpp
@@ -72,6 +81,11 @@ list(APPEND GAME_SOURCE
      Classes/QuickEngine/QSprite.cpp
      Classes/QuickEngine/QString.cpp
      Classes/QuickEngine/QTMX.cpp
+     Classes/SingleGame/animation.cpp
+     Classes/SingleGame/AppDelegate.cpp
+     Classes/SingleGame/Battre.cpp
+     Classes/SingleGame/DataParse.cpp
+     Classes/SingleGame/HRocker.cpp
      Classes/Test/HelloWorldScene.cpp
      Classes/Test/HttpTest.cpp
      Classes/Test/PopAlertDialog.cpp
@@ -81,20 +95,29 @@ list(APPEND GAME_SOURCE
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
-     Classes/Connect.h
-     Classes/ConnectServerScene.h
-     Classes/CreateRoomScene.h
-     Classes/GetRoomsScene.h
-     Classes/JoinRoomScene.h
-     Classes/NetworkBaseScene.h
-     Classes/NetworkGameOverScene.h
-     Classes/NetworkGameScene.h
      Classes/QE.h
-     Classes/RoomsInfo.h
-     Classes/SelectRoleScene.h
-     Classes/SignInScene.h
-     Classes/SignUpScene.h
-     Classes/WaitingNetworkGameScene.h
+     Classes/GameInterface/begin.h
+     Classes/GameInterface/InterNet.h
+     Classes/GameInterface/MapFive.h
+     Classes/GameInterface/MapFour.h
+     Classes/GameInterface/MapOne.h
+     Classes/GameInterface/MapThere.h
+     Classes/GameInterface/MapTwo.h
+     Classes/GameInterface/ResourceLoadScene.h
+     Classes/GameInterface/star.h
+     Classes/NetWorkGame/ConnectServer/ConnectServerScene.h
+     Classes/NetWorkGame/NetworkBase/Connect.h
+     Classes/NetWorkGame/NetworkBase/NetworkBaseScene.h
+     Classes/NetWorkGame/NetworkGame/NetworkGameOverScene.h
+     Classes/NetWorkGame/NetworkGame/NetworkGameScene.h
+     Classes/NetWorkGame/NetworkGame/WaitingNetworkGameScene.h
+     Classes/NetWorkGame/SelectRooms/CreateRoomScene.h
+     Classes/NetWorkGame/SelectRooms/GetRoomsScene.h
+     Classes/NetWorkGame/SelectRooms/JoinRoomScene.h
+     Classes/NetWorkGame/SelectRooms/RoomsInfo.h
+     Classes/NetWorkGame/SelectRooms/SelectRoleScene.h
+     Classes/NetWorkGame/SignIn/SignInScene.h
+     Classes/NetWorkGame/SignUp/SignUpScene.h
      Classes/QuickEngine/QAnimate.h
      Classes/QuickEngine/QDesignMode.h
      Classes/QuickEngine/QEditBox.h
@@ -110,6 +133,11 @@ list(APPEND GAME_HEADER
      Classes/QuickEngine/QTMX.h
      Classes/QuickEngine/QType.h
      Classes/QuickEngine/QuickEngine.h
+     Classes/SingleGame/animation.h
+     Classes/SingleGame/AppDelegate.h
+     Classes/SingleGame/Battre.h
+     Classes/SingleGame/DataParse.h
+     Classes/SingleGame/HRocker.h
      Classes/Test/HelloWorldScene.h
      Classes/Test/HttpTest.h
      Classes/Test/PopAlertDialog.h
@@ -200,11 +228,14 @@ if(APPLE)
     elseif(IOS)
         cocos_pak_xcode(${APP_NAME} INFO_PLIST "iOSBundleInfo.plist.in")
         set_xcode_property(${APP_NAME} ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon")
+        set_xcode_property(${APP_NAME} DEVELOPMENT_TEAM "")
+        set_xcode_property(${APP_NAME} CODE_SIGN_IDENTITY "iPhone Developer")
     endif()
 elseif(WINDOWS)
-    cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_RES_DIR}/..)
+    cocos_copy_target_dll(${APP_NAME})
 endif()
 
 if(LINUX OR WINDOWS)
-    cocos_copy_res(COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
+    set(APP_RES_DIR "$<TARGET_FILE_DIR:${APP_NAME}>/Resources")
+    cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()

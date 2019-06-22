@@ -1,9 +1,6 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include "MapTwo.h"
-#include"animation.h"
-#include "HRocker.h"
-#include"math\CCMath.h"
-#include "Battre.h"
 
 TMXTiledMap *tileMap;
 
@@ -68,10 +65,6 @@ bool MapTwo::init()
 	 heroBad=Sprite::create("walk_1.png");
 	heroBad->setPosition(x4,y4);
 	tileMap ->addChild(heroBad,1);
-	
-	
-
-
 
 	this->scheduleUpdate();
 
@@ -147,7 +140,7 @@ void MapTwo::update(float f)
 		
 
 
-		auto scens =Battre::createScene();
+		auto scens =Battle::createScene();
 		Director::getInstance()->pushScene(scens);
 
 		rocker2->resumeState();
@@ -267,7 +260,7 @@ Point  MapTwo::movePlayer(Point p,Point p3)
         
         int tilegid=_collidable2->getTileGIDAt(currentPoint);
        
-        Value value=tileMap->getPropertiesForGID(tilegid);
+        cocos2d::Value value=tileMap->getPropertiesForGID(tilegid);
        
         auto valueStr=value.getDescription();
         

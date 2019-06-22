@@ -1,8 +1,8 @@
 ﻿#pragma execution_character_set("utf-8")
 #pragma once
-#include "cocos2d.h"
-#include<iostream>
-USING_NS_CC;
+
+#include "QE.h"
+
 class star :public Layer
 {
 public:

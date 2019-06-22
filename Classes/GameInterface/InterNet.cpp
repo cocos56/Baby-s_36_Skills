@@ -1,5 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include "InterNet.h"
+
 Scene * InterNet::createScene()
 {
 	Scene * scene = Scene::create();

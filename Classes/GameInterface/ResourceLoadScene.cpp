@@ -1,6 +1,6 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include "ResourceLoadScene.h"
-#include "star.h"
 
 Scene * ResourceLoadScene::createScene()
 {

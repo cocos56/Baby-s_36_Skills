@@ -1,10 +1,6 @@
 ﻿#pragma execution_character_set("utf-8")
-#include "DataParse.h"
-#include"json\document.h"
-#include"json/writer.h"
-#include"json/stringbuffer.h"
-#include"json/rapidjson.h"
 
+#include "DataParse.h"
 
 void DataParse::CopyFile()
 {

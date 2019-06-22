@@ -1,11 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
+
 #include"begin.h"
-#include "InterNet.h"
-#include "MapOne.h"
-#include "ui/CocosGUI.h"
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
-using namespace ui;
+
 Scene * begin::createScene()
 {
 	Scene * scene = Scene::create();

@@ -1,1 +1,1 @@
-cocos compile -p win32
+cocos compile -p win32 -o .\Win32_DebugMode
