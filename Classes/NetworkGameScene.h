@@ -13,10 +13,10 @@ public:
 private:
 	//精灵
 	static vector< Sprite*> _onSprites;
-	static Sprite* _spr, *_confirmSpr, *_refereeConfirmSpr;
+	static Sprite* _spr, *_confirmSpr, *_judgeSpr;
 	void initSprits();
 	void createSprite(int x, int y, string identity);
-	void setOnSprites(int index);
+	void setOnSprite(int index);
 	void initConfrimSprite();
 	Sprite* createSprite(const string& picture);
 	void createSprite(int x, const string& picture, const ccMenuCallback& callback);
@@ -37,8 +37,7 @@ private:
 	void initListView();
 	void addListViewElement(const string msg, const string pic);
 	void myTurn(bool isMyTurn = false);
-	void confirm();
-	void refereeConfirm();
+	void endChat();
 	void yes();
 	void no();
 	void babyWin();

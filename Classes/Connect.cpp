@@ -12,7 +12,7 @@ QE_SINGLETON_CPP(Connect);
 void Connect::connect(Event nowEvent){
 	_nowEvent = nowEvent;
 	if (!_ws) { Connect::getInstance()->initSocket(); return; };
-	if (_nowEvent == GetRooms) { createMsg(); sendMsg(); }
+	if (_nowEvent == GetRooms || _nowEvent==Dialog) { createMsg(); sendMsg(); }
 }
 
 void Connect::initSocket(){
@@ -80,10 +80,12 @@ string Connect::getStatus(Status status){
 	else if (status == DialogCase3Successful) { return "轮到宝宝玩家发言"; }
 	else if (status == DialogCase4Successful) { return "轮到裁判玩家发言"; }
 	else if (status == DialogCase5Successful) { return "裁判玩家已判决本轮游戏，本轮游戏结束"; }
+	else if (status == DialogCase6Successful) { return "坏人玩家发言了"; }
+	else if (status == DialogCase7Successful) { return "宝宝玩家发言了"; }
+	else if (status == DialogCase8Successful) { return "裁判玩家发言了"; }
 }
 
-void Connect::onOpen(WebSocket* ws)
-{
+void Connect::onOpen(WebSocket* ws){
 	//进行这样的判断是因为WebSocket对象没有setTag方法
 	if (ws != _ws){return;}
 	_isConnecting = false;
@@ -91,8 +93,7 @@ void Connect::onOpen(WebSocket* ws)
 	ConnectServerScene::dealServerResponse(111);
 }
 
-void Connect::onClose(WebSocket* ws)
-{
+void Connect::onClose(WebSocket* ws){
 	if (ws != _ws) { return; }
 	_ws = nullptr;
 	_isConnecting = false;
@@ -100,39 +101,36 @@ void Connect::onClose(WebSocket* ws)
 	ConnectServerScene::disConnect();
 }
 
-void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error)
-{
+void Connect::onError(WebSocket* ws, const WebSocket::ErrorCode& error){
 	if (ws != _ws) { return; }
 	_ws->close();
 }
 
-void Connect::createMsg()
-{
+void Connect::createMsg(){
 	QJson::emptyDoc();
 	addMsg("event", getNowEvent());
 }
 
-void Connect::sendMsg()
-{
+void Connect::sendMsg(){
 	if (!_ws) { return; }
 	CCLOG("send：%s", QJson::getString().c_str());
 	_ws->send(QJson::getString());
 }
 
-void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data)
-{
+void Connect::onMessage(WebSocket* ws, const WebSocket::Data& data){
 	if (ws != _ws) { return; }
 	CCLOG("收到信息：%s", data.bytes);
 	QJson::initDocWithString(data.bytes);
 	int event = QJson::getInt("event");
-	if (event == 2) { SignInScene::dealServerResponse(QJson::getInt("status")); }
-	else if (event == 3){ SignUpScene::dealServerResponse(QJson::getInt("status")); }
-	else if (event == 4) { GetRoomsScene::dealServerResponse(QJson::getInt("status")); }
-	else if (event == 5){ CreateRoomScene::dealServerResponse(QJson::getInt("status")); }
-	else if (event == 6) { JoinRoomScene::dealServerResponse(QJson::getInt("status")); }
-	else if (event == 7) { SelectRoleScene::dealServerResponse(QJson::getInt("status")); }
+	int status = QJson::getInt("status");
+	if (event == 2) { SignInScene::dealServerResponse(status); }
+	else if (event == 3){ SignUpScene::dealServerResponse(status); }
+	else if (event == 4) { GetRoomsScene::dealServerResponse(status); }
+	else if (event == 5){ CreateRoomScene::dealServerResponse(status); }
+	else if (event == 6) { JoinRoomScene::dealServerResponse(status); }
+	else if (event == 7) { SelectRoleScene::dealServerResponse(status); }
 	else if (event == 8 || event == 9) {
-		WaitingNetworkGameScene::dealServerResponse(QJson::getInt("status"));
-		NetworkGameScene::dealServerResponse(QJson::getInt("status"));
+		WaitingNetworkGameScene::dealServerResponse(status);
+		NetworkGameScene::dealServerResponse(status);
 	}
 }

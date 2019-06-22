@@ -1,6 +1,6 @@
 function sendMsg(conn, room, msgBack){
     if('childWS' in room){
-        console.log("childWS")
+        console.log("childWS", msgBack)
         room['childWS'].send(JSON.stringify(msgBack)) 
     }
     if('scoundrelWS' in room){
@@ -13,8 +13,11 @@ function sendMsg(conn, room, msgBack){
     }
 }
 
+exports.sendMsg = sendMsg
+
 function waitingCloseCallback(conn, room)
 {
+    if('turn' in room){ room['turn'] = 0 }
     let msgBack = {"event": 8}
     if('childWS' in room && room['childWS'] == conn){
         msgBack['status'] = 820

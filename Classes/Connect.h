@@ -3,8 +3,7 @@
 
 #include "QE.h"
 
-class Connect : public WebSocket::Delegate
-{
+class Connect : public WebSocket::Delegate{
 	QE_SINGLETON_H(Connect);
 public:
 	enum Event {
@@ -78,10 +77,13 @@ public:
 		DialogCase3Successful = 931, //轮到宝宝玩家发言
 		DialogCase4Successful = 941, //轮到裁判玩家发言
 		DialogCase5Successful = 951, //裁判玩家已判决本轮游戏，本轮游戏结束
+		DialogCase6Successful = 961, //坏人玩家发言了
+		DialogCase7Successful = 971, //宝宝玩家发言了
+		DialogCase8Successful = 981, //裁判玩家发言了
 	};
 
 public:
-	static int getNowEvent() { return _nowEvent; };
+	static int getNowEvent() { return _nowEvent; } ;
 	static string getStatus(Status status);
 	static string getStatus(int statusCode);
 	static bool _isConnecting;

@@ -2,7 +2,7 @@
 
 #include "NetworkGameOverScene.h"
 
-int NetworkGameOverScene::_winFlag = 1;
+char NetworkGameOverScene::_Loser = 'b';
 
 QE_SINGLETON2_CPP(NetworkGameOverScene);
 
@@ -11,34 +11,30 @@ QE_CreateSceneFromLayer_CPP(NetworkGameOverScene);
 	QE_SetResourcesSearchDir;
 
 	_instance = this;
-	addChild(QSprite::createBg("babyWin.png"));
-	Connect::connect(Connect::Event::Dialog);
-	initLabel();
+	initSprite();
 	initMenu();
 	return true;
 }
 
-void NetworkGameOverScene::dealServerResponse(int statusCode)
-{
+void NetworkGameOverScene::dealServerResponse(int statusCode){
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 }
 
-void NetworkGameOverScene::initLabel()
+void NetworkGameOverScene::initSprite()
 {
-	//createLabel("本局结果");
-	//_label->setPosition(430, 390);
-	//string str;
-	//if (_winFlag == 1) { str = "宝宝玩家：胜"; }
-	//else if(_winFlag == 2) { str = "坏人玩家：胜"; }
-	//else if (_winFlag == 3) { str = "裁判断线：平局"; }
-	//createLabel(str);
-	//_label->setPosition(400, 325);
+	string str;
+	if (_Loser == 'b') { str = "babyWin"; }
+	else if(_Loser == 's') { str = "坏人玩家：胜"; }
+	else if (_Loser == 'r') { str = "裁判断线：平局"; }
+	createLabel(str);
+	_label->setPosition(400, 325);
+	addChild(QSprite::createBg("babyWin.png"));
 }
 
 void NetworkGameOverScene::initMenu()
 {
-	//QE_CreateLabelMenu(10, 500, "返回", NetworkGameOverScene, back);
+	QE_CreateLabelMenu(10, 500, "返回", NetworkGameOverScene, back);
 }
 
-void NetworkGameOverScene::back() { QE_ReplaceScene(SignInScene); };
+void NetworkGameOverScene::back() { QE_ReplaceScene(NetworkGameScene); };

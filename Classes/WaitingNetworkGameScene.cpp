@@ -33,7 +33,8 @@ void WaitingNetworkGameScene::dealServerResponse(int statusCode)
 
 void WaitingNetworkGameScene::setSpriteStatus(int index, bool visible) {
 	_onSprites[index]->setVisible(visible);
-	if (_onSprites[0]->isVisible() && _onSprites[1]->isVisible() && _onSprites[2]->isVisible()){ QE_ReplaceScene(NetworkGameScene); }
+	//if (_onSprites[0]->isVisible() && _onSprites[1]->isVisible() && _onSprites[2]->isVisible()){ QE_ReplaceScene(NetworkGameScene); }
+	if (_onSprites[0]->isVisible() || _onSprites[1]->isVisible() || _onSprites[2]->isVisible()) { QE_ReplaceScene(NetworkGameScene); }
 }
 
 void WaitingNetworkGameScene::createSprite(int x)

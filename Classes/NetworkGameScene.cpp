@@ -3,7 +3,7 @@
 #include "NetworkGameScene.h"
 
 vector< Sprite*> NetworkGameScene::_onSprites;
-Sprite* NetworkGameScene::_spr, * NetworkGameScene::_confirmSpr, * NetworkGameScene::_refereeConfirmSpr;
+Sprite* NetworkGameScene::_spr, * NetworkGameScene::_confirmSpr, * NetworkGameScene::_judgeSpr;
 Menu* NetworkGameScene::_menu, * NetworkGameScene::_sendMenu;
 EditBox* NetworkGameScene::_msgBox;
 
@@ -29,37 +29,59 @@ QE_CreateSceneFromLayer_CPP(NetworkGameScene);
 	initListView();
 	initEditBox();
 	initConfrimSprite();
+	//myTurn();
 	return true;
 }
 
-void NetworkGameScene::dealServerResponse(int statusCode)
-{
+void NetworkGameScene::dealServerResponse(int statusCode){
 	if (Connect::_nowEvent == 8) {return;}
-	//string status = Connect::getStatus(statusCode);
-	//dealServerResponse(status);
+	if (statusCode == 921){
+		_instance->setOnSprite(0);
+		if (SelectRoleScene::_index == 3) { _instance->myTurn(true); }
+		else { _instance->myTurn(); }
+	}
+	else if(statusCode == 931) {
+		_instance->setOnSprite(1);
+		if (SelectRoleScene::_index == 1) { _instance->myTurn(true); }
+		else { _instance->myTurn(); }
+	}
+	else if (statusCode == 941) {
+		_instance->setOnSprite(2);
+		if (SelectRoleScene::_index == 2) { _instance->myTurn(true); }
+		else { _instance->myTurn(); }
+	}
+	else if (statusCode == 961){
+		_instance->addListViewElement(QJson::getString("msg"), "scoundrelPP.png");
+	}
+	else if (statusCode == 971){
+		_instance->addListViewElement(QJson::getString("msg"), "babyPP.png");
+	}
+	else if (statusCode == 981){
+		_instance->addListViewElement(QJson::getString("msg"), "refereePP.png");
+	}
 }
 
-void NetworkGameScene::initMenu()
-{
+void NetworkGameScene::initMenu(){
 	QE_CreateSpriteMenu(40, 520, "back.png", NetworkGameScene, back);
 	QE_CreateSpriteMenu2(865, 55, "send.png", "sendPressed.png", NetworkGameScene, send);
 	_sendMenu = QMenu::_menu;
 }
 
-void NetworkGameScene::send()
-{
+void NetworkGameScene::send(){
 	string msg = _msgBox->getText();
-	if (msg != "")
-	{
-		addListViewElement(msg, "childPP.png");
+	if (msg != ""){
+		Connect::createMsg();
+		Connect::addMsg("msg", QE_ToJStr(_msgBox->getText()));
+		Connect::sendMsg();
 		_msgBox->setText("");
+		_confirmSpr->setVisible(true);
+		myTurn(false);
 	}
 }
 
 void NetworkGameScene::back() { QE_ReplaceScene(NetworkGameOverScene); };
 
-void NetworkGameScene::initEditBox()
-{
+void NetworkGameScene::initEditBox(){
 	_spr = Sprite::create("editBox.png");
 	_msgBox = _box = createEditBox("editBox.png", "editBoxPressed.png");
 	_box->setPosition(Vec2(53, 20));
@@ -68,10 +90,11 @@ void NetworkGameScene::initEditBox()
 }
 
 void NetworkGameScene::initSprits(){
+	_onSprites.clear();
 	QE_addBgSprite;
-	createSprite(165, 430, "child");
-	createSprite(165, 295, "referee");
 	createSprite(165, 160, "scoundrel");
+	createSprite(165, 430, "baby");
+	createSprite(165, 295, "referee");
 }
 
 void NetworkGameScene::createSprite(int x, int y, string identity){
@@ -86,17 +109,12 @@ void NetworkGameScene::createSprite(int x, int y, string identity){
 	_onSprites.push_back(_spr);
 }
 
-void NetworkGameScene::setOnSprites(int index)
-{
-	for (size_t i = 0; i < _onSprites.size(); i++)
-	{
-		_onSprites[i]->setVisible(false);
-	}
+void NetworkGameScene::setOnSprite(int index){
+	for (size_t i = 0; i < _onSprites.size(); i++){ _onSprites[i]->setVisible(false); }
 	_onSprites[index]->setVisible(true);
 }
 
-void NetworkGameScene::initListView()
-{
+void NetworkGameScene::initListView(){
 	_spr = Sprite::create("chatBg.png");
 	addChild(_spr);
 	_spr->setPosition(600, 310);
@@ -112,92 +130,76 @@ void NetworkGameScene::initListView()
 	_listView->setAnchorPoint(Vec2(0.5, 0.5));
 	_listView->setPosition(Vec2(600, 310));
 	addChild(_listView);
-	addListViewElement("小朋友，给你一根棒棒糖可以跟我走嘛？", "scoundrelPP.png");
-	addListViewElement("你是坏人，不可以跟你走。", "childPP.png");
-	addListViewElement("本局宝宝胜。", "refereePP.png");
 }
 
-void NetworkGameScene::addListViewElement(const string msg, const string pic)
-{
-	Layout* widget = Layout::create();
-	widget->setContentSize(Size(240, 30));
-
-	//创建RichText对象
+void NetworkGameScene::addListViewElement(const string msg, const string pic){
 	RichText* richText = RichText::create();
-	//设置是否忽略用户定义的内容大小
-	richText->ignoreContentAdaptWithSize(false);
-	//设置内容大小
-	richText->setContentSize(Size(500, 50));
-	richText->setPosition(Vec2(5, 0));
+	richText->setContentSize(Size(_listView->getContentSize().width, 30));
+	richText->setPosition(Vec2(-_listView->getContentSize().width, 0));
 	richText->setAnchorPoint(Vec2(0, 0));
 
-	RichElementText* re2 = RichElementText::create(2, Color3B::RED, 255," : " + msg, QE_Font, 20);
-	RichElementImage* re3 = RichElementImage::create(3, Color3B::WHITE, 255, pic);
-	richText->pushBackElement(re3);
-	richText->pushBackElement(re2);
+	richText->pushBackElement(RichElementImage::create(3, Color3B::WHITE, 255, pic));
+	richText->pushBackElement(RichElementText::create(2, Color3B::RED, 255, " : " + msg, QE_Font, 20));
 
-	widget->addChild(richText);
-	_listView->pushBackCustomItem(widget);
+	_listView->insertCustomItem(richText, 0);
 }
 
-void NetworkGameScene::initConfrimSprite()
-{
+void NetworkGameScene::initConfrimSprite(){
 	_confirmSpr = createSprite("confirm.png");
-	createSprite(400, "yes.png", bind(&NetworkGameScene::yes, this));
-	createSprite(100, "no.png", bind(&NetworkGameScene::no, this));
+	createSprite(640, "yes.png", bind(&NetworkGameScene::yes, this));
+	createSprite(310, "no.png", bind(&NetworkGameScene::no, this));
 
-	_refereeConfirmSpr = createSprite("refereeConfirm.png");
+	_judgeSpr = createSprite("refereeConfirm.png");
 	createSprite(250, "babyWin.png", bind(&NetworkGameScene::babyWin, this));
 	createSprite(100, "scoundrelWin.png", bind(&NetworkGameScene::scoundrelWin, this));
 	createSprite(400, "goOn.png", bind(&NetworkGameScene::goOn, this));
 }
 
-Sprite* NetworkGameScene::createSprite(const string& picture)
-{
+Sprite* NetworkGameScene::createSprite(const string& picture){
 	_spr = Sprite::create(picture);
 	addChild(_spr);
 	_spr->setPosition(540, 270);
+	_spr->setVisible(false);
 	return _spr;
 }
 
-void NetworkGameScene::createSprite(int x, const string& picture, const ccMenuCallback& callback)
-{
+void NetworkGameScene::createSprite(int x, const string& picture, const ccMenuCallback& callback){
 	_menu = QMenu::createMenuSprite(picture, callback);
-	_menu->setPosition(x, 50);
+	_menu->setPosition(x, 250);
 	_spr->addChild(_menu);
 }
 
-void NetworkGameScene::myTurn(bool isMyTurn)
-{
+void NetworkGameScene::myTurn(bool isMyTurn){
 	_sendMenu->setEnabled(isMyTurn);
 	_msgBox->setEnabled(isMyTurn);
 }
-void NetworkGameScene::confirm()
-{
 
-}
-void NetworkGameScene::refereeConfirm()
-{
-
+void NetworkGameScene::endChat(){
+	Connect::createMsg();
+	Connect::addMsg("end", "");
+	Connect::sendMsg();
 }
 
-void NetworkGameScene::yes()
-{
+void NetworkGameScene::yes(){
 	_confirmSpr->setVisible(false);
+	if (SelectRoleScene::_index == 2) { _judgeSpr->setVisible(true); }
+	else { endChat(); }
 }
-void NetworkGameScene::no()
-{
+
+void NetworkGameScene::no(){
 	_confirmSpr->setVisible(false);
+	myTurn(true);
 }
-void NetworkGameScene::babyWin()
-{
-	_refereeConfirmSpr->setVisible(false);
+
+void NetworkGameScene::babyWin(){
+	_judgeSpr->setVisible(false);
 }
-void NetworkGameScene::scoundrelWin()
-{
-	_refereeConfirmSpr->setVisible(false);
+
+void NetworkGameScene::scoundrelWin(){
+	_judgeSpr->setVisible(false);
 }
-void NetworkGameScene::goOn()
-{
-	_refereeConfirmSpr->setVisible(false);
+
+void NetworkGameScene::goOn(){
+	_judgeSpr->setVisible(false);
+	endChat();
 }

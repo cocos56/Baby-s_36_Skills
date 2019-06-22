@@ -3,7 +3,7 @@
 #include "SelectRoleScene.h"
 
 RadioButtonGroup* SelectRoleScene::_radioButtonGroup;
-int SelectRoleScene::_index;
+int SelectRoleScene::_index = 3;
 
 QE_SINGLETON2_CPP(SelectRoleScene);
 
@@ -25,7 +25,7 @@ QE_CreateSceneFromLayer_CPP(SelectRoleScene);
 void SelectRoleScene::initSprits()
 {
 	QE_addBgSprite;
-	QE_addBgSpriteWithName("child.png");
+	QE_addBgSpriteWithName("baby.png");
 	QE_addBgSpriteWithName("referee.png");
 	QE_addBgSpriteWithName("scoundrel.png");
 	QE_addBgSpriteWithName("bar.png");
