@@ -2,19 +2,9 @@
 
 #include"begin.h"
 
-Scene * begin::createScene()
-{
-	Scene * scene = Scene::create();
-	Layer * layer = begin::create();
-	scene->addChild(layer);
-	return scene;
-}
-bool begin::init()
-{
-	if (!Layer::init())
-	{
-		return false;
-	}
+QE_CreateSceneFromLayer_CPP(begin);
+	paths = { "." };
+	QE_SetResourcesSearchDir;
 	Size size = Director::getInstance()->getWinSize();
 	auto bg=Sprite::create("begin.png");
 	auto scaleX = size.width/bg->getContentSize().width;

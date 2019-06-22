@@ -6,10 +6,9 @@
 class begin :public Layer
 {
 public:
-    static Scene * createScene();
-    virtual bool init();
-	CREATE_FUNC(begin);
-	void startScene();
+	QE_CreateSceneFromLayer_H(begin);
+
+
 	void setLayer();
 	void setMusic(Ref* sender);
 	void setBack();
