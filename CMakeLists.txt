@@ -50,7 +50,6 @@ endif()
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/GameInterface/begin.cpp
-     Classes/GameInterface/InterNet.cpp
      Classes/GameInterface/MapFive.cpp
      Classes/GameInterface/MapFour.cpp
      Classes/GameInterface/MapOne.cpp
@@ -96,7 +95,6 @@ list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/QE.h
      Classes/GameInterface/begin.h
-     Classes/GameInterface/InterNet.h
      Classes/GameInterface/MapFive.h
      Classes/GameInterface/MapFour.h
      Classes/GameInterface/MapOne.h

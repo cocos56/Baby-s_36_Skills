@@ -25,7 +25,6 @@
 #include "GameInterface/MapFive.h"
 
 //NetWorkGame
-#include "GameInterface/InterNet.h"
 #include "NetWorkGame/NetworkBase/Connect.h"
 #include "NetWorkGame/NetworkBase/NetworkBaseScene.h"
 #include "NetWorkGame/ConnectServer/ConnectServerScene.h"
