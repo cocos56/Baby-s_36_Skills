@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameInterface">
+      <UniqueIdentifier>{2efc8215-9dcb-4d07-9aa5-23aaa3c546f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame">
+      <UniqueIdentifier>{b7e18e22-7215-49b9-97cb-6efe0e29bd14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame\ConnectServer">
+      <UniqueIdentifier>{8d18e496-7611-4b63-bf50-758c3c6c2f06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame\NetworkBase">
+      <UniqueIdentifier>{3e5f06dd-f450-4c54-8ab2-35a997cb2897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame\NetworkGame">
+      <UniqueIdentifier>{8fcba991-af8e-4a25-b9b1-b7757c87d88a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame\SelectRooms">
+      <UniqueIdentifier>{2aa43862-ead2-43b8-9824-f263b9f4bbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame\SignUp">
+      <UniqueIdentifier>{780fde49-2ccd-49a9-ab1a-f3d08fc88c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkGame\SignIn">
+      <UniqueIdentifier>{ba307a79-33b3-4dfc-8099-23ad5417a178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuickEngine">
+      <UniqueIdentifier>{fb62c8e8-e36b-4aa1-88e1-6990126977ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SingleGame">
+      <UniqueIdentifier>{064c241a-b658-4568-a5f4-bb8bddcfb6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{f665b626-8e13-409d-a2dc-16abc5eaebe1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\begin.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\InterNet.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\MapFive.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\MapFour.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\MapOne.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\MapThere.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\MapTwo.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\ResourceLoadScene.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\star.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\ConnectServer\ConnectServerScene.cpp">
+      <Filter>NetWorkGame\ConnectServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkBase\Connect.cpp">
+      <Filter>NetWorkGame\NetworkBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkBase\NetworkBaseScene.cpp">
+      <Filter>NetWorkGame\NetworkBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameOverScene.cpp">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameScene.cpp">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\WaitingNetworkGameScene.cpp">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\CreateRoomScene.cpp">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\GetRoomsScene.cpp">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\JoinRoomScene.cpp">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\RoomsInfo.cpp">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\SelectRoleScene.cpp">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SignIn\SignInScene.cpp">
+      <Filter>NetWorkGame\SignIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\SignUp\SignUpScene.cpp">
+      <Filter>NetWorkGame\SignUp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QEditBox.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QJson.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QMenu.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QMessageBox.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QObject.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QScene.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QSprite.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QString.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickEngine\QTMX.cpp">
+      <Filter>QuickEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\animation.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\Battle.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\DataParse.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\HRocker.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\HelloWorldScene.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\HttpTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\PopAlertDialog.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\SignInSceneTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\SocketIOTestLayer.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QE.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\begin.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\InterNet.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\MapFive.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\MapFour.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\MapOne.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\MapThere.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\MapTwo.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\ResourceLoadScene.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\star.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\ConnectServer\ConnectServerScene.h">
+      <Filter>NetWorkGame\ConnectServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkBase\Connect.h">
+      <Filter>NetWorkGame\NetworkBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkBase\NetworkBaseScene.h">
+      <Filter>NetWorkGame\NetworkBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameOverScene.h">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameScene.h">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\WaitingNetworkGameScene.h">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\CreateRoomScene.h">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\GetRoomsScene.h">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\JoinRoomScene.h">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\RoomsInfo.h">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\SelectRoleScene.h">
+      <Filter>NetWorkGame\SelectRooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SignIn\SignInScene.h">
+      <Filter>NetWorkGame\SignIn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\SignUp\SignUpScene.h">
+      <Filter>NetWorkGame\SignUp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QAnimate.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QDesignMode.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QEditBox.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QFileUtils.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QJson.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QLayer.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QMenu.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QMessageBox.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QObject.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QScene.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QSprite.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QString.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QTMX.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QType.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickEngine\QuickEngine.h">
+      <Filter>QuickEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\animation.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\Battle.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\DataParse.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\HRocker.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\HelloWorldScene.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\HttpTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\PopAlertDialog.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\SignInSceneTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\SocketIOTestLayer.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

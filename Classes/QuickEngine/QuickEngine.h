@@ -29,6 +29,7 @@ QE具体表现为：优化默认的参数值及参数列表，使原来需要数
 //#define CC_CALLBACK_0(__selector__,__target__, ...) std::bind(&__selector__,__target__, ##__VA_ARGS__)
 #define QE_CALLBACK_1(Type,Fun) CC_CALLBACK_1(Type::Fun, this)
 #define QE_Font "fonts/HannotateSC-W5.ttf"
+#define QE_Font ""
 
 //C++
 using namespace std;

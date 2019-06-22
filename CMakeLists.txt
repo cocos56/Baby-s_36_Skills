@@ -25,7 +25,7 @@
 
 cmake_minimum_required(VERSION 3.6)
 
-set(APP_NAME Baby's_36_Skills)
+set(APP_NAME Baby_s_36_Skills)
 
 project(${APP_NAME})
 
@@ -82,8 +82,7 @@ list(APPEND GAME_SOURCE
      Classes/QuickEngine/QString.cpp
      Classes/QuickEngine/QTMX.cpp
      Classes/SingleGame/animation.cpp
-     Classes/SingleGame/AppDelegate.cpp
-     Classes/SingleGame/Battre.cpp
+     Classes/SingleGame/Battle.cpp
      Classes/SingleGame/DataParse.cpp
      Classes/SingleGame/HRocker.cpp
      Classes/Test/HelloWorldScene.cpp
@@ -134,8 +133,7 @@ list(APPEND GAME_HEADER
      Classes/QuickEngine/QType.h
      Classes/QuickEngine/QuickEngine.h
      Classes/SingleGame/animation.h
-     Classes/SingleGame/AppDelegate.h
-     Classes/SingleGame/Battre.h
+     Classes/SingleGame/Battle.h
      Classes/SingleGame/DataParse.h
      Classes/SingleGame/HRocker.h
      Classes/Test/HelloWorldScene.h
