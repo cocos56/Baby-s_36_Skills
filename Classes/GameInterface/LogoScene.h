@@ -3,12 +3,12 @@
 
 #include "QE.h"
 
-class star :public Layer
+class LogoScene :public Layer
 {
 public:
     static Scene * createScene();
     virtual bool init();
-	CREATE_FUNC(star);
+	CREATE_FUNC(LogoScene);
 	void startScene();
 };
 

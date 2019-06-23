@@ -1,15 +1,15 @@
 ﻿#pragma execution_character_set("utf-8")
 
-#include "star.h"
+#include "LogoScene.h"
 
-Scene * star::createScene()
+Scene * LogoScene::createScene()
 {
 	Scene * scene = Scene::create();
-	Layer * layer = star::create();
+	Layer * layer = LogoScene::create();
 	scene->addChild(layer);
 	return scene;
 }
-bool star::init()
+bool LogoScene::init()
 {
 	if (!Layer::init())
 	{
@@ -27,14 +27,14 @@ bool star::init()
     yi->setPosition(480,320);
 	yi->setScale(1);
 	this->addChild(yi);
-	auto call = CallFunc::create(CC_CALLBACK_0(star::startScene,this));
+	auto call = CallFunc::create(CC_CALLBACK_0(LogoScene::startScene,this));
 	auto sequene = Sequence::create(JumpTo::create(1,Vec2(480,330),50,1),FadeOut::create(0.5),call,NULL);
 	yi->runAction(sequene);
 	return true;
 }
-void star::startScene()
+void LogoScene::startScene()
 {
-	Scene * scene = begin::createScene();
+	Scene * scene = GameInterfaceScene::createScene();
 	TransitionScene * turn = TransitionFadeTR::create(1,scene);
 	Director::getInstance()->replaceScene(turn);
 }

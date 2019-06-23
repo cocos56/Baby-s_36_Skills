@@ -10,8 +10,8 @@
 
 //GameInterface
 #include "GameInterface/ResourceLoadScene.h"
-#include "GameInterface/star.h"
-#include "GameInterface/begin.h"
+#include "GameInterface/LogoScene.h"
+#include "GameInterface/GameInterfaceScene.h"
 
 //SingleGame
 #include "SingleGame/animation.h"

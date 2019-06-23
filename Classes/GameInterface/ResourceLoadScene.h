@@ -12,5 +12,5 @@ public:
 	//创建layer（宏定义。里面传的参数是当前的类名）
 	CREATE_FUNC(ResourceLoadScene);
 	
-	void startScene();
+	void LogoScene();
 };

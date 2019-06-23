@@ -78,16 +78,16 @@ __Dictionary* DataParse::getChapter(int chapterIndex)
 		//定义键
 		char lock[20];
 		sprintf(lock, "level_%d_lock", chapterIndex);
-		char star[20];
-		sprintf(star, "level_%d_star",chapterIndex);
+		char LogoScene[20];
+		sprintf(LogoScene, "level_%d_star",chapterIndex);
 		//从doc中获取值
 		
 		//因为值是int型的需要转变为对象
 		String* lockValue = String::create(doc[level]["lock"].GetString());
-		String* starValue = String::create(doc[level]["star"].GetString());
+		String* starValue = String::create(doc[level]["LogoScene"].GetString());
 		log("asdfashfh");
 		dic->setObject(lockValue, lock);
-		dic->setObject(starValue, star);
+		dic->setObject(starValue, LogoScene);
 	//}
 	return dic;   
 }
@@ -123,7 +123,7 @@ int DataParse::getStar( int levelIndex)
 	}
 	char levelName[20];
 	sprintf(levelName, "level_%d", levelIndex);
-	int num = doc[levelName]["star"].GetInt();
+	int num = doc[levelName]["LogoScene"].GetInt();
 	return num;
 }
 
@@ -140,10 +140,10 @@ void DataParse::setStar( int levelIndex, int starNum)
 	}
 	char levelName[20];
 	sprintf(levelName, "level_%d", levelIndex);
-	int starNum_Data = doc[levelName]["star"].GetInt();
+	int starNum_Data = doc[levelName]["LogoScene"].GetInt();
 	if (starNum_Data<=starNum)
 	{
-		doc[levelName]["star"].SetInt(starNum);
+		doc[levelName]["LogoScene"].SetInt(starNum);
 		if (starNum == 3 && levelIndex != 7)
 		{
 			char nextLevelName[20];

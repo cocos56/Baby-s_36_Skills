@@ -3,10 +3,10 @@
 
 #include "QE.h"
 
-class begin :public Layer
+class GameInterfaceScene :public Layer
 {
 public:
-	QE_CreateSceneFromLayer_H(begin);
+	QE_CreateSceneFromLayer_H(GameInterfaceScene);
 
 
 	void setLayer();

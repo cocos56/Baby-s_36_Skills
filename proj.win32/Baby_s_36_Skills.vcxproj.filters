@@ -51,9 +51,6 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\begin.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameInterface\MapFive.cpp">
       <Filter>GameInterface</Filter>
     </ClCompile>
@@ -70,9 +67,6 @@
       <Filter>GameInterface</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameInterface\ResourceLoadScene.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\star.cpp">
       <Filter>GameInterface</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\NetWorkGame\ConnectServer\ConnectServerScene.cpp">
@@ -174,6 +168,12 @@
     <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\SelectRoleScene.cpp">
       <Filter>NetWorkGame\NetworkGame</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\LogoScene.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameInterface\GameInterfaceScene.cpp">
+      <Filter>GameInterface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -184,9 +184,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\QE.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\begin.h">
-      <Filter>GameInterface</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameInterface\MapFive.h">
       <Filter>GameInterface</Filter>
@@ -204,9 +201,6 @@
       <Filter>GameInterface</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameInterface\ResourceLoadScene.h">
-      <Filter>GameInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\star.h">
       <Filter>GameInterface</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\NetWorkGame\ConnectServer\ConnectServerScene.h">
@@ -322,6 +316,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\SelectRoleScene.h">
       <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\LogoScene.h">
+      <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameInterface\GameInterfaceScene.h">
+      <Filter>GameInterface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

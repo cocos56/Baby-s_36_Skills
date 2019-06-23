@@ -69,22 +69,35 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 	Scene* scene;
+	//游戏资源加载场景
 	scene = ResourceLoadScene::createScene();
-	//scene = star::createScene();
-	//scene = begin::createScene();
+	//Logo展示场景
+	//scene = LogoScene::createScene();
+	//游戏主面板界面
+	//scene = GameInterfaceScene::createScene();
 	//scene = MapOne::createScene();
 	//scene = MapTwo::createScene();
-	//scene = Battre::createScene();
+	//scene = Battle::createScene();
 
+	//连接服务器界面
 	//scene = ConnectServerScene::createScene();
+	//登录界面
 	//scene = SignInScene::createScene();
+	//注册界面
 	//scene = SignUpScene::createScene();
+	//获取房间界面
 	//scene = GetRoomsScene::createScene();
+	//创建房间界面
 	//scene = CreateRoomScene::createScene();
+	//加入房间界面
 	//scene = JoinRoomScene::createScene();
+	//选择角色界面
 	//scene = SelectRoleScene::createScene();
+	//等待网络游戏开始界面
 	//scene = WaitingNetworkGameScene::createScene();
+	//网络游戏界面
 	//scene = NetworkGameScene::createScene();
+	//网络游戏结束界面
 	//scene = NetworkGameOverScene::createScene();
 
 	//scene = HelloWorld::createScene();
