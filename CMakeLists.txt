@@ -62,12 +62,12 @@ list(APPEND GAME_SOURCE
      Classes/NetWorkGame/NetworkBase/NetworkBaseScene.cpp
      Classes/NetWorkGame/NetworkGame/NetworkGameOverScene.cpp
      Classes/NetWorkGame/NetworkGame/NetworkGameScene.cpp
+     Classes/NetWorkGame/NetworkGame/SelectRoleScene.cpp
      Classes/NetWorkGame/NetworkGame/WaitingNetworkGameScene.cpp
      Classes/NetWorkGame/SelectRooms/CreateRoomScene.cpp
      Classes/NetWorkGame/SelectRooms/GetRoomsScene.cpp
      Classes/NetWorkGame/SelectRooms/JoinRoomScene.cpp
      Classes/NetWorkGame/SelectRooms/RoomsInfo.cpp
-     Classes/NetWorkGame/SelectRooms/SelectRoleScene.cpp
      Classes/NetWorkGame/SignIn/SignInScene.cpp
      Classes/NetWorkGame/SignUp/SignUpScene.cpp
      Classes/QuickEngine/QAnimate.cpp
@@ -107,12 +107,12 @@ list(APPEND GAME_HEADER
      Classes/NetWorkGame/NetworkBase/NetworkBaseScene.h
      Classes/NetWorkGame/NetworkGame/NetworkGameOverScene.h
      Classes/NetWorkGame/NetworkGame/NetworkGameScene.h
+     Classes/NetWorkGame/NetworkGame/SelectRoleScene.h
      Classes/NetWorkGame/NetworkGame/WaitingNetworkGameScene.h
      Classes/NetWorkGame/SelectRooms/CreateRoomScene.h
      Classes/NetWorkGame/SelectRooms/GetRoomsScene.h
      Classes/NetWorkGame/SelectRooms/JoinRoomScene.h
      Classes/NetWorkGame/SelectRooms/RoomsInfo.h
-     Classes/NetWorkGame/SelectRooms/SelectRoleScene.h
      Classes/NetWorkGame/SignIn/SignInScene.h
      Classes/NetWorkGame/SignUp/SignUpScene.h
      Classes/QuickEngine/QAnimate.h

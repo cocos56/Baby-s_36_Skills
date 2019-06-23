@@ -3,7 +3,7 @@
 #include "SelectRoleScene.h"
 
 RadioButtonGroup* SelectRoleScene::_radioButtonGroup;
-int SelectRoleScene::_index = 3;
+int SelectRoleScene::_index = 0;
 
 QE_SINGLETON2_CPP(SelectRoleScene);
 
@@ -37,7 +37,10 @@ void SelectRoleScene::dealServerResponse(int statusCode){
 	if (statusCode == 731) { QE_ReplaceScene(WaitingNetworkGameScene); }
 }
 
-void SelectRoleScene::initLabel(){ NW_InitLogLabel(10, 80); }
+void SelectRoleScene::initLabel(){
+	createLabel(GetRoomsScene::_name)->setPosition(340, 505);
+	NW_InitLogLabel(10, 80);
+}
 
 void SelectRoleScene::initMenu(){
 	QE_CreateSpriteMenu2(470, 40, "confirm.png", "confirmPressed.png", SelectRoleScene, confirm);

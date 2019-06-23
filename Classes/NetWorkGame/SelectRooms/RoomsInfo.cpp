@@ -48,9 +48,9 @@ ScrollView* RoomsInfo::initScrollView(Node* target){
 		createLabel("null", 110, 110);
 		_roomsName.push_back(_label);
 		createLabel("创建者：", 10, 70);
-		_roomsCreator.push_back(_label);
 		createLabel("null", 110, 70);
-		createLabel("点此进入", 60, 10);
+		_roomsCreator.push_back(_label);
+		createLabel("点此查看", 60, 10);
 
 		_scrollView->addChild(_btn);
 	}

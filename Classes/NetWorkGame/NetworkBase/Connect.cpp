@@ -31,10 +31,10 @@ string Connect::getStatus(Status status){
 	else if (status == ConnectServerCase2Failed) { return "正在连接：" + _addr + "\n请稍后，若长时间未正常连接请再尝试进行重连。"; }
 	//SignIn = 2, //登录事件
 	else if (status == SignInCase1Successful) { return "请登录您的账号，如果没有账号请先注册。"; }
-	else if (status == SignInCase2Failed) { return "登录失败，您所输入的ID或用户名为空，请检查您的输入。"; }
+	else if (status == SignInCase2Failed) { return "登录失败，您所输入用户名为空，请检查您的输入。"; }
 	else if (status == SignInCase3Failed) { return "登录失败，您所输入的密码为空，请检查您的输入。"; }
-	else if (status == SignInCase4Failed) { return "登录失败，您所输入的用户名或ID不存在。"; }
-	else if (status == SignInCase5Failed) { return "登录失败，您所输入的用户名或ID对应多个账户。\n请联系开发维护人员。"; }
+	else if (status == SignInCase4Failed) { return "登录失败，您所输入的用户名不存在。"; }
+	else if (status == SignInCase5Failed) { return "登录失败，您所输入的用户名对应多个账户。\n请联系开发维护人员。"; }
 	else if (status == SignInCase6Failed) { return "登录失败，服务器在执行查询ID或用户名的SQL语句时出现未知异常。\n请联系开发维护人员。"; }
 	else if (status == SignInCase7Failed) { return "登录失败，您所输入的密码错误。"; }
 	else if (status == SignInCase7Successful) { return "登录成功，马上为您转到选择房间界面。"; }
@@ -44,7 +44,7 @@ string Connect::getStatus(Status status){
 	else if (status == SignUpCase3Failed) { return "创建账号失败。\n用户名不能全是数字，请重填。"; }
 	else if (status == SignUpCase4Failed) { return "创建账号失败。\n昵称不能为空，请重填。"; }
 	else if (status == SignUpCase5Failed) { return "创建账号失败。\n密码不能为空，请重填。"; }
-	else if (status == SignUpCase6Failed) { return "创建账号失败。\n请重填用户名或昵称，因为您的用户名或昵称已被其他人占用。"; }
+	else if (status == SignUpCase6Failed) { return "创建账号失败。\n请重填您的用户名，因为您所填写的用户名已被其他人使用。"; }
 	else if (status == SignUpCase7Failed) { return "创建账号失败。\n您输入的信息包含非法字符。\n这是本不应该出现的SQL指令错误，请联系开发维护人员。"; }
 	else if (status == SignUpCase8Failed) { return "创建账号失败。\n在正式插入您的账号信息到数据库时遇到未知错误。\n应该是服务器硬盘没空间了，请联系开发维护人员。"; }
 	else if (status == SignUpCase8Successful) { return "恭喜您注册成功。\n马上为您转入登录界面。"; }
@@ -59,8 +59,9 @@ string Connect::getStatus(Status status){
 	//JoinRoom = 6, //进入房间事件
 	else if (status == JoinRoomCase1Successful) { return"";/*"请输入您所要加入房间的名称和密码"; */}
 	else if (status == JoinRoomCase2Failed) { return "进入房间失败，房间名为空"; }
-	else if (status == JoinRoomCase3Failed) { return "进入房间失败，房间密码错误"; }
-	else if (status == JoinRoomCase3Successful) { return "进入房间成功"; }
+	else if (status == JoinRoomCase3Failed) { return "进入房间失败，房间名不存在"; }
+	else if (status == JoinRoomCase4Failed) { return "进入房间失败，房间密码错误"; }
+	else if (status == JoinRoomCase4Successful) { return "进入房间成功"; }
 	//SelectRole = 7, //选择角色事件
 	else if (status == SelectRoleCase1Successful) { return "请选择您要扮演的角色。"; }
 	else if (status == SelectRoleCase2Failed) { return "您未选择角色，请选择您要扮演的角色。"; }

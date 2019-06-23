@@ -3,7 +3,7 @@
 #include "GetRoomsScene.h"
 
 Label* GetRoomsScene::_roomName, * GetRoomsScene::_roomCreator;
-string GetRoomsScene::_name = "1" , GetRoomsScene::_creator = "null";
+string GetRoomsScene::_name = "null" , GetRoomsScene::_creator = "null";
 
 QE_SINGLETON2_CPP(GetRoomsScene);
 
@@ -13,8 +13,6 @@ QE_SetResourcesSearchDir;
 QE_addBgSprite;
 
 	_instance = this;
-
-	Connect::connect(Connect::Event::GetRooms);
 	
 	initLabel();
 	initMenu();
@@ -25,7 +23,11 @@ QE_addBgSprite;
 
 void GetRoomsScene::dealServerResponse(int statusCode)
 {
-	if (statusCode == 411){ RoomsInfo::setRoomInfo(QJson::getString("nm"), QJson::getString("creator")); }
+	if (statusCode == 411){
+		_name = QJson::getString("nm");
+		_creator = QJson::getString("creator");
+		RoomsInfo::setRoomInfo(_name, _creator);
+	}
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
 	QMessageBox(status);
@@ -45,3 +47,9 @@ void GetRoomsScene::createRoom(){ QE_ReplaceScene(CreateRoomScene); }
 void GetRoomsScene::joinRoom(){ QE_ReplaceScene(JoinRoomScene); }
 
 void GetRoomsScene::back() { QE_ReplaceScene(SignInScene); };
+
+void GetRoomsScene::onEnterTransitionDidFinish()
+{
+	Layer::onEnterTransitionDidFinish();
+	Connect::connect(Connect::Event::GetRooms);
+}

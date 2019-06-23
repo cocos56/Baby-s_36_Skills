@@ -165,12 +165,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\NetWorkGame\NetworkBase\NetworkBaseScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameOverScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameScene.cpp" />
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\SelectRoleScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\WaitingNetworkGameScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\CreateRoomScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\GetRoomsScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\JoinRoomScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\RoomsInfo.cpp" />
-    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\SelectRoleScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\SignIn\SignInScene.cpp" />
     <ClCompile Include="..\Classes\NetWorkGame\SignUp\SignUpScene.cpp" />
     <ClCompile Include="..\Classes\QuickEngine\QAnimate.cpp" />
@@ -210,12 +210,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\NetWorkGame\NetworkBase\NetworkBaseScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameOverScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\NetworkGameScene.h" />
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\SelectRoleScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\WaitingNetworkGameScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\CreateRoomScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\GetRoomsScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\JoinRoomScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\RoomsInfo.h" />
-    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\SelectRoleScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\SignIn\SignInScene.h" />
     <ClInclude Include="..\Classes\NetWorkGame\SignUp\SignUpScene.h" />
     <ClInclude Include="..\Classes\QE.h" />

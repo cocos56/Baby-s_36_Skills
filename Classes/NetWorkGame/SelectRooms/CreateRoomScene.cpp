@@ -42,6 +42,8 @@ void CreateRoomScene::initMenu()
 
 void CreateRoomScene::confirm()
 {
+	GetRoomsScene::_name = _nameBox->getText();
+	GetRoomsScene::_creator = SignInScene::_un;
 	Connect::createMsg();
 	Connect::addMsg("nm", QE_ToJStr(_nameBox->getText()));
 	Connect::addMsg("pw", QE_ToJStr(_passwordBox->getText()));

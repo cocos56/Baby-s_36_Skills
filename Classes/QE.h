@@ -34,7 +34,7 @@
 #include "NetWorkGame/SelectRooms/GetRoomsScene.h"
 #include "NetWorkGame/SelectRooms/CreateRoomScene.h"
 #include "NetWorkGame/SelectRooms/JoinRoomScene.h"
-#include "NetWorkGame/SelectRooms/SelectRoleScene.h"
+#include "NetWorkGame/NetworkGame/SelectRoleScene.h"
 #include "NetWorkGame/NetworkGame/WaitingNetworkGameScene.h"
 #include "NetWorkGame/NetworkGame/NetworkGameScene.h"
 #include "NetWorkGame/NetworkGame/NetworkGameOverScene.h"

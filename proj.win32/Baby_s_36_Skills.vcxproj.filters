@@ -105,9 +105,6 @@
     <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\RoomsInfo.cpp">
       <Filter>NetWorkGame\SelectRooms</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\NetWorkGame\SelectRooms\SelectRoleScene.cpp">
-      <Filter>NetWorkGame\SelectRooms</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\NetWorkGame\SignIn\SignInScene.cpp">
       <Filter>NetWorkGame\SignIn</Filter>
     </ClCompile>
@@ -174,6 +171,9 @@
     <ClCompile Include="..\Classes\Test\WebSocketTestLayer.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\NetWorkGame\NetworkGame\SelectRoleScene.cpp">
+      <Filter>NetWorkGame\NetworkGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -237,9 +237,6 @@
       <Filter>NetWorkGame\SelectRooms</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\RoomsInfo.h">
-      <Filter>NetWorkGame\SelectRooms</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NetWorkGame\SelectRooms\SelectRoleScene.h">
       <Filter>NetWorkGame\SelectRooms</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\NetWorkGame\SignIn\SignInScene.h">
@@ -322,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Test\WebSocketTestLayer.h">
       <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NetWorkGame\NetworkGame\SelectRoleScene.h">
+      <Filter>NetWorkGame\NetworkGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

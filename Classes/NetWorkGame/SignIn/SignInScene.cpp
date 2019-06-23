@@ -26,8 +26,8 @@ void SignInScene::dealServerResponse(int statusCode)
 {
 	string status = Connect::getStatus(statusCode);
 	dealServerResponse(status);
-	QMessageBox(status);
 	if (statusCode == 271) { QE_ReplaceScene(GetRoomsScene); }
+	QMessageBox(status);
 }
 
 void SignInScene::initSprite()

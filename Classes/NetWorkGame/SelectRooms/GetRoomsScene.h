@@ -22,4 +22,7 @@ private:
 	void createRoom();
 	void joinRoom();
 	void back();
+
+	//
+	virtual void onEnterTransitionDidFinish() ;
 };
