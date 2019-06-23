@@ -16,7 +16,7 @@ EditBox* NetworkGameScene::_msgBox;
 QE_SINGLETON2_CPP(NetworkGameScene);
 
 QE_CreateSceneFromLayer_CPP(NetworkGameScene);
-	paths = { "fonts", "NetworkGameScene", "icon" }; 
+	paths = { "NetworkGameScene" }; 
 	QE_SetResourcesSearchDir;
 
 	_instance = this;

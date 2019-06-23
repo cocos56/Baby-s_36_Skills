@@ -7,7 +7,7 @@ string NetworkGameOverScene::_Loser = "refereeLose";
 QE_SINGLETON2_CPP(NetworkGameOverScene);
 
 QE_CreateSceneFromLayer_CPP(NetworkGameOverScene);
-	paths = { "fonts", "NetworkGameOverScene" };
+	paths = { "NetworkGameOverScene" };
 	QE_SetResourcesSearchDir;
 
 	_instance = this;
@@ -20,4 +20,4 @@ void NetworkGameOverScene::initSprite(){ addChild(QSprite::createBg(_Loser + ".p
 
 void NetworkGameOverScene::initMenu(){ QE_CreateLabelMenu(10, 500, "返回", NetworkGameOverScene, back); }
 
-void NetworkGameOverScene::back() { QE_ReplaceScene(NetworkGameScene); };
+void NetworkGameOverScene::back() { QE_ReplaceScene(GetRoomsScene); };
