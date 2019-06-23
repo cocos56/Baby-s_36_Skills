@@ -16,7 +16,7 @@ QE_CreateSceneFromLayer_CPP(begin);
 	solo->setPosition(Vec2(size.width/4*2,280));
 	
 	MenuItemImage *ex=MenuItemImage::create("quit.png","quit.png",CC_CALLBACK_0(begin::end,this));
-	ex->setPosition(Vec2(size.width/4*3,120));
+	ex->setPosition(Vec2(size.width-35,50));
 	
 	MenuItemImage *Net=MenuItemImage::create("xianshang1.png","xianshang1.png",CC_CALLBACK_0(begin::enterNet,this));
 	Net->setPosition(Vec2(size.width/4*2,200));
@@ -29,7 +29,7 @@ QE_CreateSceneFromLayer_CPP(begin);
 	//set->setVisible(true);
 	this->addChild(set);
 	set->setTag(1);
-	startAnimate();
+	//startAnimate();
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("backmusic1.mp3");
 
 	return true;
@@ -44,17 +44,17 @@ void begin::setLayer( )
 	set->setEnabled(false);
 
 	setBg = Sprite::create("mianban.png");
-	setBg->setPosition(480,320);
+	setBg->setPosition(480,280);
 	this->addChild(setBg);
 
 	//音乐控制的开关菜单
 	auto onMusic = MenuItemImage::create("duihao1.png","duihao1.png");
-	auto offMusic = MenuItemImage::create("duihao2.png","duihao2.png");
+	auto offMusic = MenuItemImage::create("quan.png","quan.png");
 	
 	auto Music=MenuItemToggle::createWithCallback(CC_CALLBACK_1(begin::setMusic,this),onMusic,offMusic,NULL);
 
 	
-	Music->setPosition(Vec2(setBg->getContentSize().width/2-100,setBg->getContentSize().height/2-20));
+	Music->setPosition(Vec2(setBg->getContentSize().width/2-68,setBg->getContentSize().height/2+20));
 	auto menu = Menu::create(Music,NULL);
 	menu->setPosition(Vec2::ZERO);
 
@@ -63,18 +63,18 @@ void begin::setLayer( )
 	//okButton
 	Button*okButton = Button::create("ok.png","ok.png","ok.png");
 	okButton->addClickEventListener(CC_CALLBACK_0(begin::setBack,this));
-	okButton->setPosition(Vec2(setBg->getContentSize().width/2,90));
+	okButton->setPosition(Vec2(setBg->getContentSize().width-65,60));
 	okButton->setScale(0.8);
 	setBg->addChild(okButton);
 
 	
 	auto onEffect = MenuItemImage::create("duihao1.png","duihao1.png");
-	auto offEffect = MenuItemImage::create("duihao2.png","duihao2.png");
+	auto offEffect = MenuItemImage::create("quan.png","quan.png");
 	auto Effect = MenuItemToggle::create(onEffect);
 	Effect->addSubItem(offEffect);
 	//上面两条语句可以用替换auto Effect = MenuItemToggle::create(onEffect，offEffect，NULL);
 	Effect->setCallback(CC_CALLBACK_1(begin::setEffect,this));
-	Effect->setPosition(Vec2(setBg->getContentSize().width/2+100,setBg->getContentSize().height/2-20));
+	Effect->setPosition(Vec2(setBg->getContentSize().width/2+175, setBg->getContentSize().height / 2 + 20));
 	auto menu2 = Menu::create(Effect,NULL);
 	menu2->setPosition(Vec2::ZERO);
 	setBg->addChild(menu2);
@@ -82,11 +82,11 @@ void begin::setLayer( )
 
 	//添加滑动条
 	auto slider=Slider::create();
-	//slider->loadBarTexture("SliderBar.png");
+	slider->loadBarTexture("0.png");
 	slider->loadSlidBallTextures("aaa.png","aaa.png","aaa.png");
 	slider->setPosition(Vec2(setBg->getContentSize().width/2,setBg->getContentSize().height/2-90));
 	slider->setScale9Enabled(true);
-	slider->setContentSize(Size(Vec2(200,40)));
+	//slider->setContentSize(Size(Vec2(200,40)));
 	slider->setPercent(50);
 	slider->addEventListener(CC_CALLBACK_1(begin::adjustVolumn,this)); //滑动条的监听回调，时刻检测滑动条的值得改变
 	setBg->addChild(slider);
@@ -132,7 +132,7 @@ void begin::adjustVolumn(Ref * sender)
 	//滑动条的值为0-100之间的整数，而音量设置的值在0-1之间。故需要除以100.
 	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(slider->getPercent()/100);
 }
-void begin::startAnimate()
+/*void begin::startAnimate()
 {
 	//获取精灵帧单例
 	SpriteFrameCache* cache = SpriteFrameCache::getInstance();
@@ -174,7 +174,7 @@ void begin::startAnimate()
 
 	butterfly->runAction(repeateForver);//蝴蝶翅膀重复动画
 	butterfly->runAction(sequene);//位置移动
-}
+}*/
 void begin::enterMap()
 {
 	Scene * scene = MapOne::createScene();

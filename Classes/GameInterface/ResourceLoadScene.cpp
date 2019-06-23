@@ -18,8 +18,7 @@ bool ResourceLoadScene::init()
 	}
 
 	Size size = Director::getInstance()->getWinSize();//获取屏幕的大小
-	Sprite * bg = Sprite::create("back.png");//背景
-
+	Sprite * bg = Sprite::create("bgr.png");//背景
 	//让背景图片与屏幕适配
 	//auto与id的区别：auto是智能指针，可以自动识别后面参数的类型
 	auto scaleX = size.width/bg->getContentSize().width;
@@ -27,6 +26,9 @@ bool ResourceLoadScene::init()
 	bg->setScale(scaleX,scaleY);//缩放
 	bg->setPosition(Vec2(size.width/2,size.height/2));//设置位置
 	this->addChild(bg);//添加父试图
+
+	
+
 
 	auto  *ditu = Sprite::create("0%.png");
 	ditu->setPosition(Vec2(size.width / 2, size.height / 2-100));
@@ -52,7 +54,7 @@ bool ResourceLoadScene::init()
 	auto* car = Sprite::create("car.png");
 	car->setPosition(Vec2(50, size.height / 2-100));
 	this->addChild(car);
-	auto yi = MoveTo::create(2.8, Vec2(850, size.height / 2-100));
+	auto yi = MoveTo::create(3, Vec2(850, size.height / 2-100));
 	car->runAction(yi);
 	auto new_Node = Node::create();
 	new_Node->setPosition(Vec2(0, 0));

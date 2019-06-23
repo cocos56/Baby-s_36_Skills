@@ -53,13 +53,13 @@ function onClose(conn, code, reason)
 {
     waiting.closeCB(conn, room)
     console.log("a connection close", code, reason)
+    console.log('room=', room)
     console.log("Sever connections = ", server.connections.length)
 }
 
 function onError(code, reason)
 {
     console.log("a connection on error:", code , reason)
-    console.log("Sever connections = ", server.connections.length)
 }
 
 console.log("创建服务器完毕")

@@ -82,7 +82,7 @@ string Connect::getStatus(Status status){
 	else if (status == DialogCase2Successful) { return "轮到坏人玩家发言"; }
 	else if (status == DialogCase3Successful) { return "轮到宝宝玩家发言"; }
 	else if (status == DialogCase4Successful) { return "轮到裁判玩家发言"; }
-	else if (status == DialogCase5Successful) { return "裁判玩家已判决本轮游戏，本轮游戏结束"; }
+	else if (status == DialogCase5Successful) { return "裁判玩家已判决本轮游戏或者某玩家异常掉线，本轮游戏结束"; }
 	else if (status == DialogCase6Successful) { return "坏人玩家发言了"; }
 	else if (status == DialogCase7Successful) { return "宝宝玩家发言了"; }
 	else if (status == DialogCase8Successful) { return "裁判玩家发言了"; }

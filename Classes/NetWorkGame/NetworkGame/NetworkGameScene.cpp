@@ -82,7 +82,12 @@ void NetworkGameScene::send(){
 	}
 }
 
-void NetworkGameScene::back() { QE_ReplaceScene(NetworkGameOverScene); };
+void NetworkGameScene::back() {
+	Connect::createMsg();
+	Connect::addMsg("quit", "");
+	Connect::sendMsg();
+	QE_ReplaceScene(NetworkGameOverScene);
+};
 
 void NetworkGameScene::initEditBox(){
 	_spr = Sprite::create("editBox.png");

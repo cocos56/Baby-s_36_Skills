@@ -1,3 +1,5 @@
+var dialog = require("./dialog")
+
 function sendMsg(conn, room, msgBack){
     if('childWS' in room){
         console.log("childWS", msgBack)
@@ -18,6 +20,13 @@ exports.sendMsg = sendMsg
 function waitingCloseCallback(conn, room)
 {
     if('turn' in room){ room['turn'] = 0 }
+
+    if('childWS' in room && 'scoundrelWS' in room && 'refereeWS' in room){
+        dialog.closeCB(conn, room)
+        return
+    }
+
+
     let msgBack = {"event": 8}
     if('childWS' in room && room['childWS'] == conn){
         msgBack['status'] = 820
@@ -45,7 +54,6 @@ exports.callback = function selectRoleCallback(msg, conn, room)
         waitingCloseCallback(conn, room)
         return
     }
-
     let msgBack = {"event": 8}
     if('child' in room){
         msgBack['status'] = 821

@@ -14,7 +14,7 @@ public:
 	void setBack();
 	void setEffect(Ref* sender);
 	void adjustVolumn(Ref * sender);
-	void startAnimate();
+	//void startAnimate();
 	void enterMap();
 	void enterNet();
 	void end();
