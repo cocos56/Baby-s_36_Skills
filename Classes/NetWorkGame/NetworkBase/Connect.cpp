@@ -12,7 +12,9 @@ QE_SINGLETON_CPP(Connect);
 void Connect::connect(Event nowEvent){
 	_nowEvent = nowEvent;
 	if (!_ws) { Connect::getInstance()->initSocket(); return; };
-	if (_nowEvent == GetRooms || _nowEvent==Dialog) { createMsg(); sendMsg(); }
+	if (_nowEvent == GetRooms || _nowEvent== Waiting || _nowEvent == Dialog) { 
+		createMsg(); sendMsg();
+	}
 }
 
 void Connect::initSocket(){

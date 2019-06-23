@@ -48,8 +48,7 @@ void GetRoomsScene::joinRoom(){ QE_ReplaceScene(JoinRoomScene); }
 
 void GetRoomsScene::back() { QE_ReplaceScene(SignInScene); };
 
-void GetRoomsScene::onEnterTransitionDidFinish()
-{
+void GetRoomsScene::onEnterTransitionDidFinish(){
 	Layer::onEnterTransitionDidFinish();
 	Connect::connect(Connect::Event::GetRooms);
 }

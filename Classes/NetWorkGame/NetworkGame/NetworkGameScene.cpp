@@ -21,8 +21,6 @@ QE_CreateSceneFromLayer_CPP(NetworkGameScene);
 
 	_instance = this;
 
-	Connect::connect(Connect::Event::Dialog);
-
 	initSprits();
 	initLabel();
 	initMenu();
@@ -219,4 +217,9 @@ void NetworkGameScene::scoundrelWin(){
 void NetworkGameScene::goOn(){
 	_judgeSpr->setVisible(false);
 	endChat();
+}
+
+void NetworkGameScene::onEnterTransitionDidFinish() {
+	Layer::onEnterTransitionDidFinish();
+	Connect::connect(Connect::Event::Dialog);
 }

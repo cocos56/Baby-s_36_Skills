@@ -18,11 +18,11 @@ private:
 	static void setSpriteStatus(int index, bool visible = true);
 	void createSprite(int x);
 
-	//发送信息
-	void sendMsg();
-
 	//菜单相关
 	void initMenu();
 	//菜单按钮回调函数相关
 	void back();
+
+	//
+	virtual void onEnterTransitionDidFinish();
 };

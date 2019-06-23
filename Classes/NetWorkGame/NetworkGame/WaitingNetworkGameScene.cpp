@@ -13,8 +13,6 @@ QE_CreateSceneFromLayer_CPP(WaitingNetworkGameScene);
 
 	_instance = this;
 
-	Connect::connect(Connect::Event::Waiting);
-
 	initSprits();
 	initMenu();
 	return true;
@@ -47,15 +45,9 @@ void WaitingNetworkGameScene::createSprite(int x)
 	_onSprites.push_back(_sprite);
 }
 
-void WaitingNetworkGameScene::sendMsg()
-{
-	Connect::createMsg();
-	Connect::sendMsg();
-}
 
 void WaitingNetworkGameScene::initSprits()
 {
-	sendMsg();
 	if (_onSprites.size() > 0) { _onSprites.clear(); }
 	QE_addBgSprite;
 	createSprite(90);
@@ -74,3 +66,8 @@ void WaitingNetworkGameScene::back() {
 	Connect::sendMsg();
 	QE_ReplaceScene(JoinRoomScene);
 };
+
+void WaitingNetworkGameScene::onEnterTransitionDidFinish() {
+	Layer::onEnterTransitionDidFinish();
+	Connect::connect(Connect::Event::Waiting);
+}

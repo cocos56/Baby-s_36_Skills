@@ -43,4 +43,7 @@ private:
 	void babyWin();
 	void scoundrelWin();
 	void goOn();
+
+	//
+	virtual void onEnterTransitionDidFinish();
 };
