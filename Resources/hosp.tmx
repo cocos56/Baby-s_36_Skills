@@ -7,7 +7,7 @@
   <image source="Cillidable.png" width="128" height="60"/>
   <tile id="1">
    <properties>
-    <property name="Collidable" value="true"/>
+    <property name="collidable" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -16,9 +16,16 @@
    eJxdzMVOHQAARNGHu7u7FXd3p0VaoGiLW4IlaIJtkN/msHthcTZ3kgkJBAKhhBFOBJFEEU0MscQRTwKJJJFMCqmkkU4GmWSRTQ655JFPAYUUUUwJpZRRTgWVVFFNDT+opY56GmikiWZaaKWNdjropItueuilj34GGGSIYUYYZYxxJphkimlm+MkvZpljngV+84dFlljmLyusssY6G2zyj/9ssc0Ou+yxzwGHHHHMCadBzjjngsugfsU1N9xyx33Q/sAjTzzz8u33yytvvPPBJ4inI2Q=
   </data>
  </layer>
- <layer name="second" width="15" height="9">
+ <layer name="peng3" width="15" height="9">
+  <properties>
+   <property name="Cillidable" value="true"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFuEDnIMGUuJ0SAADKnxNF
+   eJxjYBgFuEAnFTGx5mOTHygAAN06Des=
   </data>
  </layer>
+ <objectgroup name="people3">
+  <object name="hero" x="24" y="417" width="95" height="61"/>
+  <object name="herbad3" x="707" y="434" width="94" height="62"/>
+ </objectgroup>
 </map>

@@ -69,14 +69,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 	Scene* scene;
+
 	//游戏资源加载场景
-	scene = ResourceLoadScene::createScene();
+	//scene = ResourceLoadScene::createScene();
 	//Logo展示场景
 	//scene = LogoScene::createScene();
 	//游戏主面板界面
 	//scene = GameInterfaceScene::createScene();
+
+	//主场景（入口）
 	//scene = MapOne::createScene();
+	//动物园ZOO
 	//scene = MapTwo::createScene();
+	//超市SHOOP
 	//scene = Battle::createScene();
 
 	//连接服务器界面

@@ -51,21 +51,6 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\MapFive.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\MapFour.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\MapOne.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\MapThere.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameInterface\MapTwo.cpp">
-      <Filter>GameInterface</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameInterface\ResourceLoadScene.cpp">
       <Filter>GameInterface</Filter>
     </ClCompile>
@@ -138,9 +123,6 @@
     <ClCompile Include="..\Classes\SingleGame\animation.cpp">
       <Filter>SingleGame</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SingleGame\Battle.cpp">
-      <Filter>SingleGame</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SingleGame\DataParse.cpp">
       <Filter>SingleGame</Filter>
     </ClCompile>
@@ -174,6 +156,24 @@
     <ClCompile Include="..\Classes\GameInterface\GameInterfaceScene.cpp">
       <Filter>GameInterface</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\MapFive.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\MapFour.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\MapOne.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\MapThere.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\MapTwo.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SingleGame\Battle.cpp">
+      <Filter>SingleGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -184,21 +184,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\QE.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\MapFive.h">
-      <Filter>GameInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\MapFour.h">
-      <Filter>GameInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\MapOne.h">
-      <Filter>GameInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\MapThere.h">
-      <Filter>GameInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameInterface\MapTwo.h">
-      <Filter>GameInterface</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameInterface\ResourceLoadScene.h">
       <Filter>GameInterface</Filter>
@@ -287,9 +272,6 @@
     <ClInclude Include="..\Classes\SingleGame\animation.h">
       <Filter>SingleGame</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SingleGame\Battle.h">
-      <Filter>SingleGame</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\SingleGame\DataParse.h">
       <Filter>SingleGame</Filter>
     </ClInclude>
@@ -322,6 +304,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameInterface\GameInterfaceScene.h">
       <Filter>GameInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\MapFive.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\MapFour.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\MapOne.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\MapThere.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\MapTwo.h">
+      <Filter>SingleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SingleGame\Battle.h">
+      <Filter>SingleGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -49,14 +49,14 @@ endif()
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
-     Classes/GameInterface/begin.cpp
+     Classes/GameInterface/GameInterfaceScene.cpp
+     Classes/GameInterface/LogoScene.cpp
      Classes/GameInterface/MapFive.cpp
      Classes/GameInterface/MapFour.cpp
      Classes/GameInterface/MapOne.cpp
      Classes/GameInterface/MapThere.cpp
      Classes/GameInterface/MapTwo.cpp
      Classes/GameInterface/ResourceLoadScene.cpp
-     Classes/GameInterface/star.cpp
      Classes/NetWorkGame/ConnectServer/ConnectServerScene.cpp
      Classes/NetWorkGame/NetworkBase/Connect.cpp
      Classes/NetWorkGame/NetworkBase/NetworkBaseScene.cpp
@@ -94,14 +94,14 @@ list(APPEND GAME_SOURCE
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/QE.h
-     Classes/GameInterface/begin.h
+     Classes/GameInterface/GameInterfaceScene.h
+     Classes/GameInterface/LogoScene.h
      Classes/GameInterface/MapFive.h
      Classes/GameInterface/MapFour.h
      Classes/GameInterface/MapOne.h
      Classes/GameInterface/MapThere.h
      Classes/GameInterface/MapTwo.h
      Classes/GameInterface/ResourceLoadScene.h
-     Classes/GameInterface/star.h
      Classes/NetWorkGame/ConnectServer/ConnectServerScene.h
      Classes/NetWorkGame/NetworkBase/Connect.h
      Classes/NetWorkGame/NetworkBase/NetworkBaseScene.h

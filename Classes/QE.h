@@ -14,15 +14,23 @@
 #include "GameInterface/GameInterfaceScene.h"
 
 //SingleGame
+//动画
 #include "SingleGame/animation.h"
+//摇杆
 #include "SingleGame/HRocker.h"
+//实现解析数据
 #include "SingleGame/DataParse.h"
 #include "SingleGame/Battle.h"
-#include "GameInterface/MapOne.h"
-#include "GameInterface/MapTwo.h"
-#include "GameInterface/MapThere.h"
-#include "GameInterface/MapFour.h"
-#include "GameInterface/MapFive.h"
+//主场景（入口）
+#include "SingleGame/MapOne.h"
+//动物园ZOO
+#include "SingleGame/MapTwo.h"
+//超市SHOOP
+#include "SingleGame/MapThere.h"
+// 医院HOSP
+#include "SingleGame/MapFour.h"
+//学校School
+#include "SingleGame/MapFive.h"
 
 //NetWorkGame
 #include "NetWorkGame/NetworkBase/Connect.h"

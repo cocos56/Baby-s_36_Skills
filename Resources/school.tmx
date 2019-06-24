@@ -3,9 +3,26 @@
  <tileset firstgid="1" name="back" tilewidth="64" tileheight="60">
   <image source="school.png" width="960" height="540"/>
  </tileset>
+ <tileset firstgid="136" name="Cillidable" tilewidth="64" tileheight="60">
+  <image source="Cillidable.png" width="128" height="60"/>
+  <tile id="1">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="first" width="15" height="9">
   <data encoding="base64" compression="zlib">
-   eJwNwwc3FgAAAMDP3jN7ZSabrLKzC9l7r8om2WUk/G13711QIBAINsRQwww3wkijjDbGWOOMN8FEk0z2jSmmmma6GWaaZbY55prnW/MtsNAiiy3xnaW+t8xyK6y0ymprrLXOD9bbYKNNNvvRT7bYapvtdthpl5/ttsde++x3wEG/+NUhhx3xm6OOOe6Ek0457YyzzjnvgosuueyKq6657oabbrntd3/40x133XPfAw898tgTf3nqb88898JLr7z2xj/+9dY7733wn4/+98lnX3wFmeMj3Q==
+   eJwtzcVSFQAAAMAHQ3dIl0OKNEgpLa2AdHepNIi0EiLDX7MHDnveoEAgEMwzIYQSRjgRRBJFNDHEEkc8CSSSRDJvSCGVNNLJIJMssskhlzzevr75FFBIEcWU8I5S3lNGORVUUkU1NdRSxwfqaaCRJpr5yCdaaKWNdjropIvPdNNDL330M8AgX/jKEMOM8I1RxhhngkmmmGaGWeaYZ4FFllhmhVXWWGeDTbbY5js/+MkOu+yxzwGHHHHMCb845TdnnHPBJVdcc8Mf/nLLHfc88I9H/vPEC1fZJMs=
   </data>
  </layer>
+ <layer name="peng4" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFnQOMCblnoAAAroUTRQ==
+  </data>
+ </layer>
+ <objectgroup name="people4">
+  <object name="hero" x="48" y="444" width="71" height="52"/>
+  <object name="herbad4" x="644" y="436" width="76" height="65"/>
+ </objectgroup>
 </map>

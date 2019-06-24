@@ -1,15 +1,17 @@
-ï»¿#pragma execution_character_set("utf-8")
-#pragma once
+#ifndef __HROCKER_H__
+#define __HROCKER_H__
 
-#include "QE.h"
+#include "cocos2d.h"
 
-//ç”¨äºæ ‡è¯†æ‘‡æ†ä¸æ‘‡æ†çš„èƒŒæ™¯  
-typedef enum{  //æ²¡æœ‰è®¾ç½®çš„æ—¶å€™ï¼Œé»˜è®¤æ•°å€¼ä»0å¼€å§‹
+using namespace cocos2d;
+
+//ÓÃÓÚ±êÊ¶Ò¡¸ËÓëÒ¡¸ËµÄ±³¾°  
+typedef enum{  //Ã»ÓĞÉèÖÃµÄÊ±ºò£¬Ä¬ÈÏÊıÖµ´Ó0¿ªÊ¼
 	tag_rocker,
 	tag_rockerBG,
 }tagForHRocker;
-//ç”¨äºæ ‡è¯†æ‘‡æ†æ–¹å‘
-typedef enum{  //æ²¡æœ‰è®¾ç½®çš„æ—¶å€™ï¼Œé»˜è®¤æ•°å€¼ä»0å¼€å§‹
+//ÓÃÓÚ±êÊ¶Ò¡¸Ë·½Ïò
+typedef enum{  //Ã»ÓĞÉèÖÃµÄÊ±ºò£¬Ä¬ÈÏÊıÖµ´Ó0¿ªÊ¼
 	rocker_stay,
 	rocker_right,
 	rocker_up,
@@ -22,36 +24,45 @@ public:
 	HRocker(void);
 	~HRocker(void);
 
-	//åˆ›å»ºæ‘‡æ†(æ‘‡æ†çš„æ“ä½œé¢˜å›¾ç‰‡èµ„æºåï¼Œæ‘‡æ†èƒŒæ™¯å›¾ç‰‡èµ„æºåï¼Œèµ·å§‹åæ ‡)
+	//´´½¨Ò¡¸Ë(Ò¡¸ËµÄ²Ù×÷ÌâÍ¼Æ¬×ÊÔ´Ãû£¬Ò¡¸Ë±³¾°Í¼Æ¬×ÊÔ´Ãû£¬ÆğÊ¼×ø±ê)
 	static HRocker* createHRocker(const char *rockerImageName, const char *rockerBGImageName, CCPoint position);
-	//å¯åŠ¨æ‘‡æ†(æ˜¾ç¤ºæ‘‡æ†ã€ç›‘å¬æ‘‡æ†è§¦å±äº‹ä»¶)
+	//Æô¶¯Ò¡¸Ë(ÏÔÊ¾Ò¡¸Ë¡¢¼àÌıÒ¡¸Ë´¥ÆÁÊÂ¼ş)
 	void startRocker(bool _isStopOther);
-	//åœæ­¢æ‘‡æ†(éšè—æ‘‡æ†ï¼Œå–æ¶ˆæ‘‡æ†çš„è§¦å±ç›‘å¬)
+	//Í£Ö¹Ò¡¸Ë(Òş²ØÒ¡¸Ë£¬È¡ÏûÒ¡¸ËµÄ´¥ÆÁ¼àÌı)
 	void stopRocker();
-	//åˆ¤æ–­æ§åˆ¶æ†æ–¹å‘ï¼Œç”¨æ¥åˆ¤æ–­ç²¾çµä¸Šã€ä¸‹ã€å·¦ã€å³è¿åŠ¨
+	//ÅĞ¶Ï¿ØÖÆ¸Ë·½Ïò£¬ÓÃÀ´ÅĞ¶Ï¾«ÁéÉÏ¡¢ÏÂ¡¢×ó¡¢ÓÒÔË¶¯
 	int rocketDirection;
-	//å½“å‰äººç‰©è¡Œèµ°æ–¹å‘,ç”¨æ¥åˆ¤æ–­ç²¾çµçš„æœå‘ï¼Œç²¾çµè„¸æœå³è¿˜æ˜¯æœå·¦
+	//µ±Ç°ÈËÎïĞĞ×ß·½Ïò,ÓÃÀ´ÅĞ¶Ï¾«ÁéµÄ³¯Ïò£¬¾«ÁéÁ³³¯ÓÒ»¹ÊÇ³¯×ó
 	bool rocketRun;
 	void resumeState();
 	CREATE_FUNC(HRocker);
 private:
-	//è‡ªå®šä¹‰åˆå§‹åŒ–å‡½æ•°
+	//×Ô¶¨Òå³õÊ¼»¯º¯Êı
 	void rockerInit(const char* rockerImageName, const char* rockerBGImageName, CCPoint position);
-	//æ˜¯å¦å¯æ“ä½œæ‘‡æ†
+	//ÊÇ·ñ¿É²Ù×÷Ò¡¸Ë
 	bool isCanMove;
-	//è·å–å½“å‰æ‘‡æ†ä¸ç”¨æˆ·è§¦å±ç‚¹çš„è§’åº¦
+	//»ñÈ¡µ±Ç°Ò¡¸ËÓëÓÃ»§´¥ÆÁµãµÄ½Ç¶È
 	float getRad(CCPoint pos1, CCPoint pos2);
-	//æ‘‡æ†èƒŒæ™¯çš„åæ ‡
+	//Ò¡¸Ë±³¾°µÄ×ø±ê
 	CCPoint rockerBGPosition;
-	//æ‘‡æ†èƒŒæ™¯çš„åŠå¾„
+	//Ò¡¸Ë±³¾°µÄ°ë¾¶
 	float rockerBGR;
-	void update(float delta);//å®šæ—¶å™¨å¿…é¡»å¸¦ä¸€ä¸ªfloatç±»å‹çš„å‚æ•°
-	//è§¦å±äº‹ä»¶
+	void update(float delta);//¶¨Ê±Æ÷±ØĞë´øÒ»¸öfloatÀàĞÍµÄ²ÎÊı
+	//´¥ÆÁÊÂ¼ş
 	
-	EventListenerTouchOneByOne* listener;
+
+	EventListenerTouchOneByOne * listener;
+
+
+	CCSprite *rocker;
+	CCSprite *rockerBG;
 
 	virtual bool onTouchBegan(Touch *pTouch, Event *pEvent);
 	virtual void onTouchMoved(Touch *pTouch, Event *pEvent);
 	virtual void onTouchEnded(Touch *pTouch, Event *pEvent);
 
 };
+
+#endif
+
+

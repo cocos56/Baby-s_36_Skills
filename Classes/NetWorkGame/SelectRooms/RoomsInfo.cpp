@@ -12,14 +12,14 @@ ScrollView* RoomsInfo::initScrollView(Node* target){
 	_roomsCreator.clear();
 	_roomNum = 0;
 
-	Size cSize = Size(800, 215);
-	Vec2 position = Vec2(80, 260);
+	Size cSize = Size(800, 411);
+	Vec2 position = Vec2(80, 240);
 
-	Scale9Sprite* s = Scale9Sprite::create("green_edit.png");  //设置ScrollView背景，便于查看容器大小
-	s->setContentSize(cSize + Size(10, 10));
-	s->setPosition(position-Vec2(5,5));
-	s->setAnchorPoint(Vec2(0, 0));
-	target->addChild(s);
+	//Scale9Sprite* s = Scale9Sprite::create("roomcardbg.png");  //设置ScrollView背景，便于查看容器大小
+	//s->setContentSize(cSize + Size(10, 10));
+	//s->setPosition(position-Vec2(5,5));
+	//s->setAnchorPoint(Vec2(0, 0));
+	//target->addChild(s);
 
 
 	ScrollView* _scrollView = ScrollView::create();
@@ -28,29 +28,26 @@ ScrollView* RoomsInfo::initScrollView(Node* target){
 	_scrollView->setPosition(position);
 	_scrollView->setDirection(ScrollView::Direction::HORIZONTAL);
 	_scrollView->setBounceEnabled(true);
-	_scrollView->setInnerContainerSize(Size(245 * 9, 215));
+	_scrollView->setInnerContainerSize(Size(260 * 9, 260));
 	target->addChild(_scrollView);
 
 	//因为图片的高度为215,135=图片的宽度120+缝隙15
 	_scrollView->addEventListener(bind(&RoomsInfo::scrollViewSdidScroll, placeholders::_1, placeholders::_2));
 	for (int i = 0; i < 9; i++)
 	{
-		String* str = String::createWithFormat("card.png");
-		_btn = Button::create(str->getCString(), str->getCString());
+		_btn = Button::create("roomcard.png", "roomcard.png");
 		_btn->setScale9Enabled(true);
-		_btn->setContentSize(Size(230, 215));
-		_btn->setPosition(Vec2(245 * i + 120, 107.5));// 215/2=107.5，75=120/2+15，加70是为了让左右边界处都留有缝隙
+		_btn->setContentSize(Size(244, 260));
+		_btn->setPosition(Vec2(260 * i + 120, 130));// 215/2=107.5，75=120/2+15，加70是为了让左右边界处都留有缝隙
 		_btn->addTouchEventListener(bind(&RoomsInfo::selectScene, placeholders::_1, placeholders::_2));
 		_btn->setTag(i + 1);
 
-		createLabel("房间信息", 60, 160);
-		createLabel("房间名：", 10, 110);
-		createLabel("null", 110, 110);
+		createLabel("null", 120, 150);
 		_roomsName.push_back(_label);
-		createLabel("创建者：", 10, 70);
-		createLabel("null", 110, 70);
+		createLabel("null", 120, 100);
 		_roomsCreator.push_back(_label);
-		createLabel("点此查看", 60, 10);
+		createLabel("点此查看", 70, 40);
+		_label->setColor(Color3B::WHITE);
 
 		_scrollView->addChild(_btn);
 	}

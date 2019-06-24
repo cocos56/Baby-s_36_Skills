@@ -7,7 +7,7 @@ EditBox* ConnectServerScene::_ip1Box, * ConnectServerScene::_port1Box, * Connect
 QE_SINGLETON2_CPP(ConnectServerScene);
 
 QE_CreateSceneFromLayer_CPP(ConnectServerScene);
-	paths = { "fonts", "ConnectServerScene" };
+	paths = { "ConnectServerScene" };
 	QE_SetResourcesSearchDir;
 	QE_addBgSprite;
 	

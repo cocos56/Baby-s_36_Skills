@@ -1,8 +1,5 @@
-ï»¿#pragma execution_character_set("utf-8")
-
 #include "HRocker.h"
 const double PI = 3.1415;
-
 HRocker::HRocker(void)
 {
 	rocketRun = false;
@@ -11,7 +8,7 @@ HRocker::HRocker(void)
 HRocker::~HRocker(void)
 {
 }
-//åˆ›å»ºæ‘‡æ†(æ‘‡æ†çš„æ“ä½œé¢˜å›¾ç‰‡èµ„æºåï¼Œæ‘‡æ†èƒŒæ™¯å›¾ç‰‡èµ„æºåï¼Œèµ·å§‹åæ ‡)
+//´´½¨Ò¡¸Ë(Ò¡¸ËµÄ²Ù×÷ÌâÍ¼Æ¬×ÊÔ´Ãû£¬Ò¡¸Ë±³¾°Í¼Æ¬×ÊÔ´Ãû£¬ÆğÊ¼×ø±ê)
 HRocker* HRocker::createHRocker(const char *rockerImageName, const char *rockerBGImageName, CCPoint position)
 {
 	HRocker *layer = HRocker::create();
@@ -24,7 +21,7 @@ HRocker* HRocker::createHRocker(const char *rockerImageName, const char *rockerB
 	return NULL;
 }
 
-//è‡ªå®šä¹‰åˆå§‹åŒ–å‡½æ•°
+//×Ô¶¨Òå³õÊ¼»¯º¯Êı
 void HRocker::rockerInit(const char* rockerImageName, const char* rockerBGImageName, CCPoint position)
 {
 	CCSprite *spRockerBG = CCSprite::create(rockerBGImageName);
@@ -38,20 +35,20 @@ void HRocker::rockerInit(const char* rockerImageName, const char* rockerBGImageN
 	addChild(spRocker, 1, tag_rocker);
 
 	rockerBGPosition = position;
-	rockerBGR = spRockerBG->getContentSize().width*0.45;//  æ‘‡æ†å¤§å°
-	rocketDirection = -1;//è¡¨ç¤ºæ‘‡æ†æ–¹å‘ä¸å˜
+	rockerBGR = spRockerBG->getContentSize().width*0.3;//  Ò¡¸Ë´óĞ¡
+	rocketDirection = -1;//±íÊ¾Ò¡¸Ë·½Ïò²»±ä
 
 	
 }
 
-//å¯åŠ¨æ‘‡æ†(æ˜¾ç¤ºæ‘‡æ†ã€ç›‘å¬æ‘‡æ†è§¦å±äº‹ä»¶)
+//Æô¶¯Ò¡¸Ë(ÏÔÊ¾Ò¡¸Ë¡¢¼àÌıÒ¡¸Ë´¥ÆÁÊÂ¼ş)
 void HRocker::startRocker(bool _isStopOther)
 {
-	//æ˜¾ç¤ºæ‘‡æ†
-	CCSprite *rocker = (CCSprite*)this->getChildByTag(tag_rocker);
+	//ÏÔÊ¾Ò¡¸Ë
+	rocker = (CCSprite*)this->getChildByTag(tag_rocker);
 	rocker->setVisible(true);
 
-	CCSprite *rockerBG = (CCSprite *)this->getChildByTag(tag_rockerBG);
+	rockerBG = (CCSprite *)this->getChildByTag(tag_rockerBG);
 	rockerBG->setVisible(true);
 
 
@@ -63,23 +60,17 @@ void HRocker::startRocker(bool _isStopOther)
 	
 }
 
-//åœæ­¢æ‘‡æ†(éšè—æ‘‡æ†ï¼Œå–æ¶ˆæ‘‡æ†çš„è§¦å±ç›‘å¬)
+//Í£Ö¹Ò¡¸Ë(Òş²ØÒ¡¸Ë£¬È¡ÏûÒ¡¸ËµÄ´¥ÆÁ¼àÌı)
 void HRocker::stopRocker()
 {
 	
-
-	//auto listener = EventListenerTouchOneByOne::create();
-	//listener->onTouchBegan = CC_CALLBACK_2(HRocker::onTouchBegan, this);
-	//listener->onTouchMoved = CC_CALLBACK_2(HRocker::onTouchMoved, this);
-	//listener->onTouchEnded = CC_CALLBACK_2(HRocker::onTouchEnded, this);
-	//Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	
 	Director::getInstance()->getEventDispatcher()->pauseEventListenersForTarget(this,false);
-
+	Director::getInstance()->getEventDispatcher()-> removeEventListener(listener);
 }
 
 
-//è·å–å½“å‰æ‘‡æ†ä¸ç”¨æˆ·è§¦å±ç‚¹çš„è§’åº¦
+//»ñÈ¡µ±Ç°Ò¡¸ËÓëÓÃ»§´¥ÆÁµãµÄ½Ç¶È
 float HRocker::getRad(CCPoint pos1, CCPoint pos2)
 {
 	float px1 = pos1.x;
@@ -87,17 +78,17 @@ float HRocker::getRad(CCPoint pos1, CCPoint pos2)
 	float px2 = pos2.x;
 	float py2 = pos2.y;
 
-	//å¾—åˆ°ä¸¤ç‚¹xçš„è·ç¦»
+	//µÃµ½Á½µãxµÄ¾àÀë
 	float x = px2 - px1;
-	//å¾—åˆ°ä¸¤ç‚¹yçš„è·ç¦»
+	//µÃµ½Á½µãyµÄ¾àÀë
 	float y = py1 - py2;
-	//ç®—å‡ºæ–œè¾¹é•¿åº¦
+	//Ëã³öĞ±±ß³¤¶È
 	float xie = sqrt(pow(x, 2) + pow(y, 2));
-	//å¾—åˆ°è¿™ä¸ªè§’åº¦çš„ä½™å¼¦å€¼(é€šè¿‡ä¸‰è§’å‡½æ•°ä¸­çš„åº—é‡Œï¼šè§’åº¦ä½™å¼¦å€¼=æ–œè¾¹/æ–œè¾¹)
+	//µÃµ½Õâ¸ö½Ç¶ÈµÄÓàÏÒÖµ(Í¨¹ıÈı½Çº¯ÊıÖĞµÄµêÀï£º½Ç¶ÈÓàÏÒÖµ=Ğ±±ß/Ğ±±ß)
 	float cosAngle = x / xie;
-	//é€šè¿‡åä½™å¼¦å®šç†è·å–åˆ°æœŸè§’åº¦çš„å¼§åº¦
+	//Í¨¹ı·´ÓàÏÒ¶¨Àí»ñÈ¡µ½ÆÚ½Ç¶ÈµÄ»¡¶È
 	float rad = acos(cosAngle);
-	//æ³¨æ„ï¼šå½“è§¦å±çš„ä½ç½®Yåæ ‡<æ‘‡æ†çš„Yåæ ‡ï¼Œæˆ‘ä»¬è¦å»åå€¼-0~-180
+	//×¢Òâ£ºµ±´¥ÆÁµÄÎ»ÖÃY×ø±ê<Ò¡¸ËµÄY×ø±ê£¬ÎÒÃÇÒªÈ¥·´Öµ-0~-180
 	if (py2 < py1)
 	{
 		rad = -rad;
@@ -109,41 +100,41 @@ CCPoint getAngelePosition(float r, float angle){
 	return ccp(r*cos(angle), r*sin(angle));
 }
 
-//æŠ¬èµ·äº‹ä»¶
+//Ì§ÆğÊÂ¼ş
 bool HRocker::onTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
-	CCPoint point = pTouch->getLocation(); //è·å–è§¦æ‘¸ç‚¹
-	CCSprite *rocker = (CCSprite *)this->getChildByTag(tag_rocker);  //è·å–æ‘‡æ†
+	CCPoint point = pTouch->getLocation(); //»ñÈ¡´¥Ãşµã
+	rocker = (CCSprite *)this->getChildByTag(tag_rocker);  //»ñÈ¡Ò¡¸Ë
 	if (rocker->boundingBox().containsPoint(point))
 	{
 		isCanMove = true;
-		//CCLOG("begin");
+		
 	}
 	return true;
 }
-//ç§»åŠ¨äº‹ä»¶
+//ÒÆ¶¯ÊÂ¼ş
 void HRocker::onTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
-	CCPoint point = pTouch->getLocation();//è·å¾—æ‰‹è§¦æ‘¸å±å¹•çš„ä½ç½®
-	CCSprite *rocker = (CCSprite *)this->getChildByTag(tag_rocker);
-	//å¾—åˆ°æ‘‡æ†ä¸è§¦å±ç‚¹æ‰€å½¢æˆçš„è§’åº¦
+	CCPoint point = pTouch->getLocation();//»ñµÃÊÖ´¥ÃşÆÁÄ»µÄÎ»ÖÃ
+	rocker = (CCSprite *)this->getChildByTag(tag_rocker);
+	//µÃµ½Ò¡¸ËÓë´¥ÆÁµãËùĞÎ³ÉµÄ½Ç¶È
 	float angle = getRad(rockerBGPosition, point);
-	//åˆ¤æ–­ä¸¤ä¸ªåœ†çš„åœ†å¿ƒè·æ˜¯å¦å¤§äºæ‘‡æ†èƒŒæ™¯çš„åŠå¾„
+	//ÅĞ¶ÏÁ½¸öÔ²µÄÔ²ĞÄ¾àÊÇ·ñ´óÓÚÒ¡¸Ë±³¾°µÄ°ë¾¶
 	if (sqrt(pow((rockerBGPosition.x - point.x), 2) + pow((rockerBGPosition.y - point.y), 2)) >= rockerBGR)
 	{
 
-		//ä¿è¯å†…éƒ¨å°åœ†è¿åŠ¨çš„é•¿åº¦é™åˆ¶
+		//±£Ö¤ÄÚ²¿Ğ¡Ô²ÔË¶¯µÄ³¤¶ÈÏŞÖÆ
 		rocker->setPosition(ccpAdd(getAngelePosition(rockerBGR, angle), ccp(rockerBGPosition.x, rockerBGPosition.y)));
 		//	CCLOG("touch");
 	}
 	else
 	{
-		//å½“æ²¡æœ‰è¶…è¿‡ï¼Œè®©æ‘‡æ†è·Ÿéšç”¨æˆ·è§¦å±ç‚¹ç§»åŠ¨å³å¯
+		//µ±Ã»ÓĞ³¬¹ı£¬ÈÃÒ¡¸Ë¸úËæÓÃ»§´¥ÆÁµãÒÆ¶¯¼´¿É
 		rocker->setPosition(point);
 		//CCLOG("touch");
 	}
 
-	//åˆ¤æ–­æ–¹å‘
+	//ÅĞ¶Ï·½Ïò
 	if (angle >= -PI / 4 && angle<PI / 4)
 	{
 		rocketDirection = rocker_right;
@@ -170,7 +161,7 @@ void HRocker::onTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 	
 
 }
-//ç¦»å¼€äº‹ä»¶
+//Àë¿ªÊÂ¼ş
 void HRocker::onTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
 
@@ -181,20 +172,18 @@ void HRocker::onTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 	{
 		return;
 	}
-	CCSprite *rockerBG = (CCSprite*)this->getChildByTag(tag_rockerBG);
-	CCSprite * rocker = (CCSprite*)this->getChildByTag(tag_rocker);
+	rockerBG = (CCSprite*)this->getChildByTag(tag_rockerBG);
+	rocker = (CCSprite*)this->getChildByTag(tag_rocker);
 	rocker->stopAllActions();
 	rocker->runAction(CCMoveTo::create(0.04f, rockerBG->getPosition()));
 	isCanMove = false;
 	rocketDirection = rocker_stay;
-	/*CCLOG("%d", rocketDirection);
-	CCLOG("end");*/
+	
 }
 
 void HRocker::resumeState()
 {
-	CCSprite *rockerBG = (CCSprite*)this->getChildByTag(tag_rockerBG);
-	CCSprite * rocker = (CCSprite*)this->getChildByTag(tag_rocker);
+
 	rocker->stopAllActions();
 	rocker->runAction(CCMoveTo::create(0.08f, rockerBG->getPosition()));
 	isCanMove = false;

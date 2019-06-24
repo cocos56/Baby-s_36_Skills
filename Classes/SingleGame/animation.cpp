@@ -1,4 +1,4 @@
-﻿#pragma execution_character_set("utf-8")
+#pragma execution_character_set("utf-8")
 
 #include "animation.h"
 
@@ -6,7 +6,7 @@ void animation::StopAnimation( Sprite * hero1)
 {
 	if (!IsRunning)
 		return;
-	hero1->stopAllActions();//当前精灵停止所有动画
+	hero1->stopAllActions();
 
 	IsRunning = false;
 }

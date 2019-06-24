@@ -1,6 +1,9 @@
-ï»¿#pragma execution_character_set("utf-8")
-
 #include "DataParse.h"
+#include"json\document.h"
+#include"json/writer.h"
+#include"json/stringbuffer.h"
+#include"json/rapidjson.h"
+
 
 void DataParse::CopyFile()
 {
@@ -24,22 +27,22 @@ void DataParse::CopyFile()
 int  DataParse::getclok(int levelIndex)
 {
 	std::string writeablePath = FileUtils::getInstance()->getWritablePath();
-	//è·å–å®Œæ•´è·¯å¾„
+	//»ñÈ¡ÍêÕûÂ·¾¶
 	writeablePath = writeablePath + "Data.json";
-	//å°†ä¸€ä¸ªæ–‡ä»¶å†…å®¹è¯»å–ä¸ºå­—ç¬¦ä¸²
+	//½«Ò»¸öÎÄ¼şÄÚÈİ¶ÁÈ¡Îª×Ö·û´®
 	std::string data = FileUtils::getInstance()->getStringFromFile(writeablePath);
-	//è§£æå¯¹è±¡ 
+	//½âÎö¶ÔÏó 
 	rapidjson::Document doc;
-	//å¼€å§‹è§£æ
+	//¿ªÊ¼½âÎö
 	doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-	//åˆ¤æ–­è§£ææ˜¯å¦å‡ºç°é—®é¢˜
+	//ÅĞ¶Ï½âÎöÊÇ·ñ³öÏÖÎÊÌâ
 	if (doc.HasParseError())
 	{
 		return 0;
 	}
 
 	char levelName[20];
-	sprintf(levelName, "level_%d", levelIndex);
+	sprintf(levelName, "level_%d_1", levelIndex);
 	int num = doc[levelName]["lock"].GetInt();
 	return num;
 }
@@ -47,16 +50,15 @@ int  DataParse::getclok(int levelIndex)
 __Dictionary* DataParse::getChapter(int chapterIndex)
 {
 	CopyFile();
-	//è·å–å¯è¯»å†™è·¯å¾„
+	//»ñÈ¡¿É¶ÁĞ´Â·¾¶
 	std::string writeablePath = FileUtils::getInstance()->getWritablePath();
-	//è·å–å®Œæ•´è·¯å¾„
+	//»ñÈ¡ÍêÕûÂ·¾¶
 	writeablePath = writeablePath + "Data.json";
 	
 	
-	//è·å–èµ„æº
-	
+	//»ñÈ¡×ÊÔ´
 	std::string data = FileUtils::getInstance()->getStringFromFile(writeablePath);
-	//è§£æ
+	//½âÎö
 	rapidjson::Document doc;
 	doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
 	
@@ -65,30 +67,32 @@ __Dictionary* DataParse::getChapter(int chapterIndex)
 		
 		return 0;
 	}
-	//å­˜å…¥å­—å…¸
+	//´æÈë×Öµä
 	
 	__Dictionary* dic = __Dictionary::create();
 	
-	//åˆå§‹åŒ–
+	//³õÊ¼»¯
 	
-	char level[20];
-	sprintf(level, "level_%d", chapterIndex);
-	/*for (int i = 1; i <= 7; i++)
-	{*/
-		//å®šä¹‰é”®
-		char lock[20];
-		sprintf(lock, "level_%d_lock", chapterIndex);
-		char LogoScene[20];
-		sprintf(LogoScene, "level_%d_star",chapterIndex);
-		//ä»docä¸­è·å–å€¼
+	
+	
+	for (int i = 1; i <= 6; i++)
+	{
+		//¶¨Òå¼ü
+		char word[20];
+		sprintf(word, "level_%d%d_word", chapterIndex,i);
+		char prue[20];
+		sprintf(prue, "level_%d%d_true",chapterIndex,i);
+		//´ÓdocÖĞ»ñÈ¡Öµ
 		
-		//å› ä¸ºå€¼æ˜¯intå‹çš„éœ€è¦è½¬å˜ä¸ºå¯¹è±¡
-		String* lockValue = String::create(doc[level]["lock"].GetString());
-		String* starValue = String::create(doc[level]["LogoScene"].GetString());
-		log("asdfashfh");
-		dic->setObject(lockValue, lock);
-		dic->setObject(starValue, LogoScene);
-	//}
+		char level[20];
+		sprintf(level, "level_%d%d", chapterIndex,i);
+		//ÒòÎªÖµÊÇintĞÍµÄĞèÒª×ª±äÎª¶ÔÏó
+		String* lockValue = String::create(doc[level]["word"].GetString());
+		Integer * starValue = Integer::create(doc[level]["prue"].GetInt());
+		
+		dic->setObject(lockValue, word);
+		dic->setObject(starValue, prue);
+	}
 	return dic;   
 }
 
@@ -106,7 +110,7 @@ int DataParse::getNum( int levelIndex)
 	}
 	char levelName[20];
 	sprintf(levelName, "level_%d", levelIndex);
-	int num = doc[levelName]["num"].GetInt();
+	int num = doc[levelName]["prue"].GetInt();
 	return num;
 }
 
@@ -123,7 +127,7 @@ int DataParse::getStar( int levelIndex)
 	}
 	char levelName[20];
 	sprintf(levelName, "level_%d", levelIndex);
-	int num = doc[levelName]["LogoScene"].GetInt();
+	int num = doc[levelName]["star"].GetInt();
 	return num;
 }
 
@@ -140,10 +144,10 @@ void DataParse::setStar( int levelIndex, int starNum)
 	}
 	char levelName[20];
 	sprintf(levelName, "level_%d", levelIndex);
-	int starNum_Data = doc[levelName]["LogoScene"].GetInt();
+	int starNum_Data = doc[levelName]["star"].GetInt();
 	if (starNum_Data<=starNum)
 	{
-		doc[levelName]["LogoScene"].SetInt(starNum);
+		doc[levelName]["star"].SetInt(starNum);
 		if (starNum == 3 && levelIndex != 7)
 		{
 			char nextLevelName[20];
@@ -156,15 +160,15 @@ void DataParse::setStar( int levelIndex, int starNum)
 
 void DataParse::writefile(rapidjson::Document& document, std::string path)
 {
-	rapidjson::StringBuffer buffer;//åˆå§‹åŒ–ç¼“å­˜
-	//åˆå§‹åŒ–å†™å…¥å™¨
+	rapidjson::StringBuffer buffer;//³õÊ¼»¯»º´æ
+	//³õÊ¼»¯Ğ´ÈëÆ÷
 	rapidjson::Writer<rapidjson::StringBuffer>writer(buffer);
-	document.Accept(writer);//json å†™å…¥buffer
-	//å°†åŸæ¥çš„æ–‡ä»¶å†…å®¹è¦†ç›–æ‰
+	document.Accept(writer);//json Ğ´Èëbuffer
+	//½«Ô­À´µÄÎÄ¼şÄÚÈİ¸²¸Çµô
 	FILE *file = fopen(path.c_str(), "w");
 	if (file)
 	{
-		fputs(buffer.GetString(), file);//è¦†ç›–
+		fputs(buffer.GetString(), file);//¸²¸Ç
 		fclose(file);
 	}
 }

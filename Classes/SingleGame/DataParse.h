@@ -1,12 +1,13 @@
-﻿#pragma execution_character_set("utf-8")
-#pragma once
 
-#include "QE.h"
+#include"cocos2d.h"
+#include"json/rapidjson.h"
+#include"json/document.h"
+using namespace cocos2d;
 
 class DataParse
 {
 public:
-	static Dictionary* getChapter(int chapterIndex);
+	static __Dictionary* getChapter(int chapterIndex);
 	static void CopyFile();
 
 	static int getNum( int levelIndex);
@@ -14,4 +15,6 @@ public:
 	static void setStar( int levelIndex, int starNum);
 	static void writefile(rapidjson::Document& document, std::string path);
 	static int getclok(int levelIndex);
+
+	
 };
