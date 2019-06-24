@@ -8,7 +8,6 @@ class GameInterfaceScene :public Layer
 public:
 	QE_CreateSceneFromLayer_H(GameInterfaceScene);
 
-
 	void setLayer();
 	void setMusic(Ref* sender);
 	void setBack();

@@ -34,7 +34,7 @@ bool MapOne::init()
 	
 
 
-	_tileMap = TMXTiledMap::create("MyMap1.tmx");
+	_tileMap = TMXTiledMap::create("mainMap.tmx");
 	_tileMap->setAnchorPoint(Vec2::ZERO);
 	_tileMap->setPosition(Vec2::ZERO);
 	this->addChild(_tileMap);
