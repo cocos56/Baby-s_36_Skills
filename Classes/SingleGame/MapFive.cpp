@@ -1,16 +1,10 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "MapFive.h"
-
-#include "HRocker.h"
-#include "Battle.h"
-
-
-
 
 TMXTiledMap *tileMap5;
 HRocker* rocker5;
 TMXLayer  *_collidable5;
-
-
 
 Scene * MapFive::createScene()
 {
@@ -82,7 +76,7 @@ bool HrockerLayer5::init()
 
 	
 
-	 rocker5 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//ÆäÖÐµÚÒ»ÕÅÍ¼Æ¬ÎªÒ¡¸ËµÄ°´Å¥£¬µÚ¶þÕÅÎª±³¾°  
+	 rocker5 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//å…¶ä¸­ç¬¬ä¸€å¼ å›¾ç‰‡ä¸ºæ‘‡æ†çš„æŒ‰é’®ï¼Œç¬¬äºŒå¼ ä¸ºèƒŒæ™¯  
 	this->addChild(rocker5, 2);
 	rocker5->startRocker(true);
 
@@ -143,7 +137,7 @@ void MapFive::update(float f)
 				
 				break;
 			default:
-				animation::StopAnimation( herohrea5);//Í£Ö¹ËùÓÐ¶¯»­ºÍÔË¶¯  
+				animation::StopAnimation( herohrea5);//åœæ­¢æ‰€æœ‰åŠ¨ç”»å’Œè¿åŠ¨  
 				break;
 		}
 
@@ -151,7 +145,7 @@ void MapFive::update(float f)
 	auto rectB=heroBad5->getBoundingBox();
 	auto rectC=chu->getBoundingBox();
 	
-	//kjÊÇ¼ÇÂ¼Åö×²
+	//kjæ˜¯è®°å½•ç¢°æ’ž
 	if (rectA.intersectsRect(rectB)&&kj==0)
 	{
 	    animation::StopAnimation(heroBad5);
@@ -208,7 +202,7 @@ void MapFive::backFive()
 	
 }
 
-//ÊµÏÖ½ÇÉ«±¼ÅÜ
+//å®žçŽ°è§’è‰²å¥”è·‘
 void MapFive::heroBadRounf(float d)
 {
 
@@ -241,7 +235,7 @@ void MapFive::heroBadRounf(float d)
 }
 
 
-//»µÈËÒÆ¶¯£¬ÊµÏÖÕÒÈËÒÆ¶¯
+//åäººç§»åŠ¨ï¼Œå®žçŽ°æ‰¾äººç§»åŠ¨
 void MapFive::heroRound(float d)
 {
 	
@@ -264,12 +258,12 @@ void MapFive::heroRound(float d)
 }
 
 
-//»µÈËÒÆ¶¯µÄËã·¨
+//åäººç§»åŠ¨çš„ç®—æ³•
 Point MapFive::moveBad(bool active,Point ph)
 {
 	
 		auto s=heroBad5;
-	 //   //xÖá·½ÏòÒÆ¶¯µÄ¾àÀë
+	 //   //xè½´æ–¹å‘ç§»åŠ¨çš„è·ç¦»
 		int text1=abs(ph.x-s->getPosition().x);
 		int text2=abs(ph.y-s->getPosition().y);
 		if(text1>text2)
@@ -277,7 +271,7 @@ Point MapFive::moveBad(bool active,Point ph)
 			x=ph.x-s->getPosition().x>0?40:-40;
 			 y=0;
 		}
-	 //   //yÖá·½ÏòÉÏÒÆ¶¯µÄ¾àÀë
+	 //   //yè½´æ–¹å‘ä¸Šç§»åŠ¨çš„è·ç¦»
 		else
 		{
 			 x=0;
@@ -289,7 +283,7 @@ Point MapFive::moveBad(bool active,Point ph)
 
 
 
-//²âÊÔÊÇ·ñ¿ÉÒÔ×ß
+//æµ‹è¯•æ˜¯å¦å¯ä»¥èµ°
 Point  MapFive::movePlayer(Point p,Point p3)
 {
     int x =(p.x)/tileMap5->getTileSize().width;
@@ -301,7 +295,7 @@ Point  MapFive::movePlayer(Point p,Point p3)
         
         int tilegid=_collidable5->getTileGIDAt(currentPoint);
        
-        Value value=tileMap5->getPropertiesForGID(tilegid);
+		cocos2d::Value value=tileMap5->getPropertiesForGID(tilegid);
        
         auto valueStr=value.getDescription();
         

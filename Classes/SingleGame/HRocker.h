@@ -1,9 +1,7 @@
-#ifndef __HROCKER_H__
-#define __HROCKER_H__
+#pragma execution_character_set("utf-8")
+#pragma once
 
-#include "cocos2d.h"
-
-using namespace cocos2d;
+#include "QuickEngine/QuickEngine.h"
 
 //用于标识摇杆与摇杆的背景  
 typedef enum{  //没有设置的时候，默认数值从0开始
@@ -62,7 +60,3 @@ private:
 	virtual void onTouchEnded(Touch *pTouch, Event *pEvent);
 
 };
-
-#endif
-
-

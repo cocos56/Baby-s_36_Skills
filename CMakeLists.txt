@@ -51,11 +51,6 @@ list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/GameInterface/GameInterfaceScene.cpp
      Classes/GameInterface/LogoScene.cpp
-     Classes/GameInterface/MapFive.cpp
-     Classes/GameInterface/MapFour.cpp
-     Classes/GameInterface/MapOne.cpp
-     Classes/GameInterface/MapThere.cpp
-     Classes/GameInterface/MapTwo.cpp
      Classes/GameInterface/ResourceLoadScene.cpp
      Classes/NetWorkGame/ConnectServer/ConnectServerScene.cpp
      Classes/NetWorkGame/NetworkBase/Connect.cpp
@@ -84,6 +79,11 @@ list(APPEND GAME_SOURCE
      Classes/SingleGame/Battle.cpp
      Classes/SingleGame/DataParse.cpp
      Classes/SingleGame/HRocker.cpp
+     Classes/SingleGame/MapFive.cpp
+     Classes/SingleGame/MapFour.cpp
+     Classes/SingleGame/MapOne.cpp
+     Classes/SingleGame/MapThere.cpp
+     Classes/SingleGame/MapTwo.cpp
      Classes/Test/HelloWorldScene.cpp
      Classes/Test/HttpTest.cpp
      Classes/Test/PopAlertDialog.cpp
@@ -96,11 +96,6 @@ list(APPEND GAME_HEADER
      Classes/QE.h
      Classes/GameInterface/GameInterfaceScene.h
      Classes/GameInterface/LogoScene.h
-     Classes/GameInterface/MapFive.h
-     Classes/GameInterface/MapFour.h
-     Classes/GameInterface/MapOne.h
-     Classes/GameInterface/MapThere.h
-     Classes/GameInterface/MapTwo.h
      Classes/GameInterface/ResourceLoadScene.h
      Classes/NetWorkGame/ConnectServer/ConnectServerScene.h
      Classes/NetWorkGame/NetworkBase/Connect.h
@@ -134,6 +129,11 @@ list(APPEND GAME_HEADER
      Classes/SingleGame/Battle.h
      Classes/SingleGame/DataParse.h
      Classes/SingleGame/HRocker.h
+     Classes/SingleGame/MapFive.h
+     Classes/SingleGame/MapFour.h
+     Classes/SingleGame/MapOne.h
+     Classes/SingleGame/MapThere.h
+     Classes/SingleGame/MapTwo.h
      Classes/Test/HelloWorldScene.h
      Classes/Test/HttpTest.h
      Classes/Test/PopAlertDialog.h

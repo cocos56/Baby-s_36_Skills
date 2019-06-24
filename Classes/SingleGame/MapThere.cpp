@@ -1,7 +1,6 @@
+ï»¿#pragma execution_character_set("utf-8")
+
 #include "MapThere.h"
-#include "HRocker.h"
-#include"math\CCMath.h"
-#include "Battle.h"
 
 TMXTiledMap *tileMap3;
 HRocker* rocker3;
@@ -24,7 +23,7 @@ bool HrockerLayer3::init()
 		return false;
 	}
 
-	 rocker3 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//ÆäÖÐµÚÒ»ÕÅÍ¼Æ¬ÎªÒ¡¸ËµÄ°´Å¥£¬µÚ¶þÕÅÎª±³¾°  
+	 rocker3 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//å…¶ä¸­ç¬¬ä¸€å¼ å›¾ç‰‡ä¸ºæ‘‡æ†çš„æŒ‰é’®ï¼Œç¬¬äºŒå¼ ä¸ºèƒŒæ™¯  
 	this->addChild(rocker3, 2);
 	rocker3->startRocker(true);
 
@@ -132,7 +131,7 @@ void MapThere::update(float f)
 				
 				break;
 			default:
-				animation::StopAnimation( herohrea3);//Í£Ö¹ËùÓÐ¶¯»­ºÍÔË¶¯  
+				animation::StopAnimation( herohrea3);//åœæ­¢æ‰€æœ‰åŠ¨ç”»å’Œè¿åŠ¨  
 				break;
 		}
 
@@ -140,7 +139,7 @@ void MapThere::update(float f)
 	auto rectB=heroBad3->getBoundingBox();
 	auto rectC=chu->getBoundingBox();
 	
-	//kjÊÇ¼ÇÂ¼Åö×²
+	//kjæ˜¯è®°å½•ç¢°æ’ž
 	if (rectA.intersectsRect(rectB)&&kj==0)
 	{
 	    animation::StopAnimation(heroBad3);
@@ -197,7 +196,7 @@ void MapThere::backThere()
 	
 }
 
-//ÊµÏÖ½ÇÉ«±¼ÅÜ
+//å®žçŽ°è§’è‰²å¥”è·‘
 void MapThere::heroBadRounf(float d)
 {
 
@@ -230,7 +229,7 @@ void MapThere::heroBadRounf(float d)
 }
 
 
-//»µÈËÒÆ¶¯£¬ÊµÏÖÕÒÈËÒÆ¶¯
+//åäººç§»åŠ¨ï¼Œå®žçŽ°æ‰¾äººç§»åŠ¨
 void MapThere::heroRound(float d)
 {
 	
@@ -253,12 +252,12 @@ void MapThere::heroRound(float d)
 }
 
 
-//»µÈËÒÆ¶¯µÄËã·¨
+//åäººç§»åŠ¨çš„ç®—æ³•
 Point MapThere::moveBad(bool active,Point ph)
 {
 	
 		auto s=heroBad3;
-	 //   //xÖá·½ÏòÒÆ¶¯µÄ¾àÀë
+	 //   //xè½´æ–¹å‘ç§»åŠ¨çš„è·ç¦»
 		int text1=abs(ph.x-s->getPosition().x);
 		int text2=abs(ph.y-s->getPosition().y);
 		if(text1>text2)
@@ -266,7 +265,7 @@ Point MapThere::moveBad(bool active,Point ph)
 			x=ph.x-s->getPosition().x>0?40:-40;
 			 y=0;
 		}
-	 //   //yÖá·½ÏòÉÏÒÆ¶¯µÄ¾àÀë
+	 //   //yè½´æ–¹å‘ä¸Šç§»åŠ¨çš„è·ç¦»
 		else
 		{
 			 x=0;
@@ -278,7 +277,7 @@ Point MapThere::moveBad(bool active,Point ph)
 
 
 
-//²âÊÔÊÇ·ñ¿ÉÒÔ×ß
+//æµ‹è¯•æ˜¯å¦å¯ä»¥èµ°
 Point  MapThere::movePlayer(Point p,Point p3)
 {
     int x =(p.x)/tileMap3->getTileSize().width;
@@ -290,7 +289,7 @@ Point  MapThere::movePlayer(Point p,Point p3)
         
         int tilegid=_collidable3->getTileGIDAt(currentPoint);
        
-        Value value=tileMap3->getPropertiesForGID(tilegid);
+		cocos2d::Value value=tileMap3->getPropertiesForGID(tilegid);
        
         auto valueStr=value.getDescription();
         

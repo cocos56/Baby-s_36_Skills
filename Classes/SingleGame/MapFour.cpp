@@ -1,9 +1,6 @@
-#include "MapFour.h"
-#include "MapOne.h"
-#include "HRocker.h"
+ï»¿#pragma execution_character_set("utf-8")
 
-#include"math\CCMath.h"
-#include "Battle.h"
+#include "MapFour.h"
 
 TMXTiledMap *tileMap4;
 HRocker* rocker4;
@@ -76,7 +73,7 @@ bool HrockerLayer4::init()
 		return false;
 	}
 
-	 rocker4 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//ÆäÖÐµÚÒ»ÕÅÍ¼Æ¬ÎªÒ¡¸ËµÄ°´Å¥£¬µÚ¶þÕÅÎª±³¾°  
+	 rocker4 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//å…¶ä¸­ç¬¬ä¸€å¼ å›¾ç‰‡ä¸ºæ‘‡æ†çš„æŒ‰é’®ï¼Œç¬¬äºŒå¼ ä¸ºèƒŒæ™¯  
 	this->addChild(rocker4, 2);
 	rocker4->startRocker(true);
 
@@ -132,7 +129,7 @@ void MapFour::update(float f)
 				
 				break;
 			default:
-				animation::StopAnimation( herohrea4);//Í£Ö¹ËùÓÐ¶¯»­ºÍÔË¶¯  
+				animation::StopAnimation( herohrea4);//åœæ­¢æ‰€æœ‰åŠ¨ç”»å’Œè¿åŠ¨  
 				break;
 		}
 
@@ -140,7 +137,7 @@ void MapFour::update(float f)
 	auto rectB=heroBad4->getBoundingBox();
 	auto rectC=chu->getBoundingBox();
 	
-	//kjÊÇ¼ÇÂ¼Åö×²
+	//kjæ˜¯è®°å½•ç¢°æ’ž
 	if (rectA.intersectsRect(rectB)&&kj==0)
 	{
 	    animation::StopAnimation(heroBad4);
@@ -197,7 +194,7 @@ void MapFour::backFour()
 	
 }
 
-//ÊµÏÖ½ÇÉ«±¼ÅÜ
+//å®žçŽ°è§’è‰²å¥”è·‘
 void MapFour::heroBadRounf(float d)
 {
 
@@ -230,7 +227,7 @@ void MapFour::heroBadRounf(float d)
 }
 
 
-//»µÈËÒÆ¶¯£¬ÊµÏÖÕÒÈËÒÆ¶¯
+//åäººç§»åŠ¨ï¼Œå®žçŽ°æ‰¾äººç§»åŠ¨
 void MapFour::heroRound(float d)
 {
 	
@@ -253,12 +250,12 @@ void MapFour::heroRound(float d)
 }
 
 
-//»µÈËÒÆ¶¯µÄËã·¨
+//åäººç§»åŠ¨çš„ç®—æ³•
 Point MapFour::moveBad(bool active,Point ph)
 {
 	
 		auto s=heroBad4;
-	 //   //xÖá·½ÏòÒÆ¶¯µÄ¾àÀë
+	 //   //xè½´æ–¹å‘ç§»åŠ¨çš„è·ç¦»
 		int text1=abs(ph.x-s->getPosition().x);
 		int text2=abs(ph.y-s->getPosition().y);
 		if(text1>text2)
@@ -266,7 +263,7 @@ Point MapFour::moveBad(bool active,Point ph)
 			x=ph.x-s->getPosition().x>0?40:-40;
 			 y=0;
 		}
-	 //   //yÖá·½ÏòÉÏÒÆ¶¯µÄ¾àÀë
+	 //   //yè½´æ–¹å‘ä¸Šç§»åŠ¨çš„è·ç¦»
 		else
 		{
 			 x=0;
@@ -278,7 +275,7 @@ Point MapFour::moveBad(bool active,Point ph)
 
 
 
-//²âÊÔÊÇ·ñ¿ÉÒÔ×ß
+//æµ‹è¯•æ˜¯å¦å¯ä»¥èµ°
 Point  MapFour::movePlayer(Point p,Point p3)
 {
     int x =(p.x)/tileMap4->getTileSize().width;
@@ -290,7 +287,7 @@ Point  MapFour::movePlayer(Point p,Point p3)
         
         int tilegid=_collidable4->getTileGIDAt(currentPoint);
        
-        Value value=tileMap4->getPropertiesForGID(tilegid);
+        cocos2d::Value value=tileMap4->getPropertiesForGID(tilegid);
        
         auto valueStr=value.getDescription();
         

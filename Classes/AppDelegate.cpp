@@ -71,7 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Scene* scene;
 
 	//游戏资源加载场景
-	//scene = ResourceLoadScene::createScene();
+	scene = ResourceLoadScene::createScene();
 	//Logo展示场景
 	//scene = LogoScene::createScene();
 	//游戏主面板界面

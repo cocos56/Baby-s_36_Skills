@@ -1,10 +1,6 @@
-#include "MapOne.h"
-#include "MapTwo.h"
-#include"MapThere.h"
-#include"MapFour.h"
-#include"MapFive.h"
-#include "Battle.h"
+ï»¿#pragma execution_character_set("utf-8")
 
+#include "MapOne.h"
 
 TMXTiledMap *_tileMap;
 TMXLayer  *_collidable;
@@ -43,7 +39,7 @@ bool MapOne::init()
 	_tileMap->setPosition(Vec2::ZERO);
 	this->addChild(_tileMap);
 
-	//ÉèÖÃÒ£¸Ð
+	//è®¾ç½®é¥æ„Ÿ
 
 
 
@@ -119,7 +115,7 @@ bool HrockerLayer::init()
 		return false;
 	}
 
-	 rocker = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//ÆäÖÐµÚÒ»ÕÅÍ¼Æ¬ÎªÒ¡¸ËµÄ°´Å¥£¬µÚ¶þÕÅÎª±³¾°  
+	 rocker = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//å…¶ä¸­ç¬¬ä¸€å¼ å›¾ç‰‡ä¸ºæ‘‡æ†çš„æŒ‰é’®ï¼Œç¬¬äºŒå¼ ä¸ºèƒŒæ™¯  
 	this->addChild(rocker, 2);
 	rocker->startRocker(true);
 
@@ -212,7 +208,7 @@ void  MapOne::update(float f)
 				
 				break;
 			default:
-				animation::StopAnimation(hero);//Í£Ö¹ËùÓÐ¶¯»­ºÍÔË¶¯  
+				animation::StopAnimation(hero);//åœæ­¢æ‰€æœ‰åŠ¨ç”»å’Œè¿åŠ¨  
 				break;
 		}
 
@@ -224,7 +220,7 @@ void  MapOne::update(float f)
 
 
 
-//µØÍ¼ÒÆ¶¯
+//åœ°å›¾ç§»åŠ¨
 void  MapOne:: MoveMap(Point position)
 {
     
@@ -302,7 +298,7 @@ void  MapOne::movePlayer(Point p)
         
         int tilegid=_collidable->getTileGIDAt(currentPoint);
        
-        Value value=_tileMap->getPropertiesForGID(tilegid);
+		cocos2d::Value value=_tileMap->getPropertiesForGID(tilegid);
        
         auto valueStr=value.getDescription();
         

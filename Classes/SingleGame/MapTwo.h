@@ -1,7 +1,8 @@
+﻿#pragma execution_character_set("utf-8")
 #pragma once
-#include "cocos2d.h"
-#include "animation.h"
-USING_NS_CC;
+
+#include "QE.h"
+
 class MapTwo :public Layer,public animation
 {
 public:

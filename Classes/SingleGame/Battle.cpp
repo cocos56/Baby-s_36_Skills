@@ -1,11 +1,10 @@
-#include "Battle.h"
-#include "MapTwo.h"
-#include<string.h>
+ï»¿#pragma execution_character_set("utf-8")
 
-#include "DataParse.h"
+#include "Battle.h"
  
 int z=0;
  Layer * layerLose;
+
 Scene * Battle::createScene()
 {
 	Scene* scene = Scene::create();
@@ -37,7 +36,7 @@ bool Battle::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 
-	//±³¾°
+	//èƒŒæ™¯
 	
 	auto bg=Sprite::create("bghuang.png");
 	auto scaleX = size.width/bg->getContentSize().width;
@@ -47,7 +46,7 @@ bool Battle::init()
 	this->addChild(bg,0);
 
 
-	//»µµ°Ó®Í¼
+	//åè›‹èµ¢å›¾
 	 bg1=Sprite::create("2123.png");
 
 	bg1->setPosition(Vec2(487,437));
@@ -55,7 +54,7 @@ bool Battle::init()
 	this->addChild(bg1,1);
 
 
-	//Íæ¼ÒÓ®Í¼
+	//çŽ©å®¶èµ¢å›¾
 	 bg2=Sprite::create("124.png");
 
 	bg2->setPosition(Vec2(477,426));
@@ -72,7 +71,7 @@ bool Battle::init()
 	this->addChild(bg5,3);
 
 
-	//±ÕºÏÍ¼1
+	//é—­åˆå›¾1
 	 bg3=Sprite::create("left.png");
 
 	bg3->setPosition(Vec2(304,323));
@@ -80,7 +79,7 @@ bool Battle::init()
 	this->addChild(bg3,2);
 
 
-	//±ÕºÏÍ¼2
+	//é—­åˆå›¾2
 	 bg4=Sprite::create("right.png");
 
 	bg4->setPosition(Vec2(603,323));
@@ -138,7 +137,7 @@ void Battle::update(float f)
 {
 	 I=UserDefault::getInstance()->getIntegerForKey("i");
 	
-	 //¼ÆËã³¬¹ýÁùÌõ½áÊøÓÎÏ·
+	 //è®¡ç®—è¶…è¿‡å…­æ¡ç»“æŸæ¸¸æˆ
 	 if(I==7)
 	 {
 		 
@@ -152,34 +151,34 @@ void Battle::update(float f)
 	 
 	 
 
-	 //ÕýÈ·´ð°¸
+	 //æ­£ç¡®ç­”æ¡ˆ
 	int result=DataParse::getNum(LevelI);
-	//Íæ¼Ò´ð°¸
+	//çŽ©å®¶ç­”æ¡ˆ
 	int retult2=UserDefault::getInstance()->getIntegerForKey("True");
 
 	
-	//´ð°¸Îª0Ê±£¬´ð¶Ô
+	//ç­”æ¡ˆä¸º0æ—¶ï¼Œç­”å¯¹
 	if(result==retult2&&result==0)
 	{   
 		right=0;
 		
 		
 	}
-	//´ð°¸Îª1Ê±£¬´ð¶Ô
+	//ç­”æ¡ˆä¸º1æ—¶ï¼Œç­”å¯¹
 	else if(result==retult2&&result==1)
 	{
 		
 		right=1;
 	
 	}
-	//´ð°¸²»¶Ô£¬Íæ¼Ò¸øÎª1
+	//ç­”æ¡ˆä¸å¯¹ï¼ŒçŽ©å®¶ç»™ä¸º1
 	else if(result!=retult2&&retult2==1)
 	{
 
 		right=3;
 
 	}
-	//´ð°¸²»¶Ô£¬Íæ¼Ò¸øÎª0
+	//ç­”æ¡ˆä¸å¯¹ï¼ŒçŽ©å®¶ç»™ä¸º0
 	else if(result!=retult2&&retult2==0)
 	{
 
@@ -188,7 +187,7 @@ void Battle::update(float f)
 	}
 
 
-	//´ð¶ÔÁË´ð°¸
+	//ç­”å¯¹äº†ç­”æ¡ˆ
 	if(right==0)
 	{
 		  bg1->setVisible(true);
@@ -220,7 +219,7 @@ void Battle::update(float f)
 		
 		
 	}
-	//´ð¶ÔÁË´ð°¸£¬´ð°¸Îª1
+	//ç­”å¯¹äº†ç­”æ¡ˆï¼Œç­”æ¡ˆä¸º1
 	 else if(right==1)
 	 {
 		
@@ -251,7 +250,7 @@ void Battle::update(float f)
 
 		
 	 }
-	//´ð´íÁË
+	//ç­”é”™äº†
 
 	 else if(right==3)
 	 {   
@@ -266,7 +265,7 @@ void Battle::update(float f)
 
 
 		 right=-1;
-		 //ok¼ÇµÃÊÇ´íÎó
+		 //okè®°å¾—æ˜¯é”™è¯¯
 		 UserDefault::getInstance()->setIntegerForKey("ok",0);
 		    Level=UserDefault::getInstance()->getIntegerForKey("level");
 	       auto dic=DataParse::getChapter(Level);
@@ -296,7 +295,7 @@ void Battle::Lable_Set(Label *label1 ,String* str,int i)
 	content = *str;
 	
 	
-	n = 0;// 0~3À´»ñµÃÒ»¸öÖÐÎÄ×Ö·û
+	n = 0;// 0~3æ¥èŽ·å¾—ä¸€ä¸ªä¸­æ–‡å­—ç¬¦
 	
 	label=nullptr;
 
@@ -307,7 +306,7 @@ void Battle::Lable_Set(Label *label1 ,String* str,int i)
 	label->setSystemFontSize(40);
 	label->setTextColor(Color4B(255,255,255,100));
 
-	label->setAnchorPoint(Vec2(0, 1));//ÉèÖÃÃªµã£¬´Ó×óÏòÓÒ´òÓ¡
+	label->setAnchorPoint(Vec2(0, 1));//è®¾ç½®é”šç‚¹ï¼Œä»Žå·¦å‘å³æ‰“å°
 	label->setDimensions(600, 200);
 
 
@@ -382,7 +381,7 @@ void Battle::falseTextTurn(Ref *sender)
 	button->setEnabled(false);
 	button1->setEnabled(false);
 
-	//µ«µã»÷°´Å¥Ê±£¬¹«²¼´ð°¸
+	//ä½†ç‚¹å‡»æŒ‰é’®æ—¶ï¼Œå…¬å¸ƒç­”æ¡ˆ
 	auto move=MoveTo::create(0.1, Vec2(bg3->getPosition().x -500,bg3->getPosition().y));
 	auto move1=MoveTo::create(0.1, Vec2(bg4->getPosition().x +500,bg4->getPosition().y));
 	bg3->runAction(move);
