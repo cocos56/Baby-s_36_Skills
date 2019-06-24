@@ -71,7 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Scene* scene;
 
 	//游戏资源加载场景
-	//scene = ResourceLoadScene::createScene();
+	scene = ResourceLoadScene::createScene();
 	//Logo展示场景
 	//scene = LogoScene::createScene();
 	//游戏主面板界面
@@ -80,7 +80,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//主场景（入口）
 	//scene = MapOne::createScene();
 	//动物园ZOO
-	scene = MapTwo::createScene();
+	//scene = MapTwo::createScene();
 	//学校School
 	//scene = MapFive::createScene();
 	//战斗
