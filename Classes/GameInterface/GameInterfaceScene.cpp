@@ -132,49 +132,7 @@ void GameInterfaceScene::adjustVolumn(Ref * sender)
 	//滑动条的值为0-100之间的整数，而音量设置的值在0-1之间。故需要除以100.
 	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(slider->getPercent()/100);
 }
-/*void GameInterfaceScene::startAnimate()
-{
-	//获取精灵帧单例
-	SpriteFrameCache* cache = SpriteFrameCache::getInstance();
 
-	//蝴蝶的plist的文件和png图片导入缓存中
-	cache->addSpriteFramesWithFile("hudie.plist","hudie.png");
-
-	//蝴蝶的plist导入到字典里
-	auto dic =__Dictionary::createWithContentsOfFile("hudie.plist");
-
-	//在字典里取出图片名字
-	auto frameDic = (__Dictionary *)dic->objectForKey("frames");
-
-	//获取所有图片的数量
-	int num = (int)frameDic->allKeys()->count();
-
-	Vector<SpriteFrame*>arrayPlist;
-	SpriteFrame* frame;
-	char name[20];
-    for (int i=1;i< num;i++)
-	{
-		sprintf(name,"%d.png",i);
-
-		//通过名字获得精灵帧，并放到容器中
-		frame = cache->getSpriteFrameByName(name);
-		arrayPlist.pushBack(frame);
-	}
-    auto animation = Animation::createWithSpriteFrames(arrayPlist,0.1);
-	auto animate = Animate::create(animation);
-	auto repeateForver = RepeatForever::create(animate);
-
-	auto moveTo1 = MoveTo::create(2,Vec2(400,320));
-	auto moveTo2 = MoveTo::create(1,Vec2(480,400));
-	auto sequene = Sequence::create(moveTo1,moveTo2,NULL);
-
-	Sprite* butterfly = Sprite::createWithSpriteFrameName("0.png");
-	butterfly->setPosition(Vec2(240,160));
-	this->addChild(butterfly);
-
-	butterfly->runAction(repeateForver);//蝴蝶翅膀重复动画
-	butterfly->runAction(sequene);//位置移动
-}*/
 void GameInterfaceScene::enterMap()
 {
 	Scene * scene = MapOne::createScene();

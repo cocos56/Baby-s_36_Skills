@@ -39,8 +39,7 @@ bool MapTwo::init()
 
 	_collidable2=tileMap->getLayer("peng1");
 	_collidable2->setVisible(false);
-	
-	
+
 	
 	
 	 chu=Sprite::create("enter.png");

@@ -26,13 +26,8 @@ bool MapOne::init()
 		return false;
 	}
 
-
-	
 	Size size=Director::getInstance()->getWinSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	
-
 
 	_tileMap = TMXTiledMap::create("mainMap.tmx");
 	_tileMap->setAnchorPoint(Vec2::ZERO);
@@ -40,19 +35,8 @@ bool MapOne::init()
 	this->addChild(_tileMap);
 
 	//设置遥感
-
-
-
-
-
-
-
 	_collidable=_tileMap->getLayer("peng");
 	_collidable->setVisible(false);
-
-
-	
-
 
 	auto object=_tileMap->getObjectGroup("people");
 	ValueMap map=object->getObject("hero");
@@ -94,16 +78,8 @@ bool MapOne::init()
 	_player4->setPosition(x4,y4);
 	_tileMap->addChild(_player4,1);
 	
-    
-
-	
-
-
-
-
 
 	this->scheduleUpdate();
-
 
     return true;
 }
@@ -120,7 +96,6 @@ bool HrockerLayer::init()
 	rocker->startRocker(true);
 
 	return true;
-
 }
 
 
@@ -139,21 +114,18 @@ void  MapOne::update(float f)
 		Director::getInstance()->getScheduler()->autorelease();
 		MapOne::back1();
 		k=90;
-		
 	}
 	else  if (rectA.intersectsRect(rectD)&&k==0)
 	{
 		Director::getInstance()->getScheduler()->autorelease();
 		MapOne::back2();
 		k=90;
-		
 	}
 	  else   if (rectA.intersectsRect(rectE)&&k==0)
 	{
 		Director::getInstance()->getScheduler()->autorelease();
 		MapOne::back3();
 		k=90;
-		
 	}
 	  else  if (rectA.intersectsRect(rectB)&&k==0)
 	{
@@ -162,62 +134,33 @@ void  MapOne::update(float f)
 		k=90;
 	}
 	
-
 		switch (rocker->rocketDirection)
 		{
 			case 1:
-
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_",5, rocker->rocketRun,hero,1);
 				PlayerPoint(Vec2( this->hero->getPosition().x +2, this->hero->getPosition().y));
-				
-				if(k!=0)
-				{
-					k--;
-				}
-				
-				
+				if(k!=0){ k--; }
 				break;
 			case  2:
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_", 5, rocker->rocketRun,hero, 2);
 		        PlayerPoint(Vec2(this->hero->getPosition().x, this->hero->getPosition().y +2));
-				
-				if(k!=0)
-				{
-					k--;
-				}
-				
+				if(k!=0){ k--; }
 				break;
 			case 3:
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_", 5, rocker->rocketRun,hero,3);
 				PlayerPoint(Vec2(this->hero->getPosition().x -2, this->hero->getPosition().y));
-				
-				if(k!=0)
-				{
-					k--;
-				}
-				
+				if(k!=0){ k--; }
 				break;
 			case 4:
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_", 5, rocker->rocketRun,hero,4);
 				PlayerPoint(Vec2(this->hero->getPosition().x, this->hero->getPosition().y -2));
-				if(k!=0)
-				{
-					k--;
-				}
-				
-				
+				if(k!=0){ k--;}
 				break;
 			default:
 				animation::StopAnimation(hero);//停止所有动画和运动  
 				break;
 		}
-
-
-	
 }
-
-
-
 
 
 //地图移动
@@ -237,7 +180,6 @@ void  MapOne:: MoveMap(Point position)
     auto viewPoint=centerPoint - actualPoint; 
 	
     this->setPosition(viewPoint);
-	
 }
 
 
@@ -252,23 +194,22 @@ void MapOne::PlayerPoint(Point p)
 
 void MapOne::back()
 {
-
 	rocker->resumeState();
 	DelayTime::create(3);
 	auto scens =MapTwo::createScene();
 	
 	Director::getInstance()->pushScene(scens);
 }
+
 void MapOne::back1()
 {
 	rocker->resumeState();
 	
 	auto scens = MapThere::createScene();
 	
-	
-	
 	Director::getInstance()->pushScene(scens);
 }
+
 void MapOne::back2()
 {
 	
@@ -287,6 +228,7 @@ void MapOne::back3()
 	
 	Director::getInstance()->pushScene(scens);
 }
+
 void  MapOne::movePlayer(Point p)
 {
     int x =(p.x)/_tileMap->getTileSize().width;
@@ -303,18 +245,10 @@ void  MapOne::movePlayer(Point p)
         auto valueStr=value.getDescription();
         
         if (tilegid)
-        
         {
-           
             if (!value.isNull())
             {
-            
-                if (valueStr.find("collidable")!=-1)
-                {
-                    return;
-					
-                }
-                
+                if (valueStr.find("collidable")!=-1){ return; }
             }
         }
         
