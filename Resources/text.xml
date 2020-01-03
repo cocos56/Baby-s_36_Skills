@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dict>
+   <key>play1</key>
+   <string>开始游戏</string>
+   <key>play2</key>
+   <string>当前分:</string>
+   <key>play3</key>
+   <string>最高分:</string>
+   <key>play4</key>
+   <string>打飞机大战</string>
+   <key>play5</key>
+   <string>请选择战斗机型号并设置背景音乐</string>
+  <key>select</key>
+  <string>Choose Ok? Begin!</string>
+  <key>suspend</key>
+  <string>暂停</string>
+  <key>scoreMenu</key>
+  <string>得分纪录</string>
+  <key>back_game</key>
+  <string>回到游戏</string>
+  <key>back_menu</key>
+  <string>回到主页</string>
+  <key>game_win</key>
+  <string>游戏胜利</string>
+  <key>regame</key>
+  <string>再玩一次？</string>
+</dict>

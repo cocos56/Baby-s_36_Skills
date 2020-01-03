@@ -1,0 +1,14 @@
+为了减小开销，用的全局包
+
+为了方便使用可以新建一个系统变量，如：NODE_PATH=F:/Green Program/node/node_modules
+默认下node.js会在NODE_PATH和目前js所在项目下的node_modules文件夹下去寻找模块
+每个项目独立安装，这样方便整个项目的复制到不同的开发机，不用安装多次。
+
+Windows 下在环境变量的“系统变量”中，新建一个名为NODE_PATH的变量，变量值为本机全局包安装的路径，如：F:/Green Program/node/node_modules（默认情况下为node.js的安装路径里的node_modules目录，也可以通过npm root -g命令查看)。
+
+然后运行以下命令安装所需的包（全局）：
+npm install -g mysql
+npm install -g nodejs-websocket
+
+更新包：
+npm install -g npm-check-updates
