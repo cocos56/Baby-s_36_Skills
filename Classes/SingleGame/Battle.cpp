@@ -34,7 +34,6 @@ bool Battle::init()
 	bg->setPosition(Vec2(size.width/2,size.height/2));
 	this->addChild(bg,0);
 
-
 	//坏蛋赢图
 	bg1=Sprite::create("2123.png");
 	bg1->setPosition(Vec2(487,437));
@@ -189,7 +188,6 @@ void Battle::update(float f)
 		  auto str=(String *)(dic->objectForKey(Levels));
 		
 		 Lable_Set(label2,str,3);
-
 	 }
  }
 	 
@@ -197,7 +195,6 @@ void Battle::update(float f)
  {
 	 Director::getInstance()->popScene();
  }
-
 
 
 void Battle::Lable_Set(Label *label1 ,String* str,int i)
@@ -209,7 +206,6 @@ void Battle::Lable_Set(Label *label1 ,String* str,int i)
 	label=nullptr;
 
 	label = label1;
-
 	
 	label->setString("");
 	label->setSystemFontSize(40);
@@ -224,7 +220,6 @@ void Battle::Lable_Set(Label *label1 ,String* str,int i)
 
 void Battle::judeRight()
 {
-    
 	auto move=MoveTo::create(0.1, Vec2( bg3->getPosition().x+500,bg3->getPosition().y));
 	auto move1=MoveTo::create(0.1,Vec2( bg4->getPosition().x-500,bg4->getPosition().y));
 
@@ -252,26 +247,23 @@ void Battle::showFont(float dt) {
 		n=0;
 		content="";
 		
-	    if(bg1->isVisible())
-		 {
+	    if(bg1->isVisible()){
 			 bg1->setVisible(false);
 			 judeRight();
 		 }
-		  if(bg2->isVisible())
-		 {
+
+		  if(bg2->isVisible()){
 			 bg2->setVisible(false);
 			 judeRight();
 		 }
 
 		button->setEnabled(true);
 		button1->setEnabled(true);
-		
 	}
 }
 
 void Battle::falseTextTurn(Ref *sender)
 {
-	
 	UserDefault::getInstance()->setIntegerForKey("True",0);
 	button->setEnabled(false);
 	button1->setEnabled(false);
@@ -285,9 +277,8 @@ void Battle::falseTextTurn(Ref *sender)
 
 
  void Battle::tureTextTurn(Ref *sender)
- {
-	
-	 UserDefault::getInstance()->setIntegerForKey("True",1);
+ {	
+	UserDefault::getInstance()->setIntegerForKey("True",1);
 	button->setEnabled(false);
 	button1->setEnabled(false);
 	auto move=MoveTo::create(0.1, Vec2(bg3->getPosition().x -500,bg3->getPosition().y));

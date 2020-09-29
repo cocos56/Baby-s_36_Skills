@@ -13,6 +13,4 @@ public:
 private:
 	bool IsRunning;
 	bool HeroDirecton;
-
-
 };

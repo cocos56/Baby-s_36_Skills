@@ -15,29 +15,26 @@ public:
 	void heroRound(float d);
 	Point  movePlayer(Point p,Point p3);
 	
-   Point moveBad(bool s,Point ph);
-   void heroBadRounf(float d);
-
-   int count ;
-   int k1;
-   int kj;
-   int j;
+	Point moveBad(bool s,Point ph);
+	void heroBadRounf(float d);
+	
+	int count ,k1, kj, j;
 
 private:
-	Sprite * herohrea;
+	Sprite *herohrea;
 	bool HeroDirecton;
-	static Layer * layer;
+	static Layer *layer;
 	Point  p2;
-	Sprite * heroBad;
+	Sprite *heroBad;
 	float y;
 	float x;
 	Sprite *chu;
 };
+
 class HrockerLayer2:public Layer
 {
 public:
-	static Scene * createScene();
+	static Scene *createScene();
     virtual bool init();
 	CREATE_FUNC(HrockerLayer2);
-
 };

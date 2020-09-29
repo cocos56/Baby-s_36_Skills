@@ -79,13 +79,18 @@ void MapFive::update(float f)
 {
 	if(kj==0)
 	{
-		if (herohrea5->getPosition().x >heroBad5->getPosition().x) {
-				if(heroBad5->isFlippedX() == true)
-					heroBad5->setFlippedX(false);
-			}else{
-				if(heroBad5->isFlippedX() == false)
-					heroBad5->setFlippedX(true);
+		if (herohrea5->getPosition().x >heroBad5->getPosition().x)
+		{
+			if (heroBad5->isFlippedX() == true) {
+				heroBad5->setFlippedX(false);
 			}
+		}
+		else
+		{
+			if (heroBad5->isFlippedX() == false){
+				heroBad5->setFlippedX(true);
+			}
+		}
 	}
 
 	switch (rocker5->rocketDirection)
@@ -166,8 +171,14 @@ void MapFive::backFive()
 //实现角色奔跑
 void MapFive::heroBadRounf(float d)
 {
-	if(heroBad5->isFlippedX() == true){	heroBad5->setFlippedX(false);}
-	else { heroBad5->setFlippedX(true); }
+	if(heroBad5->isFlippedX() == true)
+	{
+		heroBad5->setFlippedX(false);
+	}
+	else
+	{
+		heroBad5->setFlippedX(true);
+	}
 
 	x=-40;
 	y=0;

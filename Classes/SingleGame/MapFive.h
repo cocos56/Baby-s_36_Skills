@@ -13,7 +13,6 @@ public:
 private:
 	Sprite* hero;
 
-
 	bool HeroDirecton5;
 	
 	void update(float f);
@@ -37,16 +36,12 @@ private:
 	Sprite * heroBad5;
 	float y;
 	float x;
-
-
-
 };
+
 class HrockerLayer5:public Layer
 {
 public:
 	static Scene * createScene();
     virtual bool init();
 	CREATE_FUNC(HrockerLayer5);
-
 };
-

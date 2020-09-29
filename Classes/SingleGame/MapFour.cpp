@@ -15,6 +15,7 @@ Scene * MapFour::createScene()
 	scene->addChild(Hrockerlayer);
 	return scene;
 }
+
 bool MapFour::init()
 {
 	if (!Layer::init())
@@ -25,8 +26,6 @@ bool MapFour::init()
 	k1=0;
 	kj=0;
 	j=0;
-
-
 
 	tileMap4 = TMXTiledMap::create("shop.tmx");
 	tileMap4->setAnchorPoint(Vec2::ZERO);
@@ -39,7 +38,7 @@ bool MapFour::init()
 	_collidable4->setVisible(false);
 
 
-	 chu=Sprite::create("enter.png");
+	chu=Sprite::create("enter.png");
 	chu->setPosition(930,100);
 	chu->setVisible(false);
 	this->addChild(chu);
@@ -49,7 +48,7 @@ bool MapFour::init()
 	ValueMap map4=object->getObject("hero");
 	int x3=map4.at("x").asInt();
 	int y3=map4.at("y").asInt();
-	 herohrea4=Sprite::create("buddy_1_1.png");
+	herohrea4=Sprite::create("buddy_1_1.png");
 	herohrea4->setPosition(x3,y3);
 	tileMap4->addChild(herohrea4,1);
 
@@ -57,8 +56,7 @@ bool MapFour::init()
 	int x4=map4_1.at("x").asInt();
 	int y4=map4_1.at("y").asInt();
 
-	
-	 heroBad4=Sprite::create("enermy_4_1.png");
+	heroBad4=Sprite::create("enermy_4_1.png");
 	heroBad4->setPosition(x4,y4);
 	tileMap4->addChild(heroBad4,1);
 	
@@ -66,19 +64,17 @@ bool MapFour::init()
 
   return true;
 }
+
 bool HrockerLayer4::init()
 {
-	if (!Layer::init())
-	{
-		return false;
-	}
+	if (!Layer::init()){ return false; }
 
-	 rocker4 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//其中第一张图片为摇杆的按钮，第二张为背景  
+	rocker4 = HRocker::createHRocker("yaogandian.png", "yaogandi.png", ccp(110,80));//其中第一张图片为摇杆的按钮，第二张为背景  
 	this->addChild(rocker4, 2);
 	rocker4->startRocker(true);
 	HrockerLayer4::update(0.1);
-	return true;
 
+	return true;
 }
 
 
@@ -95,38 +91,27 @@ void MapFour::update(float f)
 			}
 	}
 
-	
 	switch (rocker4->rocketDirection)
 		{
 			case 1:
-
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_",5, rocker4->rocketRun,herohrea4,1);
-				
-				
 				 p2= movePlayer(Vec2( herohrea4->getPosition().x +2, herohrea4->getPosition().y),herohrea4->getPosition());
 		        herohrea4->setPosition(p2);
-				
 				break;
 			case  2:
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_", 5, rocker4->rocketRun,herohrea4, 2);
 				 p2= movePlayer(Vec2(herohrea4->getPosition().x,herohrea4->getPosition().y +2),herohrea4->getPosition());
 		        herohrea4->setPosition(p2);
-				
 				break;
 			case 3:
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_", 5, rocker4->rocketRun,herohrea4,3);
-			
 	            p2= movePlayer(Vec2( herohrea4->getPosition().x -2,  herohrea4->getPosition().y),herohrea4->getPosition());
 		        herohrea4->setPosition(p2);
-				
 				break;
 			case 4:
 				animation::SetAnimation("buddy_1.plist", "buddy_1.png", "buddy_1_", 5, rocker4->rocketRun,herohrea4,4);
-		    
 				 p2= movePlayer(Vec2( herohrea4->getPosition().x,  herohrea4->getPosition().y -2),herohrea4->getPosition());
 		        herohrea4->setPosition(p2);
-				
-				
 				break;
 			default:
 				animation::StopAnimation( herohrea4);//停止所有动画和运动  
@@ -146,13 +131,10 @@ void MapFour::update(float f)
 
 		//DelayTime::create(3);
 		
-
-
 		auto scens =Battle::createScene();
 		Director::getInstance()->pushScene(scens);
 
 		kj=1;
-
 	}
 
 	if (rectA.intersectsRect(rectC)&&chu->isVisible())
@@ -178,38 +160,31 @@ void MapFour::update(float f)
 	    rocker4->resumeState();
 		heroBadRounf(0.1);	
 		kj=-1;
-	
 	}
-
 }
 
 void MapFour::backFour()
 {
-	
 	this->unschedule(schedule_selector(MapFour::heroRound));
 	this->unschedule(schedule_selector(MapFour::heroBadRounf));
 	rocker4->stopRocker();
-    Director::getInstance()->popScene();
-
-	
+    Director::getInstance()->popScene();	
 }
 
 //实现角色奔跑
 void MapFour::heroBadRounf(float d)
 {
+		 if(heroBad4->isFlippedX() == true){
+			 heroBad4->setFlippedX(false);
+		 }
 
-	
-		 if(heroBad4->isFlippedX() == true)
-		 {		heroBad4->setFlippedX(false);}
-
-
-		if(heroBad4->isFlippedX() == false)
-		{		heroBad4->setFlippedX(true);}
+		if(heroBad4->isFlippedX() == false){
+			heroBad4->setFlippedX(true);
+		}
 
 	    x=-40;
 	    y=0;
 	
-		
 		auto move=MoveBy::create(0.1,Point(x,y));
 		
 		auto ani= animation::getAnimation("enermy_4.plist", "enermy_4.png", "enermy_4_", 5,heroBad4,3);
@@ -230,8 +205,6 @@ void MapFour::heroBadRounf(float d)
 //坏人移动，实现找人移动
 void MapFour::heroRound(float d)
 {
-	
-	
 	Point pp= moveBad(true,herohrea4->getPosition());
 	auto move=MoveBy::create(0.1,pp);
    
@@ -245,35 +218,30 @@ void MapFour::heroRound(float d)
 	else
 	{
 		this->unschedule(schedule_selector(MapFour::heroRound));
-	}
-  
+	} 
 }
 
 
 //坏人移动的算法
 Point MapFour::moveBad(bool active,Point ph)
 {
-	
 		auto s=heroBad4;
-	 //   //x轴方向移动的距离
+		//x轴方向移动的距离
 		int text1=abs(ph.x-s->getPosition().x);
 		int text2=abs(ph.y-s->getPosition().y);
 		if(text1>text2)
 		{
 			x=ph.x-s->getPosition().x>0?40:-40;
-			 y=0;
+			y=0;
 		}
-	 //   //y轴方向上移动的距离
+		//y轴方向上移动的距离
 		else
 		{
 			 x=0;
 			y=ph.y-s->getPosition().y>0?40:-40;
 		}
 		return Vec2(x,y);
-
 }
-
-
 
 //测试是否可以走
 Point  MapFour::movePlayer(Point p,Point p3)
@@ -283,8 +251,7 @@ Point  MapFour::movePlayer(Point p,Point p3)
     
     Point currentPoint=Point(x,y);    
     if (x!=tileMap4->getMapSize().width && y!=tileMap4->getMapSize().height)
-    {
-        
+    {        
         int tilegid=_collidable4->getTileGIDAt(currentPoint);
        
         cocos2d::Value value=tileMap4->getPropertiesForGID(tilegid);
@@ -292,19 +259,11 @@ Point  MapFour::movePlayer(Point p,Point p3)
         auto valueStr=value.getDescription();
         
         if (tilegid)
-        
-        {
-           
+		{
             if (!value.isNull())
-            {
-            
-                if (valueStr.find("collidable")!=-1)
-                {
-					return p3;
-				
-                }
-                
-            }
+			{
+                if (valueStr.find("collidable")!=-1){ return p3; }
+			}
         }
         
 		return p;

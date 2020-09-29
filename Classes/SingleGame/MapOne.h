@@ -3,7 +3,7 @@
 
 #include "QE.h"
 
-class MapOne :public Layer,public animation
+class MapOne : public Layer, public animation
 {
 public:
 	static Scene * createScene();
@@ -28,14 +28,12 @@ private:
 	void MoveMap(Point position);
 	void movePlayer(Vec2 p);
 
-	Sprite * _player1;
-	Sprite * _player2;
-	Sprite * _player3;
-	Sprite * _player4;
-	Sprite* _player5;
-	Sprite* hero;
-
-	
+	Sprite *_player1;
+	Sprite *_player2;
+	Sprite *_player3;
+	Sprite *_player4;
+	Sprite *_player5;
+	Sprite *hero;
 };
 
 class HrockerLayer:public Layer 
@@ -44,5 +42,4 @@ public:
 	static Scene * createScene();
     virtual bool init();
 	CREATE_FUNC(HrockerLayer);
-
 };

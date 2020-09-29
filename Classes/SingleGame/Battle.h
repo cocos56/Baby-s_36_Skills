@@ -3,11 +3,10 @@
 
 #include "QE.h"
 
-
 class Battle :public Layer
 {
 public:
-	 static Scene * createScene();
+	static Scene * createScene();
     virtual bool init();
 	CREATE_FUNC(Battle);
 
@@ -24,11 +23,11 @@ public:
 private:
     String content;
 	int n ;
-	Label* label;
+	Label *label;
 	Label *label2;
-	__Dictionary *dic;
-	ui::Button * button;
-	ui::Button *button1;
+	Dictionary *dic;
+	Button *button;
+	Button *button1;
 	Size visibleSize;
 	int Level;
 	char Levels[20];
@@ -37,9 +36,8 @@ private:
 	int  LevelI;
 
 	Size  size;
-	Sprite * bg1;
-	Sprite * bg2;
-	Sprite * bg3;
-	Sprite * bg4;
+	Sprite *bg1;
+	Sprite *bg2;
+	Sprite *bg3;
+	Sprite *bg4;
 };
-

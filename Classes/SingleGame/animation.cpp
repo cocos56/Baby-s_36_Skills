@@ -31,7 +31,6 @@ void animation::SetAnimation(const char* name_plist, const char* name_png, const
 	hero1->runAction(act);
 
 	IsRunning = true;
-	
 }
 
 void animation::RunEnd()
@@ -41,7 +40,6 @@ void animation::RunEnd()
 
 Animation* animation::getAnimation(const char* name_plist, const char* name_png, const char* name_each, const unsigned int num,Sprite * hero1, bool run_directon)
 {
-	
 		auto cache = SpriteFrameCache::getInstance();
 		cache->addSpriteFramesWithFile(name_plist, name_png);
 		hero1->setTexture(CCString::createWithFormat("%s1.png", name_each)->getCString());

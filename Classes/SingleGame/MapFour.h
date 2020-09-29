@@ -8,7 +8,7 @@ class MapFour :public Layer,public animation
 {
 public:
 	static Scene * createScene();
-    virtual bool init();
+	virtual bool init();
 	CREATE_FUNC(MapFour);
 	void backFour();
 
@@ -37,12 +37,12 @@ private:
 	float y;
 	float x;
 };
+
 class HrockerLayer4:public Layer
 {
 public:
 	static Scene * createScene();
     virtual bool init();
 	CREATE_FUNC(HrockerLayer4);
-
 };
 

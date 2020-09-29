@@ -12,6 +12,6 @@ public:
 	static int getNum( int levelIndex);
 	static int getStar( int levelIndex);
 	static void setStar( int levelIndex, int starNum);
-	static void writefile(rapidjson::Document& document, std::string path);
+	static void writefile(Document& document, string path);
 	static int getclok(int levelIndex);
 };
