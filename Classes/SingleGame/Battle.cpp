@@ -7,8 +7,8 @@ int z=0;
 
 Scene * Battle::createScene()
 {
-	Scene* scene = Scene::create();
-	Layer * layer =Battle::create();
+	Scene *scene = Scene::create();
+	Layer *layer =Battle::create();
 	scene->addChild(layer);
 	return scene;
 }
@@ -20,10 +20,10 @@ bool Battle::init()
 	UserDefault::getInstance()->setIntegerForKey("i",1);
 	UserDefault::getInstance()->setIntegerForKey("True",-1);
 	UserDefault::getInstance()->setIntegerForKey("end",-1);
-	 UserDefault::getInstance()->setIntegerForKey("ok",1);
+	UserDefault::getInstance()->setIntegerForKey("ok",1);
 
 	visibleSize = Director::getInstance()->getVisibleSize();
-	 size=Director::getInstance()->getWinSize();
+	size=Director::getInstance()->getWinSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	//背景
@@ -41,7 +41,7 @@ bool Battle::init()
 	this->addChild(bg1,1);
 
 	//玩家赢图
-	 bg2=Sprite::create("124.png");
+	bg2=Sprite::create("124.png");
 	bg2->setPosition(Vec2(477,426));
 	bg2->setVisible(false);
 	this->addChild(bg2,1);
@@ -52,12 +52,12 @@ bool Battle::init()
 	this->addChild(bg5,3);
 
 	//闭合图1
-	 bg3=Sprite::create("left.png");
+	bg3=Sprite::create("left.png");
 	bg3->setPosition(Vec2(304,323));
 	this->addChild(bg3,2);
 
 	//闭合图2
-	 bg4=Sprite::create("right.png");
+	bg4=Sprite::create("right.png");
 	bg4->setPosition(Vec2(603,323));
 	this->addChild(bg4,2);
 
@@ -123,19 +123,18 @@ void Battle::update(float f)
 	else if(result!=retult2&&retult2==0){ right=3; }
 
 	//答对了答案
-	if(right==0)
-	{
-		  bg1->setVisible(true);
-	
-		  UserDefault::getInstance()->setIntegerForKey("True",-1);
-		  UserDefault::getInstance()->setIntegerForKey("i",I+1);
-
-		  Level=UserDefault::getInstance()->getIntegerForKey("level");
-	     auto dic=DataParse::getChapter(Level);
-		  I=UserDefault::getInstance()->getIntegerForKey("i");
-		   if(I==7){ I-=1; }
-		  LevelI=Level*10+I;
-		  sprintf(Levels,"level_%d_word",LevelI);
+	if(right==0){
+		bg1->setVisible(true);
+		
+		UserDefault::getInstance()->setIntegerForKey("True",-1);
+		UserDefault::getInstance()->setIntegerForKey("i",I+1);
+		
+		Level=UserDefault::getInstance()->getIntegerForKey("level");
+		auto dic=DataParse::getChapter(Level);
+		I=UserDefault::getInstance()->getIntegerForKey("i");
+		if(I==7){ I-=1; }
+		LevelI=Level*10+I;
+		sprintf(Levels,"level_%d_word",LevelI);
 		  
 		right=-1;
 		
@@ -143,54 +142,47 @@ void Battle::update(float f)
 	
 		Lable_Set(label2,str,3);
 	}
+
 	//答对了答案，答案为1
-	 else if(right==1)
-	 {
+	 else if(right==1){
 		  bg1->setVisible(true);
 		  UserDefault::getInstance()->setIntegerForKey("True",-1);
 		  UserDefault::getInstance()->setIntegerForKey("i",I+1);
-
-		   Level=UserDefault::getInstance()->getIntegerForKey("level");
-	     auto dic=DataParse::getChapter(Level);
-		   I=UserDefault::getInstance()->getIntegerForKey("i");
+		  
+		  Level=UserDefault::getInstance()->getIntegerForKey("level");
+		  auto dic=DataParse::getChapter(Level);
+		  I=UserDefault::getInstance()->getIntegerForKey("i");
 		  if(I==7){ I=I-1; }
 		  LevelI=Level*10+I;
 		  sprintf(Levels,"level_%d_word",LevelI);
-		 
+		  
 		  auto str=(String *)(dic->objectForKey(Levels));
-
-		 right=-1;
-
-	   
-		Lable_Set(label2,str,3);
-		log("1->%s",Levels);
+		  right=-1;
+		  
+		  Lable_Set(label2,str,3);
+		  log("1->%s",Levels);
 	 }
+
 	//答错了
-
-	 else if(right==3)
-	 {   
-		 bg2->setVisible(true);
-		 
-		 UserDefault::getInstance()->setIntegerForKey("True",-1);
-
-		 right=-1;
-		 //ok记得是错误
-		 UserDefault::getInstance()->setIntegerForKey("ok",0);
-		    Level=UserDefault::getInstance()->getIntegerForKey("level");
-	       auto dic=DataParse::getChapter(Level);
-			I=UserDefault::getInstance()->getIntegerForKey("i");
-		   if(I==7)
-		  {
-			  I=I-1;
-		  }
-		  LevelI=Level*10+I;
-		  sprintf(Levels,"level_%d_word",LevelI);
-		  auto str=(String *)(dic->objectForKey(Levels));
+	 else if(right==3){
+		bg2->setVisible(true);
+		UserDefault::getInstance()->setIntegerForKey("True",-1);
 		
-		 Lable_Set(label2,str,3);
+		right=-1;
+		//ok记得是错误
+		UserDefault::getInstance()->setIntegerForKey("ok",0);
+		Level=UserDefault::getInstance()->getIntegerForKey("level");
+		auto dic=DataParse::getChapter(Level);
+		I=UserDefault::getInstance()->getIntegerForKey("i");
+		if(I==7){ I=I-1; }
+		LevelI=Level*10+I;
+		sprintf(Levels,"level_%d_word",LevelI);
+		auto str=(String *)(dic->objectForKey(Levels));
+		
+		Lable_Set(label2,str,3);
 	 }
  }
-	 
+
  void Battle::returnScene(float f)
  {
 	 Director::getInstance()->popScene();
@@ -228,17 +220,17 @@ void Battle::judeRight()
 }
 
 
-
 void Battle::showFont(float dt) {
-	std::string c=content.getCString();
+	string c=content.getCString();
 
 	n = n + 3;
 	
-	std::string str = c.substr(0, n);
+	string str = c.substr(0, n);
 
 	label->setString(str);
 	
-	if (n > content.length()) {
+	if(n > content.length())
+	{
 		this->unschedule(schedule_selector(Battle::showFont));
 		if(UserDefault::getInstance()->getIntegerForKey("ok")==0)
 		{
@@ -251,8 +243,8 @@ void Battle::showFont(float dt) {
 			 bg1->setVisible(false);
 			 judeRight();
 		 }
-
-		  if(bg2->isVisible()){
+		
+		if(bg2->isVisible()){
 			 bg2->setVisible(false);
 			 judeRight();
 		 }
@@ -286,3 +278,4 @@ void Battle::falseTextTurn(Ref *sender)
 	bg3->runAction(move);
 	bg4->runAction(move1);
  }
+

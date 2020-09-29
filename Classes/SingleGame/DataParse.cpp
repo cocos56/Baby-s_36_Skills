@@ -21,15 +21,15 @@ void DataParse::CopyFile()
 
 int  DataParse::getclok(int levelIndex)
 {
-	std::string writeablePath = FileUtils::getInstance()->getWritablePath();
+	string writeablePath = FileUtils::getInstance()->getWritablePath();
 	//获取完整路径
 	writeablePath = writeablePath + "Data.json";
 	//将一个文件内容读取为字符串
-	std::string data = FileUtils::getInstance()->getStringFromFile(writeablePath);
+	string data = FileUtils::getInstance()->getStringFromFile(writeablePath);
 	//解析对象 
-	rapidjson::Document doc;
+	Document doc;
 	//开始解析
-	doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
+	doc.Parse<kParseDefaultFlags>(data.c_str());
 	//判断解析是否出现问题
 	if (doc.HasParseError()){ return 0; }
 
@@ -43,15 +43,15 @@ Dictionary* DataParse::getChapter(int chapterIndex)
 {
 	CopyFile();
 	//获取可读写路径
-	std::string writeablePath = FileUtils::getInstance()->getWritablePath();
+	string writeablePath = FileUtils::getInstance()->getWritablePath();
 	//获取完整路径
 	writeablePath = writeablePath + "Data.json";
 
 	//获取资源
-	std::string data = FileUtils::getInstance()->getStringFromFile(writeablePath);
+	string data = FileUtils::getInstance()->getStringFromFile(writeablePath);
 	//解析
-	rapidjson::Document doc;
-	doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
+	Document doc;
+	doc.Parse<kParseDefaultFlags>(data.c_str());
 	
 	if (doc.HasParseError()){ return 0; }
 	//存入字典
@@ -65,13 +65,11 @@ Dictionary* DataParse::getChapter(int chapterIndex)
 		char prue[20];
 		sprintf(prue, "level_%d%d_true",chapterIndex,i);
 		//从doc中获取值
-		
 		char level[20];
 		sprintf(level, "level_%d%d", chapterIndex,i);
 		//因为值是int型的需要转变为对象
 		String *lockValue = String::create(doc[level]["word"].GetString());
 		Integer *starValue = Integer::create(doc[level]["prue"].GetInt());
-		
 		dic->setObject(lockValue, word);
 		dic->setObject(starValue, prue);
 	}

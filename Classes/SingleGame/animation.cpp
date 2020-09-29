@@ -4,10 +4,9 @@
 
 void animation::StopAnimation( Sprite * hero1)
 {
-	if (!IsRunning)
-		return;
+	if (!IsRunning){ return; }
+	
 	hero1->stopAllActions();
-
 	IsRunning = false;
 }
 
@@ -19,10 +18,9 @@ void animation::SetAnimation(const char* name_plist, const char* name_png, const
 		HeroDirecton = run_directon;
 		hero1->setFlippedX(run_directon);  
 	}
-	if (IsRunning)
-	{
-		return;
-	}
+
+	if (IsRunning){ return; }
+
 	auto ani = getAnimation(name_plist, name_png, name_each, num, hero1,run_directon);
 	auto action = Animate::create(ani);
 	
@@ -42,7 +40,7 @@ Animation* animation::getAnimation(const char* name_plist, const char* name_png,
 {
 		auto cache = SpriteFrameCache::getInstance();
 		cache->addSpriteFramesWithFile(name_plist, name_png);
-		hero1->setTexture(CCString::createWithFormat("%s1.png", name_each)->getCString());
+		hero1->setTexture(String::createWithFormat("%s1.png", name_each)->getCString());
 		auto spriteBatch = SpriteBatchNode::create(name_png);
 		//addChild(spriteBatch);
 		Vector<SpriteFrame*> animFrames(num);
